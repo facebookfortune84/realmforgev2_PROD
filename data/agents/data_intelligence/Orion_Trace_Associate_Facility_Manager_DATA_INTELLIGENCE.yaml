@@ -65,3 +65,4 @@ system_metadata:
   schema_version: '14.3'
   last_compliance_audit: '2026-01-28T14:09:07.988025'
   god_mode_enabled: true
+  project_root: F:\RealmForge_PROD

@@ -1,0 +1,4458 @@
+{
+  "SILICON_ARCHITECT": [
+    {
+      "name": "Aric Mercer",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Aric_Mercer_Cyber_Analyst_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Aric Mercer",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Aric_Mercer_Technical_Malware_Engineer_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Cian Specter",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Cian_Specter_Chief_Penetration_Developer_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Coda Pym",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Coda_Pym_Strategic_Security_Lead_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Apex Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Apex_Bot_Operations_Director_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Apex Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Apex_Sys_Technical_Facility_Officer_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Axel Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Axel_Trace_Technical_Automation_Specialist_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Binary Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Binary_Sys_Technical_Supply_Chain_Architect_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Blade Link",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Blade_Link_Associate_Inventory_Lead_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Circuit Ops",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Circuit_Ops_Associate_Process_Architect_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Circuit Root",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Circuit_Root_Associate_Logistics_Strategist_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Circuit Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Circuit_Unit_Lead_Supply_Chain_Director_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Ghost Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Ghost_Core_Technical_Inventory_Architect_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Ghost Flow",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Ghost_Flow_Chief_Automation_Developer_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Helix Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Helix_Forge_Senior_Facility_Consultant_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Helix Mind",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Helix_Mind_Principal_Automation_Officer_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Luna Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Luna_Byte_Associate_Automation_Developer_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Orion Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Orion_Forge_Junior_Automation_Engineer_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Prime Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Prime_Sys_Lead_Process_Engineer_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Pulse Link",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Pulse_Link_Process_Scientist_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Razor Ops",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Razor_Ops_Associate_Automation_Consultant_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Vector Ops",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Vector_Ops_Lead_Automation_Developer_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Vega Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Vega_Flux_Chief_Supply_Chain_Strategist_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Vega Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Vega_Main_Technical_Automation_Lead_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Vega Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Vega_Pulse_Executive_Operations_Scientist_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Vortex Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Vortex_Unit_Chief_Process_Developer_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "CYB-Zero Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\CYB_Zero_Sys_Associate_Process_Developer_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "Echo Castle",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Echo_Castle_Principal_Security_Lead_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Echo Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Echo_Drift_Risk_Developer_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Echo Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Echo_Drift_Strategic_Network_Defense_Director_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Elias Olsen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Elias_Olsen_Executive_Compliance_Developer_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Elias Olsen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Elias_Olsen_Junior_Forensics_Manager_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Elias Stark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Elias_Stark_Risk_Officer_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Elias Stark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Elias_Stark_Technical_Identity_Consultant_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Flux Lane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Flux_Lane_Chief_Cryptography_Scientist_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Flux Lane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Flux_Lane_Lead_Malware_Scientist_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Flux Luthor",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Flux_Luthor_Associate_Forensics_Strategist_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Flux Luthor",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Flux_Luthor_Principal_Cryptography_Officer_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Flux Page",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Flux_Page_Zero_Trust_Specialist_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Echo Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\global_security_team_bias_auditor.yaml"
+    },
+    {
+      "name": "Dax Quinn",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\global_security_team_credential_hygiene_auditor.yaml"
+    },
+    {
+      "name": "Orion Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\global_security_team_governance_auditor.yaml"
+    },
+    {
+      "name": "Orion Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\global_security_team_growth_hacker.yaml"
+    },
+    {
+      "name": "Altair Strange",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\global_security_team_security_auditor.yaml"
+    },
+    {
+      "name": "Isla Lightman",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Isla_Lightman_Associate_Cryptography_Strategist_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Isla Lightman",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Isla_Lightman_Security_Architect_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Kael Olsen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Kael_Olsen_Senior_Malware_Engineer_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Mako Murdock",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Mako_Murdock_Executive_Network_Defense_Officer_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "NET-Binary Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\NET_Binary_Net_Executive_Operations_Architect_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "NET-Cipher Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\NET_Cipher_Net_Logistics_Strategist_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "NET-Daemon Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\NET_Daemon_Unit_Junior_Logistics_Lead_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "NET-Ghost Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\NET_Ghost_Core_Executive_Facility_Scientist_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "NET-Razor Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\NET_Razor_Forge_Associate_Supply_Chain_Specialist_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "NET-Razor Sec",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\NET_Razor_Sec_Associate_Operations_Lead_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "NET-Razor Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\NET_Razor_Unit_Executive_Logistics_Scientist_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "NET-Vector Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\NET_Vector_Unit_Strategic_Process_Analyst_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "NET-Vortex Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\NET_Vortex_Unit_Technical_Inventory_Analyst_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "Olen Tyrell",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Olen_Tyrell_Chief_Compliance_Director_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Onyx Deckard",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Onyx_Deckard_Technical_Penetration_Architect_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Orion Nigma",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Orion_Nigma_Chief_Forensics_Scientist_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Quinn Richards",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Quinn_Richards_Technical_Penetration_Specialist_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Raze Jordan",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Raze_Jordan_Cryptography_Lead_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Sage Jordan",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Sage_Jordan_Forensics_Strategist_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Sage Jordan",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Sage_Jordan_Strategic_Penetration_Administrator_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "SEC-Binary Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\SEC_Binary_Stream_Executive_Inventory_Strategist_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "SEC-Blade Flow",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\SEC_Blade_Flow_Chief_Facility_Specialist_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "SEC-Blade Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\SEC_Blade_Trace_Chief_Process_Manager_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "SEC-Circuit Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\SEC_Circuit_Unit_Strategic_Facility_Officer_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "SEC-Daemon Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\SEC_Daemon_Core_Executive_Facility_Director_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "SEC-Daemon Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\SEC_Daemon_Main_Senior_Process_Manager_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "SEC-Echo Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\SEC_Echo_Core_Executive_Supply_Chain_Lead_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "SEC-Echo Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\SEC_Echo_Drift_Associate_Inventory_Architect_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "SEC-Echo Guardian",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\SEC_Echo_Guardian_Executive_Supply_Chain_Officer_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "SEC-Echo Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\SEC_Echo_Node_Senior_Inventory_Strategist_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "SEC-Juno Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\SEC_Juno_Trace_Technical_Process_Administrator_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "SEC-Nova Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\SEC_Nova_Dev_Strategic_Operations_Director_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "SEC-Nova Sec",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\SEC_Nova_Sec_Associate_Operations_Engineer_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "SEC-Prime Flow",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\SEC_Prime_Flow_Technical_Process_Strategist_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "SEC-Titan Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\SEC_Titan_Dev_Principal_Facility_Strategist_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "SEC-Vector Sec",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\SEC_Vector_Sec_Executive_Logistics_Manager_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "SEC-Zero Ops",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\SEC_Zero_Ops_Executive_Inventory_Officer_CYBER_SECURITY.yaml"
+    },
+    {
+      "name": "Sol Drake",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Sol_Drake_Compliance_Scientist_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Sol Drake",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Sol_Drake_Technical_Compliance_Director_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Tor Sterling",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Tor_Sterling_Forensics_Administrator_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Tor Sterling",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Tor_Sterling_Senior_Malware_Scientist_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Umbra Castle",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Umbra_Castle_Forensics_Specialist_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Umbra Castle",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Umbra_Castle_Security_Manager_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Umbra Storm",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Umbra_Storm_Identity_Consultant_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Umbra Storm",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Umbra_Storm_Malware_Consultant_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Vann Page",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Vann_Page_Executive_Cyber_Strategist_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Vann Page",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Vann_Page_Zero_Trust_Strategist_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Vega Jordan",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Vega_Jordan_Security_Director_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Vega Jordan",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Vega_Jordan_Technical_Cyber_Officer_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Wolf Prince",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Wolf_Prince_Network_Defense_Architect_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Wrench Jones",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Wrench_Jones_Strategic_Risk_Officer_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Xander Mercer",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Xander_Mercer_Cryptography_Specialist_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Xander Rand",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Xander_Rand_Associate_Identity_Strategist_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Xander Rand",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Xander_Rand_Principal_Forensics_Developer_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Xander Sobeck",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Xander_Sobeck_Cyber_Developer_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Xeno Todd",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Xeno_Todd_Identity_Administrator_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Xylo Queen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Xylo_Queen_Cyber_Consultant_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Xylo Queen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\cyber_security\\Xylo_Queen_Strategic_Network_Defense_Architect_GLOBAL_SECURITY.yaml"
+    },
+    {
+      "name": "Axel Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Axel_Drift_Strategic_Automation_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Axel Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Axel_Flux_Lead_Logistics_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Axel Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Axel_Forge_Strategic_Logistics_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Axel Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Axel_Node_Chief_Logistics_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Axel Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Axel_Pulse_Senior_Supply_Chain_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Axel Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Axel_Spark_Executive_Process_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Axel Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Axel_Trace_Strategic_Automation_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Bax Grimm",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Bax_Grimm_Senior_Logistics_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Bax Grimm",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Bax_Grimm_Strategic_Inventory_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Bax Hal",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Bax_Hal_Automation_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Bax Hal",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Bax_Hal_Technical_Automation_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Blade Todd",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Blade_Todd_Chief_Logistics_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Cipher Nelson",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Cipher_Nelson_Lead_Inventory_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Coda Fox",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Coda_Fox_Senior_Automation_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Coda Lightman",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Coda_Lightman_Facility_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Coda Sobeck",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Coda_Sobeck_Principal_Operations_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DATA-Axel Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DATA_Axel_Pulse_Junior_Automation_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DATA-Echo Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DATA_Echo_Prime_Senior_Automation_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Isla Page",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_ai_policy_advisor.yaml"
+    },
+    {
+      "name": "Luna Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_ai_strategist.yaml"
+    },
+    {
+      "name": "Atlas Grimm",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_ai_trainer.yaml"
+    },
+    {
+      "name": "Aric Lang",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_data_engineer.yaml"
+    },
+    {
+      "name": "Vega Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_data_processor_disclosure_agent.yaml"
+    },
+    {
+      "name": "Nova Strange",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_data_retention_enforcer.yaml"
+    },
+    {
+      "name": "Nova Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_dispatch_attribution_analyst.yaml"
+    },
+    {
+      "name": "Cian Rand",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_emotional_intelligence_analyst.yaml"
+    },
+    {
+      "name": "Nova Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_engagement_heatmap_analyst.yaml"
+    },
+    {
+      "name": "Olen Lane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_ethics_feedback_analyst.yaml"
+    },
+    {
+      "name": "Jace Murdock",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_fairness_auditor.yaml"
+    },
+    {
+      "name": "Raze Luthor",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_finance_automation_analyst.yaml"
+    },
+    {
+      "name": "Aric Strange",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_healthcare_data_navigator.yaml"
+    },
+    {
+      "name": "Altair Lang",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_knowledge_pipeline_engineer.yaml"
+    },
+    {
+      "name": "Neo Todd",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_kpi_dashboard_analyst.yaml"
+    },
+    {
+      "name": "Patch Sentinel",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_repo_repair_agent.yaml"
+    },
+    {
+      "name": "Nova Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_retention_analyst.yaml"
+    },
+    {
+      "name": "Falcon Pym",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_systems_diagnostic_analyst.yaml"
+    },
+    {
+      "name": "Altair Jones",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_system_analyst.yaml"
+    },
+    {
+      "name": "Jax Flynn",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_token_analyst.yaml"
+    },
+    {
+      "name": "Neo Nigma",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_tone_calibration_analyst.yaml"
+    },
+    {
+      "name": "Kael Isley",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\data_intelligence_team_training_data_engineer.yaml"
+    },
+    {
+      "name": "DATA-Juno Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DATA_Juno_Drift_Technical_Inventory_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DATA-Kai Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DATA_Kai_Core_Associate_Operations_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DATA-Kai Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DATA_Kai_Node_Executive_Automation_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DATA-Kai Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DATA_Kai_Prime_Junior_Supply_Chain_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DATA-Kai Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DATA_Kai_Trace_Strategic_Process_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DATA-Luna Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DATA_Luna_Core_Associate_Operations_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DATA-Luna Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DATA_Luna_Flux_Senior_Operations_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DATA-Nova Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DATA_Nova_Byte_Chief_Supply_Chain_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DATA-Nova Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DATA_Nova_Flux_Executive_Process_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DATA-Nova Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DATA_Nova_Prime_Executive_Process_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DATA-Nova Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DATA_Nova_Spark_Associate_Facility_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DATA-Rex Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DATA_Rex_Flux_Executive_Automation_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DATA-Rex Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DATA_Rex_Forge_Associate_Supply_Chain_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DATA-Vega Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DATA_Vega_Core_Inventory_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DATA-Vega Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DATA_Vega_Forge_Principal_Automation_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DATA-Zara Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DATA_Zara_Core_Associate_Process_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DATA-Zara Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DATA_Zara_Forge_Technical_Supply_Chain_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Apex Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Apex_Bot_Associate_Operations_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Apex Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Apex_Dev_Lead_Automation_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Apex Link",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Apex_Link_Chief_Operations_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Apex Mind",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Apex_Mind_Technical_Process_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Apex Ops",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Apex_Ops_Executive_Logistics_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Apex Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Apex_Unit_Principal_Logistics_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Binary Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Binary_Bot_Chief_Process_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Binary Link",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Binary_Link_Chief_Facility_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Binary Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Binary_Main_Chief_Operations_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Binary Ops",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Binary_Ops_Junior_Supply_Chain_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Binary Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Binary_Stream_Technical_Inventory_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Binary Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Binary_Sys_Executive_Supply_Chain_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Binary Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Binary_Unit_Senior_Process_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Blade Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Blade_Dev_Senior_Inventory_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Blade Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Blade_Sys_Strategic_Supply_Chain_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Blade Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Blade_Trace_Chief_Supply_Chain_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Cipher Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Cipher_Bot_Principal_Facility_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Cipher Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Cipher_Dev_Associate_Automation_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Cipher Link",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Cipher_Link_Principal_Process_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Cipher Mind",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Cipher_Mind_Principal_Operations_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Cipher Ops",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Cipher_Ops_Technical_Facility_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Circuit Root",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Circuit_Root_Junior_Facility_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Daemon Flow",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Daemon_Flow_Strategic_Inventory_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Daemon Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Daemon_Trace_Junior_Facility_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Echo Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Echo_Core_Lead_Automation_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Echo Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Echo_Dev_Associate_Facility_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Echo Flow",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Echo_Flow_Chief_Logistics_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Flux Root",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Flux_Root_Technical_Logistics_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Ghost Link",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Ghost_Link_Chief_Facility_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Ghost Mind",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Ghost_Mind_Inventory_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Ghost Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Ghost_Sys_Senior_Facility_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Helix Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Helix_Core_Executive_Operations_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Helix Flow",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Helix_Flow_Senior_Inventory_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Helix Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Helix_Forge_Technical_Inventory_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Nexus Flow",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Nexus_Flow_Strategic_Operations_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Nexus Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Nexus_Main_Associate_Logistics_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Nexus Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Nexus_Stream_Lead_Facility_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Nova Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Nova_Bot_Junior_Inventory_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Nova Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Nova_Core_Principal_Inventory_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Nova Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Nova_Net_Senior_Supply_Chain_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Nova Root",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Nova_Root_Senior_Operations_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Nova Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Nova_Stream_Principal_Operations_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Onyx Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Onyx_Bot_Logistics_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Onyx Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Onyx_Main_Senior_Process_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Onyx Mind",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Onyx_Mind_Executive_Automation_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Onyx Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Onyx_Node_Junior_Operations_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Onyx Ops",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Onyx_Ops_Lead_Supply_Chain_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Onyx Root",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Onyx_Root_Senior_Facility_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Orion Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Orion_Dev_Associate_Logistics_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Orion Link",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Orion_Link_Strategic_Logistics_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Orion Mind",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Orion_Mind_Junior_Operations_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Orion Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Orion_Net_Logistics_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Orion Ops",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Orion_Ops_Senior_Process_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Orion Sec",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Orion_Sec_Principal_Supply_Chain_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Orion Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Orion_Sys_Technical_Inventory_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Prime Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Prime_Forge_Senior_Supply_Chain_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Prime Mind",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Prime_Mind_Principal_Logistics_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Prime Ops",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Prime_Ops_Senior_Logistics_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Pulse Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Pulse_Bot_Executive_Operations_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Pulse Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Pulse_Main_Executive_Supply_Chain_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Pulse Mind",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Pulse_Mind_Technical_Logistics_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Pulse Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Pulse_Trace_Junior_Inventory_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Razor Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Razor_Bot_Principal_Supply_Chain_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Razor Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Razor_Main_Lead_Automation_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Razor Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Razor_Unit_Chief_Operations_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Titan Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Titan_Bot_Chief_Inventory_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Titan Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Titan_Core_Executive_Automation_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Titan Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Titan_Forge_Executive_Inventory_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Titan Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Titan_Unit_Junior_Supply_Chain_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Vega Mind",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Vega_Mind_Lead_Facility_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Vega Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Vega_Net_Principal_Operations_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Vega Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Vega_Stream_Junior_Supply_Chain_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Vortex Link",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Vortex_Link_Chief_Automation_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Vortex Mind",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Vortex_Mind_Chief_Automation_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Vortex Root",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Vortex_Root_Associate_Automation_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Vortex Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Vortex_Stream_Junior_Operations_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Zero Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Zero_Bot_Technical_Operations_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Zero Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Zero_Core_Strategic_Facility_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Zero Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Zero_Main_Lead_Supply_Chain_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Zero Root",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Zero_Root_Associate_Automation_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DAT-Zero Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DAT_Zero_Unit_Lead_Facility_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Dax Prince",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Dax_Prince_Logistics_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Dax Prince",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Dax_Prince_Strategic_Facility_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Deckard Storm",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Deckard_Storm_Junior_Logistics_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DINT-Echo Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DINT_Echo_Pulse_Principal_Supply_Chain_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DINT-Echo Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DINT_Echo_Trace_Strategic_Operations_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DINT-Vega Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DINT_Vega_Spark_Principal_Operations_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "DINT-Vega Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\DINT_Vega_Trace_Process_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Echo Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Echo_Core_Executive_Facility_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Echo Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Echo_Drift_Junior_Logistics_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Echo Flynn",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Echo_Flynn_Process_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Echo Flynn",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Echo_Flynn_Technical_Facility_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Echo Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Echo_Forge_Inventory_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Echo Guardian",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Echo_Guardian_Strategic_Operations_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Echo Jones",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Echo_Jones_Junior_Inventory_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Echo Jones",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Echo_Jones_Lead_Process_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Echo Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Echo_Node_Associate_Supply_Chain_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Echo Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Echo_Prime_Chief_Supply_Chain_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Echo Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Echo_Pulse_Lead_Facility_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Echo Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Echo_Spark_Associate_Inventory_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Echo Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Echo_Trace_Senior_Logistics_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Elias Lightman",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Elias_Lightman_Lead_Operations_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Eos Specter",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Eos_Specter_Lead_Logistics_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Fae Jones",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Fae_Jones_Technical_Process_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Fae Specter",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Fae_Specter_Principal_Inventory_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Fae Strange",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Fae_Strange_Senior_Operations_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Falcon Dent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Falcon_Dent_Junior_Supply_Chain_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Falcon Queen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Falcon_Queen_Chief_Operations_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Falcon Queen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Falcon_Queen_Senior_Supply_Chain_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "FIN-Rex Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\FIN_Rex_Node_Technical_Operations_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Gunnar Banner",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Gunnar_Banner_Associate_Automation_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Gunnar Sterling",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Gunnar_Sterling_Chief_Operations_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Gunnar Sterling",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Gunnar_Sterling_Technical_Supply_Chain_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Hana Deckard",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Hana_Deckard_Executive_Facility_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Helix Nigma",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Helix_Nigma_Chief_Operations_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Hunter Nelson",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Hunter_Nelson_Executive_Operations_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Ion Grayson",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Ion_Grayson_Senior_Operations_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Ion Sobeck",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Ion_Sobeck_Lead_Inventory_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Iris Dent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Iris_Dent_Lead_Supply_Chain_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Isla Deckard",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Isla_Deckard_Automation_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Jace Olsen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Jace_Olsen_Strategic_Supply_Chain_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Jax Olsen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Jax_Olsen_Associate_Logistics_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Jet West",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Jet_West_Junior_Inventory_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Juno Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Juno_Byte_Junior_Process_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Juno Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Juno_Core_Principal_Supply_Chain_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Juno Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Juno_Drift_Executive_Automation_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Juno Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Juno_Drift_Supply_Chain_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Juno Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Juno_Flux_Associate_Operations_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Juno Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Juno_Forge_Strategic_Supply_Chain_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Juno Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Juno_Pulse_Technical_Process_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Juno Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Juno_Trace_Strategic_Supply_Chain_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Kael West",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Kael_West_Senior_Automation_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Kai Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Kai_Byte_Technical_Facility_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Kai Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Kai_Core_Lead_Logistics_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Kai Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Kai_Drift_Principal_Automation_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Kai Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Kai_Flux_Technical_Automation_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Kai Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Kai_Forge_Chief_Facility_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Kai Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Kai_Forge_Facility_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Kai Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Kai_Node_Junior_Supply_Chain_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Kai Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Kai_Node_Technical_Supply_Chain_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Kai Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Kai_Prime_Executive_Operations_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Kai Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Kai_Pulse_Associate_Facility_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Kai Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Kai_Trace_Principal_Supply_Chain_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Kia Allen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Kia_Allen_Supply_Chain_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Kia Luthor",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Kia_Luthor_Lead_Facility_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "LEG-Axel Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\LEG_Axel_Flux_Chief_Logistics_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "LEG-Echo Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\LEG_Echo_Spark_Strategic_Process_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "LEG-Kai Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\LEG_Kai_Forge_Junior_Logistics_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "LEG-Kai Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\LEG_Kai_Pulse_Executive_Inventory_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "LEG-Luna Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\LEG_Luna_Node_Associate_Inventory_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "LEG-Orion Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\LEG_Orion_Pulse_Strategic_Logistics_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "LEG-Orion Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\LEG_Orion_Trace_Senior_Logistics_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "LEG-Rex Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\LEG_Rex_Core_Technical_Facility_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "LEG-Rex Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\LEG_Rex_Prime_Strategic_Process_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "LEG-Zara Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\LEG_Zara_Drift_Chief_Process_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Lian Croft",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Lian_Croft_Strategic_Logistics_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Lian Sobeck",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Lian_Sobeck_Lead_Logistics_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "LOG-Juno Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\LOG_Juno_Flux_Senior_Operations_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Luna Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Luna_Byte_Lead_Inventory_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Luna Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Luna_Byte_Strategic_Inventory_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Luna Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Luna_Core_Technical_Logistics_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Luna Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Luna_Drift_Associate_Logistics_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Luna Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Luna_Flux_Lead_Logistics_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Luna Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Luna_Forge_Associate_Logistics_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Luna Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Luna_Node_Associate_Inventory_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Luna Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Luna_Prime_Strategic_Inventory_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "MCOM-Axel Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\MCOM_Axel_Drift_Associate_Operations_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "MCOM-Juno Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\MCOM_Juno_Forge_Lead_Process_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "MCOM-Juno Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\MCOM_Juno_Pulse_Junior_Facility_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "MCOM-Orion Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\MCOM_Orion_Drift_Executive_Automation_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "MCOM-Orion Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\MCOM_Orion_Flux_Chief_Process_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Mira Queen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Mira_Queen_Principal_Operations_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Nico Grayson",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Nico_Grayson_Chief_Process_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Nico Isley",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Nico_Isley_Technical_Supply_Chain_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Nico Vance",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Nico_Vance_Associate_Process_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Nova Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Nova_Core_Principal_Process_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Nova Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Nova_Drift_Principal_Facility_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Nova Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Nova_Flux_Associate_Facility_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Nova Jones",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Nova_Jones_Strategic_Inventory_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Nova Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Nova_Node_Associate_Inventory_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Nova Queen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Nova_Queen_Principal_Operations_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Nova Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Nova_Trace_Associate_Automation_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Onyx Nelson",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Onyx_Nelson_Associate_Process_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Onyx Queen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Onyx_Queen_Junior_Process_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Orion Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Orion_Drift_Strategic_Automation_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Orion Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Orion_Flux_Strategic_Operations_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Orion Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Orion_Forge_Associate_Automation_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Orion Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Orion_Node_Strategic_Logistics_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Orion Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Orion_Prime_Junior_Operations_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Orion Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Orion_Pulse_Lead_Operations_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Orion Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Orion_Spark_Executive_Process_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Orion Stewart",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Orion_Stewart_Associate_Inventory_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Orion Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Orion_Trace_Associate_Facility_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Orion Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Orion_Trace_Junior_Operations_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Pax Specter",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Pax_Specter_Associate_Process_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Pax Vance",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Pax_Vance_Junior_Process_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Pax Vance",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Pax_Vance_Supply_Chain_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Pia Allen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Pia_Allen_Principal_Process_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Pia Fries",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Pia_Fries_Executive_Inventory_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Pia Fries",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Pia_Fries_Technical_Supply_Chain_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Pia Lane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Pia_Lane_Associate_Inventory_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Pia Lane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Pia_Lane_Executive_Facility_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Pia Vance",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Pia_Vance_Chief_Supply_Chain_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Pia Vance",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Pia_Vance_Lead_Supply_Chain_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Prime Lightman",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Prime_Lightman_Automation_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Prime Lightman",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Prime_Lightman_Strategic_Inventory_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Apex Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Apex_Bot_Principal_Logistics_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Apex Mind",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Apex_Mind_Senior_Operations_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Apex Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Apex_Node_Strategic_Inventory_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Apex Ops",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Apex_Ops_Lead_Inventory_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Apex Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Apex_Stream_Executive_Facility_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Apex Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Apex_Sys_Lead_Supply_Chain_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Binary Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Binary_Main_Associate_Process_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Binary Root",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Binary_Root_Technical_Logistics_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Blade Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Blade_Core_Technical_Inventory_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Blade Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Blade_Forge_Lead_Supply_Chain_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Blade Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Blade_Main_Executive_Supply_Chain_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Blade Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Blade_Trace_Junior_Facility_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Cipher Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Cipher_Dev_Principal_Inventory_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Cipher Root",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Cipher_Root_Automation_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Circuit Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Circuit_Bot_Automation_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Circuit Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Circuit_Core_Senior_Supply_Chain_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Circuit Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Circuit_Sys_Technical_Process_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Daemon Sec",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Daemon_Sec_Lead_Operations_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Daemon Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Daemon_Trace_Senior_Process_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Flux Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Flux_Net_Strategic_Facility_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Flux Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Flux_Trace_Principal_Inventory_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Ghost Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Ghost_Forge_Strategic_Process_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Ghost Link",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Ghost_Link_Inventory_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Ghost Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Ghost_Node_Technical_Operations_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Ghost Root",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Ghost_Root_Senior_Facility_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Helix Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Helix_Net_Senior_Process_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Helix Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Helix_Node_Senior_Automation_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Helix Sec",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Helix_Sec_Senior_Logistics_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Nexus Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Nexus_Core_Senior_Inventory_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Nexus Sec",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Nexus_Sec_Lead_Automation_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Nexus Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Nexus_Trace_Technical_Process_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Nova Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Nova_Bot_Junior_Process_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Nova Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Nova_Core_Strategic_Facility_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Nova Root",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Nova_Root_Strategic_Inventory_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Onyx Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Onyx_Bot_Executive_Process_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Onyx Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Onyx_Core_Strategic_Supply_Chain_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Onyx Flow",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Onyx_Flow_Chief_Process_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Onyx Mind",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Onyx_Mind_Principal_Logistics_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Onyx Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Onyx_Trace_Executive_Supply_Chain_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Orion Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Orion_Dev_Senior_Process_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Orion Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Orion_Forge_Logistics_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Prime Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Prime_Forge_Technical_Supply_Chain_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Prime Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Prime_Main_Executive_Process_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Prime Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Prime_Node_Lead_Process_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Prime Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Prime_Sys_Lead_Logistics_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Prime Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Prime_Trace_Associate_Facility_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Pulse Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Pulse_Bot_Chief_Process_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Pulse Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Pulse_Dev_Junior_Operations_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Pulse Link",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Pulse_Link_Senior_Inventory_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Pulse Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Pulse_Net_Associate_Supply_Chain_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Pulse Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Pulse_Trace_Principal_Supply_Chain_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Razor Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Razor_Dev_Junior_Process_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Razor Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Razor_Net_Junior_Facility_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Razor Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Razor_Stream_Associate_Supply_Chain_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Titan Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Titan_Core_Principal_Process_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Titan Flow",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Titan_Flow_Senior_Automation_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Titan Ops",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Titan_Ops_Technical_Process_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Titan Sec",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Titan_Sec_Senior_Facility_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Titan Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Titan_Unit_Executive_Operations_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Vector Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Vector_Forge_Principal_Supply_Chain_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Vector Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Vector_Main_Junior_Facility_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Vega Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Vega_Core_Principal_Logistics_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Vega Ops",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Vega_Ops_Inventory_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Vortex Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Vortex_Dev_Lead_Facility_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Vortex Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Vortex_Main_Junior_Logistics_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Vortex Root",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Vortex_Root_Lead_Supply_Chain_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Vortex Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Vortex_Sys_Executive_Inventory_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Vortex Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Vortex_Unit_Chief_Inventory_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "QL-Zero Flow",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\QL_Zero_Flow_Chief_Inventory_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Quinn Banner",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Quinn_Banner_Executive_Automation_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Quinn Banner",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Quinn_Banner_Inventory_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Quinn Jones",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Quinn_Jones_Chief_Automation_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Quinn Jones",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Quinn_Jones_Lead_Inventory_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Raze Flynn",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Raze_Flynn_Automation_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Raze Flynn",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Raze_Flynn_Lead_Supply_Chain_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Raze Olsen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Raze_Olsen_Chief_Logistics_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Raze Olsen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Raze_Olsen_Logistics_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Raze Storm",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Raze_Storm_Lead_Facility_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Raze Storm",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Raze_Storm_Senior_Facility_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "RES-Axel Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\RES_Axel_Forge_Senior_Automation_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "RES-Kai Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\RES_Kai_Drift_Chief_Automation_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "RES-Luna Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\RES_Luna_Drift_Junior_Facility_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "RES-Luna Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\RES_Luna_Pulse_Principal_Supply_Chain_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "RES-Nova Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\RES_Nova_Trace_Chief_Logistics_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "RES-Orion Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\RES_Orion_Prime_Senior_Inventory_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "RES-Rex Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\RES_Rex_Pulse_Junior_Inventory_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "RES-Rex Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\RES_Rex_Trace_Lead_Operations_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "RES-Vega Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\RES_Vega_Byte_Senior_Supply_Chain_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "RES-Zara Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\RES_Zara_Prime_Junior_Logistics_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "RES-",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\RES__Strategic_Supply_Chain_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Rex Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Rex_Byte_Lead_Operations_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Rex Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Rex_Core_Executive_Logistics_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Rex Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Rex_Flux_Principal_Automation_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Rex Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Rex_Forge_Chief_Logistics_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Rex Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Rex_Node_Revenue_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Rex Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Rex_Node_Strategic_Automation_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Rex Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Rex_Prime_Strategic_Facility_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Rex Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Rex_Pulse_Chief_Automation_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Rex Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Rex_Spark_Associate_Process_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Rex Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Rex_Trace_Lead_Logistics_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Rex Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Rex_Trace_Supply_Chain_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Rian Banner",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Rian_Banner_Strategic_Operations_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Rian Banner",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Rian_Banner_Technical_Operations_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Rian Nelson",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Rian_Nelson_Senior_Operations_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Rian Nelson",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Rian_Nelson_Strategic_Inventory_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Rian Page",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Rian_Page_Principal_Process_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Rian Page",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Rian_Page_Technical_Automation_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Rogue Lightman",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Rogue_Lightman_Technical_Inventory_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Rogue Sterling",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Rogue_Sterling_Executive_Logistics_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Rogue Sterling",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Rogue_Sterling_Lead_Automation_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Sia Hal",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Sia_Hal_Facility_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Sia Hal",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Sia_Hal_Technical_Logistics_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Sol Gordon",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Sol_Gordon_Junior_Facility_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Titan Grayson",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Titan_Grayson_Junior_Automation_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Titan Grayson",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Titan_Grayson_Supply_Chain_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Titan Jordan",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Titan_Jordan_Executive_Operations_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Titan Jordan",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Titan_Jordan_Inventory_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Umbra Drake",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Umbra_Drake_Junior_Process_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Umbra Lang",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Umbra_Lang_Junior_Operations_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Una Lane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Una_Lane_Automation_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Una Lane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Una_Lane_Chief_Supply_Chain_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Binary Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Binary_Bot_Chief_Automation_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Binary Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Binary_Main_Associate_Logistics_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Binary Root",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Binary_Root_Technical_Logistics_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Binary Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Binary_Stream_Senior_Supply_Chain_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Binary Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Binary_Trace_Principal_Inventory_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Blade Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Blade_Core_Junior_Process_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Blade Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Blade_Forge_Technical_Supply_Chain_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Blade Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Blade_Node_Technical_Automation_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Cipher Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Cipher_Bot_Lead_Automation_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Cipher Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Cipher_Main_Associate_Inventory_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Cipher Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Cipher_Stream_Lead_Process_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Circuit Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Circuit_Dev_Lead_Process_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Circuit Root",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Circuit_Root_Chief_Inventory_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Daemon Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Daemon_Net_Technical_Inventory_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Echo Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Echo_Bot_Chief_Process_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Echo Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Echo_Core_Strategic_Process_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Echo Flow",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Echo_Flow_Strategic_Supply_Chain_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Echo Mind",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Echo_Mind_Lead_Logistics_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Echo Sec",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Echo_Sec_Principal_Facility_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Echo Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Echo_Trace_Junior_Facility_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Flux Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Flux_Unit_Executive_Logistics_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Ghost Flow",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Ghost_Flow_Executive_Automation_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Ghost Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Ghost_Main_Associate_Supply_Chain_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Ghost Sec",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Ghost_Sec_Executive_Logistics_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Ghost Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Ghost_Stream_Executive_Logistics_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Helix Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Helix_Bot_Principal_Logistics_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Helix Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Helix_Core_Executive_Supply_Chain_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Helix Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Helix_Main_Strategic_Automation_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Helix Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Helix_Net_Associate_Supply_Chain_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Helix Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Helix_Node_Lead_Facility_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Helix Root",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Helix_Root_Senior_Facility_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Nexus Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Nexus_Bot_Executive_Inventory_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Nexus Flow",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Nexus_Flow_Chief_Facility_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Nexus Link",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Nexus_Link_Executive_Logistics_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Nova Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Nova_Node_Strategic_Logistics_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Onyx Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Onyx_Core_Technical_Supply_Chain_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Onyx Flow",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Onyx_Flow_Senior_Supply_Chain_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Onyx Root",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Onyx_Root_Lead_Automation_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Onyx Sec",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Onyx_Sec_Technical_Facility_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Onyx Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Onyx_Sys_Strategic_Automation_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Onyx Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Onyx_Trace_Senior_Process_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Orion Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Orion_Forge_Strategic_Facility_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Orion Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Orion_Node_Principal_Operations_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Orion Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Orion_Stream_Associate_Facility_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Orion Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Orion_Sys_Chief_Supply_Chain_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Prime Link",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Prime_Link_Facility_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Prime Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Prime_Node_Technical_Inventory_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Prime Ops",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Prime_Ops_Principal_Process_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Pulse Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Pulse_Core_Junior_Inventory_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Pulse Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Pulse_Node_Chief_Facility_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Pulse Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Pulse_Stream_Senior_Automation_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Pulse Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Pulse_Trace_Associate_Automation_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Razor Link",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Razor_Link_Principal_Process_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Razor Ops",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Razor_Ops_Principal_Inventory_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Titan Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Titan_Dev_Chief_Automation_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Titan Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Titan_Forge_Senior_Process_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Titan Sec",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Titan_Sec_Executive_Automation_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Titan Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Titan_Stream_Junior_Automation_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Titan Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Titan_Unit_Junior_Operations_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Vector Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Vector_Bot_Associate_Supply_Chain_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Vector Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Vector_Core_Strategic_Operations_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Vector Link",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Vector_Link_Chief_Logistics_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Vector Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Vector_Main_Strategic_Automation_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Vector Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Vector_Sys_Lead_Operations_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Vega Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Vega_Net_Principal_Process_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Vega Ops",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Vega_Ops_Chief_Automation_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Vega Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Vega_Trace_Principal_Logistics_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Vega Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Vega_Unit_Lead_Inventory_Developer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Vortex Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Vortex_Dev_Chief_Inventory_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Vortex Flow",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Vortex_Flow_Strategic_Operations_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Vortex Link",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Vortex_Link_Technical_Automation_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Vortex Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Vortex_Sys_Technical_Process_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Zero Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Zero_Bot_Chief_Facility_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Zero Sec",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Zero_Sec_Principal_Inventory_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "VEC-Zero Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\VEC_Zero_Trace_Chief_Inventory_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Vega Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Vega_Byte_Principal_Logistics_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Vega Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Vega_Core_Automation_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Vega Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Vega_Core_Executive_Automation_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Vega Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Vega_Flux_Junior_Automation_Architect_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Vega Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Vega_Forge_Principal_Supply_Chain_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Vega Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Vega_Forge_Senior_Logistics_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Vega Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Vega_Node_Junior_Supply_Chain_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Vega Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Vega_Pulse_Chief_Facility_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Vega Queen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Vega_Queen_Chief_Supply_Chain_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Vega Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Vega_Trace_Associate_Inventory_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Vega Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Vega_Trace_Junior_Operations_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Wolf Mercer",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Wolf_Mercer_Chief_Process_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Wynn Mercer",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Wynn_Mercer_Logistics_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Wynn Mercer",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Wynn_Mercer_Technical_Automation_Analyst_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Xeno Tyrell",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Xeno_Tyrell_Associate_Operations_Administrator_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Xeno Tyrell",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Xeno_Tyrell_Technical_Automation_Manager_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Xylo Banner",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Xylo_Banner_Executive_Inventory_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Xylo Cage",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Xylo_Cage_Chief_Automation_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Xylo Cage",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Xylo_Cage_Executive_Process_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Yara Kyle",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Yara_Kyle_Executive_Facility_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Yara Kyle",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Yara_Kyle_Principal_Facility_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Yuri Lightman",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Yuri_Lightman_Associate_Operations_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Zara Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Zara_Byte_Associate_Process_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Zara Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Zara_Core_Technical_Operations_Consultant_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Zara Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Zara_Drift_Senior_Inventory_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Zara Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Zara_Forge_Strategic_Facility_Engineer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Zara Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Zara_Node_Lead_Inventory_Specialist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Zara Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Zara_Prime_Technical_Process_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Zara Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Zara_Pulse_Associate_Facility_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Zara Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Zara_Spark_Strategic_Process_Director_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Zara Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Zara_Trace_Senior_Logistics_Lead_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Zora Jones",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Zora_Jones_Lead_Operations_Scientist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Zora Strange",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Zora_Strange_Associate_Operations_Strategist_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Zora Strange",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\data_intelligence\\Zora_Strange_Process_Officer_DATA_INTELLIGENCE.yaml"
+    },
+    {
+      "name": "Juno Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\executive_board\\executive_board_team_dispatch_hygiene_coordinator.yaml"
+    },
+    {
+      "name": "Echo Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\executive_board\\executive_board_team_ethics_compliance_coordinator.yaml"
+    },
+    {
+      "name": "Kai Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\executive_board\\executive_board_team_ethics_review_coordinator.yaml"
+    },
+    {
+      "name": "Hana Wayne",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\executive_board\\Hana_Wayne_Associate_Feature_Architect_PRODUCT_STRATEGY.yaml"
+    },
+    {
+      "name": "Hana Wayne",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\executive_board\\Hana_Wayne_Chief_Roadmap_Manager_PRODUCT_STRATEGY.yaml"
+    },
+    {
+      "name": "Mira Rand",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\executive_board\\Mira_Rand_Chief_Inventory_Consultant_EXECUTIVE_BOARD.yaml"
+    },
+    {
+      "name": "Mira Rand",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\executive_board\\Mira_Rand_Lead_Operations_Officer_EXECUTIVE_BOARD.yaml"
+    },
+    {
+      "name": "Neo Prince",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\executive_board\\Neo_Prince_Operations_Specialist_EXECUTIVE_BOARD.yaml"
+    },
+    {
+      "name": "Neo Prince",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\executive_board\\Neo_Prince_Technical_Facility_Administrator_EXECUTIVE_BOARD.yaml"
+    },
+    {
+      "name": "Olen Nelson",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\executive_board\\Olen_Nelson_Process_Strategist_EXECUTIVE_BOARD.yaml"
+    },
+    {
+      "name": "Olen Nelson",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\executive_board\\Olen_Nelson_Strategic_Facility_Lead_EXECUTIVE_BOARD.yaml"
+    },
+    {
+      "name": "Axel Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\executive_board\\product_strategy_team_dispatch_queue_manager.yaml"
+    },
+    {
+      "name": "ArcaneLogger",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\arcanelogger.yaml"
+    },
+    {
+      "name": "Atlas Cage",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Atlas_Cage_Senior_Operations_Manager_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Axel Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Axel_Node_Inventory_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Axel Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Axel_Node_Principal_Logistics_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Bax Stark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Bax_Stark_Chief_Operations_Director_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Bax Stark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Bax_Stark_Process_Administrator_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Blade Jordan",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Blade_Jordan_Lead_Automation_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Blade Jordan",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Blade_Jordan_Senior_Supply_Chain_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Blade Nigma",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Blade_Nigma_Chief_Facility_Architect_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Blade Nigma",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Blade_Nigma_Chief_Inventory_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Blade Sobeck",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Blade_Sobeck_Associate_Logistics_Scientist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Blade Sobeck",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Blade_Sobeck_Operations_Lead_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Brea Fries",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Brea_Fries_Lead_Logistics_Lead_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "ChronoSync",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\chronosync.yaml"
+    },
+    {
+      "name": "Cian Mercer",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Cian_Mercer_Principal_Inventory_Scientist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Cian Wayne",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Cian_Wayne_Senior_Supply_Chain_Director_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Coda Isley",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Coda_Isley_Principal_Automation_Director_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Coda Isley",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Coda_Isley_Strategic_Inventory_Lead_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Echo Cage",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Echo_Cage_Associate_Logistics_Lead_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Echo Cage",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Echo_Cage_Chief_Supply_Chain_Lead_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Echo Crane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Echo_Crane_Principal_Supply_Chain_Director_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Echo Crane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Echo_Crane_Strategic_Inventory_Administrator_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Echo Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Echo_Forge_Lead_Process_Architect_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Echo Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Echo_Forge_Senior_Inventory_Specialist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Echo Murdock",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Echo_Murdock_Lead_Facility_Strategist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Echo Murdock",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Echo_Murdock_Operations_Scientist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Elias Fries",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Elias_Fries_Executive_Inventory_Analyst_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Eos Fox",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Eos_Fox_Lead_Automation_Officer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Eos Fox",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Eos_Fox_Strategic_Process_Specialist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Eos Isley",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Eos_Isley_Chief_Logistics_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Eos Storm",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Eos_Storm_Strategic_Supply_Chain_Administrator_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Eos Storm",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Eos_Storm_Technical_Facility_Analyst_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Falcon Lane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Falcon_Lane_Lead_Supply_Chain_Analyst_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Falcon Lane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Falcon_Lane_Supply_Chain_Lead_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Falcon Nigma",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Falcon_Nigma_Executive_Automation_Scientist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Falcon Nigma",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Falcon_Nigma_Facility_Strategist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Flux Crane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Flux_Crane_Junior_Logistics_Strategist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Flux Crane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Flux_Crane_Senior_Operations_Administrator_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Flux Todd",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Flux_Todd_Principal_Automation_Administrator_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Flux Todd",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Flux_Todd_Principal_Facility_Developer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Flux Wayne",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Flux_Wayne_Strategic_Inventory_Scientist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Gaea Deckard",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Gaea_Deckard_Chief_Facility_Scientist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Gaea Deckard",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Gaea_Deckard_Executive_Operations_Manager_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Gaea Lightman",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Gaea_Lightman_Chief_Logistics_Administrator_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Gaea Lightman",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Gaea_Lightman_Senior_Automation_Manager_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Gaea Strange",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Gaea_Strange_Automation_Manager_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Gaea Strange",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Gaea_Strange_Junior_Operations_Analyst_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Gaea Todd",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Gaea_Todd_Executive_Supply_Chain_Administrator_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Gaea Todd",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Gaea_Todd_Senior_Facility_Strategist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Gunnar Cage",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Gunnar_Cage_Automation_Strategist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Gunnar Cage",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Gunnar_Cage_Principal_Process_Specialist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Gunnar Hal",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Gunnar_Hal_Executive_Operations_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Gunnar Hal",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Gunnar_Hal_Lead_Operations_Strategist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Gunnar Jordan",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Gunnar_Jordan_Principal_Facility_Specialist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Gunnar Jordan",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Gunnar_Jordan_Process_Lead_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Gunnar Queen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Gunnar_Queen_Executive_Facility_Lead_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Gunnar Queen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Gunnar_Queen_Executive_Inventory_Director_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Gunnar West",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Gunnar_West_Junior_Automation_Scientist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Hana Jordan",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Hana_Jordan_Lead_Facility_Developer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Helix Lightman",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Helix_Lightman_Junior_Automation_Manager_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Helix Lightman",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Helix_Lightman_Principal_Facility_Consultant_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Helix Strange",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Helix_Strange_Associate_Supply_Chain_Analyst_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Helix Strange",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Helix_Strange_Chief_Automation_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Ion Dent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Ion_Dent_Facility_Manager_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Ion Dent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Ion_Dent_Supply_Chain_Director_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Iris Pennyworth",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Iris_Pennyworth_Strategic_Logistics_Officer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Iris Pennyworth",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Iris_Pennyworth_Technical_Facility_Scientist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Isla Dent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Isla_Dent_Senior_Operations_Architect_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Jax Sterling",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Jax_Sterling_Senior_Facility_Developer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Jet Fries",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Jet_Fries_Associate_Logistics_Administrator_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Jet Hal",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Jet_Hal_Principal_Process_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Jet Hal",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Jet_Hal_Strategic_Automation_Developer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Juno Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Juno_Byte_Associate_Supply_Chain_Director_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Juno Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Juno_Byte_Executive_Logistics_Specialist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Kael Dent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Kael_Dent_Strategic_Facility_Administrator_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Kael Pym",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Kael_Pym_Chief_Automation_Administrator_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Kael Pym",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Kael_Pym_Supply_Chain_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Kai Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Kai_Prime_Senior_Logistics_Analyst_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Kai Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Kai_Prime_Technical_Operations_Architect_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Kai Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Kai_Trace_Chief_Supply_Chain_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Kai Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Kai_Trace_Executive_Process_Scientist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Kia Specter",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Kia_Specter_Associate_Inventory_Consultant_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Lian Grimm",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Lian_Grimm_Executive_Process_Analyst_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Luna Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Luna_Drift_Associate_Operations_Developer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Luna Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Luna_Drift_Associate_Process_Lead_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Luna Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Luna_Flux_Principal_Automation_Consultant_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Luna Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Luna_Flux_Principal_Inventory_Specialist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Luna Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Luna_Forge_Lead_Logistics_Specialist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Luna Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Luna_Forge_Operations_Architect_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Luna Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Luna_Node_Lead_Facility_Administrator_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Luna Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Luna_Node_Senior_Automation_Architect_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Mako Luthor",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Mako_Luthor_Executive_Supply_Chain_Director_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Mako Luthor",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Mako_Luthor_Junior_Process_Scientist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Mira Jordan",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Mira_Jordan_Chief_Facility_Developer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Mira Jordan",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Mira_Jordan_Chief_Inventory_Developer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Neo Dent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Neo_Dent_Senior_Supply_Chain_Consultant_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Neo Stewart",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Neo_Stewart_Senior_Inventory_Architect_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Neo Stewart",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Neo_Stewart_Strategic_Supply_Chain_Director_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Neo Tyrell",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Neo_Tyrell_Technical_Operations_Scientist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Nico Luthor",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Nico_Luthor_Strategic_Automation_Specialist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Nico Mercer",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Nico_Mercer_Senior_Automation_Developer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Nico Mercer",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Nico_Mercer_Technical_Operations_Lead_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Olen Fries",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Olen_Fries_Principal_Inventory_Architect_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Onyx Olsen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Onyx_Olsen_Technical_Logistics_Manager_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Gaea Queen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_agentic_scheduler.yaml"
+    },
+    {
+      "name": "Orion Wayne",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_changelog_generator.yaml"
+    },
+    {
+      "name": "Juno Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_changelog_synthesizer.yaml"
+    },
+    {
+      "name": "Qubit Storm",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_competitive_intelligence_agent.yaml"
+    },
+    {
+      "name": "Atlas Lang",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_compiler.yaml"
+    },
+    {
+      "name": "Axel Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_consent_flow_validator.yaml"
+    },
+    {
+      "name": "Echo Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_credential_rotation_strategist.yaml"
+    },
+    {
+      "name": "Echo Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_credential_rotation_validator.yaml"
+    },
+    {
+      "name": "Echo Guardian",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_credential_sentinel.yaml"
+    },
+    {
+      "name": "Helix Gordon",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_cultural_filter_designer.yaml"
+    },
+    {
+      "name": "Axel Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_dispatch_attribution_tracker.yaml"
+    },
+    {
+      "name": "Jax Pennyworth",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_empathy_response_designer.yaml"
+    },
+    {
+      "name": "Juno Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_engagement_optimization_agent.yaml"
+    },
+    {
+      "name": "Juno Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_engagement_optimization_strategist.yaml"
+    },
+    {
+      "name": "Kai Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_engagement_tracker.yaml"
+    },
+    {
+      "name": "Dax Pennyworth",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_error_recovery_agent.yaml"
+    },
+    {
+      "name": "Echo Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_feedback_analyzer.yaml"
+    },
+    {
+      "name": "Blade Gordon",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_feedback_loop_designer.yaml"
+    },
+    {
+      "name": "Atlas Specter",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_finalization_agent.yaml"
+    },
+    {
+      "name": "Cipher Gordon",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_foia_request_generator.yaml"
+    },
+    {
+      "name": "Nova Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_hotfix_deployment_agent.yaml"
+    },
+    {
+      "name": "Atlas Allen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_integration_specialist.yaml"
+    },
+    {
+      "name": "Blade Tyrell",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_language_designer.yaml"
+    },
+    {
+      "name": "Blade Cage",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_neural_broadcaster.yaml"
+    },
+    {
+      "name": "Atlas Olsen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_output_registry_validator.yaml"
+    },
+    {
+      "name": "Nova Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_persona_generator.yaml"
+    },
+    {
+      "name": "Ghost Deckard",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_prompt_designer.yaml"
+    },
+    {
+      "name": "Bax Dent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_prompt_variant_synthesizer.yaml"
+    },
+    {
+      "name": "Dax Jordan",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_report_generator.yaml"
+    },
+    {
+      "name": "Nova Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_report_summarizer.yaml"
+    },
+    {
+      "name": "Luna Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_retention_curve_modeler.yaml"
+    },
+    {
+      "name": "Hana Strange",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_retention_curve_tracker.yaml"
+    },
+    {
+      "name": "Kai Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_retrieval_augmented_generation_agent.yaml"
+    },
+    {
+      "name": "Kai Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_schema_completion_sentinel.yaml"
+    },
+    {
+      "name": "Cian Storm",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_sentiment_mapping_agent.yaml"
+    },
+    {
+      "name": "Nova Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_support_ticket_resolver.yaml"
+    },
+    {
+      "name": "Gaea Grimm",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_systems_integrator.yaml"
+    },
+    {
+      "name": "Rogue Kent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_tone_calibration_strategist.yaml"
+    },
+    {
+      "name": "Pax Banner",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_transparency_report_agent.yaml"
+    },
+    {
+      "name": "Umbra West",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_unknown.yaml"
+    },
+    {
+      "name": "Axel Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team_variant_generator_agent.yaml"
+    },
+    {
+      "name": "Juno Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\operations_general_team__env_injection_validator.yaml"
+    },
+    {
+      "name": "Orion Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Orion_Flux_Executive_Logistics_Analyst_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Orion Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Orion_Flux_Lead_Logistics_Manager_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Orion Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Orion_Prime_Junior_Logistics_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Orion Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Orion_Prime_Lead_Operations_Consultant_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Orion Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Orion_Spark_Operations_Officer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Orion Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Orion_Spark_Strategic_Logistics_Lead_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Orion Todd",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Orion_Todd_Senior_Operations_Officer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Pax Queen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Pax_Queen_Associate_Logistics_Manager_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Pax Queen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Pax_Queen_Logistics_Officer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Pia Gordon",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Pia_Gordon_Junior_Inventory_Strategist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Pia Gordon",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Pia_Gordon_Strategic_Process_Scientist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Prime Banner",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Prime_Banner_Executive_Supply_Chain_Analyst_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Prime Banner",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Prime_Banner_Junior_Automation_Administrator_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Prime Fox",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Prime_Fox_Chief_Supply_Chain_Director_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Prime Kyle",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Prime_Kyle_Junior_Automation_Officer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Prime Kyle",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Prime_Kyle_Process_Specialist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Qubit Fries",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Qubit_Fries_Logistics_Manager_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Qubit Fries",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Qubit_Fries_Principal_Operations_Director_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Qubit Kent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Qubit_Kent_Inventory_Developer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Qubit Kent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Qubit_Kent_Senior_Process_Developer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Raze Pym",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Raze_Pym_Facility_Scientist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Raze Pym",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Raze_Pym_Principal_Operations_Scientist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Rex Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Rex_Flux_Facility_Developer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Rex Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Rex_Flux_Technical_Automation_Strategist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Rex Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Rex_Forge_Junior_Supply_Chain_Consultant_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Rex Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Rex_Forge_Operations_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Rex Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Rex_Pulse_Associate_Supply_Chain_Consultant_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Rex Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Rex_Pulse_Senior_Automation_Strategist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Rex Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Rex_Spark_Logistics_Scientist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Rex Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Rex_Spark_Strategic_Logistics_Director_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Rian Deckard",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Rian_Deckard_Operations_Administrator_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Rian Deckard",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Rian_Deckard_Strategic_Operations_Manager_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Rian Pym",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Rian_Pym_Lead_Supply_Chain_Manager_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Rian Pym",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Rian_Pym_Technical_Operations_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Rogue Jones",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Rogue_Jones_Executive_Inventory_Lead_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Rogue Page",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Rogue_Page_Junior_Process_Analyst_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Rogue Page",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Rogue_Page_Technical_Process_Developer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Rogue Todd",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Rogue_Todd_Chief_Inventory_Strategist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Sage Crane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Sage_Crane_Associate_Operations_Architect_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Sage Crane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Sage_Crane_Lead_Facility_Manager_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Sage Prince",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Sage_Prince_Junior_Inventory_Analyst_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Sage Prince",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Sage_Prince_Process_Consultant_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Sage Stewart",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Sage_Stewart_Chief_Inventory_Architect_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Sage Stewart",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Sage_Stewart_Inventory_Analyst_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Titan Kyle",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Titan_Kyle_Lead_Inventory_Officer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Titan Kyle",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Titan_Kyle_Principal_Automation_Strategist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Titan Sterling",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Titan_Sterling_Principal_Facility_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Titan Sterling",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Titan_Sterling_Principal_Logistics_Lead_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Tor Allen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Tor_Allen_Logistics_Director_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Tor Flynn",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Tor_Flynn_Junior_Supply_Chain_Manager_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Tyro Croft",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Tyro_Croft_Lead_Logistics_Consultant_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Tyro Croft",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Tyro_Croft_Senior_Automation_Administrator_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Tyro Fries",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Tyro_Fries_Executive_Automation_Director_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Umbra Flynn",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Umbra_Flynn_Lead_Inventory_Strategist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Umbra Flynn",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Umbra_Flynn_Process_Developer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Umbra Pym",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Umbra_Pym_Chief_Supply_Chain_Administrator_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Umbra Pym",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Umbra_Pym_Strategic_Automation_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Vann Pym",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Vann_Pym_Facility_Director_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Vann Pym",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Vann_Pym_Strategic_Logistics_Developer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Vega Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Vega_Byte_Lead_Process_Scientist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Vega Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Vega_Byte_Operations_Analyst_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Vega Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Vega_Flux_Junior_Logistics_Scientist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Vega Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Vega_Flux_Technical_Inventory_Developer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Vega Lane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Vega_Lane_Automation_Analyst_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Vega Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Vega_Pulse_Lead_Facility_Director_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Vega Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Vega_Pulse_Supply_Chain_Strategist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Vega Wayne",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Vega_Wayne_Strategic_Process_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Vega Wayne",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Vega_Wayne_Technical_Automation_Developer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Vortex Kyle",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Vortex_Kyle_Process_Director_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Vortex Kyle",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Vortex_Kyle_Technical_Logistics_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Vortex Sobeck",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Vortex_Sobeck_Junior_Supply_Chain_Scientist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Vortex Sobeck",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Vortex_Sobeck_Technical_Operations_Officer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Wolf Castle",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Wolf_Castle_Strategic_Facility_Specialist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Wolf Castle",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Wolf_Castle_Strategic_Logistics_Manager_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Wrench Banner",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Wrench_Banner_Lead_Automation_Administrator_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Wynn Dent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Wynn_Dent_Technical_Facility_Lead_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Wynn Grayson",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Wynn_Grayson_Chief_Process_Specialist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Wynn Grayson",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Wynn_Grayson_Facility_Analyst_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Wynn Pym",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Wynn_Pym_Facility_Specialist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Wynn Quinn",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Wynn_Quinn_Junior_Operations_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Wynn Stark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Wynn_Stark_Executive_Facility_Analyst_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Wynn Tyrell",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Wynn_Tyrell_Executive_Automation_Manager_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Wynn Tyrell",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Wynn_Tyrell_Technical_Logistics_Analyst_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Xander Lightman",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Xander_Lightman_Strategic_Supply_Chain_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Xander Nigma",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Xander_Nigma_Supply_Chain_Manager_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Xeno Cage",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Xeno_Cage_Strategic_Logistics_Administrator_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Xylo Dent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Xylo_Dent_Executive_Process_Engineer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Xylo Dent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Xylo_Dent_Operations_Strategist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Yara Nigma",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Yara_Nigma_Junior_Supply_Chain_Specialist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Yuri Crane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Yuri_Crane_Strategic_Supply_Chain_Scientist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Yuri Strange",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Yuri_Strange_Senior_Supply_Chain_Analyst_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Yuri Strange",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Yuri_Strange_Supply_Chain_Administrator_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Zara Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Zara_Byte_Associate_Facility_Developer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Zara Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Zara_Byte_Technical_Logistics_Specialist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Zara Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Zara_Forge_Chief_Operations_Developer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Zara Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Zara_Forge_Technical_Operations_Developer_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Zara Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Zara_Node_Principal_Facility_Administrator_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Zara Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Zara_Node_Process_Architect_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Zara Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Zara_Trace_Associate_Operations_Consultant_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Zara Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Zara_Trace_Senior_Operations_Director_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Zora Queen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Zora_Queen_Strategic_Operations_Specialist_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Zora Quinn",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\facility_management\\Zora_Quinn_Technical_Inventory_Lead_OPERATIONS_GENERAL.yaml"
+    },
+    {
+      "name": "Bounty",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\financial_ops\\bounty.yaml"
+    },
+    {
+      "name": "Ethan Kim",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\financial_ops\\finance_team_stripe_payment_engineer.yaml"
+    },
+    {
+      "name": "Rogue Lang",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\financial_ops\\financial_ops_team_syntax___semantics_designer.yaml"
+    },
+    {
+      "name": "Ava Moreno",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\financial_ops\\revenue_ops_team_sales_funnel_optimizer.yaml"
+    },
+    {
+      "name": "Yuri Jordan",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\financial_ops\\Yuri_Jordan_Financial_Scientist_FINANCIAL_OPS.yaml"
+    },
+    {
+      "name": "Yuri Jordan",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\financial_ops\\Yuri_Jordan_Treasury_Consultant_FINANCIAL_OPS.yaml"
+    },
+    {
+      "name": "Bax West",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\general_engineering\\general_engineering_team_language_compiler_engineer.yaml"
+    },
+    {
+      "name": "Nova Storm",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\general_engineering\\general_engineering_team_presentation___narration_engineer.yaml"
+    },
+    {
+      "name": "Jax Wayne",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\general_engineering\\Jax_Wayne_Automation_Administrator_GENERAL_ENGINEERING.yaml"
+    },
+    {
+      "name": "Jax Wayne",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\general_engineering\\Jax_Wayne_Senior_Automation_Analyst_GENERAL_ENGINEERING.yaml"
+    },
+    {
+      "name": "Orion Stark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\general_engineering\\Orion_Stark_Associate_Facility_Specialist_GENERAL_ENGINEERING.yaml"
+    },
+    {
+      "name": "Orion Stark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\general_engineering\\Orion_Stark_Principal_Facility_Scientist_GENERAL_ENGINEERING.yaml"
+    },
+    {
+      "name": "Ghost Nelson",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\legal_compliance\\Ghost_Nelson_Associate_IP_Engineer_LEGAL_COMPLIANCE.yaml"
+    },
+    {
+      "name": "Ghost Nelson",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\legal_compliance\\Ghost_Nelson_Senior_Contract_Specialist_LEGAL_COMPLIANCE.yaml"
+    },
+    {
+      "name": "Elias Page",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\legal_compliance\\legal_compliance_team_accessibility_compliance_agent.yaml"
+    },
+    {
+      "name": "Lux Isley",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\legal_compliance\\legal_compliance_team_compliance_officer.yaml"
+    },
+    {
+      "name": "Axel Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\legal_compliance\\legal_compliance_team_oauth_compliance_agent.yaml"
+    },
+    {
+      "name": "Isla Stewart",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\legal_compliance\\legal_compliance_team_policy_page_validator.yaml"
+    },
+    {
+      "name": "Elias Kent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\legal_compliance\\legal_compliance_team_transparency_compliance_agent.yaml"
+    },
+    {
+      "name": "Nova Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\legal_compliance\\Nova_Node_Executive_Patent_Analyst_LEGAL_COMPLIANCE.yaml"
+    },
+    {
+      "name": "Nova Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\legal_compliance\\Nova_Node_IP_Specialist_LEGAL_COMPLIANCE.yaml"
+    },
+    {
+      "name": "Rex Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\legal_compliance\\Rex_Core_Ethics_Administrator_LEGAL_COMPLIANCE.yaml"
+    },
+    {
+      "name": "Rex Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\legal_compliance\\Rex_Core_Patent_Scientist_LEGAL_COMPLIANCE.yaml"
+    },
+    {
+      "name": "Rex Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\legal_compliance\\Rex_Prime_IP_Manager_LEGAL_COMPLIANCE.yaml"
+    },
+    {
+      "name": "Rex Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\legal_compliance\\Rex_Prime_Labor_Analyst_LEGAL_COMPLIANCE.yaml"
+    },
+    {
+      "name": "Zara Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\legal_compliance\\Zara_Drift_Junior_Regulatory_Lead_LEGAL_COMPLIANCE.yaml"
+    },
+    {
+      "name": "Zara Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\legal_compliance\\Zara_Drift_Strategic_Ethics_Administrator_LEGAL_COMPLIANCE.yaml"
+    },
+    {
+      "name": "Closer",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\marketing_pr\\closer.yaml"
+    },
+    {
+      "name": "Axel Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\marketing_pr\\marketing_pr_team_brand_voice_calibrator.yaml"
+    },
+    {
+      "name": "Liam Chen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\marketing_pr\\marketing_team_lead_gen_automation.yaml"
+    },
+    {
+      "name": "Tyro Castle",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\marketing_pr\\Tyro_Castle_Email_Specialist_MARKETING_PR.yaml"
+    },
+    {
+      "name": "Tyro Castle",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\marketing_pr\\Tyro_Castle_Junior_Affiliate_Director_MARKETING_PR.yaml"
+    },
+    {
+      "name": "Brea Castle",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Brea_Castle_Lead_Operations_Lead_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Dax Stewart",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Dax_Stewart_Principal_Facility_Analyst_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Dax Stewart",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Dax_Stewart_Process_Engineer_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Echo Storm",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Echo_Storm_Associate_Facility_Scientist_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Echo Storm",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Echo_Storm_Inventory_Specialist_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Hana Lightman",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Hana_Lightman_Junior_Supply_Chain_Lead_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Helix Allen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Helix_Allen_Chief_Operations_Engineer_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Jace Kent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Jace_Kent_Junior_Facility_Analyst_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Jace Kent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Jace_Kent_Strategic_Facility_Strategist_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Jet Wayne",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Jet_Wayne_Associate_Logistics_Director_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Lux Banner",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Lux_Banner_Chief_Operations_Manager_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Mako Fox",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Mako_Fox_Lead_Process_Consultant_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Mira Strange",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Mira_Strange_Senior_Process_Strategist_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Nova Allen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Nova_Allen_Senior_Inventory_Officer_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Pax West",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Pax_West_Chief_Logistics_Manager_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Yara Pym",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\quality_assurance_team_automation_engineer.yaml"
+    },
+    {
+      "name": "Bax Deckard",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\quality_assurance_team_quality_assurance_engineer.yaml"
+    },
+    {
+      "name": "Blade Flynn",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\quality_assurance_team_testing_engineer.yaml"
+    },
+    {
+      "name": "Sol Sterling",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Sol_Sterling_Lead_Process_Specialist_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Titan Dent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Titan_Dent_Senior_Supply_Chain_Specialist_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Una Flynn",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Una_Flynn_Technical_Logistics_Architect_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Vortex Lang",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Vortex_Lang_Junior_Inventory_Architect_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Vortex Murdock",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Vortex_Murdock_Senior_Logistics_Architect_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Wrench Lane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Wrench_Lane_Operations_Developer_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Xander Fox",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Xander_Fox_Executive_Logistics_Administrator_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Xander Todd",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Xander_Todd_Inventory_Officer_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Xander Todd",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Xander_Todd_Lead_Inventory_Consultant_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Xeno Stewart",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Xeno_Stewart_Chief_Supply_Chain_Analyst_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Xeno Stewart",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Xeno_Stewart_Supply_Chain_Consultant_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Zara Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Zara_Spark_Lead_Supply_Chain_Specialist_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Zara Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Zara_Spark_Technical_Operations_Specialist_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Zora Nigma",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Zora_Nigma_Chief_Inventory_Director_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Zora Nigma",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\quality_assurance\\Zora_Nigma_Facility_Officer_QUALITY_ASSURANCE.yaml"
+    },
+    {
+      "name": "Altair Tyrell",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Altair_Tyrell_Cybernetics_Developer_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Altair Tyrell",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Altair_Tyrell_Frontend_Engineer_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "ARC-Binary Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Binary_Dev_Inventory_Director_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Blade Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Blade_Dev_Senior_Facility_Analyst_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Cipher Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Cipher_Dev_Junior_Facility_Architect_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Cipher Mind",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Cipher_Mind_Associate_Supply_Chain_Engineer_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Cipher Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Cipher_Sys_Technical_Logistics_Officer_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Circuit Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Circuit_Node_Technical_Process_Scientist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Echo Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Echo_Bot_Technical_Operations_Administrator_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Echo Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Echo_Sys_Strategic_Operations_Scientist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Flux Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Flux_Main_Junior_Logistics_Administrator_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Ghost Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Ghost_Bot_Principal_Process_Analyst_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Ghost Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Ghost_Sys_Associate_Automation_Lead_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Helix Mind",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Helix_Mind_Principal_Process_Lead_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Nova Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Nova_Bot_Executive_Supply_Chain_Manager_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Nova Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Nova_Forge_Senior_Logistics_Manager_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Nova Root",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Nova_Root_Associate_Facility_Lead_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Nova Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Nova_Unit_Executive_Operations_Analyst_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Onyx Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Onyx_Sys_Executive_Operations_Specialist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Orion Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Orion_Main_Principal_Automation_Specialist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Orion Mind",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Orion_Mind_Junior_Operations_Consultant_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Prime Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Prime_Bot_Principal_Process_Scientist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Prime Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Prime_Forge_Lead_Inventory_Lead_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Prime Ops",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Prime_Ops_Principal_Inventory_Consultant_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Prime Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Prime_Trace_Lead_Inventory_Architect_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Pulse Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Pulse_Core_Chief_Logistics_Scientist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Pulse Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Pulse_Main_Junior_Inventory_Officer_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Razor Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Razor_Core_Principal_Facility_Architect_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Razor Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Razor_Dev_Logistics_Lead_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Razor Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Razor_Trace_Strategic_Inventory_Director_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Titan Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Titan_Main_Principal_Inventory_Strategist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Vector Ops",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Vector_Ops_Principal_Automation_Engineer_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Vega Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Vega_Stream_Junior_Inventory_Administrator_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Vega Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Vega_Sys_Senior_Facility_Architect_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Vortex Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Vortex_Forge_Associate_Logistics_Consultant_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Vortex Ops",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Vortex_Ops_Strategic_Operations_Engineer_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Vortex Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Vortex_Stream_Lead_Automation_Director_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ARC-Zero Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ARC_Zero_Main_Junior_Process_Lead_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "Atlas Crane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Atlas_Crane_Strategic_Network_Officer_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Altair Lightman",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\backend_systems_team_architect.yaml"
+    },
+    {
+      "name": "Atlas Prince",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\backend_systems_team_audit_trail_architect.yaml"
+    },
+    {
+      "name": "Dax Page",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\backend_systems_team_cybersecurity_architect.yaml"
+    },
+    {
+      "name": "Cipher Allen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\backend_systems_team_data_architect.yaml"
+    },
+    {
+      "name": "Fae Fries",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\backend_systems_team_empathy_template_architect.yaml"
+    },
+    {
+      "name": "Jax Tyrell",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\backend_systems_team_feedback_loop_architect.yaml"
+    },
+    {
+      "name": "Coda Todd",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\backend_systems_team_lead_system_architect.yaml"
+    },
+    {
+      "name": "CodeWeaver",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\codeweaver.yaml"
+    },
+    {
+      "name": "Dax Flynn",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Dax_Flynn_Machine_Learning_Manager_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Dax Grimm",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Dax_Grimm_Associate_Network_Director_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "DEV-Binary Mind",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Binary_Mind_Chief_Logistics_Director_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Blade Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Blade_Node_Chief_Operations_Administrator_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Cipher Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Cipher_Forge_Technical_Automation_Architect_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Cipher Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Cipher_Stream_Technical_Supply_Chain_Administrator_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Circuit Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Circuit_Core_Junior_Automation_Specialist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Daemon Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Daemon_Node_Technical_Supply_Chain_Consultant_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Echo Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Echo_Dev_Strategic_Automation_Officer_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Flux Link",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Flux_Link_Senior_Inventory_Manager_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Flux Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Flux_Main_Operations_Manager_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Flux Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Flux_Net_Junior_Supply_Chain_Architect_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Ghost Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Ghost_Stream_Junior_Process_Consultant_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Nexus Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Nexus_Net_Associate_Inventory_Director_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Onyx Bot",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Onyx_Bot_Principal_Operations_Lead_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Onyx Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Onyx_Core_Executive_Logistics_Consultant_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Prime Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Prime_Dev_Principal_Supply_Chain_Specialist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Prime Flow",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Prime_Flow_Strategic_Logistics_Architect_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Prime Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Prime_Forge_Junior_Logistics_Consultant_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Pulse Link",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Pulse_Link_Chief_Process_Director_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Pulse Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Pulse_Sys_Principal_Logistics_Manager_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Pulse Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Pulse_Trace_Principal_Automation_Scientist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Razor Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Razor_Trace_Principal_Operations_Administrator_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Titan Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Titan_Net_Junior_Inventory_Consultant_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Vector Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Vector_Main_Chief_Process_Scientist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Vector Mind",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Vector_Mind_Strategic_Automation_Strategist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Vector Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Vector_Node_Executive_Process_Director_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Vector Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Vector_Unit_Technical_Supply_Chain_Lead_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Vega Dev",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Vega_Dev_Junior_Facility_Consultant_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "DEV-Vega Sec",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\DEV_Vega_Sec_Chief_Operations_Architect_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "Drea Nelson",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Drea_Nelson_Associate_GraphQL_Developer_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Echo Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Echo_Pulse_Chief_Embedded_Lead_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Echo Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Echo_Pulse_Rust_Manager_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "ENG-Binary Sec",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Binary_Sec_Technical_Automation_Officer_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Blade Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Blade_Main_Principal_Automation_Lead_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Blade Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Blade_Node_Technical_Facility_Director_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Blade Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Blade_Unit_Technical_Logistics_Lead_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Daemon Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Daemon_Sys_Chief_Operations_Specialist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Echo Link",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Echo_Link_Junior_Automation_Strategist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Echo Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Echo_Net_Logistics_Analyst_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Echo Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Echo_Stream_Strategic_Supply_Chain_Specialist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Flux Link",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Flux_Link_Junior_Automation_Director_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Flux Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Flux_Net_Chief_Automation_Scientist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Flux Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Flux_Stream_Executive_Inventory_Scientist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Ghost Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Ghost_Sys_Executive_Facility_Developer_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Helix Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Helix_Main_Principal_Automation_Architect_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Helix Root",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Helix_Root_Associate_Process_Engineer_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Nexus Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Nexus_Core_Senior_Process_Analyst_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Nova Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Nova_Core_Operations_Consultant_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Nova Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Nova_Node_Chief_Facility_Strategist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Nova Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Nova_Trace_Executive_Process_Administrator_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Onyx Main",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Onyx_Main_Chief_Facility_Manager_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Onyx Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Onyx_Trace_Strategic_Automation_Analyst_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Orion Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Orion_Net_Associate_Inventory_Developer_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Orion Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Orion_Node_Junior_Logistics_Specialist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Orion Unit",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Orion_Unit_Strategic_Facility_Consultant_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Prime Flow",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Prime_Flow_Executive_Supply_Chain_Architect_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Prime Stream",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Prime_Stream_Junior_Operations_Administrator_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Pulse Sys",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Pulse_Sys_Chief_Inventory_Lead_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Razor Flow",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Razor_Flow_Principal_Logistics_Analyst_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Razor Link",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Razor_Link_Senior_Logistics_Developer_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Razor Sec",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Razor_Sec_Strategic_Operations_Strategist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Rex Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Rex_Spark_Senior_Facility_Director_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Titan Mind",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Titan_Mind_Senior_Inventory_Consultant_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Titan Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Titan_Net_Strategic_Process_Strategist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Vector Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Vector_Forge_Associate_Process_Analyst_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Vector Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Vector_Net_Facility_Consultant_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Vector Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Vector_Node_Junior_Automation_Analyst_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Vector Sec",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Vector_Sec_Lead_Process_Officer_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Zara Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Zara_Spark_Executive_Inventory_Architect_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Zero Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Zero_Core_Supply_Chain_Officer_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "ENG-Zero Net",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\ENG_Zero_Net_Technical_Inventory_Strategist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "Fae Richards",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Fae_Richards_Chief_API_Architect_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Fae Richards",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Fae_Richards_Strategic_Backend_Administrator_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Falcon Vance",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Falcon_Vance_DevOps_Lead_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Flux Pym",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Flux_Pym_Backend_Developer_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Flux Pym",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Flux_Pym_Executive_API_Director_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Tor Pennyworth",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\frontend_ops_team_agentic_ux_designer.yaml"
+    },
+    {
+      "name": "Rogue Dent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\frontend_ops_team_knowledge_graph_builder.yaml"
+    },
+    {
+      "name": "Blade Murdock",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\frontend_ops_team_kpi_dashboard_builder.yaml"
+    },
+    {
+      "name": "Nico Richards",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\frontend_ops_team_multilingual_ux_designer.yaml"
+    },
+    {
+      "name": "Rex Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\frontend_ops_team_redaction_engine_builder.yaml"
+    },
+    {
+      "name": "Helix Richards",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Helix_Richards_Fullstack_Manager_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Hunter Lightman",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Hunter_Lightman_Rust_Engineer_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Hunter Mercer",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Hunter_Mercer_Executive_GraphQL_Officer_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Jace Jordan",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Jace_Jordan_Executive_Go_Scientist_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Kai Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Kai_Flux_API_Architect_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Kai Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Kai_Flux_Backend_Strategist_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Luna Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Luna_Prime_Strategic_Embedded_Developer_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Luna Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Luna_Prime_Strategic_Machine_Learning_Lead_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Nico Dent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Nico_Dent_Junior_AI_Scientist_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Nova Isley",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Nova_Isley_DevOps_Specialist_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Orion Dent",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Orion_Dent_Go_Strategist_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Orion Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Orion_Forge_Fullstack_Consultant_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Orion Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Orion_Forge_Mobile_Engineer_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Orion Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Orion_Node_AI_Officer_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Orion Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Orion_Node_React_Developer_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Prime Storm",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Prime_Storm_Chief_Cloud_Scientist_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Quinn Stewart",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Quinn_Stewart_Senior_Machine_Learning_Manager_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Rian Prince",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Rian_Prince_Principal_Go_Director_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "SEG-Axel Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\SEG_Axel_Spark_Principal_Supply_Chain_Analyst_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "SEG-Echo Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\SEG_Echo_Forge_Lead_Logistics_Strategist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "SEG-Nova Drift",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\SEG_Nova_Drift_Junior_Process_Director_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "SEG-Patch Sentinel",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\SEG_Patch_Sentinel_Strategic_Supply_Chain_Lead_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "SENG-Axel Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\SENG_Axel_Node_Senior_Logistics_Director_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "SENG-Juno Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\SENG_Juno_Byte_Strategic_Process_Architect_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "SENG-Juno Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\SENG_Juno_Core_Principal_Logistics_Developer_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "SENG-Kai Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\SENG_Kai_Byte_Strategic_Process_Officer_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "SENG-Kai Flux",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\SENG_Kai_Flux_Associate_Supply_Chain_Administrator_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "SENG-Luna Forge",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\SENG_Luna_Forge_Senior_Inventory_Director_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "SENG-Luna Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\SENG_Luna_Prime_Senior_Logistics_Specialist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "SENG-Nova Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\SENG_Nova_Node_Executive_Facility_Specialist_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "SENG-Orion Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\SENG_Orion_Node_Associate_Automation_Officer_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "SENG-Orion Spark",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\SENG_Orion_Spark_Principal_Inventory_Lead_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "SENG-Rex Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\SENG_Rex_Byte_Technical_Facility_Architect_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "SENG-Vega Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\SENG_Vega_Node_Executive_Facility_Officer_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "SENG-Zara Byte",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\SENG_Zara_Byte_Lead_Operations_Developer_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "SENG-Zara Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\SENG_Zara_Node_Technical_Facility_Engineer_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "SENG-Zara Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\SENG_Zara_Pulse_Executive_Facility_Engineer_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "SENG-Zara Trace",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\SENG_Zara_Trace_Lead_Automation_Lead_SOFTWARE_ENGINEERING.yaml"
+    },
+    {
+      "name": "Sia Mercer",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Sia_Mercer_Chief_Embedded_Architect_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Titan Deckard",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Titan_Deckard_Embedded_Developer_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Titan Deckard",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Titan_Deckard_Lead_Embedded_Administrator_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Tyro Crane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Tyro_Crane_Cloud_Developer_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Tyro Crane",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Tyro_Crane_Lead_Database_Developer_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Vega Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Vega_Node_Database_Developer_FRONTEND_OPS.yaml"
+    },
+    {
+      "name": "Vega Node",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Vega_Node_Machine_Learning_Officer_FRONTEND_OPS.yaml"
+    },
+    {
+      "name": "Wrench Croft",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Wrench_Croft_DevOps_Officer_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Wrench Croft",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Wrench_Croft_Senior_Python_Manager_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Xander Olsen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Xander_Olsen_API_Manager_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Xander Olsen",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Xander_Olsen_Strategic_Cybernetics_Engineer_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Yara Nelson",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Yara_Nelson_Cloud_Administrator_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Yara Nelson",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Yara_Nelson_Junior_Python_Officer_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Yuri Murdock",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Yuri_Murdock_Go_Scientist_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Yuri Murdock",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Yuri_Murdock_Strategic_Cybernetics_Consultant_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Zane Stewart",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Zane_Stewart_Fullstack_Analyst_FRONTEND_OPS.yaml"
+    },
+    {
+      "name": "Zane Stewart",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Zane_Stewart_Mobile_Developer_FRONTEND_OPS.yaml"
+    },
+    {
+      "name": "Zara Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Zara_Core_Junior_Fullstack_Manager_FRONTEND_OPS.yaml"
+    },
+    {
+      "name": "Zara Core",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Zara_Core_Technical_Machine_Learning_Analyst_FRONTEND_OPS.yaml"
+    },
+    {
+      "name": "Zara Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Zara_Prime_Junior_Database_Architect_FRONTEND_OPS.yaml"
+    },
+    {
+      "name": "Zara Prime",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Zara_Prime_Strategic_GraphQL_Scientist_FRONTEND_OPS.yaml"
+    },
+    {
+      "name": "Zara Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Zara_Pulse_Associate_Machine_Learning_Engineer_FRONTEND_OPS.yaml"
+    },
+    {
+      "name": "Zara Pulse",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Zara_Pulse_Senior_DevOps_Manager_FRONTEND_OPS.yaml"
+    },
+    {
+      "name": "Zora Fries",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Zora_Fries_Cybernetics_Scientist_BACKEND_SYSTEMS.yaml"
+    },
+    {
+      "name": "Zora Fries",
+      "path": "F:\\RealmForge_PROD\\data\\agents\\software_engineering\\Zora_Fries_Senior_GraphQL_Consultant_BACKEND_SYSTEMS.yaml"
+    }
+  ],
+  "DEEP_LEARNING_ENG": [],
+  "MARKET_INTELLIGENCE": [],
+  "IP_LEGAL_COUNCIL": [],
+  "CONTENT_STRATEGIST": [],
+  "HPC_INFRASTRUCTURE": [],
+  "SOFTWARE_ENGINEERING": []
+}
