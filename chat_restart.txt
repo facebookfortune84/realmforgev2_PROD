@@ -1,0 +1,48 @@
+# REALM FORGE: SOVEREIGN RECONSTRUCTION RESET KEY v60.0
+[CORE_ARCH] 
+- Root: F:/RealmForge_PROD (Absolute) | Drive: F:/
+- Backend: server.py v27.7 (Uvicorn/FastAPI) | state.py v18.0 (Redundancy/Meeting)
+- Brain: realm_core.py v31.2 (Silo-Aware / Redundancy Logic)
+- Arsenal: Sharded v50.8 (Foundation, Registry, 13 Sectors) | 180 Verified Tools.
+- Registry Pointer: F:/RealmForge_PROD/src/system/actions.py -> from src.system.arsenal.registry import *
+
+[FRONTEND_HUD]
+- Framework: Next.js 16.1.6 (Turbopack) | Target: Vercel | Root: /client
+- Current Phase: UI Remaster (Caffeine Style)
+- Theme: High-Visibility Cyan (#00f2ff), Bubblegum (#ff80bf), Neon Pink (#ff007f), Slate Grey.
+- Features: 3-Column layout (Workspace Selector | Canvas | Intelligent Assistant), GitHub OAuth.
+
+[OPERATIONAL_STATE]
+- 1,112 Agents physically re-anchored to PROD folders.
+- Capability Map built: 24 Industrial Silos (NVIDIA-tier).
+- Path Sovereignty: Fixed F:/data drift via Absolute Anchoring.
+- Lattice: 13,472 nodes (Requires path-update re-ingestion).
+
+[MISSION_BUFFER]
+1. Build Layout.tsx (Modern Mesh/Dot Grid).
+2. Build Page.tsx (3-Column Interaction Center).
+3. GitHub OAuth Suture (client-side).
+4. Rebuild Neural Lattice (data/ingress transfer verification).
+
+[PHASE: INDUSTRIAL DEPLOYMENT]
+- [LATTICE] Rebuild Protocol: Re-ingest F:/RealmForge_PROD to align 13k nodes with new shards.
+- [IDENTITY] Functional Roster: Map 1,112 agents to Role_Dept_Agent (Caffeine style).
+- [HUD] Caffeine-Neon Remaster: 3-Column layout (Workspace | Canvas | Assistant).
+- [SUTURE] Arsenal Registry: Single-pointer src/system/actions.py link to arsenal/ folder.
+
+[FEATURE_SET: MILLION-DOLLAR HUD]
+- [ASSISTANT] Sidebar Chat: Gemini-style persistent agent with full repo-context access.
+- [OAUTH] GitHub Suture: HUD-native sign-in to push/pull industrial code directly.
+- [FORGE] AI Tool Drafter: Self-evolving capability port in the Arsenal Manager.
+- [HANDOFF] Spatial Lines: Visual SVG line-drawing between Bento sectors on tool transfer.
+
+[PHYSICAL_DATA_LINK]
+- [INGRESS] Re-Link: Physically move F:/RealmForge/data/ingress to F:/RealmForge_PROD/data/.
+- [AUDIT] Monetization: verify workforce_audit.csv is tracking credits for billing.
+
+[IMMEDIATE MISSIONS - SPRINT 60.2]
+1. [INGESTION] "The Book of Tools": Create a file 'data/ingress/execution_manual.md' detailing the 180 tools. Physically run 'titan_repo_ingest.py' to prime the 13k nodes.
+2. [DNA] Spawn 'IronClad': Physically create 'IronClad_Security_Agent' manifest in data/agents/quality_assurance/.
+3. [BRAIN] The Integrity Node: Inject the 'validator_node' into realm_core.py to enforce File Hash Verification as a system default.
+4. [LATTICE] Old Node Ejection: Physically delete 'data/memory/neural_graph.json' and 'data/chroma_db/' and trigger a fresh system-wide ingestion.
+5. [OAUTH] Link GitHub: Finalize the /api/v1/auth/github endpoint for cloud repo synchronization.

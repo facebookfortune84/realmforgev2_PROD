@@ -3,108 +3,134 @@
 @tailwind utilities;
 
 /**
- * REALM FORGE: TITAN-INDUSTRIAL DESIGN SYSTEM v2.0
- * PALETTE: Forge Gold, Kinetic Cyan, Cyber Red
+ * REALM FORGE: TITAN-NEON DESIGN SYSTEM v4.0
+ * STYLE: Caffeine-Modern / High-Visibility
+ * PALETTE: Obsidian, Kinetic Cyan, Bubblegum, Neon Pink
  */
 
 :root {
-  --forge-gold: #b5a642;
-  --forge-gold-dim: rgba(181, 166, 66, 0.2);
   --kinetic-cyan: #00f2ff;
-  --cyber-red: #ff3e3e;
-  --titan-slate: #0a0a0b;
-  --industrial-border: rgba(181, 166, 66, 0.15);
-  --glass-bg: rgba(5, 5, 5, 0.8);
+  --bubblegum: #ff80bf;
+  --neon-pink: #ff007f;
+  --obsidian: #080808;
+  --slate-grey: #1a1a1a;
+  --glass-border: rgba(0, 242, 255, 0.15);
+  --pink-glow: rgba(255, 0, 127, 0.2);
 }
 
 @layer base {
   body {
-    @apply bg-black text-slate-300 antialiased selection:bg-[#b5a642] selection:text-black;
-    font-feature-settings: "rlig" 1, "calt" 1;
-    font-family: "JetBrains Mono", "Fira Code", monospace;
+    @apply bg-[#080808] text-[#f0f0f0] antialiased selection:bg-[#ff80bf] selection:text-black;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.01em;
   }
 }
 
 @layer components {
-  /* SHOW-STOPPER BENTO CARDS */
-  .titan-card {
-    @apply bg-[#0c0e12]/80 border border-[#b5a642]/10 backdrop-blur-xl rounded-sm transition-all duration-500 relative overflow-hidden;
+
+  /* THE MILLION DOLLAR BENTO BOX */
+  .cyber-card {
+    @apply bg-[#111111] border border-white/5 rounded-2xl transition-all duration-300 relative overflow-hidden;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
   }
 
-  .titan-card:hover {
-    @apply border-[#b5a642]/40 shadow-[0_0_30px_rgba(181, 166, 66, 0.05)];
+  .cyber-card:hover {
+    @apply border-[#00f2ff]/40 bg-[#161616];
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px -15px rgba(0, 242, 255, 0.1);
   }
 
-  /* ACTIVE SECTOR PULSE */
-  .sector-pulse {
-    box-shadow: 0 0 20px rgba(181, 166, 66, 0.1);
-    animation: pulse-industrial 4s infinite ease-in-out;
+  /* KINETIC ACCENTS */
+  .border-cyan {
+    border-color: var(--kinetic-cyan);
   }
 
-  .glow-text-gold {
-    text-shadow: 0 0 10px rgba(181, 166, 66, 0.5);
+  .border-pink {
+    border-color: var(--neon-pink);
   }
 
-  .glow-text-cyan {
-    text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+  .text-cyan {
+    color: var(--kinetic-cyan);
   }
 
-  /* FROSTED DIAGNOSTIC PANELS */
-  .glass-panel {
-    @apply bg-[#050505]/70 backdrop-blur-lg border border-white/5 shadow-2xl;
+  .text-bubblegum {
+    color: var(--bubblegum);
+  }
+
+  /* BUBBLEGUM PULSE */
+  .status-pulse {
+    animation: pulse-pink 3s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  }
+
+  /* HIGH-VISIBILITY GLASS */
+  .cyber-glass {
+    @apply bg-[#0f0f0f]/80 backdrop-blur-2xl border border-white/10 shadow-2xl;
+  }
+
+  /* CAFFEINE-STYLE BUTTONS */
+  .btn-primary {
+    @apply px-6 py-3 bg-[#00f2ff] text-black font-bold rounded-xl transition-all hover:scale-105 hover:shadow-[0_0_20px_#00f2ff] active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-white/5 border border-white/10 text-white font-bold rounded-xl transition-all hover:bg-white/10;
   }
 }
 
-@keyframes pulse-industrial {
+@keyframes pulse-pink {
+
   0%,
   100% {
-    border-color: rgba(181, 166, 66, 0.2);
+    opacity: 1;
     transform: scale(1);
   }
 
   50% {
-    border-color: rgba(181, 166, 66, 0.6);
-    box-shadow: 0 0 40px rgba(181, 166, 66, 0.1);
-    transform: scale(1.01);
+    opacity: 0.7;
+    transform: scale(1.05);
+    color: #ff007f;
   }
 }
 
-/* CUSTOM SCROLLBAR: INDUSTRIAL MINIMALISM */
+/* SCROLLBAR: CLEAN MINIMALISM */
 ::-webkit-scrollbar {
-  width: 3px;
-  height: 3px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #b5a642;
-  border-radius: 0px;
+  background: #333;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #00f2ff;
+  background: var(--kinetic-cyan);
 }
 
-/* KINETIC SCANLINE OVERLAY */
-.scanline {
-  width: 100%;
-  height: 2px;
-  background: rgba(181, 166, 66, 0.05);
-  opacity: 0.75;
-  position: absolute;
-  bottom: 100%;
-  animation: scanline 8s linear infinite;
+/* GRID SYSTEM */
+.bg-mesh {
+  background-image:
+    radial-gradient(at 0% 0%, rgba(0, 242, 255, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(255, 0, 127, 0.05) 0px, transparent 50%);
 }
 
-@keyframes scanline {
-  0% {
-    bottom: 100%;
-  }
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
 
-  100% {
-    bottom: 0%;
-  }
+/* CLEAN TERMINAL PREVIEW */
+pre {
+  @apply bg-[#050505] rounded-xl border border-white/5 p-6 font-mono text-[13px] leading-relaxed;
+}
+
+.token-cyan {
+  color: #00f2ff;
+}
+
+.token-pink {
+  color: #ff80bf;
 }

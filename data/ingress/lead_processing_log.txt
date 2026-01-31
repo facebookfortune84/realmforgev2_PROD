@@ -1,0 +1,1 @@
+Lead Processing Log: 1450 leads processed in batches of 100.

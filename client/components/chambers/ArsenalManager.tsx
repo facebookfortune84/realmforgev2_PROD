@@ -1,8 +1,9 @@
 /**
- * REALM FORGE: TITAN SOVEREIGN ARMORY v30.1
+ * REALM FORGE: TITAN SOVEREIGN ARMORY v31.0
+ * STYLE: CAFFEINE-NEON / HIGH-VISIBILITY
  * ARCHITECT: LEAD SWARM ENGINEER
- * STATUS: PRODUCTION READY - VERCEL BUILD COMPLIANT
- * PATH: F:\RealmForge\client\components\chambers\ArsenalManager.tsx
+ * STATUS: PRODUCTION READY - VERCEL COMPLIANT
+ * PATH: F:\RealmForge_PROD\client\components\chambers\ArsenalManager.tsx
  */
 
 // @ts-nocheck
@@ -12,7 +13,8 @@ import { useState, useEffect } from "react";
 import { 
   Crosshair, Plus, Zap, Shield, Code, Save, 
   Terminal, Search, Cpu, Box, Database, 
-  Wrench, Activity, Sparkles, AlertCircle, ChevronRight
+  Wrench, Activity, Sparkles, AlertCircle, 
+  ChevronRight, Binary, CpuIcon
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
@@ -23,199 +25,219 @@ export default function ArsenalManager() {
   const [toolRequest, setToolRequest] = useState("");
   const [newTool, setNewTool] = useState({ 
     name: "", 
-    code: "@tool\nasync def new_capability(args: str):\n    \"\"\"Production-grade logic here.\"\"\"\n    pass", 
-    imports: "from langchain.tools import tool" 
+    code: "@tool\nasync def new_capability(args: str):\n    \"\"\"Production-grade industrial logic.\"\"\"\n    # 1. Initialize Senses\n    # 2. Execute Physics\n    # 3. Commit to Ledger\n    pass", 
+    imports: "from src.system.arsenal.foundation import *" 
   });
 
-  const [existingTools, setExistingTools] = useState([
-    "lattice_scout_search", "csv_processor_read", "web_search_duckduckgo",
-    "generate_corporate_invoice", "mm_get_user_by_name", "scan_network_ports"
+  const [diagnosticLogs, setDiagnosticLogs] = useState([
+    "> [ARMORY]: Sharded Registry synchronized (180 Tools).",
+    "> [ARMORY]: High-visibility neon shaders active.",
+    "> [ARMORY]: Ready for industrial logic injection."
   ]);
 
-  const [diagnosticLogs, setDiagnosticLogs] = useState([
-    "> [ARMORY]: Registry synchronized (180 Tools Found).",
-    "> [ARMORY]: Ready for industrial injection."
-  ]);
+  const [config, setConfig] = useState({ url: "", key: "" });
+
+  // --- 1. SOVEREIGN HYDRATION ---
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const url = localStorage.getItem("RF_URL") || "http://localhost:8000";
+      const key = localStorage.getItem("RF_KEY") || "sk-realm-god-mode-888";
+      setConfig({ url, key });
+    }
+  }, []);
 
   const forgeToolWithAI = async () => {
-    if (!toolRequest) return;
+    if (!toolRequest || !config.url) return;
     setIsForging(true);
-    const apiUrl = typeof window !== 'undefined' ? localStorage.getItem("RF_URL") : "";
-    const apiKey = typeof window !== 'undefined' ? localStorage.getItem("RF_KEY") : "";
-
     try {
-        await axios.post(`${apiUrl}/api/v1/mission`, {
-            task: `ForgeMaster, draft a production-grade Python @tool for this requirement: "${toolRequest}". 
-                   Return ONLY the code block and the required imports.`
-        }, { headers: { "X-API-Key": apiKey } });
+        const cleanUrl = config.url.replace(/\/$/, "");
+        await axios.post(`${cleanUrl}/api/v1/mission`, {
+            task: `ForgeMaster, physically draft a production-grade Python @tool for this requirement: "${toolRequest}". Return the code block and the required imports.`
+        }, { headers: { "X-API-Key": config.key, 'ngrok-skip-browser-warning': '69420' } });
         
-        setDiagnosticLogs(p => [...p, `[AI_FORGE]: Capability logic drafted for ${toolRequest}`]);
+        setDiagnosticLogs(p => [...p, `[AI_FORGE]: Blueprint drafted for "${toolRequest}"`]);
     } catch (e) {
-        console.error("FORGE_FAULT");
+        setDiagnosticLogs(p => [...p, `[FAULT]: AI Forge link desynchronized.`]);
     } finally {
         setIsForging(false);
     }
   };
 
-  const injectToMonolith = async () => {
-    const apiUrl = typeof window !== 'undefined' ? localStorage.getItem("RF_URL") : "";
-    const apiKey = typeof window !== 'undefined' ? localStorage.getItem("RF_KEY") : "";
+  const injectToArsenal = async () => {
+    if (!newTool.name || !config.url) return;
     try {
-      await axios.post(`${apiUrl}/api/v1/mission`, { 
-          task: `Inject a new tool named ${newTool.name} with this code: ${newTool.code}. Use these imports: ${newTool.imports}` 
-      }, { headers: { "X-API-Key": apiKey } });
-      alert("INJECTION_SUCCESS: System core is re-indexing...");
+      const cleanUrl = config.url.replace(/\/$/, "");
+      await axios.post(`${cleanUrl}/api/v1/mission`, { 
+          task: `Physically inject a new tool named ${newTool.name} with this code: ${newTool.code}. Use these imports: ${newTool.imports}` 
+      }, { headers: { "X-API-Key": config.key, 'ngrok-skip-browser-warning': '69420' } });
+      alert("INJECTION_SUCCESS: Registry re-indexing started.");
     } catch (e) {
-      alert("INJECTION_FAILED: Buffer conflict.");
+      alert("INJECTION_FAILED: Physical write-lock active.");
     }
   };
 
   return (
-    <div className="h-full flex gap-4 overflow-hidden">
+    <div className="h-full flex gap-6 bg-transparent overflow-hidden relative">
       
-      {/* --- LEFT: THE ARMORY LEDGER --- */}
-      <aside className="w-80 titan-card flex flex-col border-[#b5a642]/10 bg-black/40">
-        <div className="p-4 border-b border-white/5 bg-[#b5a642]/5 flex items-center gap-3">
-          <Box size={18} className="text-[#b5a642]" />
-          <span className="text-[10px] font-black text-white uppercase tracking-[0.2em]">Active_Arsenal</span>
+      {/* --- COLUMN A: ACTIVE ARSENAL LEDGER --- */}
+      <aside className="w-80 bg-[#0a0a0a] border border-white/5 rounded-2xl flex flex-col shrink-0 overflow-hidden shadow-2xl">
+        <div className="p-5 border-b border-white/5 bg-[#00f2ff]/5 flex items-center gap-3">
+          <Box size={20} className="text-[#00f2ff]" />
+          <span className="text-[11px] font-black text-white uppercase tracking-[0.2em]">Master_Arsenal</span>
         </div>
 
         <div className="p-4 border-b border-white/5">
-          <div className="relative">
-            <Search className="absolute left-2 top-2.5 text-white/20" size={12} />
+          <div className="relative group">
+            <Search className="absolute left-3 top-2.5 text-white/20 group-focus-within:text-[#00f2ff]" size={14} />
             <input 
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
-              placeholder="FILTER_CAPABILITIES..."
-              className="w-full bg-black/60 border border-white/5 p-2 pl-8 text-[9px] font-bold text-[#b5a642] outline-none"
+              placeholder="PROBE_CAPABILITIES..."
+              className="w-full bg-black border border-white/10 p-2.5 pl-10 text-[10px] font-bold text-[#00f2ff] outline-none focus:border-[#00f2ff]/40 rounded-xl"
             />
           </div>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-2 space-y-1 scrollbar-hide">
-          {existingTools.map(tool => (
-            <div key={tool} className="group p-3 border border-white/5 bg-white/2 hover:border-[#b5a642]/40 rounded-sm flex items-center justify-between transition-all">
+        <div className="flex-1 overflow-y-auto p-2 pb-4 space-y-1 scrollbar-hide">
+          {["web_search", "lattice_scout", "csv_read", "github_sync", "port_scan", "nda_generate"].map(tool => (
+            <div key={tool} className="group p-3 border border-white/5 bg-white/2 hover:border-[#ff80bf]/40 rounded-xl flex items-center justify-between transition-all cursor-default">
               <div className="flex items-center gap-3">
-                <Wrench size={12} className="text-gray-500 group-hover:text-[#b5a642]" />
-                <span className="text-[10px] font-mono text-gray-400 group-hover:text-white uppercase">{tool}</span>
+                <div className="p-2 rounded-lg bg-black group-hover:bg-[#ff80bf]/10 transition-colors">
+                  <Wrench size={12} className="text-gray-500 group-hover:text-[#ff80bf]" />
+                </div>
+                <span className="text-[10px] font-mono text-gray-400 group-hover:text-white uppercase tracking-tight">{tool}</span>
               </div>
-              <div className="w-1.5 h-1.5 rounded-full bg-green-500/40" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#00f2ff]/40 animate-pulse" />
             </div>
           ))}
         </div>
 
-        <div className="p-4 bg-black/60 border-t border-white/5">
-           <div className="flex justify-between text-[8px] font-black uppercase text-white/20">
-             <span>Lattice_Sutured: 100%</span>
-             <span>Registry: V50.6</span>
+        <div className="p-4 bg-black/40 border-t border-white/5 text-center">
+           <div className="text-[8px] font-black uppercase text-white/20 tracking-widest">
+             Sovereign_Registry_v50.8
            </div>
         </div>
       </aside>
 
-      {/* --- RIGHT: THE CAPABILITY FORGE --- */}
-      <div className="flex-1 flex flex-col gap-4 overflow-hidden">
+      {/* --- COLUMN B: THE CAPABILITY FORGE --- */}
+      <div className="flex-1 flex flex-col gap-6 overflow-hidden">
         
-        {/* AI TOOL DRAFTER */}
-        <div className="titan-card p-6 border-[#b5a642]/20 bg-[#b5a642]/5 relative overflow-hidden">
-           <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
-             <Sparkles size={80} />
+        {/* SECTION: AI TOOL DRAFTER */}
+        <div className="bg-[#0a0a0a] p-8 border border-white/5 rounded-3xl relative overflow-hidden shadow-2xl">
+           <div className="absolute top-0 right-0 p-6 opacity-5 pointer-events-none text-[#ff80bf]">
+             <Sparkles size={120} />
            </div>
-           <h2 className="text-[10px] font-black text-[#b5a642] uppercase tracking-[0.4em] mb-4 flex items-center gap-2">
-             <Sparkles size={14} /> AI_Tool_Generator
-           </h2>
+           
+           <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-8 rounded-xl bg-[#ff80bf]/10 flex items-center justify-center border border-[#ff80bf]/20">
+                <Sparkles size={16} className="text-[#ff80bf]" />
+              </div>
+              <h2 className="text-[11px] font-black text-[#ff80bf] uppercase tracking-[0.4em]">Sovereign_Forge_AI</h2>
+           </div>
+
            <div className="flex gap-4">
              <input 
                value={toolRequest}
                onChange={e => setToolRequest(e.target.value)}
-               placeholder="Describe a new capability (e.g., 'A tool to track crypto prices')..."
-               className="flex-1 bg-black border border-[#b5a642]/30 p-4 text-sm font-bold text-white outline-none focus:border-[#b5a642]"
+               placeholder="Describe a physical capability needed for the workforce..."
+               className="flex-1 bg-black border border-white/10 p-5 text-[13px] font-medium text-white outline-none focus:border-[#ff80bf]/50 rounded-2xl transition-all placeholder:text-white/5"
              />
              <button 
               onClick={forgeToolWithAI}
-              className="px-8 bg-[#b5a642] text-black font-black uppercase text-xs hover:bg-white transition-all shadow-[5px_5px_0_#000]"
+              disabled={isForging}
+              className="px-10 bg-[#ff80bf] text-black font-black uppercase text-xs rounded-2xl hover:bg-white transition-all shadow-[0_0_25px_rgba(255,128,191,0.2)] disabled:opacity-20"
              >
-               {isForging ? "Generating..." : "Draft Tool"}
+               {isForging ? "FORGING..." : "Draft_Tool"}
              </button>
            </div>
         </div>
 
-        <div className="flex-1 grid grid-cols-2 gap-4 min-h-0">
-          <div className="titan-card flex flex-col p-6 border-white/10 bg-black/40">
-             <h3 className="text-[9px] font-black text-white/40 uppercase tracking-widest mb-6 border-b border-white/5 pb-2">Technical_Logic_Editor</h3>
+        {/* SECTION: INJECTION PORT & TERMINAL */}
+        <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
+          
+          {/* EDITOR */}
+          <div className="bg-[#0a0a0a] border border-white/5 rounded-3xl flex flex-col p-8 shadow-2xl overflow-hidden">
+             <div className="flex items-center gap-3 mb-8">
+                <Terminal size={18} className="text-[#00f2ff]" />
+                <h3 className="text-[11px] font-black text-white/40 uppercase tracking-[0.2em]">Logic_Committer</h3>
+             </div>
              
-             <div className="space-y-4 flex-1 flex flex-col min-h-0">
-                <div className="flex gap-4">
-                  <div className="flex-1">
-                    <label htmlFor="function-name" className="text-[8px] text-[#b5a642] uppercase font-black mb-1 block">Function_Name</label>
+             <div className="space-y-6 flex-1 flex flex-col min-h-0">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label className="text-[8px] text-white/20 uppercase font-black tracking-widest block ml-2">Function_ID</label>
                     <input 
-                      id="function-name"
                       value={newTool.name}
                       onChange={e => setNewTool({...newTool, name: e.target.value})}
-                      className="w-full bg-black border border-white/10 p-2 text-[11px] font-mono text-[#00f2ff] outline-none"
-                      title="Function name"
-                      placeholder="e.g. my_tool"
+                      placeholder="e.g. scrape_linkedin"
+                      className="w-full bg-black border border-white/10 p-4 text-[11px] font-mono text-[#00f2ff] outline-none rounded-xl focus:border-[#00f2ff]/40 transition-all"
                     />
                   </div>
-                  <div className="flex-1">
-                    <label htmlFor="sector-assignment" className="text-[8px] text-[#b5a642] uppercase font-black mb-1 block">Sector_Assignment</label>
-                    <select id="sector-assignment" title="Sector assignment" aria-label="Sector assignment" className="w-full bg-black border border-white/10 p-2 text-[11px] font-mono text-white/60 outline-none">
+                  <div className="space-y-2">
+                    <label className="text-[8px] text-white/20 uppercase font-black tracking-widest block ml-2">Target_Sector</label>
+                    <select className="w-full bg-black border border-white/10 p-4 text-[11px] font-mono text-white/40 outline-none rounded-xl appearance-none cursor-pointer">
                       <option>SOFTWARE_ENGINEERING</option>
-                      <option>CYBER_SECURITY</option>
                       <option>DATA_INTELLIGENCE</option>
+                      <option>CYBER_SECURITY</option>
+                      <option>FINANCIAL_OPS</option>
                     </select>
                   </div>
                 </div>
 
-                <div className="flex-1 flex flex-col">
-                  <label htmlFor="python-source" className="text-[8px] text-[#b5a642] uppercase font-black mb-1 block">Python_Source</label>
+                <div className="flex-1 flex flex-col relative group">
+                  <label className="text-[8px] text-white/20 uppercase font-black tracking-widest block mb-2 ml-2">Python_Source_Code</label>
                   <textarea 
-                    id="python-source"
                     value={newTool.code}
                     onChange={e => setNewTool({...newTool, code: e.target.value})}
-                    className="flex-1 bg-black border border-white/10 p-4 text-[12px] font-mono text-green-400 outline-none resize-none leading-relaxed"
+                    className="flex-1 bg-black border border-white/10 p-6 text-[12px] font-mono text-green-400 outline-none resize-none leading-relaxed rounded-2xl focus:border-green-400/30 transition-all scrollbar-hide"
                     spellCheck={false}
-                    title="Python source code"
-                    placeholder="# Enter tool code..."
                   />
+                  <div className="absolute top-10 right-4 opacity-0 group-focus-within:opacity-100 transition-opacity">
+                     <Binary size={40} className="text-green-400/5" />
+                  </div>
                 </div>
 
                 <button 
-                  onClick={injectToMonolith}
-                  className="w-full py-4 bg-[#00f2ff] text-black font-black uppercase text-xs hover:bg-white transition-all shadow-[6px_6px_0_#000] flex items-center justify-center gap-3"
+                  onClick={injectToArsenal}
+                  className="w-full py-5 bg-[#00f2ff] text-black font-black uppercase text-xs rounded-2xl hover:bg-white transition-all shadow-[0_0_30px_rgba(0,242,255,0.15)] flex items-center justify-center gap-3 active:scale-[0.98]"
                 >
-                  <Save size={16} /> Physically Inject Tool
+                  <Save size={18} /> Manifest_Capability_181
                 </button>
              </div>
           </div>
 
-          {/* INJECTION LOGS */}
-          <div className="titan-card flex flex-col p-6 border-white/10 bg-[#080a0c]">
-             <div className="flex items-center justify-between mb-6 border-b border-white/5 pb-2">
-                <div className="flex items-center gap-2">
-                  <Terminal size={14} className="text-[#00f2ff]" />
-                  <span className="text-[9px] font-black text-white/40 uppercase tracking-widest">Injection_Stream</span>
+          {/* LOGS PANEL */}
+          <div className="bg-[#0a0a0a] border border-white/5 rounded-3xl flex flex-col p-8 shadow-2xl relative overflow-hidden">
+             <div className="flex items-center justify-between mb-8 border-b border-white/5 pb-4">
+                <div className="flex items-center gap-3">
+                  <Activity size={18} className="text-[#ff80bf]" />
+                  <span className="text-[11px] font-black text-white uppercase tracking-[0.2em]">Stream_Monitor</span>
                 </div>
-                <div className="flex gap-1">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#00f2ff] animate-pulse" />
+                <div className="flex gap-2">
+                  <div className="w-2 h-2 rounded-full bg-[#00f2ff] animate-pulse shadow-[0_0_10px_#00f2ff]" />
                 </div>
              </div>
-             <div className="flex-1 font-mono text-[10px] space-y-2 text-[#00f2ff]/60 overflow-y-auto scrollbar-hide">
+
+             <div className="flex-1 font-mono text-[10px] space-y-3 text-[#00f2ff]/60 overflow-y-auto scrollbar-hide">
                 {diagnosticLogs.map((log, i) => (
-                  <div key={i} className="flex gap-3">
-                    <span className="text-white/10 select-none">[{i}]</span>
-                    <span>{log}</span>
+                  <div key={i} className="flex gap-4 group">
+                    <span className="text-white/10 select-none font-bold">[{i.toString().padStart(2, '0')}]</span>
+                    <span className="group-hover:text-white transition-colors">{log}</span>
                   </div>
                 ))}
-                {/* FIXED: Wrapped the literal arrows in a JS string block */}
-                <div className="animate-pulse">{" >>> Awaiting_Capability_Signature_"}</div>
+                <div className="text-white/20 animate-pulse">
+                   {" >>> System_Awaiting_Capability_Signature_"}
+                </div>
              </div>
              
-             <div className="mt-4 p-4 bg-red-500/5 border border-red-500/20 rounded-sm">
-                <div className="flex items-center gap-2 text-red-500 mb-1">
-                  <AlertCircle size={12} />
-                  <span className="text-[8px] font-black uppercase">Monolith_Integrity_Warning</span>
+             <div className="mt-8 p-6 bg-[#ff3e3e]/5 border border-[#ff3e3e]/20 rounded-2xl">
+                <div className="flex items-center gap-3 text-[#ff3e3e] mb-2">
+                  <AlertCircle size={16} />
+                  <span className="text-[9px] font-black uppercase tracking-widest">Monolith_Override_Warning</span>
                 </div>
-                <p className="text-[8px] text-white/30 leading-relaxed uppercase"> Injection triggers a system-wide hot reload. </p>
+                <p className="text-[9px] text-[#ff3e3e]/40 leading-relaxed uppercase font-bold tracking-tighter">
+                  Physical injection triggers a system-wide hot reload. The neural lattice will momentarily desynchronize while tool v50.9 is absorbed.
+                </p>
              </div>
           </div>
         </div>

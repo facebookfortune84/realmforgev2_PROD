@@ -1,0 +1,84 @@
+{
+  "curriculum": [
+    {
+      "topic": "Python Core & OS Ops",
+      "tools": ["run_terminal_command", "write_file", "read_file"],
+      "url": "https://docs.python.org/3/library/os.html"
+    },
+    {
+      "topic": "File Management & Shutil",
+      "tools": ["move_internal_file", "copy_internal_file", "archive_workspace"],
+      "url": "https://docs.python.org/3/library/shutil.html"
+    },
+    {
+      "topic": "Browser Automation (Playwright)",
+      "tools": ["interact_web", "take_website_screenshot"],
+      "url": "https://playwright.dev/python/docs/intro"
+    },
+    {
+      "topic": "Market Intelligence (YFinance)",
+      "tools": ["get_market_intelligence", "get_stock_history_csv", "convert_currency"],
+      "url": "https://pypi.org/project/yfinance/"
+    },
+    {
+      "topic": "Data Analysis (Pandas)",
+      "tools": ["industrial_data_ingress", "merge_csv_files", "read_excel_file"],
+      "url": "https://pandas.pydata.org/docs/user_guide/10min.html"
+    },
+    {
+      "topic": "Graph Theory (NetworkX)",
+      "tools": ["update_knowledge_graph", "graph_centrality_analysis", "graph_find_path"],
+      "url": "https://networkx.org/documentation/stable/tutorial.html"
+    },
+    {
+      "topic": "Database Management (SQLite)",
+      "tools": ["sqlite_create_table", "sqlite_query", "sqlite_insert"],
+      "url": "https://docs.python.org/3/library/sqlite3.html"
+    },
+    {
+      "topic": "PDF Generation (ReportLab)",
+      "tools": ["generate_corporate_document", "generate_corporate_invoice"],
+      "url": "https://docs.reportlab.com/reportlab/userguide/ch1_intro/"
+    },
+    {
+      "topic": "Presentation Generation (Python-PPTX)",
+      "tools": ["create_investor_deck"],
+      "url": "https://python-pptx.readthedocs.io/en/latest/"
+    },
+    {
+      "topic": "Image Generation (OpenAI)",
+      "tools": ["generate_industrial_image"],
+      "url": "https://platform.openai.com/docs/guides/images"
+    },
+    {
+      "topic": "Video Generation (Replicate)",
+      "tools": ["generate_industrial_video"],
+      "url": "https://replicate.com/docs/get-started/python"
+    },
+    {
+      "topic": "Text Processing (TextBlob/NLTK)",
+      "tools": ["analyze_sentiment_advanced", "extract_keywords_frequency"],
+      "url": "https://textblob.readthedocs.io/en/dev/"
+    },
+    {
+      "topic": "QR Codes",
+      "tools": ["create_qr_code", "create_business_card_qr"],
+      "url": "https://pypi.org/project/qrcode/"
+    },
+    {
+      "topic": "Web Search (DuckDuckGo)",
+      "tools": ["web_search_duckduckgo", "web_search_news"],
+      "url": "https://pypi.org/project/duckduckgo-search/"
+    },
+    {
+      "topic": "Markdown Conversion",
+      "tools": ["convert_markdown_to_html", "scrape_url_to_markdown"],
+      "url": "https://python-markdown.github.io/"
+    },
+    {
+      "topic": "Vector Database (ChromaDB)",
+      "tools": ["search_memory", "ingest_knowledge"],
+      "url": "https://docs.trychroma.com/getting-started"
+    }
+  ]
+}

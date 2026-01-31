@@ -1,0 +1,1 @@
+CORS policy issue with API endpoint https://glowfly-sizeable-lazaro.ngrok-free.dev/api/v1/io/read

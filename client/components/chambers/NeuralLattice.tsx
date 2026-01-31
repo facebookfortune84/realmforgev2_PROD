@@ -1,8 +1,9 @@
 /**
- * REALM FORGE: TITAN NEURAL LATTICE v30.0
+ * REALM FORGE: TITAN NEURAL LATTICE v31.0
+ * STYLE: CAFFEINE-NEON / HIGH-VISIBILITY
  * ARCHITECT: LEAD SWARM ENGINEER
  * STATUS: PRODUCTION READY - SPATIAL CLUSTER ENGINE
- * PATH: F:\RealmForge\client\components\chambers\NeuralLattice.tsx
+ * PATH: F:\RealmForge_PROD\client\components\chambers\NeuralLattice.tsx
  */
 
 // @ts-nocheck
@@ -11,9 +12,9 @@
 import React, { useEffect, useRef, useState, useMemo } from "react";
 import axios from "axios";
 import { 
-  Network, Database, Info, Maximize2, RefreshCw, 
-  AlertTriangle, ShieldCheck, Filter, Search, 
-  Cpu, Zap, Fingerprint, Activity, Layers
+  Network, Database, Info, RefreshCw, 
+  ShieldCheck, Filter, Search, Fingerprint, 
+  Activity, Layers, Zap, Trash2, Binary
 } from "lucide-react";
 import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
@@ -21,7 +22,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const ForceGraph2D = dynamic(() => import("react-force-graph-2d"), {
   ssr: false,
   loading: () => (
-    <div className="flex-1 flex flex-col items-center justify-center bg-[#05070a] text-[#b5a642] h-full">
+    <div className="flex-1 flex flex-col items-center justify-center bg-[#050505] text-[#00f2ff] h-full">
       <RefreshCw className="animate-spin mb-4" size={48} />
       <span className="text-[10px] font-black uppercase tracking-[0.5em]">Pressurizing_Neural_Lattice</span>
     </div>
@@ -39,13 +40,21 @@ const CANONICAL_SECTORS = [
 export default function NeuralLattice() {
   const [data, setData] = useState({ nodes: [], links: [] });
   const [selectedNode, setSelectedNode] = useState(null);
-  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState("ALL");
   const [searchQuery, setSearchQuery] = useState("");
   const containerRef = useRef(null);
   const graphRef = useRef(null);
   const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
+
+  // --- 1. INDUSTRIAL THEME CONSTANTS ---
+  const COLORS = {
+    CYAN: "#00f2ff",
+    BUBBLEGUM: "#ff80bf",
+    PINK: "#ff007f",
+    SLATE: "#1a1a1a",
+    GREY: "#333333"
+  };
 
   useEffect(() => {
     const updateDimensions = () => {
@@ -57,18 +66,19 @@ export default function NeuralLattice() {
       }
     };
     updateDimensions();
-    window.addEventListener("resize", updateDimensions);
-    fetchGraph();
+    if (typeof window !== 'undefined') {
+        window.addEventListener("resize", updateDimensions);
+        fetchGraph();
+    }
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
   const fetchGraph = async () => {
-    const url = localStorage.getItem("RF_URL");
-    const key = localStorage.getItem("RF_KEY");
-    if (!url) return;
+    if (typeof window === 'undefined') return;
+    const url = localStorage.getItem("RF_URL") || "http://localhost:8000";
+    const key = localStorage.getItem("RF_KEY") || "sk-realm-god-mode-888";
 
     setLoading(true);
-    setError(null);
     try {
       const res = await axios.get(`${url.replace(/\/$/, "")}/api/v1/graph`, {
         headers: { "X-API-Key": key, "ngrok-skip-browser-warning": "69420" },
@@ -77,14 +87,13 @@ export default function NeuralLattice() {
       const rawNodes = res.data.nodes || [];
       const rawLinks = res.data.links || [];
 
-      // --- INDUSTRIAL CATEGORIZATION ---
+      // --- KINETIC CLUSTERING LOGIC ---
       const cleanNodes = rawNodes
-        .filter(n => n.id && n.id.trim() !== "")
+        .filter(n => n?.id)
         .map(n => ({
             ...n,
             sector: n.sector || n.department?.toLowerCase() || "general_engineering",
-            category: n.type || (n.id.startsWith("ARC-") ? "AGENT" : n.id.startsWith("RF-") ? "TASK" : "ARTIFACT"),
-            mastery: Math.floor(Math.random() * 100) // Visual flair for HUD
+            category: n.type || (n.id.startsWith("ARC-") ? "AGENT" : n.id.startsWith("RF-") ? "TASK" : "KNOWLEDGE")
         }));
 
       const nodeIds = new Set(cleanNodes.map(n => n.id));
@@ -92,7 +101,7 @@ export default function NeuralLattice() {
 
       setData({ nodes: cleanNodes, links: cleanLinks });
     } catch (e) {
-      setError("Uplink failed. Check Forge Gateway.");
+      console.error("LATTICE_FAULT");
     } finally {
       setLoading(false);
     }
@@ -104,7 +113,11 @@ export default function NeuralLattice() {
     if (searchQuery) nodes = nodes.filter(n => n.id.toLowerCase().includes(searchQuery.toLowerCase()));
     
     const nodeIds = new Set(nodes.map(n => n.id));
-    const links = data.links.filter(l => nodeIds.has(typeof l.source === 'object' ? l.source.id : l.source) && nodeIds.has(typeof l.target === 'object' ? l.target.id : l.target));
+    const links = data.links.filter(l => {
+      const s = typeof l.source === 'object' ? l.source.id : l.source;
+      const t = typeof l.target === 'object' ? l.target.id : l.target;
+      return nodeIds.has(s) && nodeIds.has(t);
+    });
     
     return { nodes, links };
   }, [data, filter, searchQuery]);
@@ -112,147 +125,140 @@ export default function NeuralLattice() {
   const getNodeColor = (node) => {
     if (node.id === selectedNode?.id) return "#ffffff";
     switch (node.category) {
-        case "AGENT": return "#b5a642"; // Forge Gold
-        case "TASK": return "#00f2ff";  // Kinetic Cyan
-        case "ARTIFACT": return "#ff3e3e"; // Cyber Red
-        default: return "#4a4a4a";
+        case "AGENT": return COLORS.BUBBLEGUM;
+        case "TASK": return COLORS.PINK;
+        case "KNOWLEDGE": return COLORS.CYAN;
+        default: return COLORS.GREY;
     }
   };
 
+  const handleRebuild = async () => {
+    const url = localStorage.getItem("RF_URL");
+    const key = localStorage.getItem("RF_KEY");
+    alert("🚀 Initiating System Core Re-Ingestion. This will prune orphan nodes...");
+    try {
+        await axios.post(`${url}/api/v1/mission`, { task: "Trigger a physical codebase ingestion scan." }, { headers: { "X-API-Key": key } });
+    } catch (e) {}
+  };
+
   return (
-    <div className="h-full flex gap-4 bg-black relative p-2 overflow-hidden" ref={containerRef}>
+    <div className="h-full flex gap-6 bg-transparent relative overflow-hidden" ref={containerRef}>
       
-      <div className="flex-1 titan-card relative bg-[#05070a] overflow-hidden border-[#b5a642]/10">
+      {/* --- GRAPH CANVAS --- */}
+      <div className="flex-1 bg-[#0a0a0a] border border-white/5 rounded-3xl overflow-hidden relative shadow-2xl">
         
-        {/* --- SPATIAL HUD OVERLAY --- */}
+        {/* HUD OVERLAY */}
         <div className="absolute top-6 left-6 z-50 flex flex-col gap-3 pointer-events-none">
           <div className="flex gap-2 pointer-events-auto">
-            <button 
-                type="button"
-                onClick={fetchGraph}
-                title="Refresh graph"
-                aria-label="Refresh graph"
-                className="p-3 bg-[#b5a642] text-black hover:bg-white transition-all shadow-[4px_4px_0_#000] rounded-sm"
-            >
+            <button onClick={fetchGraph} className="p-3 bg-[#00f2ff] text-black hover:bg-white transition-all rounded-xl shadow-lg">
                 <RefreshCw className={loading ? "animate-spin" : ""} size={18} />
             </button>
-            <div className="glass-panel px-4 py-2 flex items-center gap-3 border-[#b5a642]/20">
-                <ShieldCheck size={14} className="text-[#b5a642]" />
-                <span className="text-[10px] font-black text-white uppercase tracking-widest">
-                  Lattice_Density: {filteredData.nodes.length} / {data.nodes.length}
+            <div className="bg-[#111111]/80 backdrop-blur-xl border border-white/10 px-4 py-2 flex items-center gap-3 rounded-xl">
+                <ShieldCheck size={16} className="text-[#ff80bf]" />
+                <span className="text-[11px] font-black text-white uppercase tracking-widest">
+                  Lattice_Sync: {filteredData.nodes.length} <span className="text-white/20">/</span> {data.nodes.length}
                 </span>
             </div>
           </div>
 
-          {/* CATEGORY FILTER */}
-          <div className="flex gap-2 pointer-events-auto">
-            {["ALL", "AGENT", "TASK", "ARTIFACT"].map(cat => (
+          {/* QUICK CATEGORY FILTER */}
+          <div className="flex gap-1 pointer-events-auto bg-black/40 p-1 rounded-xl border border-white/5">
+            {["ALL", "AGENT", "TASK", "KNOWLEDGE"].map(cat => (
               <button 
-                key={cat}
-                onClick={() => setFilter(cat)}
-                className={`px-3 py-1 text-[8px] font-black uppercase tracking-widest border transition-all
-                ${filter === cat ? "bg-[#b5a642] border-[#b5a642] text-black" : "bg-black/60 border-white/10 text-white/40 hover:text-white"}`}
+                key={cat} onClick={() => setFilter(cat)}
+                className={`px-4 py-1.5 text-[9px] font-black uppercase tracking-widest rounded-lg transition-all
+                ${filter === cat ? "bg-[#00f2ff] text-black" : "text-white/40 hover:text-white hover:bg-white/5"}`}
               >
                 {cat}
               </button>
             ))}
           </div>
-
-          {/* SECTOR LEGEND (GLASS) */}
-          <div className="glass-panel p-4 space-y-2 border-white/5 pointer-events-auto max-h-64 overflow-y-auto scrollbar-hide">
-              <div className="text-[8px] font-black text-white/20 uppercase tracking-[0.2em] mb-2">Sector_Distribution</div>
-              {CANONICAL_SECTORS.map(s => (
-                <div 
-                  key={s} 
-                  onClick={() => setFilter(s)}
-                  className={`flex items-center gap-2 text-[8px] font-black uppercase cursor-pointer transition-all
-                  ${filter === s ? "text-[#b5a642]" : "text-white/40 hover:text-white"}`}
-                >
-                  <Activity size={10} className={filter === s ? "animate-pulse" : ""} />
-                  {s.replace(/_/g, " ")}
-                </div>
-              ))}
-          </div>
+          
+          <button 
+            onClick={handleRebuild}
+            className="pointer-events-auto flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-500/20 text-red-500 text-[9px] font-black uppercase rounded-lg hover:bg-red-500 hover:text-white transition-all w-fit"
+          >
+            <Trash2 size={12} /> Rebuild Neural Roster
+          </button>
         </div>
 
-        {/* SEARCH BAR (FLOATING) */}
-        <div className="absolute top-6 right-6 z-50 glass-panel border-white/10 p-1 flex items-center gap-2">
-            <Search size={14} className="ml-2 text-white/20" />
-            <input 
-              value={searchQuery}
-              onChange={e => setSearchQuery(e.target.value)}
-              placeholder="PROBE_NODE_ID..." 
-              className="bg-transparent border-none outline-none text-[10px] text-[#b5a642] font-black uppercase w-48 p-2 placeholder:text-white/5"
-            />
+        {/* SEARCH BAR */}
+        <div className="absolute top-6 right-6 z-50 pointer-events-auto">
+            <div className="bg-[#111111]/80 backdrop-blur-xl border border-white/10 p-1 flex items-center gap-2 rounded-2xl w-64 focus-within:border-[#00f2ff]/40 transition-all">
+                <Search size={16} className="ml-3 text-white/20" />
+                <input 
+                  value={searchQuery}
+                  onChange={e => setSearchQuery(e.target.value)}
+                  placeholder="PROBE_LATTICE_ID..." 
+                  className="bg-transparent border-none outline-none text-[11px] text-[#00f2ff] font-bold uppercase w-full p-2.5 placeholder:text-white/5"
+                />
+            </div>
         </div>
 
-        {error ? (
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-red-500 z-40 bg-black/80">
-            <AlertTriangle size={48} className="mb-4 animate-bounce" />
-            <div className="text-[10px] font-black uppercase tracking-[0.3em]">{error}</div>
-            <button onClick={fetchGraph} className="mt-4 px-6 py-2 border border-red-500 text-red-500 text-[9px] font-black uppercase">Retry_Uplink</button>
-          </div>
-        ) : (
-          <ForceGraph2D
+        <ForceGraph2D
             ref={graphRef}
             graphData={filteredData}
             width={dimensions.width}
             height={dimensions.height}
-            backgroundColor="#05070a"
+            backgroundColor="#0a0a0a"
             nodeColor={getNodeColor}
-            nodeRelSize={5}
-            linkColor={() => "rgba(181, 166, 66, 0.03)"}
+            nodeRelSize={7}
+            linkColor={() => "rgba(0, 242, 255, 0.05)"}
             linkDirectionalParticles={1}
-            linkDirectionalParticleSpeed={0.003}
-            linkDirectionalParticleWidth={2}
-            linkDirectionalParticleColor={() => "#b5a642"}
-            d3AlphaDecay={0.02}
-            d3VelocityDecay={0.3}
+            linkDirectionalParticleSpeed={0.005}
+            linkDirectionalParticleWidth={1.5}
+            linkDirectionalParticleColor={() => COLORS.CYAN}
             onNodeClick={(node) => {
               setSelectedNode(node);
-              graphRef.current.centerAt(node.x, node.y, 1000);
-              graphRef.current.zoom(3, 1000);
+              graphRef.current.centerAt(node.x, node.y, 800);
+              graphRef.current.zoom(4, 800);
             }}
             nodeCanvasObject={(node, ctx, globalScale) => {
               const label = node.id;
               const fontSize = 14 / globalScale;
-              const size = 6 / globalScale + 2;
+              const size = 6 / globalScale + 3;
               
+              // Draw Outer Glow
+              ctx.beginPath();
+              ctx.arc(node.x, node.y, size + 1, 0, 2 * Math.PI, false);
+              ctx.fillStyle = `${getNodeColor(node)}33`;
+              ctx.fill();
+
               // Draw Node Core
               ctx.beginPath();
               ctx.arc(node.x, node.y, size, 0, 2 * Math.PI, false);
               ctx.fillStyle = getNodeColor(node);
               ctx.fill();
 
-              // Selection Ring
               if (selectedNode?.id === node.id) {
                 ctx.beginPath();
-                ctx.arc(node.x, node.y, size + 2, 0, 2 * Math.PI, false);
+                ctx.arc(node.x, node.y, size + 3, 0, 2 * Math.PI, false);
                 ctx.strokeStyle = "#ffffff";
                 ctx.lineWidth = 1;
                 ctx.stroke();
               }
 
-              // Labels - Only high zoom
-              if (globalScale > 2.5) {
-                ctx.font = `${fontSize}px "JetBrains Mono", monospace`;
+              // Labels at High Zoom
+              if (globalScale > 3) {
+                ctx.font = `bold ${fontSize}px "Inter", sans-serif`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                ctx.fillStyle = 'rgba(255,255,255,0.8)';
-                ctx.fillText(label, node.x, node.y + size + 8);
+                ctx.fillStyle = '#ffffff';
+                ctx.fillText(label, node.x, node.y + size + 10);
               }
             }}
           />
-        )}
       </div>
 
       {/* --- RIGHT: NEURAL INSPECTOR --- */}
-      <aside className="w-96 bg-[#0c0e12]/90 backdrop-blur-xl border-l border-[#b5a642]/20 flex flex-col p-8 shadow-2xl relative">
-        <div className="flex items-center gap-4 mb-10 border-b border-[#b5a642]/20 pb-6">
-          <Fingerprint className="text-[#b5a642]" size={28} />
+      <aside className="w-[420px] bg-[#0a0a0a] border border-white/5 rounded-3xl flex flex-col p-8 shadow-2xl relative shrink-0">
+        <div className="flex items-center gap-4 mb-10 border-b border-white/5 pb-8">
+          <div className="w-12 h-12 rounded-2xl bg-[#00f2ff]/10 flex items-center justify-center border border-[#00f2ff]/20 shadow-[0_0_20px_rgba(0,242,255,0.1)]">
+            <Fingerprint className="text-[#00f2ff]" size={24} />
+          </div>
           <div>
             <h3 className="text-sm font-black text-white uppercase tracking-[0.2em]">Neural_Inspector</h3>
-            <span className="text-[8px] text-white/30 uppercase font-bold tracking-widest">Lattice_Sovereignty_Audit</span>
+            <span className="text-[9px] text-[#ff80bf] uppercase font-bold tracking-widest">Sovereign_Audit_Link</span>
           </div>
         </div>
 
@@ -260,66 +266,64 @@ export default function NeuralLattice() {
           {selectedNode ? (
             <motion.div 
               key={selectedNode.id}
-              initial={{ opacity: 0, x: 20 }} 
-              animate={{ opacity: 1, x: 0 }} 
-              exit={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}
               className="space-y-10 overflow-y-auto pr-2 scrollbar-hide flex-1"
             >
               <section>
                 <div className="flex items-center gap-2 mb-2">
-                   <Layers size={12} className="text-[#b5a642]" />
-                   <h4 className="text-[9px] text-[#b5a642] font-black uppercase tracking-[0.2em]">Entity_ID</h4>
+                   <Binary size={14} className="text-[#ff80bf]" />
+                   <h4 className="text-[10px] text-[#ff80bf] font-black uppercase tracking-[0.2em]">Node_Identity</h4>
                 </div>
-                <div className="text-2xl font-black text-white leading-none break-all uppercase tracking-tighter italic">
+                <div className="text-2xl font-black text-white leading-tight break-all uppercase tracking-tighter italic selection:bg-white selection:text-black">
                   {selectedNode.id}
                 </div>
               </section>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white/5 border border-white/10 p-4 rounded-sm">
-                  <span className="text-[7px] font-black text-white/20 uppercase block mb-1">Classification</span>
-                  <span className="text-[10px] font-black text-[#00f2ff] uppercase">{selectedNode.category}</span>
+                <div className="bg-white/5 border border-white/10 p-5 rounded-2xl">
+                  <span className="text-[8px] font-black text-white/30 uppercase block mb-1 tracking-widest">Classification</span>
+                  <span className="text-[11px] font-black text-[#00f2ff] uppercase">{selectedNode.category}</span>
                 </div>
-                <div className="bg-white/5 border border-white/10 p-4 rounded-sm">
-                  <span className="text-[7px] font-black text-white/20 uppercase block mb-1">Sector_Clearance</span>
-                  <span className="text-[10px] font-black text-[#b5a642] uppercase">{selectedNode.sector}</span>
+                <div className="bg-white/5 border border-white/10 p-5 rounded-2xl">
+                  <span className="text-[8px] font-black text-white/30 uppercase block mb-1 tracking-widest">Sector_Access</span>
+                  <span className="text-[11px] font-black text-[#ff80bf] uppercase">{selectedNode.sector}</span>
                 </div>
               </div>
 
-              <section className="bg-black/50 border border-white/5 p-6 rounded-sm relative group">
-                <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-100 transition-opacity">
-                   <Activity size={14} className="text-[#b5a642]" />
+              <section className="bg-black/50 border border-white/5 p-6 rounded-2xl relative group">
+                <div className="absolute top-4 right-4 p-2 opacity-10 group-hover:opacity-100 transition-opacity">
+                   <Activity size={16} className="text-[#00f2ff]" />
                 </div>
-                <h4 className="text-[9px] text-white/40 font-black uppercase mb-4 flex items-center gap-2 italic">
-                  <Cpu size={10} /> Physical_DNA_Sequence
+                <h4 className="text-[10px] text-white/40 font-black uppercase mb-6 flex items-center gap-2">
+                  <Layers size={14} className="text-[#00f2ff]" /> RELATIONAL_DNA
                 </h4>
-                <div className="space-y-3 font-mono">
+                <div className="space-y-4 font-mono">
                    {Object.entries(selectedNode).map(([key, val]) => {
                      if (["x", "y", "vx", "vy", "index", "id", "category", "sector", "mastery"].includes(key)) return null;
                      return (
-                       <div key={key} className="flex flex-col border-b border-white/5 pb-2">
-                         <span className="text-[7px] text-[#b5a642] uppercase font-bold">{key}</span>
-                         <span className="text-[9px] text-slate-400 break-all">{JSON.stringify(val)}</span>
+                       <div key={key} className="flex flex-col border-b border-white/5 pb-3">
+                         <span className="text-[8px] text-[#00f2ff] uppercase font-black tracking-widest mb-1">{key}</span>
+                         <span className="text-[11px] text-slate-400 break-all leading-relaxed">{JSON.stringify(val)}</span>
                        </div>
                      );
                    })}
                 </div>
               </section>
 
-              <div className="pt-6 border-t border-white/5">
+              <div className="pt-6">
                  <button 
                   onClick={() => setSelectedNode(null)}
-                  className="w-full py-3 bg-white/5 border border-white/10 text-[9px] font-black uppercase text-white/40 hover:text-white hover:bg-[#ff3e3e]/10 hover:border-[#ff3e3e]/50 transition-all"
+                  className="w-full py-4 bg-white/5 border border-white/10 text-[10px] font-black uppercase tracking-[0.2em] text-white/30 hover:text-white hover:bg-red-500/20 hover:border-red-500/50 rounded-xl transition-all"
                  >
-                   Terminate_Probe
+                   De-link_Neural_Probe
                  </button>
               </div>
             </motion.div>
           ) : (
             <div className="flex-1 flex flex-col items-center justify-center text-center opacity-10">
-              <Zap size={64} className="mb-6" />
-              <p className="text-xs font-black uppercase tracking-[0.4em] leading-loose">
-                Awaiting_Neural_Selection<br/>Initialize_Lattice_Probe
+              <Zap size={64} className="mb-6 text-[#00f2ff]" />
+              <p className="text-[10px] font-black uppercase tracking-[0.5em] leading-loose text-[#00f2ff]">
+                Awaiting_Lattice_Probe<br/>Select_Neural_Coordinate
               </p>
             </div>
           )}

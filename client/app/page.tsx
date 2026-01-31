@@ -1,19 +1,18 @@
 /**
- * REALM FORGE: TITAN COMMAND DECK v30.0
+ * REALM FORGE: TITAN COMMAND CHASSIS v31.0
+ * STYLE: CAFFEINE-NEON / HIGH-VISIBILITY
  * ARCHITECT: LEAD SWARM ENGINEER
- * STATUS: PRODUCTION READY - INDUSTRIAL OVERHAUL
- * PATH: F:\RealmForge\client\app\page.tsx
+ * PATH: F:\RealmForge_PROD\client\app\page.tsx
  */
-
-// @ts-nocheck
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  LayoutDashboard, Code2, Share2, Crosshair, Settings, Radio, 
-  Power, Mic, MicOff, ShieldCheck, Activity, Terminal, 
-  Users, Zap, ChevronRight, Binary
+  LayoutGrid, Code2, Share2, Wrench, Settings, 
+  Power, Mic, MicOff, ShieldCheck, Activity, 
+  Terminal, User, Zap, Github, ChevronLeft, 
+  ChevronRight, MessageSquare, Send, Binary
 } from "lucide-react";
 import axios from "axios";
 
@@ -23,63 +22,52 @@ import ArtifactStudio from "@/components/chambers/ArtifactStudio";
 import NeuralLattice from "@/components/chambers/NeuralLattice";
 import ArsenalManager from "@/components/chambers/ArsenalManager";
 
-// --- 13 CANONICAL SECTORS ---
-const SECTORS = [
-  "software_engineering", "cyber_security", "data_intelligence", 
-  "devops_infrastructure", "financial_ops", "legal_compliance", 
-  "research_development", "executive_board", "marketing_pr", 
-  "human_capital", "quality_assurance", "facility_management", 
-  "general_engineering"
-];
-
 export default function TitanForgeHUD() {
-  // --- NAVIGATION & CONNECTION ---
-  const [activeChamber, setActiveChamber] = useState("war_room");
+  // --- 1. SYSTEM NAVIGATION & LAYOUT ---
+  const [activeTab, setActiveTab] = useState("war_room");
+  const [isAssistantOpen, setIsAssistantOpen] = useState(true);
   const [status, setStatus] = useState("OFFLINE");
   const [mounted, setMounted] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+  
+  // --- 2. CONFIGURATION ---
   const [config, setConfig] = useState({ 
     url: "http://localhost:8000", 
     key: "sk-realm-god-mode-888", 
     open: false 
   });
 
-  // --- TITAN-INDUSTRIAL TELEMETRY ---
-  const [vitals, setVitals] = useState({ cpu: 0, ram: 0, lattice_nodes: 13472, active_sector: "Architect" });
-  const [activeDept, setActiveDept] = useState("Architect");
+  // --- 3. TELEMETRY & CHAT STATE ---
+  const [vitals, setVitals] = useState({ cpu: 0, ram: 0, nodes: 13472, sector: "Architect" });
   const [activeAgent, setActiveAgent] = useState("ForgeMaster");
-  const [meetingParticipants, setMeetingParticipants] = useState(["ForgeMaster"]);
-  const [handoffHistory, setHandoffHistory] = useState([]);
-  const [diagnosticLines, setDiagnosticLines] = useState([
-    `[${new Date().toLocaleTimeString()}] RE-INIT: Mastermind Online.`,
-    `[${new Date().toLocaleTimeString()}] LATTICE: 13,472 Nodes Synchronized.`
+  const [chatInput, setChatInput] = useState("");
+  const [assistantLogs, setAssistantLogs] = useState([
+    { id: 1, role: 'assistant', text: "Ready for deployment, Architect. I have access to the full 180-tool arsenal. How shall we begin?" }
   ]);
-  const [isProcessing, setIsProcessing] = useState(false);
+  
+  const [globalLogs, setGlobalLogs] = useState([{
+    id: 'init', type: 'system', agent: 'CORE', 
+    content: "### [TITAN_OS_v31.0] UPLINK_STABLE.\nFleet aligned to high-visibility neon parameters.",
+    timestamp: 'INIT'
+  }]);
 
-  // --- SENSORY REFS ---
+  // --- 4. SENSORY & COMMUNICATIONS ---
   const audioQueue = useRef([]);
   const isAudioPlaying = useRef(false);
   const audioCtx = useRef(null);
   const [audioUnlocked, setAudioUnlocked] = useState(false);
   const ws = useRef(null);
-  const mediaRecorder = useRef(null);
-  const audioChunks = useRef([]);
   const [isListening, setIsListening] = useState(false);
 
-  const [globalLogs, setGlobalLogs] = useState([{
-    id: 'init', type: 'system', agent: 'CORE', 
-    content: "### [REALM_FORGE_v30.0] TITAN_HUD_NOMINAL.\nFleet aligned. Standing by for Industrial Directives.",
-    timestamp: 'INIT'
-  }]);
-
-  // --- SENSORY HANDSHAKE ---
+  // --- SENSORY ACTIVATION ---
   const unlockAudio = async () => {
+    if (typeof window === 'undefined') return;
     try {
       const AudioContextClass = window.AudioContext || window.webkitAudioContext;
       if (!audioCtx.current) audioCtx.current = new AudioContextClass();
       if (audioCtx.current.state === 'suspended') await audioCtx.current.resume();
       setAudioUnlocked(true);
-      setDiagnosticLines(p => [...p.slice(-49), `[SENSES] Neural vocal link synchronized.`]);
-    } catch (err) { console.error("Sensory Fault:", err); }
+    } catch (err) { console.error("Audio Fault", err); }
   };
 
   const playNextAudio = async () => {
@@ -104,22 +92,21 @@ export default function TitanForgeHUD() {
   const executeDirective = useCallback(async (text: string) => {
     if (!text || isProcessing) return;
     setIsProcessing(true);
-    setGlobalLogs(p => [...p, { id: Date.now(), type: 'user', agent: 'ARCHITECT', content: text, timestamp: new Date().toLocaleTimeString() }]);
 
-    const url = localStorage.getItem("RF_URL") || config.url;
-    const key = localStorage.getItem("RF_KEY") || config.key;
+    const url = typeof window !== 'undefined' ? (localStorage.getItem("RF_URL") || config.url) : config.url;
+    const key = typeof window !== 'undefined' ? (localStorage.getItem("RF_KEY") || config.key) : config.key;
 
     try {
-      await axios.post(`${url.replace(/\/$/, "")}/api/v1/mission`, { task: text }, { 
-        headers: { "X-API-Key": key, "ngrok-skip-browser-warning": "69420" } 
-      });
+      await axios.post(`${url.replace(/\/$/, "")}/api/v1/mission`, 
+        { task: text }, 
+        { headers: { "X-API-Key": key, "ngrok-skip-browser-warning": "69420" } }
+      );
     } catch (err) {
-      setDiagnosticLines(p => [...p.slice(-49), `[FAULT] Mission Crash: Gateway Link Severed.`]);
       setIsProcessing(false);
     }
   }, [config.url, config.key, isProcessing]);
 
-  // --- WEBSOCKET нервная система (NERVOUS SYSTEM) ---
+  // --- COMMUNICATIONS (WEBSOCKET) ---
   const connectToSwarm = useCallback((url) => {
     if (typeof window === 'undefined' || !url) return;
     if (ws.current) ws.current.close();
@@ -132,20 +119,10 @@ export default function TitanForgeHUD() {
     socket.onopen = () => setStatus("NOMINAL");
     socket.onmessage = (e) => {
       const data = JSON.parse(e.data);
-      
-      if (data.vitals) setVitals(data.vitals);
-      
+      if (data.vitals) setVitals(p => ({ ...p, ...data.vitals }));
       if (data.type === "node_update") {
-        setActiveDept(data.dept);
         setActiveAgent(data.agent);
-        if (data.handoffs) setHandoffHistory(data.handoffs);
-        if (data.meeting_participants) setMeetingParticipants(data.meeting_participants);
       }
-
-      if (data.type === "diagnostic") {
-        setDiagnosticLines(p => [...p.slice(-49), data.text]);
-      }
-
       if (data.type === "audio_chunk") {
         setGlobalLogs(p => [...p, { id: Date.now(), type: 'ai', agent: data.agent, content: data.text, timestamp: new Date().toLocaleTimeString() }]);
         if (data.audio_base64 && audioUnlocked) {
@@ -153,7 +130,6 @@ export default function TitanForgeHUD() {
           if (!isAudioPlaying.current) playNextAudio();
         }
       }
-
       if (data.type === "mission_complete") setIsProcessing(false);
     };
     socket.onclose = () => setStatus("OFFLINE");
@@ -161,168 +137,183 @@ export default function TitanForgeHUD() {
 
   useEffect(() => {
     setMounted(true);
-    const savedUrl = localStorage.getItem("RF_URL") || config.url;
-    const savedKey = localStorage.getItem("RF_KEY") || config.key;
-    setConfig(c => ({ ...c, url: savedUrl, key: savedKey }));
-    connectToSwarm(savedUrl);
+    if (typeof window !== 'undefined') {
+      const savedUrl = localStorage.getItem("RF_URL") || config.url;
+      const savedKey = localStorage.getItem("RF_KEY") || config.key;
+      setConfig(c => ({ ...c, url: savedUrl, key: savedKey }));
+      connectToSwarm(savedUrl);
+    }
   }, [connectToSwarm]);
 
   if (!mounted) return null;
 
   return (
-    <div className="flex h-screen bg-[#05070a] text-slate-300 font-mono overflow-hidden">
+    <div className="flex h-screen w-screen bg-[#050505] text-slate-200 overflow-hidden font-sans">
       
-      {/* 1. SECTOR SIDEBAR */}
-      <aside className="w-80 border-r border-[#b5a642]/20 bg-[#080a0c] flex flex-col shrink-0 z-50">
-        <div className="p-6 border-b border-white/5 bg-black/20">
-          <div className="flex items-center gap-3 mb-8">
-            <div className={`w-3 h-3 rounded-sm ${status === "NOMINAL" ? "bg-[#b5a642] shadow-[0_0_15px_#b5a642] animate-pulse" : "bg-red-500"}`} />
-            <h1 className="text-xl font-black text-white italic tracking-tighter uppercase leading-none">Realm_Forge <span className="text-[10px] not-italic font-normal text-white/30 block">Industrial OS v30.0</span></h1>
-          </div>
-          
-          <button 
-            onMouseDown={() => { if(!audioCtx.current) unlockAudio(); setIsListening(true); }} 
-            onMouseUp={() => setIsListening(false)}
-            className={`w-full py-4 border transition-all flex items-center justify-center gap-3 ${isListening ? "bg-[#ff3e3e]/10 border-[#ff3e3e] text-[#ff3e3e]" : "bg-[#b5a642]/5 border-[#b5a642]/30 text-[#b5a642] hover:bg-[#b5a642]/10"}`}
-          >
-            {isListening ? <Radio size={18} className="animate-spin" /> : <Mic size={18}/>}
-            <span className="text-[10px] font-black uppercase tracking-[0.2em]">{isListening ? "Transmitting..." : "Voice Command"}</span>
-          </button>
-        </div>
-
-        <nav className="flex-1 py-2 overflow-y-auto scrollbar-hide">
-          <div className="px-6 py-2 text-[9px] uppercase font-black text-white/20 tracking-[0.2em]">Operational_Chambers</div>
-          {[
-            { id: "war_room", label: "War Room", icon: <LayoutDashboard size={18}/> },
-            { id: "artifact_studio", label: "Artifact Studio", icon: <Code2 size={18}/> },
-            { id: "neural_lattice", label: "Neural Lattice", icon: <Share2 size={18}/> },
-            { id: "arsenal", label: "Master Arsenal", icon: <Crosshair size={18}/> }
-          ].map(ch => (
-            <button key={ch.id} onClick={() => setActiveChamber(ch.id)} className={`w-full flex items-center gap-4 px-8 py-4 text-[11px] font-black uppercase tracking-widest transition-all ${activeChamber === ch.id ? "text-[#b5a642] bg-[#b5a642]/10 border-r-4 border-[#b5a642]" : "text-gray-500 hover:text-white hover:bg-white/5"}`}>
-              {ch.icon} {ch.label}
-            </button>
-          ))}
-
-          <div className="mt-8 px-6 py-2 text-[9px] uppercase font-black text-white/20 tracking-[0.2em]">Sector_Activity</div>
-          <div className="px-6 grid grid-cols-4 gap-1 opacity-40">
-            {SECTORS.map(s => (
-              <div key={s} className={`aspect-square border border-white/10 flex items-center justify-center ${vitals.active_sector === s ? "bg-[#b5a642] animate-pulse" : "bg-white/5"}`}>
-                <Activity size={10} />
-              </div>
-            ))}
-          </div>
+      {/* COLUMN 1: MINIMAL NAV RAIL (CYAN ACCENTS) */}
+      <aside className="w-[72px] bg-[#0a0a0a] border-r border-white/5 flex flex-col items-center py-8 gap-10 shrink-0 z-[100]">
+        <motion.div whileHover={{ scale: 1.1 }} className="w-10 h-10 bg-[#00f2ff] rounded-xl flex items-center justify-center text-black shadow-[0_0_20px_rgba(0,242,255,0.3)]">
+          <Binary size={24} />
+        </motion.div>
+        
+        <nav className="flex flex-col gap-6">
+          <NavIcon active={activeTab === "war_room"} onClick={() => setActiveTab("war_room")} icon={<LayoutGrid size={22}/>} label="WAR ROOM" />
+          <NavIcon active={activeTab === "artifact_studio"} onClick={() => setActiveTab("artifact_studio")} icon={<Code2 size={22}/>} label="STUDIO" />
+          <NavIcon active={activeTab === "neural_lattice"} onClick={() => setActiveTab("neural_lattice")} icon={<Share2 size={22}/>} label="LATTICE" />
+          <NavIcon active={activeTab === "arsenal"} onClick={() => setActiveTab("arsenal")} icon={<Wrench size={22}/>} label="ARSENAL" />
         </nav>
 
-        <div className="p-6 border-t border-white/5 bg-black/40">
-          <button onClick={() => setConfig({...config, open: true})} className="w-full py-2 border border-white/10 text-[9px] font-black uppercase text-white/40 hover:text-white flex items-center justify-center gap-2 transition-all">
-            <Settings size={12}/> Calibrate Neural Link
-          </button>
+        <div className="mt-auto flex flex-col gap-6 pb-4">
+           <NavIcon active={false} onClick={() => setConfig({...config, open: true})} icon={<Settings size={22}/>} label="CONFIG" />
+           <button onClick={() => window.location.reload()} className="w-10 h-10 flex items-center justify-center rounded-xl text-white/20 hover:text-red-500 hover:bg-red-500/10 transition-all">
+             <Power size={20} />
+           </button>
         </div>
       </aside>
 
-      {/* 2. MAIN HUD AREA */}
-      <main className="flex-1 flex flex-col relative bg-[#05070a] border-r border-white/5">
-        
-        {/* HEADER: ROUND TABLE & VITALS */}
-        <header className="h-20 bg-[#080a0c]/80 backdrop-blur-xl border-b border-[#b5a642]/10 flex items-center px-10 justify-between z-40">
-          <div className="flex gap-10 items-center">
-            <div className="flex -space-x-3">
-              {meetingParticipants.map((p, i) => (
-                <div key={i} className="w-10 h-10 rounded-full bg-black border-2 border-[#b5a642] flex items-center justify-center text-[10px] font-black text-[#b5a642] shadow-[0_0_15px_rgba(181,166,66,0.2)]">
-                  {p.slice(0, 2).toUpperCase()}
-                </div>
-              ))}
-              <div className="w-10 h-10 rounded-full bg-[#b5a642]/10 border-2 border-[#b5a642]/30 flex items-center justify-center text-[12px] text-[#b5a642] hover:bg-[#b5a642] hover:text-black cursor-pointer transition-all">+</div>
-            </div>
-            <div className="h-8 w-px bg-white/10" />
-            <div className="font-mono">
-              <span className="text-white/20 text-[9px] block uppercase tracking-widest">Active_Commander</span>
-              <span className="text-white font-black text-sm uppercase tracking-tighter italic">{activeAgent}</span>
-            </div>
-          </div>
-
-          <div className="flex gap-8 text-[10px] font-black uppercase tracking-widest">
-            <div className="text-right">
-              <span className="text-white/20 block">Lattice_Nodes</span>
-              <span className="text-[#00f2ff]">{vitals.lattice_nodes.toLocaleString()}</span>
-            </div>
-            <div className="text-right">
-              <span className="text-white/20 block">System_Load</span>
-              <span className="text-[#ff3e3e]">{vitals.cpu}% CPU</span>
-            </div>
-            <button type="button" onClick={() => window.location.reload()} title="Reload" aria-label="Reload page" className="w-10 h-10 rounded bg-white/5 flex items-center justify-center hover:bg-[#ff3e3e]/20 text-white/40 hover:text-[#ff3e3e] transition-all border border-white/5">
-              <Power size={18}/>
-            </button>
-          </div>
+      {/* COLUMN 2: THE PRIMARY WORKSPACE (CENTER CANVAS) */}
+      <main className="flex-1 flex flex-col min-w-0 bg-[#080808] relative">
+        <header className="h-14 border-b border-white/5 flex items-center px-8 justify-between bg-[#0a0a0a]/50 backdrop-blur-md">
+           <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2">
+                <div className={`w-2 h-2 rounded-full ${status === "NOMINAL" ? "bg-[#00f2ff] shadow-[0_0_10px_#00f2ff]" : "bg-red-500"}`} />
+                <span className="text-[10px] font-black tracking-[0.2em] uppercase text-white/50">Lattice_{status}</span>
+              </div>
+              <div className="h-4 w-px bg-white/10" />
+              <div className="text-[10px] font-black tracking-[0.2em] uppercase text-[#ff80bf]">Active: {activeAgent}</div>
+           </div>
+           
+           <div className="flex items-center gap-6 text-[10px] font-bold text-white/30 uppercase tracking-widest">
+             <div className="flex items-center gap-2"><Activity size={12}/> Load: <span className="text-white">{vitals.cpu}%</span></div>
+             <div className="flex items-center gap-2"><Binary size={12}/> Nodes: <span className="text-white">{vitals.nodes}</span></div>
+             <button onClick={() => setIsAssistantOpen(!isAssistantOpen)} className={`p-2 rounded-lg transition-all ${isAssistantOpen ? "bg-[#00f2ff]/10 text-[#00f2ff]" : "hover:bg-white/5"}`}>
+               <MessageSquare size={18} />
+             </button>
+           </div>
         </header>
 
-        {/* CHAMBER VIEWPORT */}
-        <div className="flex-1 relative overflow-hidden">
+        <div className="flex-1 p-6 relative">
           <AnimatePresence mode="wait">
-            {activeChamber === "war_room" && (
-              <motion.div key="war" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="h-full">
-                <WarRoom 
-                  logs={globalLogs} 
-                  activeDept={activeDept} 
-                  activeAgent={activeAgent} 
-                  isProcessing={isProcessing} 
-                  onSend={executeDirective} 
-                  unlockAudio={unlockAudio}
-                  audioUnlocked={audioUnlocked}
-                />
-              </motion.div>
-            )}
-            {activeChamber === "artifact_studio" && <ArtifactStudio />}
-            {activeChamber === "neural_lattice" && <NeuralLattice />}
-            {activeChamber === "arsenal" && <ArsenalManager />}
+            <motion.div 
+              key={activeTab} 
+              initial={{ opacity: 0, y: 10 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="h-full w-full"
+            >
+              {activeTab === "war_room" && (
+                <WarRoom logs={globalLogs} isProcessing={isProcessing} onSend={executeDirective} audioUnlocked={audioUnlocked} unlockAudio={unlockAudio} />
+              )}
+              {activeTab === "artifact_studio" && <ArtifactStudio />}
+              {activeTab === "neural_lattice" && <NeuralLattice />}
+              {activeTab === "arsenal" && <ArsenalManager />}
+            </motion.div>
           </AnimatePresence>
-        </div>
-
-        {/* 3. DIAGNOSTIC FROSTED HUD (THE SHOW-STOPPER) */}
-        <div className="absolute bottom-6 right-6 w-96 glass-panel rounded-lg overflow-hidden border border-[#b5a642]/20 shadow-2xl z-50">
-          <div className="p-3 bg-[#b5a642]/10 border-b border-[#b5a642]/20 flex items-center justify-between">
-            <div className="flex items-center gap-2 text-[9px] font-black uppercase text-[#b5a642] tracking-widest">
-              <Terminal size={12} /> System_Diagnostics
-            </div>
-            <div className="flex gap-1">
-              <div className="w-2 h-2 rounded-full bg-[#ff3e3e]/40" />
-              <div className="w-2 h-2 rounded-full bg-[#b5a642]/40" />
-            </div>
-          </div>
-          <div className="p-4 h-48 overflow-y-auto font-mono text-[10px] space-y-1 bg-black/40 text-[#b5a642]/80">
-             {diagnosticLines.map((line, i) => (
-               <div key={i} className="flex gap-2">
-                 <span className="text-white/20 select-none">[{i.toString().padStart(2, '0')}]</span>
-                 <span>{line}</span>
-               </div>
-             ))}
-             {/* FIXED: Wrapped the literal arrows in strings to satisfy Turbopack build */}
-             {isProcessing && <div className="animate-pulse text-[#00f2ff]">{" >>> Processing_Industrial_Directive..."}</div>}
-          </div>
         </div>
       </main>
 
-      {/* CALIBRATION OVERLAY */}
+      {/* COLUMN 3: THE INTELLIGENT ASSISTANT (RIGHT SIDEBAR) */}
+      <AnimatePresence>
+        {isAssistantOpen && (
+          <motion.aside 
+            initial={{ width: 0, opacity: 0 }}
+            animate={{ width: 420, opacity: 1 }}
+            exit={{ width: 0, opacity: 0 }}
+            className="bg-[#0a0a0a] border-l border-white/5 flex flex-col shrink-0 overflow-hidden relative"
+          >
+            {/* OAUTH SECTION */}
+            <div className="p-6 border-b border-white/5 bg-[#00f2ff]/5">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-[#00f2ff]">Sovereign Context</h3>
+                <ShieldCheck size={16} className="text-[#ff80bf]" />
+              </div>
+              <button className="w-full py-3 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center gap-3 hover:bg-[#00f2ff]/10 hover:border-[#00f2ff]/30 transition-all group">
+                <Github size={18} className="group-hover:text-[#00f2ff]" />
+                <span className="text-[10px] font-black uppercase tracking-widest group-hover:text-[#00f2ff]">OAuth: Sign in to Repository</span>
+              </button>
+            </div>
+
+            {/* CHAT LOGS */}
+            <div className="flex-1 overflow-y-auto p-6 space-y-6 scrollbar-hide">
+              {assistantLogs.map(log => (
+                <div key={log.id} className="flex flex-col gap-2">
+                   <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded bg-[#ff80bf]/20 flex items-center justify-center">
+                        <User size={12} className="text-[#ff80bf]" />
+                      </div>
+                      <span className="text-[9px] font-black text-white/30 uppercase">Mastermind</span>
+                   </div>
+                   <div className="p-4 bg-white/5 rounded-2xl text-[13px] leading-relaxed text-slate-300 border border-white/5 font-mono">
+                     {log.text}
+                   </div>
+                </div>
+              ))}
+              {isProcessing && (
+                <div className="flex items-center gap-2 animate-pulse px-2">
+                  <Activity size={10} className="text-[#00f2ff]" />
+                  <span className="text-[8px] font-black uppercase text-[#00f2ff]">Analyzing_Lattice_Telemetry...</span>
+                </div>
+              )}
+            </div>
+
+            {/* INPUT PORT */}
+            <div className="p-6 border-t border-white/5 bg-black/20">
+              <div className="relative">
+                <textarea 
+                  value={chatInput}
+                  onChange={(e) => setChatInput(e.target.value)}
+                  placeholder="Inquire with ForgeMaster..."
+                  className="w-full bg-black border border-white/10 rounded-2xl p-4 pr-12 text-sm font-medium outline-none focus:border-[#ff80bf]/50 h-32 resize-none transition-all"
+                />
+                <button 
+                  onClick={() => { if(chatInput) { setAssistantLogs(p => [...p, { id: Date.now(), role: 'user', text: chatInput }]); setChatInput(""); } }}
+                  className="absolute bottom-4 right-4 p-2 bg-[#ff80bf] text-black rounded-lg hover:bg-white transition-all shadow-[0_0_20px_rgba(255,128,191,0.3)]"
+                >
+                  <Send size={18} fill="currentColor"/>
+                </button>
+              </div>
+            </div>
+          </motion.aside>
+        )}
+      </AnimatePresence>
+
+      {/* CALIBRATION MODAL */}
       <AnimatePresence>
         {config.open && (
-          <div className="fixed inset-0 bg-[#05070a]/95 flex items-center justify-center z-[9999] backdrop-blur-xl">
-            <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="bg-[#0c0e12] border-2 border-[#b5a642]/50 p-10 w-full max-w-lg shadow-[0_0_100px_rgba(181,166,66,0.1)]">
-               <h2 className="text-3xl font-black text-white mb-8 uppercase italic border-b-4 border-[#b5a642] inline-block tracking-tighter">Calibration</h2>
-               <div className="space-y-6 font-mono">
-                  <div className="space-y-1">
-                    <label htmlFor="config-url" className="text-[9px] uppercase font-black text-white/40 tracking-widest">Node_Endpoint_URL</label>
-                    <input id="config-url" value={config.url} onChange={e => setConfig({...config, url: e.target.value})} className="w-full bg-black border border-white/10 p-4 text-sm font-bold text-[#b5a642] outline-none focus:border-[#b5a642]" placeholder="https://..." />
+          <div className="fixed inset-0 bg-black/90 backdrop-blur-2xl flex items-center justify-center z-[1000]">
+            <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="bg-[#111111] border border-[#00f2ff]/30 p-12 rounded-3xl w-full max-w-xl">
+               <h2 className="text-3xl font-black text-white mb-10 uppercase italic border-b-4 border-[#00f2ff] inline-block tracking-tighter">Calibration</h2>
+               <div className="space-y-8 font-mono">
+                  <div className="space-y-2">
+                    <label className="text-[10px] uppercase font-black text-[#00f2ff] tracking-widest">Gateway_URL</label>
+                    <input value={config.url} onChange={e => setConfig({...config, url: e.target.value})} className="w-full bg-black border border-white/10 p-5 rounded-xl text-[#00f2ff] outline-none" />
                   </div>
-                  <div className="space-y-1">
-                    <label htmlFor="config-key" className="text-[9px] uppercase font-black text-white/40 tracking-widest">God_Mode_Signature</label>
-                    <input id="config-key" type="password" value={config.key} onChange={e => setConfig({...config, key: e.target.value})} className="w-full bg-black border border-white/10 p-4 text-sm font-bold text-[#b5a642] outline-none focus:border-[#b5a642]" placeholder="Signing key" />
+                  <div className="space-y-2">
+                    <label className="text-[10px] uppercase font-black text-[#ff80bf] tracking-widest">God_Signature</label>
+                    <input type="password" value={config.key} onChange={e => setConfig({...config, key: e.target.value})} className="w-full bg-black border border-white/10 p-5 rounded-xl text-[#ff80bf] outline-none" />
                   </div>
-                  <button onClick={() => { localStorage.setItem("RF_URL", config.url); localStorage.setItem("RF_KEY", config.key); setConfig({...config, open: false}); window.location.reload(); }} className="w-full py-4 bg-[#b5a642] text-black font-black uppercase text-sm hover:bg-white transition-all mt-4">Suture Swarm Link</button>
+                  <button onClick={() => { localStorage.setItem("RF_URL", config.url); localStorage.setItem("RF_KEY", config.key); setConfig({...config, open: false}); window.location.reload(); }} className="w-full py-6 bg-[#00f2ff] text-black font-black uppercase text-lg rounded-2xl hover:bg-white transition-all">Suture Swarm Link</button>
                </div>
             </motion.div>
           </div>
         )}
       </AnimatePresence>
     </div>
+  );
+}
+
+// Sub-component for Nav Icons
+function NavIcon({ icon, active, onClick, label }) {
+  return (
+    <button 
+      onClick={onClick}
+      className={`w-12 h-12 flex items-center justify-center rounded-2xl transition-all relative group ${active ? "bg-[#ff80bf]/10 text-[#ff80bf] shadow-[0_0_15px_rgba(255,128,191,0.1)]" : "text-white/20 hover:text-white hover:bg-white/5"}`}
+    >
+      {icon}
+      <span className="absolute left-20 bg-[#ff80bf] text-black px-2 py-1 text-[9px] font-black uppercase rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none tracking-widest z-[200]">
+        {label}
+      </span>
+    </button>
   );
 }

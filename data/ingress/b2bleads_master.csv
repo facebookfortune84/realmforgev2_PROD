@@ -1,0 +1,180 @@
+company_name,industry,subsector,website,primary_geo,size_segment,priority_tier
+Mayo Clinic,Healthcare,Hospital System,https://www.mayoclinic.org,USA,Enterprise,1
+Cleveland Clinic,Healthcare,Hospital System,https://my.clevelandclinic.org,USA,Enterprise,1
+Kaiser Permanente,Healthcare,Hospital System,https://healthy.kaiserpermanente.org,USA,Enterprise,1
+Johns Hopkins Medicine,Healthcare,Hospital System,https://www.hopkinsmedicine.org,USA,Enterprise,1
+Mass General Brigham,Healthcare,Hospital System,https://www.massgeneralbrigham.org,USA,Enterprise,1
+HCA Healthcare,Healthcare,Hospital System,https://hcahealthcare.com,USA,Enterprise,1
+Ascension Health,Healthcare,Hospital System,https://ascension.org,USA,Enterprise,1
+Tenet Healthcare,Healthcare,Hospital System,https://www.tenethealth.com,USA,Enterprise,1
+Providence Health,Healthcare,Hospital System,https://www.providence.org,USA,Enterprise,1
+CommonSpirit Health,Healthcare,Hospital System,https://www.commonspirit.org,USA,Enterprise,1
+UnitedHealth Group,Healthcare,Insurance,https://www.unitedhealthgroup.com,USA,Enterprise,1
+Anthem Elevance,Healthcare,Insurance,https://www.elevancehealth.com,USA,Enterprise,1
+Aetna,Healthcare,Insurance,https://www.aetna.com,USA,Enterprise,1
+Cigna,Healthcare,Insurance,https://www.cigna.com,USA,Enterprise,1
+Humana,Healthcare,Insurance,https://www.humana.com,USA,Enterprise,1
+Blue Cross Blue Shield,Healthcare,Insurance,https://www.bcbs.com,USA,Enterprise,1
+Centene,Healthcare,Insurance,https://www.centene.com,USA,Enterprise,1
+Molina Healthcare,Healthcare,Insurance,https://www.molinahealthcare.com,USA,Enterprise,1
+Oscar Health,Healthcare,Insurance,https://www.hioscar.com,USA,MidMarket,2
+Clover Health,Healthcare,Insurance,https://www.cloverhealth.com,USA,MidMarket,2
+Change Healthcare,Healthcare,RCM,https://www.changehealthcare.com,USA,Enterprise,1
+R1 RCM,Healthcare,RCM,https://www.r1rcm.com,USA,Enterprise,1
+Epic Systems,Healthcare,EHR,https://www.epic.com,USA,Enterprise,1
+Cerner Oracle Health,Healthcare,EHR,https://www.oracle.com/industries/health,USA,Enterprise,1
+Athenahealth,Healthcare,EHR,https://www.athenahealth.com,USA,Enterprise,1
+NextGen Healthcare,Healthcare,EHR,https://www.nextgen.com,USA,MidMarket,2
+Allscripts Altera,Healthcare,EHR,https://www.alterahealth.com,USA,Enterprise,1
+eClinicalWorks,Healthcare,EHR,https://www.eclinicalworks.com,USA,MidMarket,2
+Practice Fusion,Healthcare,EHR,https://www.practicefusion.com,USA,MidMarket,2
+Greenway Health,Healthcare,EHR,https://www.greenwayhealth.com,USA,MidMarket,2
+Pfizer,Healthcare,Pharma,https://www.pfizer.com,Global,Enterprise,1
+Moderna,Healthcare,Pharma,https://www.modernatx.com,Global,Enterprise,1
+Johnson & Johnson,Healthcare,Pharma,https://www.jnj.com,Global,Enterprise,1
+Merck,Healthcare,Pharma,https://www.merck.com,Global,Enterprise,1
+Novartis,Healthcare,Pharma,https://www.novartis.com,Global,Enterprise,1
+Roche,Healthcare,Pharma,https://www.roche.com,Global,Enterprise,1
+GSK,Healthcare,Pharma,https://www.gsk.com,Global,Enterprise,1
+Sanofi,Healthcare,Pharma,https://www.sanofi.com,Global,Enterprise,1
+Amgen,Healthcare,Pharma,https://www.amgen.com,Global,Enterprise,1
+AbbVie,Healthcare,Pharma,https://www.abbvie.com,Global,Enterprise,1
+IQVIA,Healthcare,CRO,https://www.iqvia.com,Global,Enterprise,1
+Labcorp Drug Development,Healthcare,CRO,https://drugdevelopment.labcorp.com,Global,Enterprise,1
+Parexel,Healthcare,CRO,https://www.parexel.com,Global,Enterprise,1
+Syneos Health,Healthcare,CRO,https://www.syneoshealth.com,Global,Enterprise,1
+ICON plc,Healthcare,CRO,https://www.iconplc.com,Global,Enterprise,1
+PPD Thermo Fisher,Healthcare,CRO,https://www.ppd.com,Global,Enterprise,1
+Charles River Labs,Healthcare,CRO,https://www.criver.com,Global,Enterprise,1
+Medpace,Healthcare,CRO,https://www.medpace.com,Global,Enterprise,1
+WCG Clinical,Healthcare,CRO,https://www.wcgclinical.com,Global,Enterprise,1
+Teladoc Health,Healthcare,Telehealth,https://www.teladochealth.com,USA,Enterprise,1
+Amwell,Healthcare,Telehealth,https://business.amwell.com,USA,Enterprise,1
+Doctor on Demand,Healthcare,Telehealth,https://www.includedhealth.com,USA,MidMarket,2
+MDLive,Healthcare,Telehealth,https://www.mdlive.com,USA,MidMarket,2
+Zocdoc,Healthcare,Telehealth,https://www.zocdoc.com,USA,MidMarket,2
+Babylon Health,Healthcare,Telehealth,https://www.babylonhealth.com,UK,MidMarket,2
+Omada Health,Healthcare,Digital Health,https://www.omadahealth.com,USA,MidMarket,2
+Livongo,Healthcare,Digital Health,https://www.teladochealth.com,USA,Enterprise,1
+Hims & Hers,Healthcare,Digital Health,https://www.forhims.com,USA,MidMarket,2
+Ro Health,Healthcare,Digital Health,https://www.ro.co,USA,MidMarket,2
+JPMorgan Chase,Finance,Banking,https://www.jpmorganchase.com,USA,Enterprise,1
+Bank of America,Finance,Banking,https://www.bankofamerica.com,USA,Enterprise,1
+Wells Fargo,Finance,Banking,https://www.wellsfargo.com,USA,Enterprise,1
+Citigroup,Finance,Banking,https://www.citi.com,USA,Enterprise,1
+U.S. Bank,Finance,Banking,https://www.usbank.com,USA,Enterprise,1
+PNC Financial,Finance,Banking,https://www.pnc.com,USA,Enterprise,1
+Capital One,Finance,Banking,https://www.capitalone.com,USA,Enterprise,1
+Truist,Finance,Banking,https://www.truist.com,USA,Enterprise,1
+TD Bank,Finance,Banking,https://www.td.com/us/en/personal-banking,USA,Enterprise,1
+Fifth Third Bank,Finance,Banking,https://www.53.com,USA,Enterprise,1
+Navy Federal Credit Union,Finance,Credit Union,https://www.navyfederal.org,USA,Enterprise,1
+Alliant Credit Union,Finance,Credit Union,https://www.alliantcreditunion.org,USA,MidMarket,2
+PenFed Credit Union,Finance,Credit Union,https://www.penfed.org,USA,Enterprise,1
+State Employees Credit Union,Finance,Credit Union,https://www.ncsecu.org,USA,Enterprise,1
+Mountain Valley Bank,Finance,Regional Bank,https://www.mountainvalleybank.com,USA,SmallBusiness,3
+Huntington Bank,Finance,Banking,https://www.huntington.com,USA,Enterprise,1
+KeyBank,Finance,Banking,https://www.key.com,USA,Enterprise,1
+Regions Bank,Finance,Banking,https://www.regions.com,USA,Enterprise,1
+Citizens Bank,Finance,Banking,https://www.citizensbank.com,USA,Enterprise,1
+Stripe,Finance,Fintech,https://stripe.com,Global,Enterprise,1
+Square,Finance,Fintech,https://squareup.com,Global,Enterprise,1
+PayPal,Finance,Fintech,https://www.paypal.com,Global,Enterprise,1
+Adyen,Finance,Fintech,https://www.adyen.com,Global,Enterprise,1
+Checkout.com,Finance,Fintech,https://www.checkout.com,Global,Enterprise,1
+Braintree,Finance,Fintech,https://www.braintreepayments.com,Global,Enterprise,1
+Klarna,Finance,Fintech,https://www.klarna.com,Global,Enterprise,1
+Affirm,Finance,Fintech,https://www.affirm.com,USA,Enterprise,1
+Brex,Finance,Fintech,https://www.brex.com,USA,MidMarket,2
+Ramp,Finance,Fintech,https://www.ramp.com,USA,MidMarket,2
+BlackRock,Finance,Asset Management,https://www.blackrock.com,Global,Enterprise,1
+Vanguard,Finance,Asset Management,https://investor.vanguard.com,Global,Enterprise,1
+Fidelity,Finance,Asset Management,https://www.fidelity.com,Global,Enterprise,1
+Charles Schwab,Finance,Asset Management,https://www.schwab.com,USA,Enterprise,1
+T. Rowe Price,Finance,Asset Management,https://www.troweprice.com,USA,Enterprise,1
+State Street,Finance,Asset Management,https://www.statestreet.com,Global,Enterprise,1
+Invesco,Finance,Asset Management,https://www.invesco.com,Global,Enterprise,1
+Franklin Templeton,Finance,Asset Management,https://www.franklintempleton.com,Global,Enterprise,1
+Robinhood,Finance,Trading,https://www.robinhood.com,USA,MidMarket,2
+E*TRADE,Finance,Trading,https://us.etrade.com,USA,Enterprise,1
+Prudential,Finance,Insurance,https://www.prudential.com,USA,Enterprise,1
+MetLife,Finance,Insurance,https://www.metlife.com,USA,Enterprise,1
+New York Life,Finance,Insurance,https://www.newyorklife.com,USA,Enterprise,1
+Nationwide,Finance,Insurance,https://www.nationwide.com,USA,Enterprise,1
+Travelers,Finance,Insurance,https://www.travelers.com,USA,Enterprise,1
+Allstate,Finance,Insurance,https://www.allstate.com,USA,Enterprise,1
+Progressive,Finance,Insurance,https://www.progressive.com,USA,Enterprise,1
+American Express,Finance,Payments,https://www.americanexpress.com,Global,Enterprise,1
+Visa,Finance,Payments,https://www.visa.com,Global,Enterprise,1
+Mastercard,Finance,Payments,https://www.mastercard.com,Global,Enterprise,1
+Rockwell Automation,Automation,Industrial,https://www.rockwellautomation.com,Global,Enterprise,1
+Siemens Digital Industries,Automation,Industrial,https://www.siemens.com/digital-industries,Global,Enterprise,1
+Schneider Electric,Automation,Industrial,https://www.se.com,Global,Enterprise,1
+ABB,Automation,Industrial,https://global.abb,Global,Enterprise,1
+Mitsubishi Electric,Automation,Industrial,https://www.mitsubishielectric.com,Global,Enterprise,1
+Honeywell,Automation,Industrial,https://www.honeywell.com,Global,Enterprise,1
+Emerson,Automation,Industrial,https://www.emerson.com,Global,Enterprise,1
+Bosch Rexroth,Automation,Industrial,https://www.boschrexroth.com,Global,Enterprise,1
+Fanuc,Automation,Robotics,https://www.fanucamerica.com,Global,Enterprise,1
+Yaskawa Electric,Automation,Robotics,https://www.yaskawa.com,Global,Enterprise,1
+Amazon Robotics,Automation,Robotics,https://robotics.aboutamazon.com,USA,Enterprise,1
+GreyOrange,Automation,Robotics,https://www.greyorange.com,Global,MidMarket,2
+Ocado Technology,Automation,Robotics,https://www.ocadogroup.com,UK,Enterprise,1
+AutoStore,Automation,Robotics,https://www.autostoresystem.com,Global,Enterprise,1
+Locus Robotics,Automation,Robotics,https://www.locusrobotics.com,USA,MidMarket,2
+Geek+,Automation,Robotics,https://www.geekplus.com,Global,Enterprise,1
+6 River Systems,Automation,Robotics,https://6river.com,USA,MidMarket,2
+Fetch Robotics,Automation,Robotics,https://www.zebra.com,USA,Enterprise,1
+Boston Dynamics,Automation,Robotics,https://www.bostondynamics.com,USA,Enterprise,1
+Universal Robots,Automation,Robotics,https://www.universal-robots.com,Global,Enterprise,1
+SAP,Technology,Enterprise Software,https://www.sap.com,Global,Enterprise,1
+Oracle,Technology,Enterprise Software,https://www.oracle.com,Global,Enterprise,1
+Infor,Technology,Enterprise Software,https://www.infor.com,Global,Enterprise,1
+Coupa,Technology,Procurement,https://www.coupa.com,Global,Enterprise,1
+Kinaxis,Technology,Supply Chain,https://www.kinaxis.com,Global,Enterprise,1
+Blue Yonder,Technology,Supply Chain,https://blueyonder.com,Global,Enterprise,1
+Manhattan Associates,Technology,Supply Chain,https://www.manh.com,Global,Enterprise,1
+PTC,Technology,Industrial Software,https://www.ptc.com,Global,Enterprise,1
+Dassault Systèmes,Technology,Industrial Software,https://www.3ds.com,Global,Enterprise,1
+Amazon,Commerce,Ecommerce,https://www.amazon.com,Global,Enterprise,1
+Walmart,Commerce,Retail,https://www.walmart.com,Global,Enterprise,1
+Target,Commerce,Retail,https://www.target.com,USA,Enterprise,1
+Costco,Commerce,Retail,https://www.costco.com,Global,Enterprise,1
+Best Buy,Commerce,Retail,https://www.bestbuy.com,USA,Enterprise,1
+Home Depot,Commerce,Retail,https://www.homedepot.com,USA,Enterprise,1
+Lowe's,Commerce,Retail,https://www.lowes.com,USA,Enterprise,1
+Kroger,Commerce,Retail,https://www.kroger.com,USA,Enterprise,1
+Shopify,Commerce,Ecommerce,https://www.shopify.com,Global,Enterprise,1
+eBay,Commerce,Ecommerce,https://www.ebay.com,Global,Enterprise,1
+FedEx,Logistics,Parcel,https://www.fedex.com,Global,Enterprise,1
+UPS,Logistics,Parcel,https://www.ups.com,Global,Enterprise,1
+DHL,Logistics,Parcel,https://www.dhl.com,Global,Enterprise,1
+USPS,Logistics,Parcel,https://www.usps.com,USA,Enterprise,1
+XPO Logistics,Logistics,Freight,https://www.xpo.com,Global,Enterprise,1
+C.H. Robinson,Logistics,Freight,https://www.chrobinson.com,Global,Enterprise,1
+Schneider National,Logistics,Freight,https://schneider.com,USA,Enterprise,1
+J.B. Hunt,Logistics,Freight,https://www.jbhunt.com,USA,Enterprise,1
+Maersk,Logistics,Shipping,https://www.maersk.com,Global,Enterprise,1
+Flexport,Logistics,Freight Forwarding,https://www.flexport.com,Global,Enterprise,1
+IRS,Government,Federal Agency,https://www.irs.gov,USA,Enterprise,1
+SSA,Government,Federal Agency,https://www.ssa.gov,USA,Enterprise,1
+CMS,Government,Federal Agency,https://www.cms.gov,USA,Enterprise,1
+HHS,Government,Federal Agency,https://www.hhs.gov,USA,Enterprise,1
+VA,Government,Federal Agency,https://www.va.gov,USA,Enterprise,1
+SBA,Government,Federal Agency,https://www.sba.gov,USA,Enterprise,1
+DOL,Government,Federal Agency,https://www.dol.gov,USA,Enterprise,1
+Department of Education,Government,Federal Agency,https://www.ed.gov,USA,Enterprise,1
+EPA,Government,Federal Agency,https://www.epa.gov,USA,Enterprise,1
+CFPB,Government,Federal Agency,https://www.consumerfinance.gov,USA,Enterprise,1
+Harvard University,Education,University,https://www.harvard.edu,USA,Enterprise,1
+MIT,Education,University,https://www.mit.edu,USA,Enterprise,1
+Stanford University,Education,University,https://www.stanford.edu,USA,Enterprise,1
+UC Berkeley,Education,University,https://www.berkeley.edu,USA,Enterprise,1
+Johns Hopkins University,Education,University,https://www.jhu.edu,USA,Enterprise,1
+University of Michigan,Education,University,https://umich.edu,USA,Enterprise,1
+University of Texas Austin,Education,University,https://www.utexas.edu,USA,Enterprise,1
+University of Washington,Education,University,https://www.washington.edu,USA,Enterprise,1
+UPMC,Healthcare,Hospital System,https://www.upmc.com,USA,Enterprise,1
+Duke University,Education,University,https://duke.edu,USA,Enterprise,1
+McKinsey & Company,Professional Services,Consulting,https://www.mckinsey.com,Global,Enterprise,1
+Boston Consulting Group,Professional Services,Consulting,https://www.bcg.com,Global,Enterprise,1

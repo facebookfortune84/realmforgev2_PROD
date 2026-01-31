@@ -1,0 +1,39 @@
+{
+  "curriculum": [
+    {
+      "topic": "Python Standard Library",
+      "tool": "python",
+      "url": "https://docs.python.org/3/library/index.html"
+    },
+    {
+      "topic": "Market Intelligence",
+      "tool": "yfinance",
+      "url": "https://pypi.org/project/yfinance/"
+    },
+    {
+      "topic": "Browser Automation",
+      "tool": "playwright",
+      "url": "https://playwright.dev/python/docs/intro"
+    },
+    {
+      "topic": "Data Analysis",
+      "tool": "pandas",
+      "url": "https://pandas.pydata.org/docs/user_guide/10min.html"
+    },
+    {
+      "topic": "Graph Memory",
+      "tool": "networkx",
+      "url": "https://networkx.org/documentation/stable/tutorial.html"
+    },
+    {
+      "topic": "Database Ops",
+      "tool": "sqlite3",
+      "url": "https://docs.python.org/3/library/sqlite3.html"
+    },
+    {
+      "topic": "Terminal Security",
+      "tool": "subprocess",
+      "url": "https://docs.python.org/3/library/subprocess.html"
+    }
+  ]
+}
