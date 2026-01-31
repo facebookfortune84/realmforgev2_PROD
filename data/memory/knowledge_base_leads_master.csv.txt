@@ -1,0 +1,1 @@
+The leads master file contains a list of leads with various attributes such as company name, industry, subsector, website, primary geo, size segment, and priority tier. Key concepts include: Leads, Company_Name, Industry, Subsector, Website, Primary_Geo, Size_Segment, and Priority_Tier.

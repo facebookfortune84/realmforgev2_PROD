@@ -1,0 +1,1 @@
+The market sample file contains a list of data points with various attributes such as A, B, C, and D. Key concepts include: Market_Sample, Data_Points, and Attributes.

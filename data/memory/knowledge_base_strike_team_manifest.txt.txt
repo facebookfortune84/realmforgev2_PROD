@@ -1,0 +1,1 @@
+The strike team manifest file contains a list of team members with various attributes such as Data Intelligence Operative, Market Research Specialist, and Copywriting Architect. Key concepts include: Strike_Team, Team_Members, and Attributes.

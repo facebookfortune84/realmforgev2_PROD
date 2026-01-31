@@ -1,0 +1,1 @@
+The funding allocation table shows the distribution of funds across different categories, including marketing, hiring, tech infrastructure, and working capital. The table provides a detailed breakdown of the funding allocation for each category. Key concepts include: Funding_Allocation, Marketing, Hiring, Tech_Infrastructure, and Working_Capital.

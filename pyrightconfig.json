@@ -1,0 +1,8 @@
+{
+  "include": ["src", "realm_core.py", "server.py"],
+  "extraPaths": ["."],
+  "typeCheckingMode": "off",
+  "reportMissingImports": "none",
+  "reportGeneralTypeIssues": "none",
+  "reportOptionalSubscript": "none"
+}

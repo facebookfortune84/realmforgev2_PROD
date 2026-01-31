@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * REALM FORGE: TITAN-INDUSTRIAL DESIGN SYSTEM v2.0
+ * PALETTE: Forge Gold, Kinetic Cyan, Cyber Red
+ */
+
+:root {
+  --forge-gold: #b5a642;
+  --forge-gold-dim: rgba(181, 166, 66, 0.2);
+  --kinetic-cyan: #00f2ff;
+  --cyber-red: #ff3e3e;
+  --titan-slate: #0a0a0b;
+  --industrial-border: rgba(181, 166, 66, 0.15);
+  --glass-bg: rgba(5, 5, 5, 0.8);
+}
+
+@layer base {
+  body {
+    @apply bg-black text-slate-300 antialiased selection:bg-[#b5a642] selection:text-black;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+  }
+}
+
+@layer components {
+  /* SHOW-STOPPER BENTO CARDS */
+  .titan-card {
+    @apply bg-[#0c0e12]/80 border border-[#b5a642]/10 backdrop-blur-xl rounded-sm transition-all duration-500 relative overflow-hidden;
+  }
+
+  .titan-card:hover {
+    @apply border-[#b5a642]/40 shadow-[0_0_30px_rgba(181, 166, 66, 0.05)];
+  }
+
+  /* ACTIVE SECTOR PULSE */
+  .sector-pulse {
+    box-shadow: 0 0 20px rgba(181, 166, 66, 0.1);
+    animation: pulse-industrial 4s infinite ease-in-out;
+  }
+
+  .glow-text-gold {
+    text-shadow: 0 0 10px rgba(181, 166, 66, 0.5);
+  }
+
+  .glow-text-cyan {
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+  }
+
+  /* FROSTED DIAGNOSTIC PANELS */
+  .glass-panel {
+    @apply bg-[#050505]/70 backdrop-blur-lg border border-white/5 shadow-2xl;
+  }
+}
+
+@keyframes pulse-industrial {
+  0%,
+  100% {
+    border-color: rgba(181, 166, 66, 0.2);
+    transform: scale(1);
+  }
+
+  50% {
+    border-color: rgba(181, 166, 66, 0.6);
+    box-shadow: 0 0 40px rgba(181, 166, 66, 0.1);
+    transform: scale(1.01);
+  }
+}
+
+/* CUSTOM SCROLLBAR: INDUSTRIAL MINIMALISM */
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b5a642;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00f2ff;
+}
+
+/* KINETIC SCANLINE OVERLAY */
+.scanline {
+  width: 100%;
+  height: 2px;
+  background: rgba(181, 166, 66, 0.05);
+  opacity: 0.75;
+  position: absolute;
+  bottom: 100%;
+  animation: scanline 8s linear infinite;
+}
+
+@keyframes scanline {
+  0% {
+    bottom: 100%;
+  }
+
+  100% {
+    bottom: 0%;
+  }
+}
