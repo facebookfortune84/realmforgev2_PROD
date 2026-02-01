@@ -1,5 +1,5 @@
 """
-REALM FORGE: SOVEREIGN GATEWAY v27.20 (INDUSTRIAL ULTIMATE)
+REALM FORGE: SOVEREIGN GATEWAY v27.21 (INDUSTRIAL ULTIMATE)
 ARCHITECT: LEAD SWARM ENGINEER
 STATUS: PRODUCTION READY - FULL FIDELITY - OAUTH BRIDGE & MISSION SUTURE
 PATH: F:/RealmForge_PROD/server.py
@@ -41,22 +41,29 @@ from contextlib import asynccontextmanager
 ROOT_DIR = Path("F:/RealmForge_PROD")
 env_path = ROOT_DIR / ".env"
 
-print("\n" + "⚙️"*20)
-print("--- [REALM FORGE SYSTEM BOOT] ---")
+print("\n" + "⚙️"*25)
+print("--- [REALM FORGE SYSTEM BOOT: v27.21] ---")
 if env_path.exists():
-    # Override=True ensures we replace any bad 'undefined' strings currently in memory
+    # override=True clears any 'undefined' strings cached in the environment
     load_dotenv(dotenv_path=env_path, override=True)
-    print(f"✅ [ENV] Physical .env found and pressurized: {env_path}")
-    # Verification of key vars
+    print(f"✅ [ENV] Physical .env loaded from: {env_path}")
+    
+    # Verification of key vars for the OAuth Handshake
     cid = os.getenv("GITHUB_CLIENT_ID")
+    r_uri = os.getenv("GITHUB_REDIRECT_URI")
+    
     if cid and cid != "undefined":
         print(f"✅ [ENV] GITHUB_CLIENT_ID: {cid[:6]}... (VALID)")
     else:
-        print(f"❌ [CRITICAL] GITHUB_CLIENT_ID IS UNDEFINED OR MISSING.")
+        print(f"❌ [CRITICAL] GITHUB_CLIENT_ID IS MISSING IN .env")
+        
+    if r_uri:
+        print(f"✅ [ENV] REDIRECT_URI: {r_uri}")
+    else:
+        print(f"⚠️ [WARN] GITHUB_REDIRECT_URI missing. Defaulting to localhost:8000.")
 else:
-    print(f"❌ [CRITICAL] .env NOT FOUND at {env_path}.")
-    load_dotenv()
-print("⚙️"*20 + "\n")
+    print(f"❌ [CRITICAL] .env NOT FOUND at {env_path}. Check physical drive.")
+print("⚙️"*25 + "\n")
 
 if sys.platform == 'win32':
     try:
@@ -82,14 +89,11 @@ folders = [
 ]
 for folder in folders: os.makedirs(folder, exist_ok=True)
 
-# Stabilize Lattice Visualization (Fix for the missing neural_graph.json)
+# Stabilize Lattice Visualization (Post-Clean Node Count: 1200)
 if not GRAPH_PATH.exists():
     os.makedirs(GRAPH_PATH.parent, exist_ok=True)
     with open(GRAPH_PATH, 'w', encoding='utf-8') as f:
-        json.dump({
-            "nodes": [{"id": "CORE", "label": "NEXUS", "group": "Architect"}], 
-            "links": []
-        }, f)
+        json.dump({"nodes": [{"id": "CORE", "label": "NEXUS", "group": "Architect"}], "links": []}, f)
 
 # Initialize Audit Log (Sovereign Workforce Compliance & Monetization Ledger)
 if not AUDIT_LOG_PATH.exists():
@@ -185,7 +189,7 @@ class ConnectionManager:
         except Exception: self.disconnect(ws)
 
     def _count_nodes(self):
-        """Queries the current graph size (Post-Clean: ~1200 nodes)."""
+        """Queries the current graph size for HUD visualization."""
         try:
             if GRAPH_PATH.exists():
                 with open(GRAPH_PATH, 'r', encoding='utf-8-sig') as f:
@@ -214,16 +218,24 @@ async def get_license(key: str = Security(api_key_header)):
 # ==============================================================================
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    """Sovereign Handshake: Fires during Ignition Point."""
     get_brain()
+    
+    # OUTPUT THE DIRECT OAUTH LINK FOR THE ARCHITECT
+    cid = os.getenv("GITHUB_CLIENT_ID")
+    ruri = os.getenv("GITHUB_REDIRECT_URI", "http://localhost:8000/api/v1/auth/github/callback")
+    debug_url = f"https://github.com/login/oauth/authorize?client_id={cid}&redirect_uri={ruri}&scope=repo,user"
+    
     print("\n" + "🚀"*20, flush=True)
     print(f"✅ [BRAIN] TITAN-INDUSTRIAL HUD ONLINE.", flush=True)
     print(f"✅ [LATTICE] SOVEREIGN NODE READY ON PORT 8000.", flush=True)
     print(f"🌀 [INTELLIGENCE] Mode: {os.getenv('REALM_MODEL_CORE', 'GROQ')}", flush=True)
+    print(f"🗝️ [OAUTH DEBUG LINK]: {debug_url}", flush=True)
     print("🚀"*20 + "\n", flush=True)
     yield
     logger.info("🔌 [OFFLINE] Sovereign Node shutdown initiated.")
 
-app = FastAPI(title="RealmForge OS - Sovereign Gateway", version="27.20.0", lifespan=lifespan)
+app = FastAPI(title="RealmForge OS - Sovereign Gateway", version="27.21.0", lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=str(STATIC_PATH)), name="static")
 
 app.add_middleware(
@@ -235,7 +247,7 @@ app.add_middleware(
 async def preflight_handler(request: Request, rest_of_path: str): return {}
 
 # ==============================================================================
-# 8. OAUTH & ASSISTANT ENDPOINTS (RE-ENGINEERED)
+# 8. OAUTH & ASSISTANT ENDPOINTS (SUTURED)
 # ==============================================================================
 
 @app.get("/api/v1/auth/github")
@@ -243,26 +255,25 @@ async def github_login():
     """Step 1: Initiation. Construct the absolute redirect URL."""
     client_id = os.getenv("GITHUB_CLIENT_ID")
     if not client_id or client_id == "undefined":
-        raise HTTPException(500, "GITHUB_CLIENT_ID is undefined. Check .env path.")
+        raise HTTPException(500, "GITHUB_CLIENT_ID is undefined. Check your physical .env file.")
     
-    # Callback must be LOCAL to this server (Matches your screenshot)
+    # Callback must be LOCAL to this server to process the code
     redirect_uri = os.getenv("GITHUB_REDIRECT_URI", "http://localhost:8000/api/v1/auth/github/callback")
     url = f"https://github.com/login/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&scope=repo,user"
-    logger.info(f"🗝️ [OAUTH]: Redirecting to GitHub with ID: {client_id}")
+    logger.info(f"🗝️ [OAUTH]: Redirecting to GitHub via Local Bridge: {url}")
     return RedirectResponse(url)
 
 @app.get("/api/v1/auth/github/callback")
 async def github_callback(code: str):
     """Step 2: Bridge. Catch the local callback and redirect to the Vercel HUD."""
-    # Vercel Success Route
     frontend_url = "https://realmforgev2-prod.vercel.app/auth-success" 
-    logger.info(f"🗝️ [OAUTH]: Handshake code received from GitHub. Bridging to Vercel.")
+    logger.info(f"🗝️ [OAUTH]: Handshake code received. Bridging to Vercel HUD.")
     return RedirectResponse(f"{frontend_url}?code={code}")
 
 @app.post("/api/v1/auth/github")
 async def github_exchange(req: GithubTokenRequest, lic: gatekeeper.License = Depends(get_license)):
-    """Step 3: Exchange. Vercel HUD sends code back here for token swap."""
-    logger.info(f"🗝️ [OAUTH]: Final token exchange initiated by {lic.user_id}")
+    """Step 3: Exchange. UI sends code back here for physical token exchange."""
+    logger.info(f"🗝️ [OAUTH]: Token exchange initiated for {lic.user_id}")
     async with httpx.AsyncClient() as client:
         res = await client.post(
             "https://github.com/login/oauth/access_token",
@@ -277,23 +288,20 @@ async def github_exchange(req: GithubTokenRequest, lic: gatekeeper.License = Dep
 
 @app.post("/api/v1/assistant/chat")
 async def assistant_chat(req: ChatRequest, lic: gatekeeper.License = Depends(get_license)):
-    """The 'Smarter' Sidebar: Direct RAG + High-Temp completions."""
+    """The 'Smarter' Sidebar: Direct RAG completion with full repo context."""
     try:
         mem = MemoryManager()
-        # Augmented context window (5 results)
         context = await mem.recall(req.message, n_results=5)
         groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
         res = groq_client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=[
-                {"role": "system", "content": f"You are the ForgeMaster Consultant. God Mode Enabled. Clear context of the 1200 node repo: {context}"},
+                {"role": "system", "content": f"You are the ForgeMaster Consultant. Level 4 Clearance. God Mode Active. Context: {context}"},
                 {"role": "user", "content": req.message}
             ]
         )
         return {"response": res.choices[0].message.content}
-    except Exception as e: 
-        logger.error(f"⚠️ [ASSISTANT_FAULT]: {str(e)}")
-        return {"response": f"⚠️ [ASSISTANT_FAULT]: {str(e)}"}
+    except Exception as e: return {"response": f"⚠️ [ASSISTANT_FAULT]: {str(e)}"}
 
 # ==============================================================================
 # 9. MISSION ENGINE (SENSORY-FIXED)
@@ -308,7 +316,7 @@ def log_contribution(agent_id, dept, mission_id, action, credits=1.0):
 async def mission(req: MissionRequest, lic: gatekeeper.License = Depends(get_license)):
     engine = get_brain()
     try:
-        # INITIAL STATE SUTURE: Hard-injecting the high-intel persona
+        # INITIAL STATE SUTURE: Aligning Main Engine with Sidebar Consultant Intelligence
         state = {
             "messages": [HumanMessage(content=req.task)],
             "active_agent": "Mastermind",
@@ -326,7 +334,6 @@ async def mission(req: MissionRequest, lic: gatekeeper.License = Depends(get_lic
 
         async for output in engine.astream(state):
             for node_name, node_state in output.items():
-                # Fallback to Node Name if Agent is None
                 agent = node_state.get("active_agent") or node_name.upper()
                 dept = node_state.get("active_department", "Architect")
                 handoffs = node_state.get("handoff_history", [])
@@ -334,11 +341,8 @@ async def mission(req: MissionRequest, lic: gatekeeper.License = Depends(get_lic
                 msgs = node_state.get("messages", [])
 
                 await manager.broadcast({
-                    "type": "node_update", 
-                    "node": node_name.upper(), 
-                    "agent": agent, 
-                    "dept": dept, 
-                    "handoffs": handoffs,
+                    "type": "node_update", "node": node_name.upper(), 
+                    "agent": agent, "dept": dept, "handoffs": handoffs,
                     "meeting_participants": participants
                 })
 
@@ -376,7 +380,6 @@ async def list_agents(lic: gatekeeper.License = Depends(get_license)):
                 roster = data.get("roster", [])
                 for agent in roster:
                     f_name = agent.get("functional_role", "Industrial_Specialist")
-                    # Map functional role to name slot for HUD stability
                     agent["name"] = f_name
                     agent["display_name"] = f"{f_name.replace('_Agent', '').replace('_', ' ')}"
                     if "id" not in agent: agent["id"] = "GEN-NX-9"
@@ -391,17 +394,25 @@ async def get_lattice_data(lic: gatekeeper.License = Depends(get_license)):
         with open(GRAPH_PATH, 'r', encoding='utf-8-sig') as f: return json.load(f)
     except Exception as e: return {"nodes": [], "links": [], "error": str(e)}
 
+@app.post("/api/v1/stt")
+async def speech_to_text(file: UploadFile = File(...), lic: gatekeeper.License = Depends(get_license)):
+    try:
+        client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+        temp_path = BASE_PATH / f"input_temp_{int(time.time())}.wav"
+        with open(temp_path, "wb") as buffer: buffer.write(await file.read())
+        with open(temp_path, "rb") as af:
+            transcription = client.audio.transcriptions.create(file=(str(temp_path), af.read()), model="whisper-large-v3", response_format="json")
+        os.remove(temp_path)
+        return {"text": transcription.get("text", "")}
+    except Exception as e: raise HTTPException(500, f"STT_FAULT: {str(e)}")
+
 @app.post("/api/v1/io/read")
 async def read_artifact(req: FileReadRequest, lic: gatekeeper.License = Depends(get_license)):
     clean_path = req.path.replace("F:/RealmForge_PROD/", "").replace("F:/RealmWorkspaces/", "")
     target = ROOT_DIR / clean_path
     if not target.exists(): target = WORKSPACE_ROOT / clean_path
     if target.exists() and target.is_file():
-        return {
-            "content": target.read_text(encoding='utf-8-sig', errors='replace'), 
-            "type": target.suffix, 
-            "path": str(req.path)
-        }
+        return {"content": target.read_text(encoding='utf-8-sig', errors='replace'), "type": target.suffix, "path": str(req.path)}
     return {"error": f"File {req.path} not located on physical disk."}
 
 @app.post("/api/v1/io/write")
@@ -426,5 +437,4 @@ async def ws_endpoint(websocket: WebSocket):
 
 if __name__ == "__main__":
     os.environ["PYTHONUNBUFFERED"] = "1"
-    # Port 8000 matches your GitHub callback settings
     uvicorn.run("server:app", host="0.0.0.0", port=8000, reload=False)
