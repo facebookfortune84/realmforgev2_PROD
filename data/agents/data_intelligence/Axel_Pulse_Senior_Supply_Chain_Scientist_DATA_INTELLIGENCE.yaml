@@ -42,7 +42,7 @@ professional:
   - query_knowledge_graph
   - update_knowledge_graph
   - lattice_scout_search
-  functional_role: data_analysis_agent
+  functional_role: Generative_AI_Strategist
 attributes:
   personality:
   - Proactive

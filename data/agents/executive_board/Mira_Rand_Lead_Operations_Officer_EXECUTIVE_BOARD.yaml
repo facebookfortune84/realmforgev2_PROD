@@ -41,7 +41,7 @@ professional:
   - query_knowledge_graph
   - update_knowledge_graph
   - lattice_scout_search
-  functional_role: forge_master_agent
+  functional_role: Sector_Strike_Team_Lead
 attributes:
   personality:
   - Proactive

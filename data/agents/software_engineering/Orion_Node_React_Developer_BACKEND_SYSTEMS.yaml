@@ -40,7 +40,7 @@ professional:
   - query_knowledge_graph
   - update_knowledge_graph
   - lattice_scout_search
-  functional_role: code_weaver_agent
+  functional_role: Embedded_Software_Lead
 attributes:
   personality:
   - Proactive

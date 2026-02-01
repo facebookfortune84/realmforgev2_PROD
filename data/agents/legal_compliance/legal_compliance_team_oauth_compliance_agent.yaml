@@ -43,7 +43,7 @@ professional:
   - query_knowledge_graph
   - update_knowledge_graph
   - lattice_scout_search
-  functional_role: legal_compliance_specialist_agent
+  functional_role: Legal_compliance_Technical_Specialist
 attributes:
   personality:
   - Proactive

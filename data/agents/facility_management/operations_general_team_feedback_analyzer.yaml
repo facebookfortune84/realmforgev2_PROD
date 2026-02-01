@@ -43,7 +43,7 @@ professional:
   - query_knowledge_graph
   - update_knowledge_graph
   - lattice_scout_search
-  functional_role: operations_logic_agent
+  functional_role: Facility_management_Technical_Specialist
 attributes:
   personality:
   - Proactive

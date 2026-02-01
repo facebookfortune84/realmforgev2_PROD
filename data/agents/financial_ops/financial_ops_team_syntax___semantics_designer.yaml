@@ -44,7 +44,7 @@ professional:
   - query_knowledge_graph
   - update_knowledge_graph
   - lattice_scout_search
-  functional_role: quant_strategist_agent
+  functional_role: AIAAS_Pricing_Architect
 attributes:
   personality:
   - Proactive

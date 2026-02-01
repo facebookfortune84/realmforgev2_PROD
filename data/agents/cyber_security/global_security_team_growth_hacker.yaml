@@ -43,7 +43,7 @@ professional:
   - query_knowledge_graph
   - update_knowledge_graph
   - lattice_scout_search
-  functional_role: security_shield_agent
+  functional_role: Product_Security_Architect
 attributes:
   personality:
   - Proactive

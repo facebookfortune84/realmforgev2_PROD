@@ -133,16 +133,23 @@ class ConnectionManager:
         self.active: List[WebSocket] = []
         
     async def connect(self, ws: WebSocket):
+        """Physical link established. Forces a sensory handshake."""
         await ws.accept()
         self.active.append(ws)
-        logger.info(f"🔌 [UPLINK] HUD Connected. nodes_online: {len(self.active)}")
+        # Immediate sync burst to verify the HUD is rendering
+        await self.broadcast({
+            "type": "diagnostic", 
+            "text": "🤝 [HUD_UPLINK]: Neural Sensory Interface Synchronized."
+        })
+        logger.info(f"🔌 [UPLINK] Node connection established. active_nodes: {len(self.active)}")
         
     def disconnect(self, ws: WebSocket):
         if ws in self.active: self.active.remove(ws)
-        logger.info(f"🔌 [DOWNLINK] HUD Disconnected.")
+        logger.info(f"🔌 [DOWNLINK] Node connection severed.")
         
     async def broadcast(self, msg: dict):
-        """Streams multi-agent strikes and vitals to the Caffeine-Neon HUD."""
+        """Hardened broadcast logic. Silently purges dead pipes to prevent server hanging."""
+        # 1. Physical Vitals Injection
         if "vitals" not in msg:
             try:
                 msg["vitals"] = {
@@ -155,12 +162,24 @@ class ConnectionManager:
                 }
             except: pass
         
+        # 2. Stringify once for all clients
         txt = json.dumps(msg, ensure_ascii=False)
-        for ws in self.active:
-            try: await ws.send_text(txt)
-            except: self.disconnect(ws)
+        
+        # 3. Parallel Dispatch (Prevents one slow client from lagging the swarm)
+        if self.active:
+            tasks = []
+            for ws in self.active:
+                tasks.append(self._safe_send(ws, txt))
+            await asyncio.gather(*tasks)
+
+    async def _safe_send(self, ws: WebSocket, text: str):
+        try:
+            await ws.send_text(text)
+        except Exception:
+            self.disconnect(ws)
 
     def _count_nodes(self):
+        """Queries the current graph size for HUD visualization."""
         try:
             if GRAPH_PATH.exists():
                 with open(GRAPH_PATH, 'r', encoding='utf-8-sig') as f:
@@ -168,9 +187,6 @@ class ConnectionManager:
                     return len(data.get('nodes', []))
         except: pass
         return 13472
-
-manager = ConnectionManager()
-api_key_header = APIKeyHeader(name="X-API-Key", auto_error=False)
 
 async def get_license(key: str = Security(api_key_header)):
     """Validates God Mode access or Commercial Credits."""
@@ -335,14 +351,21 @@ async def list_agents(lic: gatekeeper.License = Depends(get_license)):
         if path.exists():
             with open(path, 'r', encoding='utf-8-sig') as f:
                 data = json.load(f)
-                roster = data.get("roster", data.get("agents", []))
-                # Schema Guard: Inject names to prevent HUD crashes
+                roster = data.get("roster", [])
+                
+                # RE-ALIGNMENT: Inject Functional Titles into the HUD 'name' slot
                 for agent in roster:
-                    if "name" not in agent: agent["name"] = agent.get("functional_name", "Unknown_Agent")
-                    if "id" not in agent: agent["id"] = "GEN-UNK"
+                    f_name = agent.get("functional_role", "Industrial_Specialist")
+                    real_name = agent.get("name", "EE_Unknown")
+                    # Display as: "Kernel_Architect (Altair Tyrell)"
+                    agent["display_name"] = f"{f_name.replace('_Agent', '')}"
+                    agent["name"] = agent.get("name", real_name)
+                    if "id" not in agent: agent["id"] = "GEN-NX-9"
+                    
                 return {"roster": roster}
         return {"roster": []}
-    except Exception as e: return {"roster": [], "error": str(e)}
+    except Exception as e:
+        return {"roster": [], "error": str(e)}
 
 @app.get("/api/v1/graph")
 async def get_lattice_data(lic: gatekeeper.License = Depends(get_license)):

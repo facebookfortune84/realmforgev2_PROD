@@ -41,7 +41,7 @@ professional:
   - query_knowledge_graph
   - update_knowledge_graph
   - lattice_scout_search
-  functional_role: general_engineering_specialist_agent
+  functional_role: General_engineering_Technical_Specialist
 attributes:
   personality:
   - Proactive

@@ -44,7 +44,7 @@ professional:
   - query_knowledge_graph
   - update_knowledge_graph
   - lattice_scout_search
-  functional_role: quality_assurance_specialist_agent
+  functional_role: Quality_assurance_Technical_Specialist
 attributes:
   personality:
   - Proactive

@@ -39,7 +39,7 @@ professional:
   - query_knowledge_graph
   - update_knowledge_graph
   - lattice_scout_search
-  functional_role: quant_strategist_agent
+  functional_role: Monetization_Ledger_Auditor
 attributes:
   personality:
   - Proactive

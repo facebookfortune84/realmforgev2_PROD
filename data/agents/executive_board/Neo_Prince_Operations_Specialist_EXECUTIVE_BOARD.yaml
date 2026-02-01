@@ -40,7 +40,7 @@ professional:
   - query_knowledge_graph
   - update_knowledge_graph
   - lattice_scout_search
-  functional_role: forge_master_agent
+  functional_role: Operational_Efficiency_VP
 attributes:
   personality:
   - Proactive

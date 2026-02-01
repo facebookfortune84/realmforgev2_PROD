@@ -40,7 +40,7 @@ professional:
   - query_knowledge_graph
   - update_knowledge_graph
   - lattice_scout_search
-  functional_role: security_shield_agent
+  functional_role: Zero_Trust_Sentinel
 attributes:
   personality:
   - Proactive

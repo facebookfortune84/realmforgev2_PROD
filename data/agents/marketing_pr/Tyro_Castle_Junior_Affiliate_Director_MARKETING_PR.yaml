@@ -41,7 +41,7 @@ professional:
   - query_knowledge_graph
   - update_knowledge_graph
   - lattice_scout_search
-  functional_role: word_smith_agent
+  functional_role: Product_Communication_Designer
 attributes:
   personality:
   - Proactive

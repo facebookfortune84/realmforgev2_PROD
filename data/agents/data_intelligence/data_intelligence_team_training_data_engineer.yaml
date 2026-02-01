@@ -43,7 +43,7 @@ professional:
   - query_knowledge_graph
   - update_knowledge_graph
   - lattice_scout_search
-  functional_role: data_analysis_agent
+  functional_role: RAG_Lattice_Architect
 attributes:
   personality:
   - Proactive
