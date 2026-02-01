@@ -229,7 +229,7 @@ export default function TitanForgeHUD() {
         </motion.div>
         
         <nav className="flex flex-col gap-6">
-          <NavIcon active={activeTab === "war_room"} onClick={() => setActiveTab("war_room"} icon={<LayoutGrid size={22}/>} label="WAR ROOM" />
+          <NavIcon active={activeTab === "war_room"} onClick={() => setActiveTab("war_room")} icon={<LayoutGrid size={22}/>} label="WAR ROOM" />
           <NavIcon active={activeTab === "artifact_studio"} onClick={() => setActiveTab("artifact_studio")} icon={<Code2 size={22}/>} label="STUDIO" />
           <NavIcon active={activeTab === "neural_lattice"} onClick={() => setActiveTab("neural_lattice")} icon={<Share2 size={22}/>} label="LATTICE" />
           <NavIcon active={activeTab === "arsenal"} onClick={() => setActiveTab("arsenal")} icon={<Wrench size={22}/>} label="ARSENAL" />
