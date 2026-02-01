@@ -5,7 +5,6 @@
  * PATH: F:\RealmForge_PROD\client\app\page.tsx
  */
 
-// @ts-nocheck
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
@@ -23,6 +22,14 @@ import WarRoom from "@/components/chambers/WarRoom";
 import ArtifactStudio from "@/components/chambers/ArtifactStudio";
 import NeuralLattice from "@/components/chambers/NeuralLattice";
 import ArsenalManager from "@/components/chambers/ArsenalManager";
+
+// --- TYPES ---
+interface NavIconProps {
+  icon: React.ReactNode;
+  active: boolean;
+  onClick: () => void;
+  label: string;
+}
 
 export default function TitanForgeHUD() {
   // --- 1. SYSTEM NAVIGATION & LAYOUT ---
@@ -44,7 +51,7 @@ export default function TitanForgeHUD() {
   const [activeAgent, setActiveAgent] = useState("ForgeMaster");
   const [handoffs, setHandoffs] = useState([]);
   const [chatInput, setChatInput] = useState("");
-  const [isGitHubLinked, setIsGitHubLinked] = useState(false); // SUTURE: Persistence tracking
+  const [isGitHubLinked, setIsGitHubLinked] = useState(false);
 
   const [assistantLogs, setAssistantLogs] = useState([
     { id: 1, role: 'assistant', text: "Ready for deployment, Architect. I am your Sovereign Consultant, synced with the 1200 node codebase." }
@@ -62,41 +69,59 @@ export default function TitanForgeHUD() {
   }]);
 
   // --- 4. SENSORY & COMMUNICATIONS REFS ---
-  const audioQueue = useRef([]);
+  const audioQueue = useRef<string[]>([]);
   const isAudioPlaying = useRef(false);
-  const audioCtx = useRef(null);
+  const audioCtx = useRef<AudioContext | null>(null);
   const [audioUnlocked, setAudioUnlocked] = useState(false);
-  const ws = useRef(null);
+  const ws = useRef<WebSocket | null>(null);
 
-  // --- 5. SENSORY ACTIVATION ---
+  // --- 5. SENSORY ACTIVATION (FIXED SYNTAX) ---
   const unlockAudio = async () => {
     if (typeof window === 'undefined') return;
     try {
-      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-      if (!audioCtx.current) audioCtx.current = new AudioContextClass();
-      if (audioCtx.current.state === 'suspended') await audioCtx.current.resume();
+      const AudioCtor = window.AudioContext || (window as any).webkitAudioContext;
+      if (!AudioCtor) throw new Error("Web Audio API not supported.");
+      
+      if (!audioCtx.current) {
+        audioCtx.current = new AudioCtor();
+      }
+
+      if (audioCtx.current && audioCtx.current.state === 'suspended') {
+        await audioCtx.current.resume();
+      }
+      
       setAudioUnlocked(true);
       setDiagnosticLines(p => [...p.slice(-49), `[SENSES] Neural vocal link synchronized.`]);
-    } catch (err) { console.error("Audio Fault", err); }
+    } catch (err) { 
+      console.error("Audio Fault", err); 
+    }
   };
 
-  const playNextAudio = async () => {
+  const playNextAudio = useCallback(async () => {
     if (audioQueue.current.length === 0 || !audioUnlocked || !audioCtx.current) {
       isAudioPlaying.current = false;
       return;
     }
     isAudioPlaying.current = true;
     const base64Str = audioQueue.current.shift();
+    if (!base64Str) return;
+
     try {
         const bytes = Uint8Array.from(window.atob(base64Str), c => c.charCodeAt(0));
         const buffer = await audioCtx.current.decodeAudioData(bytes.buffer);
         const source = audioCtx.current.createBufferSource();
         source.buffer = buffer;
         source.connect(audioCtx.current.destination);
-        source.onended = () => { isAudioPlaying.current = false; playNextAudio(); };
+        source.onended = () => { 
+          isAudioPlaying.current = false; 
+          playNextAudio(); 
+        };
         source.start(0);
-    } catch (e) { isAudioPlaying.current = false; playNextAudio(); }
-  };
+    } catch (e) { 
+        isAudioPlaying.current = false; 
+        playNextAudio(); 
+    }
+  }, [audioUnlocked]);
 
   // --- 6. MISSION ENGINE (HARDENED) ---
   const executeDirective = useCallback(async (text: string) => {
@@ -108,22 +133,15 @@ export default function TitanForgeHUD() {
     }]);
 
     setIsProcessing(true);
-
-    const url = typeof window !== 'undefined' ? (localStorage.getItem("RF_URL") || config.url) : config.url;
-    const key = typeof window !== 'undefined' ? (localStorage.getItem("RF_KEY") || config.key) : config.key;
+    const url = localStorage.getItem("RF_URL") || config.url;
+    const key = localStorage.getItem("RF_KEY") || config.key;
 
     try {
       await axios.post(`${url.replace(/\/$/, "")}/api/v1/mission`, 
         { task: text }, 
-        { headers: { 
-            "X-API-Key": key, 
-            "ngrok-skip-browser-warning": "69420",
-            "Content-Type": "application/json"
-          } 
-        }
+        { headers: { "X-API-Key": key, "ngrok-skip-browser-warning": "69420" } }
       );
     } catch (err) {
-      console.error("MISSION_UPLINK_FAIL");
       setDiagnosticLines(p => [...p.slice(-49), `[FAULT]: Strike MSN Uplink Failed.`]);
       setIsProcessing(false);
     }
@@ -136,8 +154,8 @@ export default function TitanForgeHUD() {
     setChatInput("");
     setAssistantLogs(p => [...p, { id: Date.now(), role: 'user', text: msg }]);
 
-    const url = typeof window !== 'undefined' ? (localStorage.getItem("RF_URL") || config.url) : config.url;
-    const key = typeof window !== 'undefined' ? (localStorage.getItem("RF_KEY") || config.key) : config.key;
+    const url = localStorage.getItem("RF_URL") || config.url;
+    const key = localStorage.getItem("RF_KEY") || config.key;
 
     try {
       const res = await axios.post(`${url.replace(/\/$/, "")}/api/v1/assistant/chat`, 
@@ -151,11 +169,11 @@ export default function TitanForgeHUD() {
   };
 
   // --- 8. COMMUNICATIONS (WEBSOCKET NERVOUS SYSTEM) ---
-  const connectToSwarm = useCallback((url) => {
+  const connectToSwarm = useCallback((url: string) => {
     if (typeof window === 'undefined' || !url) return;
     if (ws.current) ws.current.close();
 
-    const base = url.replace("https://", "").replace("http://", "").replace(/\/$/, "");
+    const base = url.replace(/^https?:\/\//, '').replace(/\/$/, '');
     const protocol = url.startsWith("https") ? "wss" : "ws";
     const socket = new WebSocket(`${protocol}://${base}/ws/telemetry`);
     ws.current = socket;
@@ -183,9 +201,9 @@ export default function TitanForgeHUD() {
       if (data.type === "mission_complete") setIsProcessing(false);
     };
     socket.onclose = () => setStatus("OFFLINE");
-  }, [audioUnlocked]);
+  }, [audioUnlocked, playNextAudio]);
 
-  // --- 9. INITIALIZATION & OAUTH CYCLE (v31.5 SUTURE) ---
+  // --- 9. INITIALIZATION & OAUTH SUTURE ---
   useEffect(() => {
     setMounted(true);
     if (typeof window !== 'undefined') {
@@ -194,24 +212,19 @@ export default function TitanForgeHUD() {
       setConfig(c => ({ ...c, url: savedUrl, key: savedKey }));
       connectToSwarm(savedUrl);
 
-      // --- OAUTH HANDSHAKE COMPLETION ---
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get('code');
       if (code) {
         setDiagnosticLines(p => [...p, `[${new Date().toLocaleTimeString()}] 🗝️ [OAUTH]: Code detected. Finalizing handshake...`]);
         axios.post(`${savedUrl.replace(/\/$/, "")}/api/v1/auth/github`, 
           { code: code }, 
-          { headers: { 
-            "X-API-Key": savedKey,
-            "ngrok-skip-browser-warning": "69420"
-          } }
-        ).then(res => {
+          { headers: { "X-API-Key": savedKey, "ngrok-skip-browser-warning": "69420" } }
+        ).then(() => {
           setDiagnosticLines(p => [...p, `[${new Date().toLocaleTimeString()}] ✅ [OAUTH]: Identity sutured. Handshake successful.`]);
-          setIsGitHubLinked(true); // SUTURE: Successful verification
+          setIsGitHubLinked(true);
           window.history.replaceState({}, document.title, window.location.pathname);
-        }).catch(err => {
+        }).catch(() => {
           setDiagnosticLines(p => [...p, `[${new Date().toLocaleTimeString()}] ❌ [OAUTH]: Handshake failure.`]);
-          console.error("OAuth Exchange Fault", err);
         });
       }
     }
@@ -222,7 +235,7 @@ export default function TitanForgeHUD() {
   return (
     <div className="flex h-screen w-screen bg-[#050505] text-slate-200 overflow-hidden font-sans">
       
-      {/* COLUMN 1: NAVIGATION RAIL (CYAN) */}
+      {/* COLUMN 1: NAVIGATION RAIL */}
       <aside className="w-[72px] bg-[#0a0a0a] border-r border-white/5 flex flex-col items-center py-8 gap-10 shrink-0 z-[100]">
         <motion.div whileHover={{ scale: 1.1 }} className="w-10 h-10 bg-[#00f2ff] rounded-xl flex items-center justify-center text-black shadow-[0_0_20px_rgba(0,242,255,0.3)]">
           <Binary size={24} />
@@ -243,7 +256,7 @@ export default function TitanForgeHUD() {
         </div>
       </aside>
 
-      {/* COLUMN 2: PRIMARY WORKSPACE (CANVAS) */}
+      {/* COLUMN 2: PRIMARY WORKSPACE */}
       <main className="flex-1 flex flex-col min-w-0 bg-[#080808] relative">
         <header className="h-14 border-b border-white/5 flex items-center px-8 justify-between bg-[#0a0a0a]/50 backdrop-blur-md">
            <div className="flex items-center gap-6">
@@ -277,7 +290,7 @@ export default function TitanForgeHUD() {
           </AnimatePresence>
         </div>
 
-        {/* 3. DIAGNOSTIC TERMINAL (NEON) */}
+        {/* DIAGNOSTIC TERMINAL */}
         <div className="absolute bottom-6 right-6 w-80 bg-[#0a0a0a]/90 backdrop-blur-xl rounded-2xl overflow-hidden border border-white/5 shadow-2xl z-50">
           <div className="p-3 bg-white/5 border-b border-white/5 flex items-center justify-between">
             <div className="flex items-center gap-2 text-[9px] font-black uppercase text-[#00f2ff] tracking-widest">
@@ -296,7 +309,7 @@ export default function TitanForgeHUD() {
         </div>
       </main>
 
-      {/* COLUMN 3: SOVEREIGN ASSISTANT (RIGHT) */}
+      {/* COLUMN 3: SOVEREIGN ASSISTANT */}
       <AnimatePresence>
         {isAssistantOpen && (
           <motion.aside 
@@ -305,7 +318,7 @@ export default function TitanForgeHUD() {
             exit={{ width: 0, opacity: 0 }}
             className="bg-[#0a0a0a] border-l border-white/5 flex flex-col shrink-0 overflow-hidden relative"
           >
-            {/* GITHUB OAUTH SUTURE (DYNAMIC v31.5) */}
+            {/* GITHUB OAUTH SUTURE */}
             <div className="p-6 border-b border-white/5 bg-[#00f2ff]/5">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-[#00f2ff]">Cloud Suture</h3>
@@ -399,7 +412,7 @@ export default function TitanForgeHUD() {
   );
 }
 
-function NavIcon({ icon, active, onClick, label }) {
+function NavIcon({ icon, active, onClick, label }: NavIconProps) {
   return (
     <button onClick={onClick} className={`w-12 h-12 flex items-center justify-center rounded-2xl transition-all relative group ${active ? "bg-[#00f2ff]/10 text-[#00f2ff] shadow-[0_0_20px_rgba(0,242,255,0.2)]" : "text-white/20 hover:text-white hover:bg-white/5"}`}>
       {icon}
