@@ -1,5 +1,5 @@
 /**
- * REALM FORGE: TITAN COMMAND CHASSIS v31.1
+ * REALM FORGE: TITAN COMMAND CHASSIS v31.2
  * STYLE: CAFFEINE-NEON / HIGH-VISIBILITY / PRODUCTION-HARDENED
  * ARCHITECT: LEAD SWARM ENGINEER
  * PATH: F:\RealmForge_PROD\client\app\page.tsx
@@ -55,7 +55,7 @@ export default function TitanForgeHUD() {
 
   const [globalLogs, setGlobalLogs] = useState([{
     id: 'init', type: 'system', agent: 'CORE', 
-    content: "### [TITAN_OS_v31.1] UPLINK_STABLE.\nFunctional role-mapping active. Use Functional IDs for summoning.",
+    content: "### [TITAN_OS_v31.2] UPLINK_STABLE.\nFunctional role-mapping active. Use Functional IDs for summoning.",
     timestamp: 'INIT'
   }]);
 
@@ -100,7 +100,6 @@ export default function TitanForgeHUD() {
   const executeDirective = useCallback(async (text: string) => {
     if (!text || isProcessing) return;
     
-    // UI PRIORITY: Update log immediately so the Architect sees the command
     setGlobalLogs(p => [...p, { 
         id: Date.now(), type: 'user', agent: 'ARCHITECT', 
         content: text, timestamp: new Date().toLocaleTimeString() 
@@ -162,9 +161,7 @@ export default function TitanForgeHUD() {
     socket.onopen = () => setStatus("NOMINAL");
     socket.onmessage = (e) => {
       const data = JSON.parse(e.data);
-      
       if (data.vitals) setVitals(data.vitals);
-      
       if (data.type === "node_update") {
         setActiveAgent(data.agent);
         if (data.handoffs && data.handoffs.length > 0) {
@@ -173,11 +170,7 @@ export default function TitanForgeHUD() {
             setDiagnosticLines(p => [...p.slice(-49), `🔄 [HANDOFF]: ${h.from} ➔ ${h.to}`]);
         }
       }
-
-      if (data.type === "diagnostic") {
-        setDiagnosticLines(p => [...p.slice(-49), data.text]);
-      }
-
+      if (data.type === "diagnostic") setDiagnosticLines(p => [...p.slice(-49), data.text]);
       if (data.type === "audio_chunk") {
         setGlobalLogs(p => [...p, { id: Date.now(), type: 'ai', agent: data.agent, content: data.text, timestamp: new Date().toLocaleTimeString() }]);
         if (data.audio_base64 && audioUnlocked) {
@@ -185,13 +178,12 @@ export default function TitanForgeHUD() {
           if (!isAudioPlaying.current) playNextAudio();
         }
       }
-
       if (data.type === "mission_complete") setIsProcessing(false);
     };
     socket.onclose = () => setStatus("OFFLINE");
   }, [audioUnlocked]);
 
-  // --- 9. INITIALIZATION ---
+  // --- 9. INITIALIZATION & OAUTH CYCLE ---
   useEffect(() => {
     setMounted(true);
     if (typeof window !== 'undefined') {
@@ -199,6 +191,27 @@ export default function TitanForgeHUD() {
       const savedKey = localStorage.getItem("RF_KEY") || config.key;
       setConfig(c => ({ ...c, url: savedUrl, key: savedKey }));
       connectToSwarm(savedUrl);
+
+      // --- OAUTH HANDSHAKE COMPLETION ---
+      const urlParams = new URLSearchParams(window.location.search);
+      const code = urlParams.get('code');
+      if (code) {
+        setDiagnosticLines(p => [...p, `[${new Date().toLocaleTimeString()}] 🗝️ [OAUTH]: Code detected. Completing handshake...`]);
+        axios.post(`${savedUrl.replace(/\/$/, "")}/api/v1/auth/github`, 
+          { code: code }, 
+          { headers: { 
+            "X-API-Key": savedKey,
+            "ngrok-skip-browser-warning": "69420"
+          } }
+        ).then(res => {
+          setDiagnosticLines(p => [...p, `[${new Date().toLocaleTimeString()}] ✅ [OAUTH]: Identity sutured to swarm.`]);
+          // Purge the code from the URL for security and clean UI
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }).catch(err => {
+          setDiagnosticLines(p => [...p, `[${new Date().toLocaleTimeString()}] ❌ [OAUTH]: Handshake failure.`]);
+          console.error("OAuth Exchange Fault", err);
+        });
+      }
     }
   }, [connectToSwarm]);
 
@@ -304,7 +317,10 @@ export default function TitanForgeHUD() {
                 <ShieldCheck size={16} className="text-[#ff80bf]" />
               </div>
               <button 
-                onClick={() => { window.open(`https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`, '_blank'); }}
+                onClick={() => { 
+                  const target = config.url.replace(/\/$/, "");
+                  window.location.href = `${target}/api/v1/auth/github`; 
+                }}
                 className="w-full py-3 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center gap-3 hover:bg-[#00f2ff]/10 hover:border-[#00f2ff]/30 transition-all group"
               >
                 <Github size={18} className="group-hover:text-[#00f2ff]" />

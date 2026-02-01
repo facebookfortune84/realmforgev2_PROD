@@ -1,5 +1,5 @@
 """
-REALM FORGE: SOVEREIGN GATEWAY v27.21 (INDUSTRIAL ULTIMATE)
+REALM FORGE: SOVEREIGN GATEWAY v27.22 (INDUSTRIAL ULTIMATE)
 ARCHITECT: LEAD SWARM ENGINEER
 STATUS: PRODUCTION READY - FULL FIDELITY - OAUTH BRIDGE & MISSION SUTURE
 PATH: F:/RealmForge_PROD/server.py
@@ -42,7 +42,7 @@ ROOT_DIR = Path("F:/RealmForge_PROD")
 env_path = ROOT_DIR / ".env"
 
 print("\n" + "⚙️"*25)
-print("--- [REALM FORGE SYSTEM BOOT: v27.21] ---")
+print("--- [REALM FORGE SYSTEM BOOT: v27.22] ---")
 if env_path.exists():
     # override=True clears any 'undefined' strings cached in the environment
     load_dotenv(dotenv_path=env_path, override=True)
@@ -235,7 +235,7 @@ async def lifespan(app: FastAPI):
     yield
     logger.info("🔌 [OFFLINE] Sovereign Node shutdown initiated.")
 
-app = FastAPI(title="RealmForge OS - Sovereign Gateway", version="27.21.0", lifespan=lifespan)
+app = FastAPI(title="RealmForge OS - Sovereign Gateway", version="27.22.0", lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=str(STATIC_PATH)), name="static")
 
 app.add_middleware(
@@ -247,7 +247,7 @@ app.add_middleware(
 async def preflight_handler(request: Request, rest_of_path: str): return {}
 
 # ==============================================================================
-# 8. OAUTH & ASSISTANT ENDPOINTS (SUTURED)
+# 8. OAUTH & ASSISTANT ENDPOINTS (RE-ENGINEERED)
 # ==============================================================================
 
 @app.get("/api/v1/auth/github")
@@ -265,9 +265,10 @@ async def github_login():
 
 @app.get("/api/v1/auth/github/callback")
 async def github_callback(code: str):
-    """Step 2: Bridge. Catch the local callback and redirect to the Vercel HUD."""
-    frontend_url = "https://realmforgev2-prod.vercel.app/auth-success" 
-    logger.info(f"🗝️ [OAUTH]: Handshake code received. Bridging to Vercel HUD.")
+    """Step 2: Bridge. Redirect to Root (/) to allow the HUD to catch the code in the query string."""
+    # REPAIR: Redirecting to root to resolve the Vercel 404 on /auth-success
+    frontend_url = "https://realmforgev2-prod.vercel.app/" 
+    logger.info(f"🗝️ [OAUTH]: Handshake code received. Redirecting to Root HUD.")
     return RedirectResponse(f"{frontend_url}?code={code}")
 
 @app.post("/api/v1/auth/github")
