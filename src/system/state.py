@@ -1,7 +1,8 @@
 ﻿"""
-REALM FORGE: SOVEREIGN STATE BEDROCK v18.0
+REALM FORGE: SOVEREIGN STATE BEDROCK v18.1
 ARCHITECT: LEAD SWARM ENGINEER
-STATUS: PRODUCTION READY - UI REDESIGN ALIGNED
+STATUS: PRODUCTION READY - UI REDESIGN ALIGNED - BOM SUTURED
+PATH: F:/RealmForge_PROD/src/system/state.py
 """
 
 import operator
@@ -128,14 +129,14 @@ def get_initial_state() -> RealmForgeState:
             "ram": 0.0, 
             "cpu": 0.0, 
             "latency": 0.0, 
-            "lattice_nodes": 13472,
+            "lattice_nodes": 1200, # ALIGNED: Post-clean node count
             "active_sector": "Architect"
         },
         "diagnostic_stream": [f"[{datetime.now().strftime('%H:%M:%S')}] System pressurized. Mastermind online."],
         "metadata": {
             "session_id": str(uuid.uuid4()),
             "start_time": datetime.now().isoformat(),
-            "version": "18.0.0",
+            "version": "18.1.0",
             "ui_theme": "Titan-Industrial"
         }
     }

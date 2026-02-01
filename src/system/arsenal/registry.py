@@ -1,8 +1,9 @@
-﻿from src.system.arsenal.foundation import *
-"""
-REALM FORGE: MASTER ARSENAL REGISTRY v50.7
+﻿"""
+REALM FORGE: MASTER ARSENAL REGISTRY v50.8
 PURPOSE: Central export hub for all sharded tools and mappings.
+ARCHITECT: LEAD SWARM ENGINEER
 """
+
 import os
 import asyncio
 import ast
@@ -12,9 +13,10 @@ import json
 import re
 import shutil
 import time
+import logging
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Any, Optional
 
 import httpx
 import pandas as pd  # type: ignore[import-untyped]
@@ -22,8 +24,9 @@ import yfinance as yf  # type: ignore[import-untyped]
 from reportlab.lib.pagesizes import letter  # type: ignore[import-untyped]
 from reportlab.pdfgen import canvas  # type: ignore[import-untyped]
 
-from src.system.arsenal.foundation import *  # noqa: F403  # type: ignore[import-untyped]
-from src.system.arsenal.foundation import (  # type: ignore[import-untyped]
+# --- FOUNDATION & SHARDED IMPORTS ---
+from src.system.arsenal.foundation import *  # noqa: F403
+from src.system.arsenal.foundation import (
     DATA_DIR,
     ROOT_DIR,
     STATIC_DIR,
@@ -44,7 +47,9 @@ from src.system.arsenal.research_development import *
 from src.system.arsenal.executive_board import *
 from src.system.arsenal.general_engineering import *
 
-# Explicitly export for the Gateway and Brain
+# ==============================================================================
+# 0. EXPORT REGISTRY
+# ==============================================================================
 __all__ = [
     'ALL_TOOLS_LIST',
     'DEPARTMENT_TOOL_MAP',
@@ -55,9 +60,13 @@ __all__ = [
     'read_file',
     'write_file',
     'update_knowledge_graph',
+    'calculate_file_hash',
+    'get_file_metadata'
 ]
 
-# The Master Arsenal (Physically verified 180 tools)
+# ==============================================================================
+# 1. THE MASTER ARSENAL (PHYSICALLY VERIFIED 180 TOOLS)
+# ==============================================================================
 ALL_TOOLS_LIST = [
     analyze_contract_risk, analyze_http_security_headers, analyze_sentiment_advanced, 
     analyze_seo_tags, analyze_stock_technicals, analyze_virality_score, 
