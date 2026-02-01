@@ -91,6 +91,16 @@ export default function TitanForgeHUD() {
   // --- MISSION ENGINE ---
   const executeDirective = useCallback(async (text: string) => {
     if (!text || isProcessing) return;
+    
+    // 1. PHYSICAL UI UPDATE (Move this to the top)
+    setGlobalLogs(p => [...p, { 
+      id: Date.now(), 
+      type: 'user', 
+      agent: 'ARCHITECT', 
+      content: text, 
+      timestamp: new Date().toLocaleTimeString() 
+    }]);
+
     setIsProcessing(true);
 
     const url = typeof window !== 'undefined' ? (localStorage.getItem("RF_URL") || config.url) : config.url;
@@ -99,9 +109,16 @@ export default function TitanForgeHUD() {
     try {
       await axios.post(`${url.replace(/\/$/, "")}/api/v1/mission`, 
         { task: text }, 
-        { headers: { "X-API-Key": key, "ngrok-skip-browser-warning": "69420" } }
+        { headers: { 
+            "X-API-Key": key, 
+            "ngrok-skip-browser-warning": "69420",
+            "Content-Type": "application/json"
+          } 
+        }
       );
     } catch (err) {
+      console.error("MISSION_UPLINK_FAIL:", err);
+      setGlobalLogs(p => [...p, { id: 'err', type: 'system', agent: 'FAULT', content: "❌ **UPLINK_ERROR**: Check Ngrok Tunnel and Server Logs." }]);
       setIsProcessing(false);
     }
   }, [config.url, config.key, isProcessing]);

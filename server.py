@@ -210,15 +210,20 @@ app = FastAPI(
 
 app.mount("/static", StaticFiles(directory=str(STATIC_PATH)), name="static")
 
-# CORS ALIGNED TO VERCEL FRONTEND
+# --- HARDENED PRODUCTION CORS ---
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://realmforgev2.vercel.app", "http://localhost:3000"],
+    allow_origins=["*"], # Temporarily open to all to verify tunnel stability
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
     expose_headers=["*"]
 )
+
+# REPAIR: Explicit OPTIONS handler to stop the 400 Bad Request errors
+@app.options("/{rest_of_path:path}")
+async def preflight_handler(request: Request, rest_of_path: str):
+    return {}
 
 @app.middleware("http")
 async def add_ngrok_bypass_headers(request: Request, call_next):

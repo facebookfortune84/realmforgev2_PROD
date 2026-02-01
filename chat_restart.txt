@@ -1,33 +1,32 @@
 # ==============================================================================
-# REALM FORGE: SOVEREIGN RECONSTRUCTION RESET KEY v60.4
+# REALM FORGE: SOVEREIGN RECONSTRUCTION RESET KEY v60.5
 # ==============================================================================
 
 [CORE_ARCHITECTURE]
 - Root Folder: F:/RealmForge_PROD (Clean Room Environment)
-- Backend: server.py v27.9 (OAUTH & Assistant Bridges Active)
-- Mastermind: realm_core.py v31.4 (Hash-Aware Truth Protocol / IronClad Node)
-- State: state.py v18.0 (Redundancy Handoffs / Meeting Mode persistence)
-- Arsenal: Sharded Registry v50.8 (180 Tools categorized into 13 Industrial Sectors)
+- Backend: server.py v27.10 (OAUTH Port, Assistant Bridge, and Vitals Stream)
+- Mastermind: realm_core.py v31.3 (Silo-Aware Routing / Redundancy / meeting_participants)
+- State: state.py v18.0 (Bento-Grid specific Telemetry / Handoff History)
+- Arsenal: Master Registry v50.8 (180 Tools sharded into 13 Industrial Sector Files)
 
-[PHYSICAL_LATTICE]
-- Neural Density: 13,472 Nodes (Hash-Fused via Ingestor v2.1)
-- Fleet: 1,112 Specialized Agents (NVIDIA Industrial Silo Mapping)
-- Manual: data/ingress/execution_manual.md (Full 180-tool SOP ingested)
-- Audit: data/workforce_audit.csv (Recording Agentic Work Units for billing)
+[LATTICE_INTEGRITY]
+- Neural Density: 13,472 Nodes (Ingested via Hash-Aware v2.1)
+- Data Anchoring: Absolute Pathing (F:/RealmForge_PROD)
+- Identity standard: functional_role mapping (e.g., code_weaver_agent)
+- Compliance: workforce_audit.csv initialized with industrial headers.
 
 [FRONTEND_HUD]
-- Framework: Next.js 16 (Turbopack) | Target: Vercel Green Build
-- Theme: Caffeine-Neon (Cyan #00f2ff, Bubblegum #ff80bf, Slate Grey)
-- Layout: 3-Column (Disk Explorer | Workspace Canvas | AI Consultant)
+- UI Version: v31.0 (Caffeine-Neon Remaster)
+- Palette: Cyan (#00f2ff), Bubblegum (#ff80bf), Neon Pink (#ff007f), Slate.
+- Layout: 3-Column (Nav Rail | Workspace Canvas | AI Assistant Sidebar).
+- Build Shield: ES6 Template String escaping for ">>>" terminal literals.
 
 [OPERATIONAL_PROTOCOL]
-- Redundancy: Agents HANDOFF to fallback silos on tool failure (No reporting blockages).
-- Integrity: IronClad node verifies physical file hashes against lattice metadata post-strike.
-- Connectivity: Port 8000 (Local) <-> Ngrok Tunnel <-> Vercel Dashboard.
+- Redundancy: Failure of primary tool triggers mandatory HANDOFF to fallback silo.
+- Verification: IronClad node validates physical disk artifacts post-mission.
+- Connectivity: Port 8000 <-> Ngrok <-> Vercel Production URL.
 
-[CURRENT_MISSION_STATE]
-Backend ignition successful. Frontend build successful. Identity sync complete. Ready for 'Operation Gold Mine' (Lead Gen & Pitch Strike).
-
-# ==============================================================================
-# [IGNITION_STATUS]: READY FOR COMMAND.
-# ==============================================================================
+[PENDING_MISSION_BUFFER]
+1. Suture GitHub OAUTH Redirect logic in client/app/page.tsx.
+2. Ingest final 'execution_manual.md' for tool SOP awareness.
+3. Establish 'SalesAgent' for monetization of Lead-Gen strikes.
