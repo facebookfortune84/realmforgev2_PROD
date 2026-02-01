@@ -1,5 +1,5 @@
 /**
- * REALM FORGE: TITAN COMMAND CHASSIS v31.3
+ * REALM FORGE: TITAN COMMAND CHASSIS v31.5
  * STYLE: CAFFEINE-NEON / HIGH-VISIBILITY / PRODUCTION-HARDENED
  * ARCHITECT: LEAD SWARM ENGINEER
  * PATH: F:\RealmForge_PROD\client\app\page.tsx
@@ -14,7 +14,7 @@ import {
   LayoutGrid, Code2, Share2, Wrench, Settings, 
   Power, Mic, MicOff, ShieldCheck, Activity, 
   Terminal, User, Zap, Github, ChevronLeft, 
-  ChevronRight, MessageSquare, Send, Binary
+  ChevronRight, MessageSquare, Send, Binary, CheckCircle2
 } from "lucide-react";
 import axios from "axios";
 
@@ -44,6 +44,8 @@ export default function TitanForgeHUD() {
   const [activeAgent, setActiveAgent] = useState("ForgeMaster");
   const [handoffs, setHandoffs] = useState([]);
   const [chatInput, setChatInput] = useState("");
+  const [isGitHubLinked, setIsGitHubLinked] = useState(false); // SUTURE: Persistence tracking
+
   const [assistantLogs, setAssistantLogs] = useState([
     { id: 1, role: 'assistant', text: "Ready for deployment, Architect. I am your Sovereign Consultant, synced with the 1200 node codebase." }
   ]);
@@ -55,7 +57,7 @@ export default function TitanForgeHUD() {
 
   const [globalLogs, setGlobalLogs] = useState([{
     id: 'init', type: 'system', agent: 'CORE', 
-    content: "### [TITAN_OS_v31.3] UPLINK_STABLE.\nFunctional role-mapping active. Use Functional IDs for summoning.",
+    content: "### [TITAN_OS_v31.5] UPLINK_STABLE.\nFunctional role-mapping active. Use Functional IDs for summoning.",
     timestamp: 'INIT'
   }]);
 
@@ -183,7 +185,7 @@ export default function TitanForgeHUD() {
     socket.onclose = () => setStatus("OFFLINE");
   }, [audioUnlocked]);
 
-  // --- 9. INITIALIZATION & OAUTH SUTURE (REPAIRED) ---
+  // --- 9. INITIALIZATION & OAUTH CYCLE (v31.5 SUTURE) ---
   useEffect(() => {
     setMounted(true);
     if (typeof window !== 'undefined') {
@@ -192,7 +194,7 @@ export default function TitanForgeHUD() {
       setConfig(c => ({ ...c, url: savedUrl, key: savedKey }));
       connectToSwarm(savedUrl);
 
-      // --- DETECT OAUTH REDIRECT ---
+      // --- OAUTH HANDSHAKE COMPLETION ---
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get('code');
       if (code) {
@@ -205,10 +207,11 @@ export default function TitanForgeHUD() {
           } }
         ).then(res => {
           setDiagnosticLines(p => [...p, `[${new Date().toLocaleTimeString()}] ✅ [OAUTH]: Identity sutured. Handshake successful.`]);
-          // Clean the URL to prevent 404s on refresh
+          setIsGitHubLinked(true); // SUTURE: Successful verification
           window.history.replaceState({}, document.title, window.location.pathname);
         }).catch(err => {
-          setDiagnosticLines(p => [...p, `[${new Date().toLocaleTimeString()}] ❌ [OAUTH]: Handshake failure. Check Local Server logs.`]);
+          setDiagnosticLines(p => [...p, `[${new Date().toLocaleTimeString()}] ❌ [OAUTH]: Handshake failure.`]);
+          console.error("OAuth Exchange Fault", err);
         });
       }
     }
@@ -226,7 +229,7 @@ export default function TitanForgeHUD() {
         </motion.div>
         
         <nav className="flex flex-col gap-6">
-          <NavIcon active={activeTab === "war_room"} onClick={() => setActiveTab("war_room")} icon={<LayoutGrid size={22}/>} label="WAR ROOM" />
+          <NavIcon active={activeTab === "war_room"} onClick={() => setActiveTab("war_room"} icon={<LayoutGrid size={22}/>} label="WAR ROOM" />
           <NavIcon active={activeTab === "artifact_studio"} onClick={() => setActiveTab("artifact_studio")} icon={<Code2 size={22}/>} label="STUDIO" />
           <NavIcon active={activeTab === "neural_lattice"} onClick={() => setActiveTab("neural_lattice")} icon={<Share2 size={22}/>} label="LATTICE" />
           <NavIcon active={activeTab === "arsenal"} onClick={() => setActiveTab("arsenal")} icon={<Wrench size={22}/>} label="ARSENAL" />
@@ -263,14 +266,7 @@ export default function TitanForgeHUD() {
 
         <div className="flex-1 p-6 relative">
           <AnimatePresence mode="wait">
-            <motion.div 
-              key={activeTab} 
-              initial={{ opacity: 0, y: 10 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-              className="h-full w-full"
-            >
+            <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }} className="h-full w-full">
               {activeTab === "war_room" && (
                 <WarRoom logs={globalLogs} isProcessing={isProcessing} onSend={executeDirective} audioUnlocked={audioUnlocked} unlockAudio={unlockAudio} />
               )}
@@ -309,22 +305,33 @@ export default function TitanForgeHUD() {
             exit={{ width: 0, opacity: 0 }}
             className="bg-[#0a0a0a] border-l border-white/5 flex flex-col shrink-0 overflow-hidden relative"
           >
-            {/* GITHUB OAUTH SUTURE (REPAIRED BUTTON) */}
+            {/* GITHUB OAUTH SUTURE (DYNAMIC v31.5) */}
             <div className="p-6 border-b border-white/5 bg-[#00f2ff]/5">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-[#00f2ff]">Cloud Suture</h3>
-                <ShieldCheck size={16} className="text-[#ff80bf]" />
+                <ShieldCheck size={16} className={isGitHubLinked ? "text-[#00f2ff]" : "text-[#ff80bf]"} />
               </div>
               <button 
                 onClick={() => { 
-                  // SUTURE: Redirect to backend's login route which handles the client_id securely
-                  const target = (localStorage.getItem("RF_URL") || config.url).replace(/\/$/, "");
-                  window.location.href = `${target}/api/v1/auth/github`; 
+                   if (!isGitHubLinked) {
+                    const target = (localStorage.getItem("RF_URL") || config.url).replace(/\/$/, "");
+                    window.location.href = `${target}/api/v1/auth/github`; 
+                   }
                 }}
-                className="w-full py-3 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center gap-3 hover:bg-[#00f2ff]/10 hover:border-[#00f2ff]/30 transition-all group"
+                disabled={isGitHubLinked}
+                className={`w-full py-3 rounded-xl flex items-center justify-center gap-3 transition-all group border ${isGitHubLinked ? 'bg-[#00f2ff]/10 border-[#00f2ff]/30 cursor-default' : 'bg-white/5 border-white/10 hover:bg-[#00f2ff]/10 hover:border-[#00f2ff]/30'}`}
               >
-                <Github size={18} className="group-hover:text-[#00f2ff]" />
-                <span className="text-[10px] font-black uppercase tracking-widest group-hover:text-[#00f2ff]">OAUTH: Sign in to Repo</span>
+                {isGitHubLinked ? (
+                  <>
+                    <CheckCircle2 size={18} className="text-[#00f2ff]" />
+                    <span className="text-[10px] font-black uppercase tracking-widest text-[#00f2ff]">Identity Verified</span>
+                  </>
+                ) : (
+                  <>
+                    <Github size={18} className="group-hover:text-[#00f2ff]" />
+                    <span className="text-[10px] font-black uppercase tracking-widest group-hover:text-[#00f2ff]">OAUTH: Sign in to Repo</span>
+                  </>
+                )}
               </button>
             </div>
 

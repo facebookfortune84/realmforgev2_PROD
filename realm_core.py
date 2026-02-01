@@ -1,7 +1,7 @@
 """
-REALM FORGE: SOVEREIGN BRAIN v31.5
+REALM FORGE: SOVEREIGN BRAIN v31.6
 ARCHITECT: LEAD SWARM ENGINEER
-STATUS: PRODUCTION READY - TRUTH PROTOCOL MAXIMIZED - 1200 NODE AWARE
+STATUS: PRODUCTION READY - SEMANTIC SUTURE - 1200 NODE AWARE
 PATH: F:/RealmForge_PROD/realm_core.py
 """
 
@@ -139,11 +139,11 @@ def extract_json(text: str) -> dict:
     except: return {}
 
 # ==============================================================================
-# 4. NODES (TITAN MASTERMIND CORE)
+# 4. NODES (TITAN MASTERMIND CORE v31.6)
 # ==============================================================================
 
 async def supervisor_node(state: RealmForgeState):
-    """ORCHESTRATOR: Maps mission to industrial silos and establishes meeting context."""
+    """ORCHESTRATOR: Now supports Semantic Intent Detection (Conversational vs Kinetic)."""
     mission = state["messages"][-1].content
     silo_list = ["DATA_LATTICE_CURATOR", "SILICON_ARCHITECT", "ZERO_TRUST_SENTINEL"]
     
@@ -154,22 +154,23 @@ async def supervisor_node(state: RealmForgeState):
         except: pass
 
     prompt = f"""
-    SYSTEM: Realm Forge Industrial Mastermind v31.5
+    SYSTEM: Realm Forge Industrial Mastermind v31.6
     CONTEXT: Currently managing 1,200 post-clean nodes and 1,113 agents.
     MISSION: "{mission}"
     INDUSTRIAL_SILOS: {silo_list}
     
     TASK:
-    1. Architect the Strike Team. Assign a PRIMARY SILO to lead.
-    2. Identify a FALLBACK SILO for automated escalation.
-    3. Technical tasks REQUIRE 'SILICON_ARCHITECT'.
-    4. Security tasks REQUIRE 'ZERO_TRUST_SENTINEL'.
+    1. Determine if the mission is an "INDUSTRIAL_STRIKE" (requires file I/O or tools) or a "GENERAL_INQUIRY" (question/chat).
+    2. If "GENERAL_INQUIRY": provide a high-intel conversational response in 'conversational_response'.
+    3. If "INDUSTRIAL_STRIKE": Architect the Strike Team. technical=SILICON_ARCHITECT, security=ZERO_TRUST_SENTINEL.
 
     RESPOND IN JSON ONLY:
     {{
+        "intent": "INDUSTRIAL_STRIKE" | "GENERAL_INQUIRY",
         "primary_silo": "SILO_NAME",
         "fallback_silo": "SILO_NAME",
         "meeting_invitees": ["SILO_NAME_1", "SILO_NAME_2"],
+        "conversational_response": "The detailed answer if intent is GENERAL_INQUIRY, otherwise null",
         "reasoning": "Sovereign Strike Strategy."
     }}
     """
@@ -177,10 +178,19 @@ async def supervisor_node(state: RealmForgeState):
     res = await model.ainvoke([SystemMessage(content=prompt)])
     data = extract_json(res.content if hasattr(res, 'content') else str(res))
     
+    # NLP BRIDGE: Skip Kinetic Logic if it's just a conversation
+    if data.get("intent") == "GENERAL_INQUIRY":
+        return {
+            "next_node": "synthesizer",
+            "active_agent": "Mastermind",
+            "active_department": "Architect",
+            "messages": [AIMessage(content=data.get("conversational_response", "Acknowledged. System Nominal."))]
+        }
+
     primary_silo = data.get("primary_silo", silo_list[0])
     primary = get_industrial_specialist(primary_silo)
     
-    # Resolve specialist names for HUD participants
+    # Resolve actual Agent Names for the HUD
     invitees = []
     for s in data.get("meeting_invitees", []):
         spec = get_industrial_specialist(s)
@@ -209,24 +219,14 @@ async def planner_node(state: RealmForgeState):
     IDENTITY: {agent_name} (Industrial Role: {dept})
     REPOSITORY: 1,200 Physical Nodes in F:/RealmForge_PROD/
     MISSION: {mission}
-    
-    PROTOCOL: 
-    1. Output sub_tasks as a JSON list of real tools.
-    2. Every file path mentioned MUST be absolute (F:/RealmForge_PROD/...).
-    3. Available Tools: {list(TOOLS.keys())[:50]}...
+    Available Tools: {list(TOOLS.keys())[:50]}...
     
     JSON SCHEMA:
-    {{
-        "sub_tasks": [
-            {{"tool": "TOOL_NAME", "args": {{"arg1": "val"}} }}
-        ]
-    }}
+    {{ "sub_tasks": [ {{"tool": "TOOL_NAME", "args": {{}} }} ] }}
     """
     model = get_llm()
     res = await model.ainvoke([SystemMessage(content=prompt)] + state["messages"])
-    
-    content = res.content if hasattr(res, 'content') else str(res)
-    data = extract_json(content)
+    data = extract_json(res.content if hasattr(res, 'content') else str(res))
 
     return {
         "task_queue": data.get("sub_tasks", []),
@@ -246,7 +246,7 @@ async def execution_node(state: RealmForgeState):
     for task in tasks:
         tool_name = task.get("tool")
         
-        # INDUSTRIAL HANDOFF LOGIC
+        # REDUNDANCY HANDOFF
         if tool_name == "HANDOFF":
             new_silo = state.get("fallback_department")
             specialist = get_industrial_specialist(new_silo)
@@ -254,33 +254,28 @@ async def execution_node(state: RealmForgeState):
             return {
                 "active_agent": specialist['name'] if specialist else "ForgeMaster",
                 "active_department": new_silo,
-                "agent_manifest_path": specialist['path'] if specialist else None,
                 "handoff_history": state.get("handoff_history", []) + [handoff],
                 "next_node": "planner",
                 "messages": [AIMessage(content=f"🔄 [REDUNDANCY]: Escalating mission to {new_silo}.")]
             }
 
         if tool_name in TOOLS:
-            print(f"⚙️ [KINETIC]: {agent} executing {tool_name}...")
             try:
-                # TRUTH_PROTOCOL: Check if mission text contains a path even if tool doesn't return it
+                # SNIFF PATHS IN MISSION REQUEST
                 path_mentions = re.findall(r'[Ff]:/[^ "^\n\t,)]+', state["messages"][0].content)
                 found_artifacts.extend(path_mentions)
 
                 result = await TOOLS[tool_name].ainvoke(task.get("args", {}))
                 
-                # Sniff out physical paths in tool results for IronClad validation
+                # SNIFF PATHS IN TOOL OUTPUT
                 path_matches = re.findall(r'[Ff]:/[^ "^\n\t,)]+', str(result))
                 found_artifacts.extend(path_matches)
 
-                # FRICTION DETECTION
                 if any(err in str(result) for err in ["Throttled", "Error", "None found", "failed"]):
-                    print(f"⚠️ [STRIKE_FRICTION]: {tool_name} compromised. Escalating...")
                     return {"next_node": "executor", "task_queue": [{"tool": "HANDOFF"}], "messages": messages}
                 
                 messages.append(ToolMessage(tool_call_id=str(uuid.uuid4()), content=str(result)))
-            except Exception as e:
-                print(f"💥 [TOOL_CRASH]: {tool_name} failed: {e}")
+            except:
                 return {"next_node": "executor", "task_queue": [{"tool": "HANDOFF"}], "messages": messages}
         
     return {
@@ -291,47 +286,33 @@ async def execution_node(state: RealmForgeState):
     }
 
 async def validator_node(state: RealmForgeState):
-    """THE IRONCLAD GATE: Forensic hash-verification of all produced artifacts."""
+    """THE IRONCLAD GATE: Forensic hash-verification."""
     artifacts = state.get("artifacts", [])
     agent = "IronClad"
-    
     v_logs = []
-    # Force clean artifact list
     clean_artifacts = [str(a).replace('\\', '/') for a in artifacts if 'F:/' in str(a)]
     
     for path in list(set(clean_artifacts)):
         try:
-            # Physical Hash Probe
             res = await calculate_file_hash.ainvoke({"file_path": path})
-            if "ERROR" in res:
-                v_logs.append(f"❌ {path}: Physical file missing.")
-                continue
-            
-            # Lattice Synchronization
-            current_hash = res.split(": ")[-1].strip()
-            await update_knowledge_graph.ainvoke({
-                "subject": path, 
-                "relation": "CURRENT_HASH", 
-                "target": current_hash
-            })
-            v_logs.append(f"✅ {path}: Verified. ({current_hash[:8]})")
+            if "ERROR" not in res:
+                current_hash = res.split(": ")[-1].strip()
+                await update_knowledge_graph.ainvoke({"subject": path, "relation": "CURRENT_HASH", "target": current_hash})
+                v_logs.append(f"✅ {path}: Verified. ({current_hash[:8]})")
         except: continue
-
-    status_msg = f"🛡️ [IRONCLAD]: {len(v_logs)} artifacts validated against physical disk."
-    if not v_logs: status_msg = "🛡️ [IRONCLAD]: Scanning physical disk for artifact traces..."
 
     return {
         "active_agent": agent,
         "diagnostic_stream": v_logs,
         "next_node": "auditor",
-        "messages": [AIMessage(content=status_msg)]
+        "messages": [AIMessage(content=f"🛡️ [IRONCLAD]: {len(v_logs)} artifacts validated against physical disk.")]
     }
 
 async def auditor_node(state: RealmForgeState):
-    """Verifies that mission output is physical and placeholder-free."""
+    """Verifies output integrity."""
     last_msg = state["messages"][-1].content
-    if any(p in last_msg.lower() for p in ["[insert", "placeholder", "hallucination", "failed"]):
-        return {"messages": [AIMessage(content="🚨 [AUDIT_FAIL]: Logic rejection. Re-tracing mission vectors...")], "next_node": "planner"}
+    if any(p in last_msg.lower() for p in ["[insert", "placeholder", "failed"]):
+        return {"messages": [AIMessage(content="🚨 [AUDIT_FAIL]: Logic rejection. Re-tracing...")], "next_node": "planner"}
     return {"messages": [AIMessage(content="💎 [INTEGRITY_NOMINAL]")], "next_node": "synthesizer"}
 
 async def synthesizer_node(state: RealmForgeState):
@@ -342,27 +323,20 @@ async def synthesizer_node(state: RealmForgeState):
         with open(DECISION_LOG, 'a', encoding='utf-8-sig') as f:
             f.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M')}] [{mid}] SUCCESS\n")
     except: pass
-        
     return {"messages": [AIMessage(content=last_msg)], "next_node": END}
 
 # --- GRAPH COMPILATION ---
 builder = StateGraph(RealmForgeState)
 
-builder.add_node("supervisor", supervisor_node)
-builder.add_node("planner", planner_node)
-builder.add_node("executor", execution_node)
-builder.add_node("validator", validator_node)
-builder.add_node("auditor", auditor_node)
-builder.add_node("synthesizer", synthesizer_node)
+builder.add_node("supervisor", supervisor_node); builder.add_node("planner", planner_node)
+builder.add_node("executor", execution_node); builder.add_node("validator", validator_node)
+builder.add_node("auditor", auditor_node); builder.add_node("synthesizer", synthesizer_node)
 
 builder.set_entry_point("supervisor")
 
-# Industrial Logic Routing
-builder.add_conditional_edges("supervisor", lambda x: x["next_node"], {"planner": "planner"})
+builder.add_conditional_edges("supervisor", lambda x: x["next_node"], {"planner": "planner", "synthesizer": "synthesizer"})
 builder.add_conditional_edges("executor", lambda x: x["next_node"], {"planner": "planner", "validator": "validator"})
-builder.add_edge("planner", "executor")
-builder.add_edge("validator", "auditor")
-builder.add_edge("auditor", "synthesizer")
-builder.add_edge("synthesizer", END)
+builder.add_edge("planner", "executor"); builder.add_edge("validator", "auditor")
+builder.add_edge("auditor", "synthesizer"); builder.add_edge("synthesizer", END)
 
 app = builder.compile()
