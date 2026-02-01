@@ -1,7 +1,7 @@
 """
-REALM FORGE: SOVEREIGN GATEWAY v27.11 (PATCHED)
+REALM FORGE: SOVEREIGN GATEWAY v27.15 (ULTIMATE STABLE)
 ARCHITECT: LEAD SWARM ENGINEER
-STATUS: PRODUCTION READY - NAMEERROR RESOLVED - SCHEMA GUARD ACTIVE
+STATUS: PRODUCTION READY - FULL FIDELITY - OAUTH CALLBACK & STATE REPAIR
 PATH: F:/RealmForge_PROD/server.py
 """
 
@@ -17,7 +17,7 @@ import base64
 import sys
 import csv
 import io
-import httpx # Added for GitHub OAuth exchange logic
+import httpx # For GitHub OAuth exchange logic
 from datetime import datetime
 from typing import List, Dict, Any, Optional, Union, Annotated
 from pathlib import Path
@@ -26,7 +26,7 @@ from groq import Groq
 
 from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect, Depends, Security, Request, UploadFile, File
 from fastapi.security.api_key import APIKeyHeader
-from fastapi.responses import RedirectResponse
+from fastapi.responses import RedirectResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -55,13 +55,28 @@ AGENT_DIR = BASE_PATH / "agents"
 GRAPH_PATH = BASE_PATH / "memory" / "neural_graph.json"
 AUDIT_LOG_PATH = BASE_PATH / "workforce_audit.csv"
 
-folders = [BASE_PATH, STATIC_PATH, AGENT_DIR, BASE_PATH / "memory", BASE_PATH / "logs", BASE_PATH / "security", WORKSPACE_ROOT]
+# Ensure industrial directory structure exists physically
+folders = [
+    BASE_PATH, STATIC_PATH, AGENT_DIR, 
+    BASE_PATH / "memory", BASE_PATH / "logs", 
+    BASE_PATH / "security", WORKSPACE_ROOT,
+    STATIC_PATH / "deployments"
+]
 for folder in folders: os.makedirs(folder, exist_ok=True)
 
+# Stabilize Lattice Visualization (Fix for the missing neural_graph.json)
+if not GRAPH_PATH.exists():
+    os.makedirs(GRAPH_PATH.parent, exist_ok=True)
+    with open(GRAPH_PATH, 'w', encoding='utf-8') as f:
+        json.dump({"nodes": [{"id": "CORE", "label": "NEXUS", "group": "Architect"}], "links": []}, f)
+
+# Initialize Audit Log (Sovereign Workforce Compliance & Monetization Ledger)
 if not AUDIT_LOG_PATH.exists():
     with open(AUDIT_LOG_PATH, 'w', newline='', encoding='utf-8-sig') as f:
-        csv.writer(f).writerow(["Timestamp", "Agent_ID", "Department", "Mission_ID", "Action", "Credits_Earned"])
+        writer = csv.writer(f)
+        writer.writerow(["Timestamp", "Agent_ID", "Department", "Mission_ID", "Action", "Credits_Earned"])
 
+# --- LOGGING SETUP ---
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - [TITAN_GATEWAY] - %(levelname)s - %(message)s')
 logger = logging.getLogger("RealmForgeGateway")
 
@@ -69,7 +84,7 @@ logger = logging.getLogger("RealmForgeGateway")
 try:
     from src.auth import gatekeeper
     from src.system.state import get_initial_state, RealmForgeState
-    from src.memory.engine import MemoryManager 
+    from src.memory.engine import MemoryManager # Required for Assistant Chat
     from src.system.arsenal.registry import (
         prepare_vocal_response, 
         generate_neural_audio, 
@@ -81,11 +96,14 @@ except ImportError as e:
     logger.error(f"❌ [CRITICAL] Internal Module Import Failure: {e}")
     sys.exit(1)
 
+# --- ENGINE INTEGRATION ---
 genesis_engine = None
 def get_brain():
+    """Initializes the heavy Genesis Engine only when the server is physically running."""
     global genesis_engine
     if genesis_engine is None:
         try:
+            logger.info("🧠 [BRAIN] Awakening Genesis Engine & 13k+ Nodes...")
             from realm_core import app as brain_app
             genesis_engine = brain_app
             logger.info("✅ [BRAIN] Genesis Engine Online.")
@@ -97,23 +115,38 @@ def get_brain():
 # ==============================================================================
 # 5. DATA MODELS
 # ==============================================================================
-class MissionRequest(BaseModel): task: str
-class ChatRequest(BaseModel): message: str
-class GithubTokenRequest(BaseModel): code: str
-class FileReadRequest(BaseModel): path: str
-class FileSaveRequest(BaseModel): path: str; content: str
+class MissionRequest(BaseModel):
+    task: str
+
+class ChatRequest(BaseModel):
+    message: str
+
+class GithubTokenRequest(BaseModel):
+    code: str
+
+class FileReadRequest(BaseModel):
+    path: str
+
+class FileSaveRequest(BaseModel):
+    path: str
+    content: str
 
 # ==============================================================================
-# 6. TELEMETRY & AUTHENTICATION (INSTANTIATED BEFORE DEPENDENCY)
+# 6. TELEMETRY & AUTHENTICATION
 # ==============================================================================
 class ConnectionManager:
     def __init__(self): 
         self.active: List[WebSocket] = []
         
     async def connect(self, ws: WebSocket):
+        """Physical link established. Forces a sensory handshake."""
         await ws.accept()
         self.active.append(ws)
-        await self.broadcast({"type": "diagnostic", "text": "🤝 [HUD_UPLINK]: Neural Sensory Interface Synchronized."})
+        # Immediate sync burst to verify the HUD is rendering
+        await self.broadcast({
+            "type": "diagnostic", 
+            "text": "🤝 [HUD_UPLINK]: Neural Sensory Interface Synchronized."
+        })
         logger.info(f"🔌 [UPLINK] Node connection established. active_nodes: {len(self.active)}")
         
     def disconnect(self, ws: WebSocket):
@@ -121,6 +154,8 @@ class ConnectionManager:
         logger.info(f"🔌 [DOWNLINK] Node connection severed.")
         
     async def broadcast(self, msg: dict):
+        """Hardened broadcast logic. Silently purges dead pipes."""
+        # 1. Physical Vitals Injection
         if "vitals" not in msg:
             try:
                 msg["vitals"] = {
@@ -128,30 +163,39 @@ class ConnectionManager:
                     "cpu": psutil.cpu_percent(),
                     "lattice_nodes": self._count_nodes(),
                     "active_users": len(self.active),
+                    "active_sector": msg.get("dept", "Architect"),
                     "timestamp": time.time()
                 }
             except: pass
+        
+        # 2. Stringify once for all clients
         txt = json.dumps(msg, ensure_ascii=False)
+        
+        # 3. Parallel Dispatch
         if self.active:
-            tasks = [self._safe_send(ws, txt) for ws in self.active]
+            tasks = []
+            for ws in self.active:
+                tasks.append(self._safe_send(ws, txt))
             await asyncio.gather(*tasks)
 
     async def _safe_send(self, ws: WebSocket, text: str):
-        try: await ws.send_text(text)
-        except Exception: self.disconnect(ws)
+        try:
+            await ws.send_text(text)
+        except Exception:
+            self.disconnect(ws)
 
     def _count_nodes(self):
+        """Queries the current graph size for HUD visualization."""
         try:
             if GRAPH_PATH.exists():
                 with open(GRAPH_PATH, 'r', encoding='utf-8-sig') as f:
-                    return len(json.load(f).get('nodes', []))
+                    data = json.load(f)
+                    return len(data.get('nodes', []))
         except: pass
         return 13472
 
-# CRITICAL INSTANTIATION FOR WS BROADCAST
+# CRITICAL INSTANTIATION
 manager = ConnectionManager()
-
-# REPAIR: MSN-001 Suture Gateway - Define Header before usage
 api_key_header = APIKeyHeader(name="X-API-Key", auto_error=False)
 
 async def get_license(key: str = Security(api_key_header)):
@@ -171,38 +215,60 @@ async def get_license(key: str = Security(api_key_header)):
 # ==============================================================================
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    """Sovereign Handshake: Fires during Ignition Point."""
     get_brain()
-    print(f"\n🚀 [BRAIN] TITAN-INDUSTRIAL HUD ONLINE. PORT 8000 READY.\n", flush=True)
+    print("\n" + "🚀"*20, flush=True)
+    print(f"✅ [BRAIN] TITAN-INDUSTRIAL HUD ONLINE.", flush=True)
+    print(f"✅ [LATTICE] SOVEREIGN NODE READY ON PORT 8000.", flush=True)
+    print(f"🌀 [INTELLIGENCE] Mode: {os.getenv('REALM_MODEL_CORE', 'GROQ')}", flush=True)
+    print("🚀"*20 + "\n", flush=True)
     yield
     logger.info("🔌 [OFFLINE] Sovereign Node shutdown initiated.")
 
-app = FastAPI(title="RealmForge OS", version="27.11.0", lifespan=lifespan)
+app = FastAPI(
+    title="RealmForge OS - Sovereign Gateway",
+    version="27.15.0",
+    lifespan=lifespan
+)
+
 app.mount("/static", StaticFiles(directory=str(STATIC_PATH)), name="static")
 
 app.add_middleware(
-    CORSMiddleware, allow_origins=["*"], allow_credentials=True,
-    allow_methods=["*"], allow_headers=["*"], expose_headers=["*"]
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+    expose_headers=["*"]
 )
 
 @app.options("/{rest_of_path:path}")
-async def preflight_handler(request: Request, rest_of_path: str): return {}
+async def preflight_handler(request: Request, rest_of_path: str):
+    return {}
 
 # ==============================================================================
-# 8. MISSION CRITICAL ENDPOINTS
+# 8. OAUTH & ASSISTANT ENDPOINTS
 # ==============================================================================
 
 @app.get("/api/v1/auth/github")
 async def github_login():
-    """Redirects the Architect to GitHub for Identity Verification."""
+    """Step 1: Redirect to GitHub. (Fixes 404)"""
     client_id = os.getenv("GITHUB_CLIENT_ID")
-    # Redirect to GitHub OAuth authorize page
-    url = f"https://github.com/login/oauth/authorize?client_id={client_id}&scope=repo,user"
+    redirect_uri = os.getenv("GITHUB_REDIRECT_URI", "http://localhost:8000/api/v1/auth/github/callback")
+    url = f"https://github.com/login/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&scope=repo,user"
     logger.info("🗝️ [OAUTH]: Redirecting to GitHub Authorization.")
     return RedirectResponse(url)
 
+@app.get("/api/v1/auth/github/callback")
+async def github_callback(code: str):
+    """Step 2: Catch code from GitHub and send to HUD. (Fixes 404)"""
+    frontend_url = "https://realmforgev2.vercel.app/auth-success" 
+    logger.info(f"🗝️ [OAUTH]: Handshake code received. Redirecting to HUD.")
+    return RedirectResponse(f"{frontend_url}?code={code}")
+
 @app.post("/api/v1/auth/github")
 async def github_exchange(req: GithubTokenRequest, lic: gatekeeper.License = Depends(get_license)):
-    """Handles the back-end code exchange."""
+    """Step 3: Exchange code for physical token."""
     logger.info(f"🗝️ [OAUTH]: Token exchange for {lic.user_id}")
     async with httpx.AsyncClient() as client:
         res = await client.post(
@@ -216,24 +282,6 @@ async def github_exchange(req: GithubTokenRequest, lic: gatekeeper.License = Dep
         )
         return res.json()
 
-@app.get("/api/v1/agents")
-async def list_agents(lic: gatekeeper.License = Depends(get_license)):
-    """MSN-002: Roster Schema Guard. Maps functional_role to name for HUD stability."""
-    path = BASE_PATH / "roster.json"
-    try:
-        if path.exists():
-            with open(path, 'r', encoding='utf-8-sig') as f:
-                data = json.load(f)
-                roster = data.get("roster", [])
-                for agent in roster:
-                    f_role = agent.get("functional_role", "Industrial_Specialist")
-                    # HARD-CODED: name slot is now the functional role to prevent HUD undefined errors
-                    agent["name"] = f_role 
-                    agent["display_name"] = f_role.replace("_Agent", "").replace("_", " ")
-                return {"roster": roster}
-        return {"roster": []}
-    except Exception as e: return {"roster": [], "error": str(e)}
-
 @app.post("/api/v1/assistant/chat")
 async def assistant_chat(req: ChatRequest, lic: gatekeeper.License = Depends(get_license)):
     try:
@@ -243,56 +291,73 @@ async def assistant_chat(req: ChatRequest, lic: gatekeeper.License = Depends(get
         res = groq_client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=[
-                {"role": "system", "content": f"ForgeMaster Consultant. Context: {context}"},
+                {"role": "system", "content": f"You are the ForgeMaster Consultant. Use this code context to help the Architect: {context}"},
                 {"role": "user", "content": req.message}
             ]
         )
         return {"response": res.choices[0].message.content}
-    except Exception as e: return {"response": f"⚠️ [ASSISTANT_FAULT]: {str(e)}"}
+    except Exception as e:
+        return {"response": f"⚠️ [ASSISTANT_FAULT]: {str(e)}"}
+
+# ==============================================================================
+# 9. MISSION ENGINE (SPATIAL-AWARE STREAMING)
+# ==============================================================================
+def log_contribution(agent_id, dept, mission_id, action, credits=1.0):
+    try:
+        with open(AUDIT_LOG_PATH, 'a', newline='', encoding='utf-8-sig') as f:
+            csv.writer(f).writerow([datetime.now().isoformat(), agent_id, dept, mission_id, action, credits])
+    except Exception as e: logger.error(f"❌ [AUDIT_FAIL]: {e}")
 
 @app.post("/api/v1/mission")
 async def mission(req: MissionRequest, lic: gatekeeper.License = Depends(get_license)):
     engine = get_brain()
     try:
-        state = get_initial_state()
-        mid = state["mission_id"]
-        state["messages"] = [HumanMessage(content=req.task)]
+        # HARDENED STATE INITIALIZATION: Ensures Agents are never "None"
+        state = {
+            "messages": [HumanMessage(content=req.task)],
+            "active_agent": "Mastermind",
+            "active_department": "Architect",
+            "mission_id": f"MSN-{int(time.time())}",
+            "handoff_history": [],
+            "meeting_participants": ["Mastermind"]
+        }
         
-        await manager.broadcast({"type": "diagnostic", "text": f"Strike MSN-{mid} Initialized."})
+        mid = state["mission_id"]
+        await manager.broadcast({
+            "type": "diagnostic", "text": f"[{datetime.now().strftime('%H:%M:%S')}] Strike {mid} Initialized.", "agent": "CORE"
+        })
 
         async for output in engine.astream(state):
             for node_name, node_state in output.items():
-                agent = node_state.get("active_agent", "NEXUS")
+                # Extract state with Industrial Fallbacks
+                agent = node_state.get("active_agent") or node_name.upper()
                 dept = node_state.get("active_department", "Architect")
-                
-                # REPAIR: Broadcast node updates immediately
+                handoffs = node_state.get("handoff_history", [])
+                participants = node_state.get("meeting_participants", [])
+                msgs = node_state.get("messages", [])
+
+                # UI BROADCAST: Sector Pulse, Spatial Handoffs, and Participant Sync
                 await manager.broadcast({
                     "type": "node_update", 
                     "node": node_name.upper(), 
                     "agent": agent, 
-                    "dept": dept
+                    "dept": dept,
+                    "handoffs": handoffs,
+                    "meeting_participants": participants
                 })
 
-                # REPAIR: Corrected Message Loop
-                # In 'astream', node_state contains the NEW messages for this step.
-                new_messages = node_state.get("messages", [])
-                if not isinstance(new_messages, list): new_messages = [new_messages]
-                
-                for msg in new_messages:
-                    # Skip the original HumanMessage and empty content
+                log_contribution(agent, dept, mid, f"Node: {node_name}")
+
+                # Iterative Message Dispatch
+                new_msgs = msgs if isinstance(msgs, list) else [msgs]
+                for msg in new_msgs:
                     if hasattr(msg, 'content') and msg.content and not isinstance(msg, HumanMessage):
                         content = msg.content
                         vocal = prepare_vocal_response(content)
                         audio_payload = await generate_neural_audio(vocal)
-                        
-                        # PHYSICAL DISPATCH TO HUD
                         await manager.broadcast({
-                            "type": "audio_chunk", 
-                            "text": content, 
-                            "audio_base64": audio_payload, 
-                            "agent": agent, 
-                            "node": node_name, 
-                            "dept": dept
+                            "type": "audio_chunk", "text": content, "audio_base64": audio_payload, 
+                            "agent": agent, "node": node_name, "dept": dept
                         })
 
         await manager.broadcast({"type": "mission_complete"})
@@ -302,31 +367,65 @@ async def mission(req: MissionRequest, lic: gatekeeper.License = Depends(get_lic
         await manager.broadcast({"type": "error", "message": str(e)})
         raise HTTPException(500, str(e))
 
+# ==============================================================================
+# 10. HARDENED SENSORY ENDPOINTS (ROSTER & GRAPH)
+# ==============================================================================
+
+@app.get("/api/v1/agents")
+async def list_agents(lic: gatekeeper.License = Depends(get_license)):
+    path = BASE_PATH / "roster.json"
+    try:
+        if path.exists():
+            with open(path, 'r', encoding='utf-8-sig') as f:
+                data = json.load(f)
+                roster = data.get("roster", [])
+                for agent in roster:
+                    f_name = agent.get("functional_role", "Industrial_Specialist")
+                    # RE-ALIGNMENT: name slot is the functional role for HUD stability
+                    agent["name"] = f_name
+                    agent["display_name"] = f"{f_name.replace('_Agent', '').replace('_', ' ')}"
+                    if "id" not in agent: agent["id"] = "GEN-NX-9"
+                return {"roster": roster}
+        return {"roster": []}
+    except Exception as e:
+        return {"roster": [], "error": str(e)}
+
+@app.get("/api/v1/graph")
+async def get_lattice_data(lic: gatekeeper.License = Depends(get_license)):
+    try:
+        if not GRAPH_PATH.exists(): return {"nodes": [{"id": "root", "label": "Offline"}], "links": []}
+        with open(GRAPH_PATH, 'r', encoding='utf-8-sig') as f: return json.load(f)
+    except Exception as e: return {"nodes": [], "links": [], "error": str(e)}
+
 @app.post("/api/v1/io/read")
 async def read_artifact(req: FileReadRequest, lic: gatekeeper.License = Depends(get_license)):
     clean_path = req.path.replace("F:/RealmForge_PROD/", "")
     target = ROOT_DIR / clean_path
     if not target.exists(): target = WORKSPACE_ROOT / clean_path
-    if target.is_file(): return {"content": target.read_text(encoding='utf-8-sig', errors='replace')}
-    return {"error": "Physical file not found."}
+    if target.exists() and target.is_file():
+        return {"content": target.read_text(encoding='utf-8-sig', errors='replace'), "type": target.suffix, "path": str(req.path)}
+    return {"error": f"File {req.path} not located on physical disk."}
 
 @app.post("/api/v1/io/write")
 async def save_artifact(req: FileSaveRequest, lic: gatekeeper.License = Depends(get_license)):
     clean_path = req.path.replace("F:/RealmForge_PROD/", "")
     target = ROOT_DIR / clean_path
-    os.makedirs(target.parent, exist_ok=True)
-    target.write_text(req.content, encoding='utf-8-sig')
-    return {"status": "SUCCESS"}
+    try:
+        os.makedirs(target.parent, exist_ok=True)
+        target.write_text(req.content, encoding='utf-8-sig')
+        return {"status": "SUCCESS"}
+    except Exception as e: raise HTTPException(500, f"Physical Write Error: {str(e)}")
 
 @app.get("/health")
 def health(): return {"status": "ONLINE", "timestamp": datetime.now().isoformat()}
 
 @app.websocket("/ws/telemetry")
 async def ws_endpoint(websocket: WebSocket):
-    await manager.connect(websocket)
+    await manager.connect(websocket); 
     try:
         while True: await websocket.receive_text()
     except WebSocketDisconnect: manager.disconnect(websocket)
 
 if __name__ == "__main__":
+    os.environ["PYTHONUNBUFFERED"] = "1"
     uvicorn.run("server:app", host="0.0.0.0", port=8000, reload=False)
