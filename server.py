@@ -1,7 +1,7 @@
 """
-REALM FORGE: SOVEREIGN GATEWAY v27.22 (INDUSTRIAL ULTIMATE)
+REALM FORGE: SOVEREIGN GATEWAY v27.23 (INDUSTRIAL ULTIMATE)
 ARCHITECT: LEAD SWARM ENGINEER
-STATUS: PRODUCTION READY - FULL FIDELITY - OAUTH BRIDGE & MISSION SUTURE
+STATUS: PRODUCTION READY - FULL FIDELITY - REDIRECT SANITIZATION
 PATH: F:/RealmForge_PROD/server.py
 """
 
@@ -42,7 +42,7 @@ ROOT_DIR = Path("F:/RealmForge_PROD")
 env_path = ROOT_DIR / ".env"
 
 print("\n" + "⚙️"*25)
-print("--- [REALM FORGE SYSTEM BOOT: v27.22] ---")
+print("--- [REALM FORGE SYSTEM BOOT: v27.23] ---")
 if env_path.exists():
     # override=True clears any 'undefined' strings cached in the environment
     load_dotenv(dotenv_path=env_path, override=True)
@@ -72,7 +72,7 @@ if sys.platform == 'win32':
     except AttributeError: pass
 
 IS_DOCKER = os.path.exists('/.dockerenv')
-WORKSPACE_ROOT = Path("/app/workspaces") if IS_DOCKER else Path("F:/RealmWorkspaces")
+WORKSPACE_ROOT = Path("F:/RealmWorkspaces")
 
 BASE_PATH = ROOT_DIR / "data"
 STATIC_PATH = ROOT_DIR / "static"
@@ -157,6 +157,7 @@ class ConnectionManager:
         """Physical link established. Forces a sensory handshake."""
         await ws.accept()
         self.active.append(ws)
+        # Immediate sync burst to verify the HUD is rendering
         await self.broadcast({
             "type": "diagnostic", 
             "text": "🤝 [HUD_UPLINK]: Neural Sensory Interface Synchronized."
@@ -235,7 +236,7 @@ async def lifespan(app: FastAPI):
     yield
     logger.info("🔌 [OFFLINE] Sovereign Node shutdown initiated.")
 
-app = FastAPI(title="RealmForge OS - Sovereign Gateway", version="27.22.0", lifespan=lifespan)
+app = FastAPI(title="RealmForge OS - Sovereign Gateway", version="27.23.0", lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=str(STATIC_PATH)), name="static")
 
 app.add_middleware(
@@ -265,11 +266,12 @@ async def github_login():
 
 @app.get("/api/v1/auth/github/callback")
 async def github_callback(code: str):
-    """Step 2: Bridge. Redirect to Root (/) to allow the HUD to catch the code in the query string."""
-    # REPAIR: Redirecting to root to resolve the Vercel 404 on /auth-success
+    """Step 2: Bridge. Redirect to Root (/) to allow the HUD to catch the code. Fixed 404."""
+    # REPAIR: Redirecting browser to Root (/) using 302 Found status
     frontend_url = "https://realmforgev2-prod.vercel.app/" 
-    logger.info(f"🗝️ [OAUTH]: Handshake code received. Redirecting to Root HUD.")
-    return RedirectResponse(f"{frontend_url}?code={code}")
+    target_url = f"{frontend_url}?code={code}"
+    logger.info(f"🗝️ [OAUTH]: Handshake code received. Bridging to Root HUD: {target_url}")
+    return RedirectResponse(url=target_url, status_code=302)
 
 @app.post("/api/v1/auth/github")
 async def github_exchange(req: GithubTokenRequest, lic: gatekeeper.License = Depends(get_license)):

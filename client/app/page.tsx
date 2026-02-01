@@ -1,5 +1,5 @@
 /**
- * REALM FORGE: TITAN COMMAND CHASSIS v31.2
+ * REALM FORGE: TITAN COMMAND CHASSIS v31.3
  * STYLE: CAFFEINE-NEON / HIGH-VISIBILITY / PRODUCTION-HARDENED
  * ARCHITECT: LEAD SWARM ENGINEER
  * PATH: F:\RealmForge_PROD\client\app\page.tsx
@@ -45,7 +45,7 @@ export default function TitanForgeHUD() {
   const [handoffs, setHandoffs] = useState([]);
   const [chatInput, setChatInput] = useState("");
   const [assistantLogs, setAssistantLogs] = useState([
-    { id: 1, role: 'assistant', text: "Ready for deployment, Architect. I am your Sovereign Consultant, synced with the 13k node codebase." }
+    { id: 1, role: 'assistant', text: "Ready for deployment, Architect. I am your Sovereign Consultant, synced with the 1200 node codebase." }
   ]);
   
   const [diagnosticLines, setDiagnosticLines] = useState([
@@ -55,7 +55,7 @@ export default function TitanForgeHUD() {
 
   const [globalLogs, setGlobalLogs] = useState([{
     id: 'init', type: 'system', agent: 'CORE', 
-    content: "### [TITAN_OS_v31.2] UPLINK_STABLE.\nFunctional role-mapping active. Use Functional IDs for summoning.",
+    content: "### [TITAN_OS_v31.3] UPLINK_STABLE.\nFunctional role-mapping active. Use Functional IDs for summoning.",
     timestamp: 'INIT'
   }]);
 
@@ -183,7 +183,7 @@ export default function TitanForgeHUD() {
     socket.onclose = () => setStatus("OFFLINE");
   }, [audioUnlocked]);
 
-  // --- 9. INITIALIZATION & OAUTH CYCLE ---
+  // --- 9. INITIALIZATION & OAUTH SUTURE (REPAIRED) ---
   useEffect(() => {
     setMounted(true);
     if (typeof window !== 'undefined') {
@@ -192,11 +192,11 @@ export default function TitanForgeHUD() {
       setConfig(c => ({ ...c, url: savedUrl, key: savedKey }));
       connectToSwarm(savedUrl);
 
-      // --- OAUTH HANDSHAKE COMPLETION ---
+      // --- DETECT OAUTH REDIRECT ---
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get('code');
       if (code) {
-        setDiagnosticLines(p => [...p, `[${new Date().toLocaleTimeString()}] 🗝️ [OAUTH]: Code detected. Completing handshake...`]);
+        setDiagnosticLines(p => [...p, `[${new Date().toLocaleTimeString()}] 🗝️ [OAUTH]: Code detected. Finalizing handshake...`]);
         axios.post(`${savedUrl.replace(/\/$/, "")}/api/v1/auth/github`, 
           { code: code }, 
           { headers: { 
@@ -204,12 +204,11 @@ export default function TitanForgeHUD() {
             "ngrok-skip-browser-warning": "69420"
           } }
         ).then(res => {
-          setDiagnosticLines(p => [...p, `[${new Date().toLocaleTimeString()}] ✅ [OAUTH]: Identity sutured to swarm.`]);
-          // Purge the code from the URL for security and clean UI
+          setDiagnosticLines(p => [...p, `[${new Date().toLocaleTimeString()}] ✅ [OAUTH]: Identity sutured. Handshake successful.`]);
+          // Clean the URL to prevent 404s on refresh
           window.history.replaceState({}, document.title, window.location.pathname);
         }).catch(err => {
-          setDiagnosticLines(p => [...p, `[${new Date().toLocaleTimeString()}] ❌ [OAUTH]: Handshake failure.`]);
-          console.error("OAuth Exchange Fault", err);
+          setDiagnosticLines(p => [...p, `[${new Date().toLocaleTimeString()}] ❌ [OAUTH]: Handshake failure. Check Local Server logs.`]);
         });
       }
     }
@@ -310,7 +309,7 @@ export default function TitanForgeHUD() {
             exit={{ width: 0, opacity: 0 }}
             className="bg-[#0a0a0a] border-l border-white/5 flex flex-col shrink-0 overflow-hidden relative"
           >
-            {/* GITHUB OAUTH SUTURE */}
+            {/* GITHUB OAUTH SUTURE (REPAIRED BUTTON) */}
             <div className="p-6 border-b border-white/5 bg-[#00f2ff]/5">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-[#00f2ff]">Cloud Suture</h3>
@@ -318,7 +317,8 @@ export default function TitanForgeHUD() {
               </div>
               <button 
                 onClick={() => { 
-                  const target = config.url.replace(/\/$/, "");
+                  // SUTURE: Redirect to backend's login route which handles the client_id securely
+                  const target = (localStorage.getItem("RF_URL") || config.url).replace(/\/$/, "");
                   window.location.href = `${target}/api/v1/auth/github`; 
                 }}
                 className="w-full py-3 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center gap-3 hover:bg-[#00f2ff]/10 hover:border-[#00f2ff]/30 transition-all group"
