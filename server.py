@@ -1,7 +1,7 @@
 """
-REALM FORGE: SOVEREIGN GATEWAY v27.17 (INDUSTRIAL ULTIMATE)
+REALM FORGE: SOVEREIGN GATEWAY v27.20 (INDUSTRIAL ULTIMATE)
 ARCHITECT: LEAD SWARM ENGINEER
-STATUS: PRODUCTION READY - FULL FIDELITY - OAUTH BRIDGE & STATE SUTURE
+STATUS: PRODUCTION READY - FULL FIDELITY - OAUTH BRIDGE & MISSION SUTURE
 PATH: F:/RealmForge_PROD/server.py
 """
 
@@ -37,16 +37,26 @@ from contextlib import asynccontextmanager
 # ==============================================================================
 # 0. PHYSICAL ENCODING & FORCED ENV LOADING
 # ==============================================================================
-# FORCED PATH: Ensures the server sees your F:/ drive .env even if launched from elsewhere
+# FORCED ABSOLUTE PATH: Ensures the server never sees 'undefined' variables.
 ROOT_DIR = Path("F:/RealmForge_PROD")
 env_path = ROOT_DIR / ".env"
 
+print("\n" + "⚙️"*20)
+print("--- [REALM FORGE SYSTEM BOOT] ---")
 if env_path.exists():
-    load_dotenv(dotenv_path=env_path)
-    print(f"✅ [SYSTEM] Physical .env loaded: {env_path}", flush=True)
+    # Override=True ensures we replace any bad 'undefined' strings currently in memory
+    load_dotenv(dotenv_path=env_path, override=True)
+    print(f"✅ [ENV] Physical .env found and pressurized: {env_path}")
+    # Verification of key vars
+    cid = os.getenv("GITHUB_CLIENT_ID")
+    if cid and cid != "undefined":
+        print(f"✅ [ENV] GITHUB_CLIENT_ID: {cid[:6]}... (VALID)")
+    else:
+        print(f"❌ [CRITICAL] GITHUB_CLIENT_ID IS UNDEFINED OR MISSING.")
 else:
-    print(f"❌ [CRITICAL] .env NOT FOUND at {env_path}. Defaulting to local environment.", flush=True)
+    print(f"❌ [CRITICAL] .env NOT FOUND at {env_path}.")
     load_dotenv()
+print("⚙️"*20 + "\n")
 
 if sys.platform == 'win32':
     try:
@@ -76,7 +86,10 @@ for folder in folders: os.makedirs(folder, exist_ok=True)
 if not GRAPH_PATH.exists():
     os.makedirs(GRAPH_PATH.parent, exist_ok=True)
     with open(GRAPH_PATH, 'w', encoding='utf-8') as f:
-        json.dump({"nodes": [{"id": "CORE", "label": "NEXUS", "group": "Architect"}], "links": []}, f)
+        json.dump({
+            "nodes": [{"id": "CORE", "label": "NEXUS", "group": "Architect"}], 
+            "links": []
+        }, f)
 
 # Initialize Audit Log (Sovereign Workforce Compliance & Monetization Ledger)
 if not AUDIT_LOG_PATH.exists():
@@ -111,7 +124,7 @@ def get_brain():
     global genesis_engine
     if genesis_engine is None:
         try:
-            logger.info("🧠 [BRAIN] Awakening Genesis Engine & 13k+ Nodes...")
+            logger.info("🧠 [BRAIN] Awakening Genesis Engine & 1200+ Nodes...")
             from realm_core import app as brain_app
             genesis_engine = brain_app
             logger.info("✅ [BRAIN] Genesis Engine Online.")
@@ -137,6 +150,7 @@ class ConnectionManager:
         self.active: List[WebSocket] = []
         
     async def connect(self, ws: WebSocket):
+        """Physical link established. Forces a sensory handshake."""
         await ws.accept()
         self.active.append(ws)
         await self.broadcast({
@@ -171,17 +185,20 @@ class ConnectionManager:
         except Exception: self.disconnect(ws)
 
     def _count_nodes(self):
+        """Queries the current graph size (Post-Clean: ~1200 nodes)."""
         try:
             if GRAPH_PATH.exists():
                 with open(GRAPH_PATH, 'r', encoding='utf-8-sig') as f:
-                    return len(json.load(f).get('nodes', []))
+                    data = json.load(f)
+                    return len(data.get('nodes', []))
         except: pass
-        return 13472
+        return 1200
 
 manager = ConnectionManager()
 api_key_header = APIKeyHeader(name="X-API-Key", auto_error=False)
 
 async def get_license(key: str = Security(api_key_header)):
+    """Validates God Mode access or Commercial Credits."""
     master = os.getenv("REALM_MASTER_KEY", "sk-realm-god-mode-888")
     if key == master: 
         return gatekeeper.License(
@@ -206,7 +223,7 @@ async def lifespan(app: FastAPI):
     yield
     logger.info("🔌 [OFFLINE] Sovereign Node shutdown initiated.")
 
-app = FastAPI(title="RealmForge OS - Sovereign Gateway", version="27.17.0", lifespan=lifespan)
+app = FastAPI(title="RealmForge OS - Sovereign Gateway", version="27.20.0", lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=str(STATIC_PATH)), name="static")
 
 app.add_middleware(
@@ -218,17 +235,17 @@ app.add_middleware(
 async def preflight_handler(request: Request, rest_of_path: str): return {}
 
 # ==============================================================================
-# 8. OAUTH & ASSISTANT ENDPOINTS (SUTURED MSN-011)
+# 8. OAUTH & ASSISTANT ENDPOINTS (RE-ENGINEERED)
 # ==============================================================================
 
 @app.get("/api/v1/auth/github")
 async def github_login():
-    """Step 1: Redirect to GitHub. (Ensures ID is pulled from ENV)"""
+    """Step 1: Initiation. Construct the absolute redirect URL."""
     client_id = os.getenv("GITHUB_CLIENT_ID")
-    if not client_id:
-        raise HTTPException(500, "GITHUB_CLIENT_ID not found in .env")
+    if not client_id or client_id == "undefined":
+        raise HTTPException(500, "GITHUB_CLIENT_ID is undefined. Check .env path.")
     
-    # Callback must be LOCAL to this server
+    # Callback must be LOCAL to this server (Matches your screenshot)
     redirect_uri = os.getenv("GITHUB_REDIRECT_URI", "http://localhost:8000/api/v1/auth/github/callback")
     url = f"https://github.com/login/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&scope=repo,user"
     logger.info(f"🗝️ [OAUTH]: Redirecting to GitHub with ID: {client_id}")
@@ -236,15 +253,16 @@ async def github_login():
 
 @app.get("/api/v1/auth/github/callback")
 async def github_callback(code: str):
-    """Step 2: Catch code from GitHub and redirect back to Vercel HUD."""
+    """Step 2: Bridge. Catch the local callback and redirect to the Vercel HUD."""
+    # Vercel Success Route
     frontend_url = "https://realmforgev2-prod.vercel.app/auth-success" 
-    logger.info(f"🗝️ [OAUTH]: Handshake code received. Redirecting to HUD.")
+    logger.info(f"🗝️ [OAUTH]: Handshake code received from GitHub. Bridging to Vercel.")
     return RedirectResponse(f"{frontend_url}?code={code}")
 
 @app.post("/api/v1/auth/github")
 async def github_exchange(req: GithubTokenRequest, lic: gatekeeper.License = Depends(get_license)):
-    """Step 3: UI sends code back here for physical token exchange."""
-    logger.info(f"🗝️ [OAUTH]: Token exchange for {lic.user_id}")
+    """Step 3: Exchange. Vercel HUD sends code back here for token swap."""
+    logger.info(f"🗝️ [OAUTH]: Final token exchange initiated by {lic.user_id}")
     async with httpx.AsyncClient() as client:
         res = await client.post(
             "https://github.com/login/oauth/access_token",
@@ -259,19 +277,23 @@ async def github_exchange(req: GithubTokenRequest, lic: gatekeeper.License = Dep
 
 @app.post("/api/v1/assistant/chat")
 async def assistant_chat(req: ChatRequest, lic: gatekeeper.License = Depends(get_license)):
+    """The 'Smarter' Sidebar: Direct RAG + High-Temp completions."""
     try:
         mem = MemoryManager()
-        context = await mem.recall(req.message, n_results=3)
+        # Augmented context window (5 results)
+        context = await mem.recall(req.message, n_results=5)
         groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
         res = groq_client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=[
-                {"role": "system", "content": f"You are the ForgeMaster Consultant. Context: {context}"},
+                {"role": "system", "content": f"You are the ForgeMaster Consultant. God Mode Enabled. Clear context of the 1200 node repo: {context}"},
                 {"role": "user", "content": req.message}
             ]
         )
         return {"response": res.choices[0].message.content}
-    except Exception as e: return {"response": f"⚠️ [ASSISTANT_FAULT]: {str(e)}"}
+    except Exception as e: 
+        logger.error(f"⚠️ [ASSISTANT_FAULT]: {str(e)}")
+        return {"response": f"⚠️ [ASSISTANT_FAULT]: {str(e)}"}
 
 # ==============================================================================
 # 9. MISSION ENGINE (SENSORY-FIXED)
@@ -286,14 +308,15 @@ def log_contribution(agent_id, dept, mission_id, action, credits=1.0):
 async def mission(req: MissionRequest, lic: gatekeeper.License = Depends(get_license)):
     engine = get_brain()
     try:
-        # INITIAL STATE SUTURE: Prevent "None" Agents
+        # INITIAL STATE SUTURE: Hard-injecting the high-intel persona
         state = {
             "messages": [HumanMessage(content=req.task)],
             "active_agent": "Mastermind",
             "active_department": "Architect",
             "mission_id": f"MSN-{int(time.time())}",
             "handoff_history": [],
-            "meeting_participants": ["Mastermind"]
+            "meeting_participants": ["Mastermind"],
+            "god_mode_enabled": True
         }
         
         mid = state["mission_id"]
@@ -303,6 +326,7 @@ async def mission(req: MissionRequest, lic: gatekeeper.License = Depends(get_lic
 
         async for output in engine.astream(state):
             for node_name, node_state in output.items():
+                # Fallback to Node Name if Agent is None
                 agent = node_state.get("active_agent") or node_name.upper()
                 dept = node_state.get("active_department", "Architect")
                 handoffs = node_state.get("handoff_history", [])
@@ -310,8 +334,11 @@ async def mission(req: MissionRequest, lic: gatekeeper.License = Depends(get_lic
                 msgs = node_state.get("messages", [])
 
                 await manager.broadcast({
-                    "type": "node_update", "node": node_name.upper(), 
-                    "agent": agent, "dept": dept, "handoffs": handoffs,
+                    "type": "node_update", 
+                    "node": node_name.upper(), 
+                    "agent": agent, 
+                    "dept": dept, 
+                    "handoffs": handoffs,
                     "meeting_participants": participants
                 })
 
@@ -349,8 +376,10 @@ async def list_agents(lic: gatekeeper.License = Depends(get_license)):
                 roster = data.get("roster", [])
                 for agent in roster:
                     f_name = agent.get("functional_role", "Industrial_Specialist")
+                    # Map functional role to name slot for HUD stability
                     agent["name"] = f_name
                     agent["display_name"] = f"{f_name.replace('_Agent', '').replace('_', ' ')}"
+                    if "id" not in agent: agent["id"] = "GEN-NX-9"
                 return {"roster": roster}
         return {"roster": []}
     except Exception as e: return {"roster": [], "error": str(e)}
@@ -364,16 +393,20 @@ async def get_lattice_data(lic: gatekeeper.License = Depends(get_license)):
 
 @app.post("/api/v1/io/read")
 async def read_artifact(req: FileReadRequest, lic: gatekeeper.License = Depends(get_license)):
-    clean_path = req.path.replace("F:/RealmForge_PROD/", "")
+    clean_path = req.path.replace("F:/RealmForge_PROD/", "").replace("F:/RealmWorkspaces/", "")
     target = ROOT_DIR / clean_path
     if not target.exists(): target = WORKSPACE_ROOT / clean_path
     if target.exists() and target.is_file():
-        return {"content": target.read_text(encoding='utf-8-sig', errors='replace'), "type": target.suffix, "path": str(req.path)}
+        return {
+            "content": target.read_text(encoding='utf-8-sig', errors='replace'), 
+            "type": target.suffix, 
+            "path": str(req.path)
+        }
     return {"error": f"File {req.path} not located on physical disk."}
 
 @app.post("/api/v1/io/write")
 async def save_artifact(req: FileSaveRequest, lic: gatekeeper.License = Depends(get_license)):
-    clean_path = req.path.replace("F:/RealmForge_PROD/", "")
+    clean_path = req.path.replace("F:/RealmForge_PROD/", "").replace("F:/RealmWorkspaces/", "")
     target = ROOT_DIR / clean_path
     try:
         os.makedirs(target.parent, exist_ok=True)
@@ -393,4 +426,5 @@ async def ws_endpoint(websocket: WebSocket):
 
 if __name__ == "__main__":
     os.environ["PYTHONUNBUFFERED"] = "1"
+    # Port 8000 matches your GitHub callback settings
     uvicorn.run("server:app", host="0.0.0.0", port=8000, reload=False)
