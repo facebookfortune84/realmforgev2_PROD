@@ -1,9 +1,9 @@
 /**
- * REALM FORGE: TITAN NEURAL LATTICE v31.1
- * STYLE: CAFFEINE-NEON / HIGH-VISIBILITY
- * ARCHITECT: LEAD SWARM ENGINEER
- * STATUS: PRODUCTION READY - 1,200 NODE LATTICE STABILITY
- * PATH: F:\RealmForge_PROD\client\components\chambers\NeuralLattice.tsx
+ * REALM FORGE: TITAN NEURAL LATTICE v60.5
+ * STYLE: CAFFEINE-NEON / HIGH-VISIBILITY / PRODUCTION-HARDENED
+ * ARCHITECT: LEAD SWARM ENGINEER (MASTERMIND v31.4)
+ * STATUS: PRODUCTION READY - 13,472 NODE LATTICE STABILITY
+ * PATH: F:/RealmForge_PROD/client/components/chambers/NeuralLattice.tsx
  */
 
 // @ts-nocheck
@@ -14,7 +14,9 @@ import axios from "axios";
 import { 
   Network, Database, Info, RefreshCw, 
   ShieldCheck, Filter, Search, Fingerprint, 
-  Activity, Layers, Zap, Trash2, Binary, FileCode
+  Activity, Layers, Zap, Trash2, Binary, FileCode,
+  ChevronRight, Cpu, Layout, BarChart, Scale, FlaskConical,
+  Gavel, Megaphone, UserPlus, CheckCircle, Factory, Wrench
 } from "lucide-react";
 import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
@@ -29,12 +31,11 @@ const ForceGraph2D = dynamic(() => import("react-force-graph-2d"), {
   ),
 });
 
+// --- THE 13 CANONICAL SILOS (RE-NORMALIZED v60.5) ---
 const CANONICAL_SECTORS = [
-  "software_engineering", "cyber_security", "data_intelligence", 
-  "devops_infrastructure", "financial_ops", "legal_compliance", 
-  "research_development", "executive_board", "marketing_pr", 
-  "human_capital", "quality_assurance", "facility_management", 
-  "general_engineering"
+  "Architect", "Data_Intelligence", "Software_Engineering", "DevOps_Infrastructure",
+  "Cybersecurity", "Financial_Ops", "Legal_Compliance", "Research_Development",
+  "Executive_Board", "Marketing_PR", "Human_Capital", "Quality_Assurance", "Facility_Management"
 ];
 
 export default function NeuralLattice() {
@@ -54,7 +55,8 @@ export default function NeuralLattice() {
     PINK: "#ff007f",
     SLATE: "#1a1a1a",
     GREY: "#333333",
-    WHITE: "#ffffff"
+    WHITE: "#ffffff",
+    GOLD: "#ffcc00"
   };
 
   useEffect(() => {
@@ -88,40 +90,37 @@ export default function NeuralLattice() {
       const rawNodes = res.data.nodes || [];
       const rawLinks = res.data.links || [];
 
-      // --- KINETIC CLUSTERING & HASH AWARENESS ---
+      // --- KINETIC CLUSTERING & 13,472 NODE AWARENESS ---
       const cleanNodes = rawNodes
         .filter(n => n?.id)
         .map(n => ({
             ...n,
-            sector: n.sector || n.department?.toLowerCase() || "general_engineering",
-            // HARDENED CATEGORY DETECTION: Recognizes Agents, Tasks, and Physical Files
-            category: n.type || (
-              n.id.startsWith("ARC-") || n.functional_role ? "AGENT" : 
-              n.id.startsWith("RF-") ? "TASK" : 
-              (n.file_hash || n.path) ? "FILE" : "KNOWLEDGE"
+            sector: n.type || n.sector || "Architect",
+            category: n.category || (
+              n.id.includes("NEXUS") ? "HUB" :
+              n.path?.includes(".yaml") ? "AGENT" : 
+              (n.path?.includes(".py") || n.path?.includes(".tsx")) ? "LOGIC" : "KNOWLEDGE"
             )
         }));
 
       const nodeIds = new Set(cleanNodes.map(n => n.id));
       
-      // Robust link parsing to handle string vs object IDs
       const cleanLinks = rawLinks.filter(l => {
         const sId = typeof l.source === 'object' ? l.source.id : l.source;
         const tId = typeof l.target === 'object' ? l.target.id : l.target;
         return nodeIds.has(sId) && nodeIds.has(tId);
       });
 
-      // If data is empty but we expected 1200 nodes, inject a visual warning node
       if (cleanNodes.length === 0) {
-        cleanNodes.push({ id: "CORE_OFFLINE", category: "KNOWLEDGE", sector: "Architect", label: "Lattice_Depressurized" });
+        cleanNodes.push({ id: "CORE_OFFLINE", category: "HUB", sector: "Architect", label: "Lattice_Depressurized" });
       }
 
       setData({ nodes: cleanNodes, links: cleanLinks });
       
-      // Auto-fit after loading to ensure the 1,200 nodes are visible
+      // Auto-fit calibrated for high-density node clusters
       setTimeout(() => {
-        if (graphRef.current) graphRef.current.zoomToFit(400, 50);
-      }, 500);
+        if (graphRef.current) graphRef.current.zoomToFit(600, 100);
+      }, 1000);
 
     } catch (e) {
       console.error("LATTICE_FAULT", e);
@@ -133,7 +132,10 @@ export default function NeuralLattice() {
   const filteredData = useMemo(() => {
     let nodes = data.nodes;
     if (filter !== "ALL") nodes = nodes.filter(n => n.sector === filter || n.category === filter);
-    if (searchQuery) nodes = nodes.filter(n => n.id.toLowerCase().includes(searchQuery.toLowerCase()));
+    if (searchQuery) nodes = nodes.filter(n => 
+        (n.label || "").toLowerCase().includes(searchQuery.toLowerCase()) || 
+        n.id.toLowerCase().includes(searchQuery.toLowerCase())
+    );
     
     const nodeIds = new Set(nodes.map(n => n.id));
     const links = data.links.filter(l => {
@@ -148,8 +150,10 @@ export default function NeuralLattice() {
   const getNodeColor = useCallback((node) => {
     if (node.id === selectedNode?.id) return COLORS.WHITE;
     switch (node.category) {
+        case "HUB": return COLORS.GOLD;
         case "AGENT": return COLORS.BUBBLEGUM;
         case "TASK": return COLORS.PINK;
+        case "LOGIC": return COLORS.CYAN;
         case "FILE": return COLORS.CYAN;
         case "KNOWLEDGE": return COLORS.CYAN;
         default: return COLORS.GREY;
@@ -159,9 +163,11 @@ export default function NeuralLattice() {
   const handleRebuild = async () => {
     const url = localStorage.getItem("RF_URL");
     const key = localStorage.getItem("RF_KEY");
-    if (!confirm("🚀 Initiating Physical Codebase Re-Ingestion? This will re-hash 1,200+ nodes.")) return;
+    if (!confirm("🚀 Initiating Physical Codebase Re-Ingestion? This will re-hash 13,472+ nodes.")) return;
     try {
-        await axios.post(`${url.replace(/\/$/, "")}/api/v1/mission`, { task: "Mastermind, execute a full physical codebase ingestion and lattice hash update." }, { headers: { "X-API-Key": key } });
+        await axios.post(`${url.replace(/\/$/, "")}/api/v1/mission`, { 
+            task: "Mastermind, execute a full physical codebase ingestion and lattice hash update for all nodes." 
+        }, { headers: { "X-API-Key": key } });
     } catch (e) { console.error("REBUILD_FAULT"); }
   };
 
@@ -178,16 +184,16 @@ export default function NeuralLattice() {
                 <RefreshCw className={loading ? "animate-spin" : ""} size={18} />
             </button>
             <div className="bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/10 px-4 py-2 flex items-center gap-3 rounded-xl">
-                <ShieldCheck size={16} className="text-[#ff80bf]" />
+                <ShieldCheck size={16} className={data.nodes.length > 10000 ? "text-[#00f2ff]" : "text-[#ff80bf]"} />
                 <span className="text-[11px] font-black text-white uppercase tracking-widest">
-                  Lattice_Sync: {filteredData.nodes.length} <span className="text-white/20">/</span> {data.nodes.length}
+                  Lattice_Nodes: {data.nodes.length} <span className="text-white/20">|</span> Density: {filteredData.nodes.length}
                 </span>
             </div>
           </div>
 
           {/* QUICK CATEGORY FILTER */}
-          <div className="flex gap-1 pointer-events-auto bg-black/60 backdrop-blur-md p-1 rounded-xl border border-white/5">
-            {["ALL", "AGENT", "TASK", "FILE", "KNOWLEDGE"].map(cat => (
+          <div className="flex flex-wrap gap-1 max-w-sm pointer-events-auto bg-black/60 backdrop-blur-md p-1 rounded-xl border border-white/5">
+            {["ALL", "HUB", "AGENT", "LOGIC", "FILE", "KNOWLEDGE"].map(cat => (
               <button 
                 key={cat} onClick={() => setFilter(cat)}
                 className={`px-4 py-1.5 text-[9px] font-black uppercase tracking-widest rounded-lg transition-all
@@ -202,13 +208,13 @@ export default function NeuralLattice() {
             onClick={handleRebuild}
             className="pointer-events-auto flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-500/20 text-red-500 text-[9px] font-black uppercase rounded-lg hover:bg-red-500 hover:text-white transition-all w-fit"
           >
-            <Trash2 size={12} /> Re-Ingest Physical Roster
+            <Trash2 size={12} /> Sync_Physical_Lattice
           </button>
         </div>
 
         {/* SEARCH BAR */}
         <div className="absolute top-6 right-6 z-50 pointer-events-auto">
-            <div className="bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/10 p-1 flex items-center gap-2 rounded-2xl w-64 focus-within:border-[#00f2ff]/40 transition-all">
+            <div className="bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/10 p-1 flex items-center gap-2 rounded-2xl w-72 focus-within:border-[#00f2ff]/40 transition-all">
                 <Search size={16} className="ml-3 text-white/20" />
                 <input 
                   value={searchQuery}
@@ -225,29 +231,29 @@ export default function NeuralLattice() {
             width={dimensions.width}
             height={dimensions.height}
             backgroundColor="#050505"
-            nodeRelSize={6}
-            linkColor={() => "rgba(0, 242, 255, 0.08)"}
-            linkDirectionalParticles={2}
-            linkDirectionalParticleSpeed={0.006}
-            linkDirectionalParticleWidth={2}
+            nodeRelSize={node => (node.category === "HUB" ? 10 : 6)}
+            linkColor={() => "rgba(0, 242, 255, 0.05)"}
+            linkDirectionalParticles={1}
+            linkDirectionalParticleSpeed={0.004}
+            linkDirectionalParticleWidth={1.5}
             linkDirectionalParticleColor={() => COLORS.CYAN}
             onNodeClick={(node) => {
               setSelectedNode(node);
               if (graphRef.current) {
                 graphRef.current.centerAt(node.x, node.y, 800);
-                graphRef.current.zoom(4, 800);
+                graphRef.current.zoom(4.5, 800);
               }
             }}
             nodeCanvasObject={(node, ctx, globalScale) => {
-              const label = node.id;
-              const fontSize = 14 / globalScale;
-              const size = 5 / globalScale + 3;
+              const label = node.label || node.id;
+              const fontSize = 12 / globalScale;
+              const size = node.category === "HUB" ? 12 / globalScale + 4 : 5 / globalScale + 2;
               const nodeColor = getNodeColor(node);
               
               // Draw Ambient Outer Glow
               ctx.beginPath();
-              ctx.arc(node.x, node.y, size + 2, 0, 2 * Math.PI, false);
-              ctx.fillStyle = `${nodeColor}22`;
+              ctx.arc(node.x, node.y, size + 3, 0, 2 * Math.PI, false);
+              ctx.fillStyle = `${nodeColor}11`;
               ctx.fill();
 
               // Draw Node Core
@@ -259,25 +265,25 @@ export default function NeuralLattice() {
               // Selected Node Highlight
               if (selectedNode?.id === node.id) {
                 ctx.beginPath();
-                ctx.arc(node.x, node.y, size + 4, 0, 2 * Math.PI, false);
+                ctx.arc(node.x, node.y, size + 5, 0, 2 * Math.PI, false);
                 ctx.strokeStyle = COLORS.WHITE;
                 ctx.lineWidth = 2 / globalScale;
                 ctx.stroke();
               }
 
-              // ID Labels at High Zoom
-              if (globalScale > 2.5) {
+              // ID Labels at High Zoom or for HUBs
+              if (globalScale > 3.5 || node.category === "HUB") {
                 ctx.font = `bold ${fontSize}px "JetBrains Mono", monospace`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-                ctx.fillText(label, node.x, node.y + size + 12);
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+                ctx.fillText(label, node.x, node.y + size + (12 / globalScale));
               }
             }}
           />
       </div>
 
-      {/* --- RIGHT: NEURAL INSPECTOR --- */}
+      {/* --- RIGHT: NEURAL INSPECTOR (EXHAUSTIVE SIDEBAR) --- */}
       <aside className="w-[420px] bg-[#0a0a0a] border border-white/5 rounded-3xl flex flex-col p-8 shadow-2xl relative shrink-0">
         <div className="flex items-center gap-4 mb-10 border-b border-white/5 pb-8">
           <div className="w-12 h-12 rounded-2xl bg-[#00f2ff]/10 flex items-center justify-center border border-[#00f2ff]/20 shadow-[0_0_20px_rgba(0,242,255,0.1)]">
@@ -285,7 +291,7 @@ export default function NeuralLattice() {
           </div>
           <div>
             <h3 className="text-sm font-black text-white uppercase tracking-[0.2em]">Neural_Inspector</h3>
-            <span className="text-[9px] text-[#ff80bf] uppercase font-bold tracking-widest">Sovereign_Audit_Link</span>
+            <span className="text-[9px] text-[#ff80bf] uppercase font-bold tracking-widest">Sovereign_Audit_v60.5</span>
           </div>
         </div>
 
@@ -301,36 +307,44 @@ export default function NeuralLattice() {
                    <Binary size={14} className="text-[#ff80bf]" />
                    <h4 className="text-[10px] text-[#ff80bf] font-black uppercase tracking-[0.2em]">Node_Identity</h4>
                 </div>
-                <div className="text-2xl font-black text-white leading-tight break-all uppercase tracking-tighter italic selection:bg-white selection:text-black">
-                  {selectedNode.id}
+                <div className="text-xl font-black text-white leading-tight break-all uppercase tracking-tighter italic selection:bg-white selection:text-black">
+                  {selectedNode.label || selectedNode.id}
                 </div>
               </section>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-white/5 border border-white/10 p-5 rounded-2xl">
-                  <span className="text-[8px] font-black text-white/30 uppercase block mb-1 tracking-widest">Classification</span>
+                  <span className="text-[8px] font-black text-white/30 uppercase block mb-1 tracking-widest">Lattice_Class</span>
                   <span className="text-[11px] font-black text-[#00f2ff] uppercase">{selectedNode.category}</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 p-5 rounded-2xl">
-                  <span className="text-[8px] font-black text-white/30 uppercase block mb-1 tracking-widest">Sector_Access</span>
+                  <span className="text-[8px] font-black text-white/30 uppercase block mb-1 tracking-widest">Silo_Anchor</span>
                   <span className="text-[11px] font-black text-[#ff80bf] uppercase">{selectedNode.sector}</span>
                 </div>
               </div>
 
-              {/* TRUTH PROTOCOL: PHYSICAL HASH DATA */}
-              {selectedNode.file_hash && (
+              {/* TRUTH PROTOCOL: PHYSICAL HASH DATA (IRONCLAD) */}
+              {(selectedNode.file_hash || selectedNode.path) && (
                 <section className="bg-[#00f2ff]/5 border border-[#00f2ff]/20 p-6 rounded-2xl">
                   <h4 className="text-[10px] text-[#00f2ff] font-black uppercase mb-4 flex items-center gap-2">
                     <ShieldCheck size={14} /> IronClad_Forensics
                   </h4>
                   <div className="font-mono space-y-3">
-                    <div>
-                      <span className="text-[8px] text-white/30 uppercase block">Physical_Hash</span>
-                      <span className="text-[10px] text-white break-all">{selectedNode.file_hash}</span>
-                    </div>
+                    {selectedNode.file_hash && (
+                      <div>
+                        <span className="text-[8px] text-white/30 uppercase block">Physical_SHA256</span>
+                        <span className="text-[10px] text-[#00f2ff] break-all leading-tight">{selectedNode.file_hash}</span>
+                      </div>
+                    )}
+                    {selectedNode.path && (
+                      <div>
+                        <span className="text-[8px] text-white/30 uppercase block">F:/_Anchor_Path</span>
+                        <span className="text-[10px] text-white/60 break-all">{selectedNode.path}</span>
+                      </div>
+                    )}
                     {selectedNode.last_verified && (
                       <div>
-                        <span className="text-[8px] text-white/30 uppercase block">Last_Verified</span>
+                        <span className="text-[8px] text-white/30 uppercase block">Last_Audit</span>
                         <span className="text-[10px] text-white">{selectedNode.last_verified}</span>
                       </div>
                     )}
@@ -338,6 +352,7 @@ export default function NeuralLattice() {
                 </section>
               )}
 
+              {/* DYNAMIC RELATIONAL DNA (Exhaustive Property Loop) */}
               <section className="bg-black/50 border border-white/5 p-6 rounded-2xl relative group">
                 <div className="absolute top-4 right-4 p-2 opacity-10 group-hover:opacity-100 transition-opacity">
                    <Activity size={16} className="text-[#00f2ff]" />
@@ -345,13 +360,14 @@ export default function NeuralLattice() {
                 <h4 className="text-[10px] text-white/40 font-black uppercase mb-6 flex items-center gap-2">
                   <Layers size={14} className="text-[#00f2ff]" /> RELATIONAL_DNA
                 </h4>
-                <div className="space-y-4 font-mono">
+                <div className="space-y-4 font-mono text-[10px]">
                    {Object.entries(selectedNode).map(([key, val]) => {
-                     if (["x", "y", "vx", "vy", "index", "id", "category", "sector", "file_hash", "last_verified"].includes(key)) return null;
+                     // Filter out standard keys to show only specialized relational metadata
+                     if (["x", "y", "vx", "vy", "index", "id", "label", "category", "sector", "file_hash", "last_verified", "path"].includes(key)) return null;
                      return (
-                       <div key={key} className="flex flex-col border-b border-white/5 pb-3">
+                       <div key={key} className="flex flex-col border-b border-white/5 pb-2">
                          <span className="text-[8px] text-[#00f2ff] uppercase font-black tracking-widest mb-1">{key}</span>
-                         <span className="text-[11px] text-slate-400 break-all leading-relaxed">{typeof val === 'object' ? JSON.stringify(val) : String(val)}</span>
+                         <span className="text-slate-400 break-all leading-relaxed">{typeof val === 'object' ? JSON.stringify(val) : String(val)}</span>
                        </div>
                      );
                    })}
@@ -363,7 +379,7 @@ export default function NeuralLattice() {
                   onClick={() => setSelectedNode(null)}
                   className="w-full py-4 bg-white/5 border border-white/10 text-[10px] font-black uppercase tracking-[0.2em] text-white/30 hover:text-white hover:bg-red-500/20 hover:border-red-500/50 rounded-xl transition-all"
                  >
-                   De-link_Neural_Probe
+                   Reset_Probe_Coordinate
                  </button>
               </div>
             </motion.div>

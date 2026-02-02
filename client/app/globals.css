@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 /**
- * REALM FORGE: TITAN-NEON DESIGN SYSTEM v4.1
- * STYLE: Caffeine-Neon / Industrial High-Visibility
+ * REALM FORGE: TITAN-NEON DESIGN SYSTEM v60.5
+ * STYLE: Caffeine-Neon / Industrial High-Visibility / Sovereign Reconstruction
  * PALETTE: Obsidian (#050505), Kinetic Cyan (#00f2ff), Bubblegum (#ff80bf)
- * ARCHITECT: LEAD SWARM ENGINEER
+ * ARCHITECT: LEAD SWARM ENGINEER (MASTERMIND v31.4)
+ * PATH: F:/RealmForge_PROD/client/app/globals.css
  */
 
 :root {
@@ -17,16 +18,18 @@
   --slate-grey: #121212;
   --glass-border: rgba(0, 242, 255, 0.1);
   --pink-glow: rgba(255, 0, 127, 0.15);
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Inter', sans-serif;
 }
 
 @layer base {
   body {
-    @apply bg-[#050505] text-[#e2e8f0] antialiased selection:bg-[#00f2ff] selection:text-black;
+    @apply bg-[#050505] text-[#e2e8f0] antialiased selection:bg-[#00f2ff] selection:text-black h-screen overflow-hidden;
     font-family: var(--font-inter), system-ui, sans-serif;
     letter-spacing: -0.01em;
   }
 
-  /* Force scrollbar to never shift layout */
+  /* Force scrollbar to never shift layout - Anchor Point preserved */
   html {
     scrollbar-gutter: stable;
   }
@@ -34,7 +37,7 @@
 
 @layer components {
 
-  /* THE TITAN BENTO CARD */
+  /* THE TITAN BENTO CARD - Logic Hardened for v60.5 */
   .cyber-card {
     @apply bg-[#0a0a0a]/60 backdrop-blur-md border border-white/5 rounded-2xl transition-all duration-300 relative overflow-hidden;
     box-shadow: 0 4px 24px -12px rgba(0, 0, 0, 1);
@@ -67,6 +70,13 @@
 
   .glow-text-pink {
     text-shadow: 0 0 10px rgba(255, 128, 191, 0.5);
+  }
+
+  /* BUILD SHIELD: Terminal Character Escaping */
+  .terminal-literal {
+    @apply font-mono;
+    white-space: pre-wrap;
+    word-break: break-all;
   }
 }
 
@@ -102,6 +112,19 @@
 
   .animate-glow-cyan {
     animation: glow-cyan 4s infinite alternate;
+  }
+
+  /* SILO BORDER ACCENTS (For the 13-Silo HUD) */
+  .border-silo-cyan {
+    border-color: #00f2ff;
+  }
+
+  .border-silo-pink {
+    border-color: #ff007f;
+  }
+
+  .border-silo-slate {
+    border-color: #475569;
   }
 }
 
@@ -152,7 +175,7 @@
   box-shadow: 0 0 10px var(--kinetic-cyan);
 }
 
-/* TERMINAL & CODE BLOCKS */
+/* TERMINAL & CODE BLOCKS - Hardened for Industrial Content */
 pre {
   @apply bg-[#020202] rounded-xl border border-white/5 p-6 font-mono text-[13px] leading-relaxed overflow-x-auto;
 }

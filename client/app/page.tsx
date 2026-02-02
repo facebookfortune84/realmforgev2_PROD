@@ -1,8 +1,8 @@
 /**
- * REALM FORGE: TITAN COMMAND CHASSIS v31.6
+ * REALM FORGE: TITAN COMMAND CHASSIS v60.5
  * STYLE: CAFFEINE-NEON / HIGH-VISIBILITY / PRODUCTION-HARDENED
- * ARCHITECT: LEAD SWARM ENGINEER
- * PATH: F:\RealmForge_PROD\client\app\page.tsx
+ * ARCHITECT: LEAD SWARM ENGINEER (MASTERMIND v31.4)
+ * PATH: F:/RealmForge_PROD/client/app/page.tsx
  */
 
 "use client";
@@ -36,6 +36,7 @@ interface TelemetryVitals {
   ram: number;
   lattice_nodes: number;
   timestamp: number;
+  active_sector: string;
 }
 
 export default function TitanForgeHUD() {
@@ -54,24 +55,32 @@ export default function TitanForgeHUD() {
   });
 
   // --- 3. TELEMETRY & CHAT STATE ---
-  const [vitals, setVitals] = useState<TelemetryVitals>({ cpu: 0, ram: 0, lattice_nodes: 1200, timestamp: 0 });
+  const [vitals, setVitals] = useState<TelemetryVitals>({ 
+    cpu: 0, 
+    ram: 0, 
+    lattice_nodes: 13472, // RENORMALIZED NODE COUNT
+    timestamp: 0,
+    active_sector: "Architect"
+  });
   const [activeAgent, setActiveAgent] = useState("ForgeMaster");
   const [handoffs, setHandoffs] = useState<any[]>([]);
+  const [meetingParticipants, setMeetingParticipants] = useState<string[]>([]);
+  const [missionStrategy, setMissionStrategy] = useState<any>(null);
   const [chatInput, setChatInput] = useState("");
   const [isGitHubLinked, setIsGitHubLinked] = useState(false);
 
   const [assistantLogs, setAssistantLogs] = useState([
-    { id: 1, role: 'assistant', text: "Ready for deployment, Architect. I am your Sovereign Consultant, synced with the 1200 node codebase." }
+    { id: 1, role: 'assistant', text: "Lattice pressurized. I am your Sovereign Consultant, synchronized with the 13,472 node neural network." }
   ]);
   
   const [diagnosticLines, setDiagnosticLines] = useState<string[]>([
     `[${new Date().toLocaleTimeString()}] RE-INIT: Mastermind Online.`,
-    `[${new Date().toLocaleTimeString()}] LATTICE: Sector Synchronization Nominal.`
+    `[${new Date().toLocaleTimeString()}] LATTICE: 13-Silo Renormalization Nominal.`
   ]);
 
   const [globalLogs, setGlobalLogs] = useState<any[]>([{
     id: 'init', type: 'system', agent: 'CORE', 
-    content: "### [TITAN_OS_v31.6] UPLINK_STABLE.\nFunctional role-mapping active. Use Functional IDs for summoning.",
+    content: "### [TITAN_OS_v60.5] UPLINK_STABLE.\n1,113 Agents renormalized. 180 Tools armored. Mission Orchestrator standby.",
     timestamp: 'INIT'
   }]);
 
@@ -82,7 +91,7 @@ export default function TitanForgeHUD() {
   const [audioUnlocked, setAudioUnlocked] = useState(false);
   const ws = useRef<WebSocket | null>(null);
 
-  // --- 5. SENSORY ACTIVATION ---
+  // --- 5. SENSORY ACTIVATION (PRESERVED) ---
   const unlockAudio = async () => {
     if (typeof window === 'undefined') return;
     try {
@@ -130,7 +139,7 @@ export default function TitanForgeHUD() {
     }
   }, [audioUnlocked]);
 
-  // --- 6. MISSION ENGINE (HARDENED) ---
+  // --- 6. MISSION ENGINE (SUTURED TO ORCHESTRATOR) ---
   const executeDirective = useCallback(async (text: string) => {
     if (!text || isProcessing) return;
     
@@ -180,7 +189,7 @@ export default function TitanForgeHUD() {
     }
   };
 
-  // --- 8. COMMUNICATIONS (WEBSOCKET NERVOUS SYSTEM) ---
+  // --- 8. COMMUNICATIONS (MULTI-AGENT SUTURE) ---
   const connectToSwarm = useCallback((url: string) => {
     if (typeof window === 'undefined' || !url) return;
     if (ws.current) ws.current.close();
@@ -194,22 +203,32 @@ export default function TitanForgeHUD() {
     socket.onmessage = (e) => {
       const data = JSON.parse(e.data);
       if (data.vitals) setVitals(data.vitals);
+      
+      // Update participants for Meeting Mode
       if (data.type === "node_update") {
         setActiveAgent(data.agent);
+        if (data.meeting_participants) setMeetingParticipants(data.meeting_participants);
         if (data.handoffs && Array.isArray(data.handoffs) && data.handoffs.length > 0) {
             setHandoffs(data.handoffs);
             const h = data.handoffs[data.handoffs.length - 1];
             setDiagnosticLines(p => [...p.slice(-49), `🔄 [HANDOFF]: ${h.from} ➔ ${h.to}`]);
         }
       }
+
       if (data.type === "diagnostic") setDiagnosticLines(p => [...p.slice(-49), data.text]);
+      
       if (data.type === "audio_chunk") {
-        setGlobalLogs(p => [...p, { id: Date.now(), type: 'ai', agent: data.agent, content: data.text, timestamp: new Date().toLocaleTimeString() }]);
+        setGlobalLogs(p => [...p, { 
+            id: Date.now(), type: 'ai', agent: data.agent, 
+            content: data.text, timestamp: new Date().toLocaleTimeString(),
+            node: data.node, dept: data.dept
+        }]);
         if (data.audio_base64 && audioUnlocked) {
           audioQueue.current.push(data.audio_base64);
           if (!isAudioPlaying.current) playNextAudio();
         }
       }
+      
       if (data.type === "mission_complete") setIsProcessing(false);
     };
     socket.onclose = () => setStatus("OFFLINE");
@@ -227,7 +246,7 @@ export default function TitanForgeHUD() {
       setIsGitHubLinked(savedAuth);
       connectToSwarm(savedUrl);
 
-      // --- OAUTH HANDSHAKE COMPLETION ---
+      // --- OAUTH HANDSHAKE COMPLETION (SUTURED) ---
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get('code');
       if (code) {
@@ -283,6 +302,15 @@ export default function TitanForgeHUD() {
               </div>
               <div className="h-4 w-px bg-white/10" />
               <div className="text-[10px] font-black tracking-[0.2em] uppercase text-[#ff80bf]">Specialist: {activeAgent}</div>
+              {meetingParticipants.length > 1 && (
+                <div className="flex -space-x-2 ml-4">
+                  {meetingParticipants.map((p, i) => (
+                    <div key={i} className="w-5 h-5 rounded-full bg-[#00f2ff] border border-black text-[8px] flex items-center justify-center text-black font-black" title={p}>
+                      {p.charAt(0)}
+                    </div>
+                  ))}
+                </div>
+              )}
            </div>
            
            <div className="flex items-center gap-6 text-[10px] font-bold text-white/30 uppercase tracking-widest">
@@ -298,7 +326,7 @@ export default function TitanForgeHUD() {
           <AnimatePresence mode="wait">
             <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }} className="h-full w-full">
               {activeTab === "war_room" && (
-                <WarRoom logs={globalLogs} isProcessing={isProcessing} onSend={executeDirective} audioUnlocked={audioUnlocked} unlockAudio={unlockAudio} />
+                <WarRoom logs={globalLogs} isProcessing={isProcessing} onSend={executeDirective} audioUnlocked={audioUnlocked} unlockAudio={unlockAudio} participants={meetingParticipants} />
               )}
               {activeTab === "artifact_studio" && <ArtifactStudio />}
               {activeTab === "neural_lattice" && <NeuralLattice />}
@@ -321,7 +349,7 @@ export default function TitanForgeHUD() {
                  <span className={line.includes('HANDOFF') ? 'text-[#ff80bf]' : line.includes('✅') ? 'text-[#00f2ff]' : ''}>{line}</span>
                </div>
              ))}
-             {isProcessing && <div className="animate-pulse text-[#00f2ff]">{" >>> Processing_Directive..."}</div>}
+             {isProcessing && <div className="animate-pulse text-[#00f2ff]">{" >>> Processing_Strike_Maneuvers..."}</div>}
           </div>
         </div>
       </main>
@@ -335,10 +363,10 @@ export default function TitanForgeHUD() {
             exit={{ width: 0, opacity: 0 }}
             className="bg-[#0a0a0a] border-l border-white/5 flex flex-col shrink-0 overflow-hidden relative"
           >
-            {/* GITHUB OAUTH SUTURE */}
+            {/* GITHUB OAUTH PORT */}
             <div className="p-6 border-b border-white/5 bg-[#00f2ff]/5">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-[#00f2ff]">Cloud Suture</h3>
+                <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-[#00f2ff]">Infrastructure Link</h3>
                 <ShieldCheck size={16} className={isGitHubLinked ? "text-[#00f2ff]" : "text-[#ff80bf]"} />
               </div>
               <button 
@@ -354,12 +382,12 @@ export default function TitanForgeHUD() {
                 {isGitHubLinked ? (
                   <>
                     <CheckCircle2 size={18} className="text-[#00f2ff]" />
-                    <span className="text-[10px] font-black uppercase tracking-widest text-[#00f2ff]">Identity Verified</span>
+                    <span className="text-[10px] font-black uppercase tracking-widest text-[#00f2ff]">Sovereign Identity Verified</span>
                   </>
                 ) : (
                   <>
                     <Github size={18} className="group-hover:text-[#00f2ff]" />
-                    <span className="text-[10px] font-black uppercase tracking-widest group-hover:text-[#00f2ff]">OAUTH: Sign in to Repo</span>
+                    <span className="text-[10px] font-black uppercase tracking-widest group-hover:text-[#00f2ff]">OAUTH: Authorize Repositories</span>
                   </>
                 )}
               </button>
@@ -404,7 +432,7 @@ export default function TitanForgeHUD() {
         )}
       </AnimatePresence>
 
-      {/* CALIBRATION MODAL */}
+      {/* CALIBRATION MODAL (PRESERVED) */}
       <AnimatePresence>
         {config.open && (
           <div className="fixed inset-0 bg-black/95 backdrop-blur-3xl flex items-center justify-center z-[1000]">

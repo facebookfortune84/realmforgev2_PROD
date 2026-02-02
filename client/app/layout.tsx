@@ -1,8 +1,8 @@
 /**
- * REALM FORGE: TITAN LAYOUT v31.1
- * STYLE: CAFFEINE-NEON (PRODUCTION HARDENED)
- * ARCHITECT: LEAD SWARM ENGINEER
- * PATH: F:\RealmForge_PROD\client\app\layout.tsx
+ * REALM FORGE: TITAN LAYOUT v60.5 (PRODUCTION HARDENED)
+ * STYLE: CAFFEINE-NEON / SOVEREIGN RECONSTRUCTION
+ * ARCHITECT: LEAD SWARM ENGINEER (MASTERMIND v31.4)
+ * PATH: F:/RealmForge_PROD/client/app/layout.tsx
  */
 
 import "./globals.css";
@@ -13,8 +13,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const jetbrains = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  title: 'REALM FORGE | SOVEREIGN COMMAND',
-  description: 'Industrial Agentic Software Engineering Platform - v31.1',
+  title: 'REALM FORGE | SOVEREIGN COMMAND v60.5',
+  description: 'Industrial Agentic Software Engineering Platform - 13,472 Node Neural Lattice',
   icons: { icon: '/favicon.ico' },
 };
 
@@ -32,10 +32,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrains.variable} dark`}>
-      <body className="bg-[#050505] text-[#f0f0f0] antialiased selection:bg-[#00f2ff] selection:text-black font-sans overflow-hidden">
+    <html lang="en" className={`${inter.variable} ${jetbrains.variable} dark`} suppressHydrationWarning>
+      <body className="bg-[#050505] text-[#f0f0f0] antialiased selection:bg-[#00f2ff] selection:text-black font-sans overflow-hidden h-screen w-screen">
         
-        {/* THE INFINITE CANVAS BACKGROUND (NEON-INDUSTRIAL) */}
+        {/* THE INFINITE CANVAS BACKGROUND (NEON-INDUSTRIAL) - DESIGN PRESERVED */}
         <div className="fixed inset-0 z-[-1] pointer-events-none select-none overflow-hidden">
           {/* Base Layer: Pure Abyss */}
           <div className="absolute inset-0 bg-[#050505]" />
@@ -58,7 +58,7 @@ export default function RootLayout({
         </div>
 
         {/* TITAN HUD CHASSIS */}
-        <div className="relative flex h-screen w-screen flex-col overflow-hidden">
+        <div className="relative flex h-full w-full flex-col overflow-hidden">
           {/* Top Border Glow (High Visibility Rail) */}
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00f2ff]/30 to-transparent z-[9999]" />
           

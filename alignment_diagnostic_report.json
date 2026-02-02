@@ -1,0 +1,33 @@
+{
+    "summary": {
+        "total_agents_in_roster": 0,
+        "neural_lattice_nodes": 1188
+    },
+    "legacy_sectors_found": [
+        "GENERAL_ENGINEERING",
+        "DATA_INTELLIGENCE",
+        "MARKETING_PR",
+        "QUALITY_ASSURANCE",
+        "SOFTWARE_ENGINEERING",
+        "EXECUTIVE_BOARD",
+        "ZERO_TRUST_SENTINEL",
+        "HUMAN_CAPITAL",
+        "DEVOPS_INFRASTRUCTURE",
+        "SILICON_ARCHITECT",
+        "FINANCIAL_OPS",
+        "RESEARCH_DEVELOPMENT",
+        "CYBER_SECURITY",
+        "FACILITY_MANAGEMENT",
+        "DATA_LATTICE_CURATOR",
+        "LEGAL_COMPLIANCE"
+    ],
+    "unmapped_agents": [],
+    "tool_distribution": {
+        "total_in_registry": 0
+    },
+    "file_health": {
+        "registry": "OK - Found 0 tool classes.",
+        "cap_map": "OK - Found 16 sectors.",
+        "neural_graph": "OK"
+    }
+}
