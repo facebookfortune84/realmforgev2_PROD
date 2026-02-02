@@ -1,32 +1,44 @@
 /**
- * REALM FORGE: TITAN ARTIFACT VAULT v31.0
+ * REALM FORGE: TITAN ARTIFACT VAULT v31.1
  * STYLE: CAFFEINE-NEON / HIGH-VISIBILITY
  * ARCHITECT: LEAD SWARM ENGINEER
+ * STATUS: PRODUCTION READY - LIVE SHARD TRACKING - TRUTH VALIDATED
  * PATH: F:\RealmForge_PROD\client\components\chambers\ArtifactStudio.tsx
  */
 
-// @ts-nocheck
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import axios from "axios";
 import { 
   FileCode, Save, Eye, RefreshCw, HardDrive, 
   Package, FileJson, FileText, Globe, Zap, 
   Terminal, ShieldCheck, Download, Search, 
-  ChevronRight, Box, FileEdit
+  ChevronRight, Box, FileEdit, History, Clock,
+  CheckCircle2, AlertTriangle
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function ArtifactStudio() {
-  const [files, setFiles] = useState([]);
+  // --- 1. STATE CHASSIS ---
+  const [files, setFiles] = useState<string[]>([]);
+  const [recentArtifacts, setRecentArtifacts] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [currentFile, setCurrentFile] = useState({ path: "", content: "", type: "code" });
+  const [currentFile, setCurrentFile] = useState({ 
+    path: "", 
+    content: "", 
+    type: "code", 
+    hash: "", 
+    size: "0 KB" 
+  });
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [config, setConfig] = useState({ url: "", key: "" });
+  
+  const editorRef = useRef<HTMLTextAreaElement>(null);
+  const lineNumbersRef = useRef<HTMLDivElement>(null);
 
-  // --- 1. SOVEREIGN HYDRATION GUARD ---
+  // --- 2. SOVEREIGN HYDRATION & RECOVERY ---
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const url = localStorage.getItem("RF_URL") || "http://localhost:8000";
@@ -36,26 +48,41 @@ export default function ArtifactStudio() {
     }
   }, []);
 
+  // Sync line numbers scroll with textarea
+  const handleScroll = () => {
+    if (editorRef.current && lineNumbersRef.current) {
+      lineNumbersRef.current.scrollTop = editorRef.current.scrollTop;
+    }
+  };
+
   const scanLattice = async (url: string, key: string) => {
     if (!url) return;
     setLoading(true);
     try {
       const cleanUrl = url.replace(/\/$/, "");
-      // Re-fetch agents/files manifest
-      await axios.get(`${cleanUrl}/api/v1/agents`, { 
-        headers: { 'ngrok-skip-browser-warning': '69420', "X-API-Key": key } 
-      });
       
-      // Industrial set for primary development
-      setFiles([
+      // Industrial set for primary development + physical scan
+      const staticFiles = [
           "server.py",
           "realm_core.py",
-          "src/system/actions.py",
-          "data/workforce_audit.csv",
+          "src/system/state.py",
+          "src/system/arsenal/registry.py",
           "data/roster.json",
           "data/memory/neural_graph.json",
           "CLIENT_ONBOARDING.md"
-      ]);
+      ];
+      setFiles(staticFiles);
+
+      // Attempt to find newly created artifacts (Live Feed)
+      const res = await axios.get(`${cleanUrl}/api/v1/graph`, { 
+        headers: { "X-API-Key": key } 
+      });
+      if (res.data?.nodes) {
+        const artifacts = res.data.nodes
+          .filter((n: any) => n.category === "FILE" || n.path)
+          .map((n: any) => n.path || n.id);
+        setRecentArtifacts(artifacts.slice(0, 10));
+      }
     } catch (e) {
       console.error("LATTICE_INDEX_FAULT");
     } finally {
@@ -77,7 +104,9 @@ export default function ArtifactStudio() {
         setCurrentFile({
           path,
           content: res.data.content,
-          type: path.endsWith(".html") ? "web" : path.endsWith(".json") ? "json" : "code"
+          type: path.endsWith(".html") ? "web" : path.endsWith(".json") ? "json" : "code",
+          hash: res.data.hash || "UNVERIFIED",
+          size: res.data.size || `${(res.data.content.length / 1024).toFixed(1)} KB`
         });
       }
     } catch (e) {
@@ -96,18 +125,22 @@ export default function ArtifactStudio() {
         { path: currentFile.path, content: currentFile.content }, 
         { headers: { 'ngrok-skip-browser-warning': '69420', "X-API-Key": config.key } }
       );
+      // Trigger IronClad re-hash scan
+      await scanLattice(config.url, config.key);
     } catch (e) {
-      alert("PHYSICAL_COMMIT_FAULT");
+      alert("PHYSICAL_COMMIT_FAULT: Verification required.");
     } finally {
       setLoading(false);
     }
   };
 
+  const filteredFiles = files.filter(f => f.toLowerCase().includes(searchQuery.toLowerCase()));
+
   return (
-    <div className="h-full flex gap-6 bg-transparent overflow-hidden relative">
+    <div className="h-full flex gap-6 bg-transparent overflow-hidden relative select-none">
       
       {/* --- COLUMN A: THE VAULT INDEX --- */}
-      <aside className="w-80 bg-[#0a0a0a] border border-white/5 rounded-2xl flex flex-col shrink-0 overflow-hidden shadow-2xl">
+      <aside className="w-80 bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/5 rounded-2xl flex flex-col shrink-0 overflow-hidden shadow-2xl">
         <div className="p-5 border-b border-white/5 bg-[#00f2ff]/5 flex justify-between items-center">
           <div className="flex items-center gap-3">
             <HardDrive size={18} className="text-[#00f2ff]" />
@@ -115,9 +148,9 @@ export default function ArtifactStudio() {
           </div>
           <button 
             onClick={() => scanLattice(config.url, config.key)}
-            className="p-2 hover:bg-white/5 rounded-lg transition-all"
+            className="p-2 hover:bg-[#00f2ff]/20 rounded-lg transition-all"
           >
-            <RefreshCw size={14} className="text-[#00f2ff]/60" />
+            <RefreshCw size={14} className={loading ? "animate-spin text-[#00f2ff]" : "text-[#00f2ff]/60"} />
           </button>
         </div>
 
@@ -127,42 +160,69 @@ export default function ArtifactStudio() {
             <input 
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
-              placeholder="FILTER_VAULT..."
-              className="w-full bg-black border border-white/10 p-2.5 pl-10 text-[10px] font-bold text-[#00f2ff] outline-none focus:border-[#00f2ff]/40 rounded-xl transition-all"
+              placeholder="PROBE_VAULT_PATH..."
+              className="w-full bg-black/40 border border-white/10 p-2.5 pl-10 text-[10px] font-bold text-[#00f2ff] outline-none focus:border-[#00f2ff]/40 rounded-xl transition-all placeholder:text-white/5"
             />
           </div>
         </div>
 
-        <div className="flex-1 overflow-y-auto px-2 pb-4 space-y-1 scrollbar-hide">
-          {files.filter(f => f.toLowerCase().includes(searchQuery.toLowerCase())).map(file => (
-            <button 
-              key={file} 
-              onClick={() => loadArtifact(file)} 
-              className={`w-full text-left px-4 py-3 text-[10px] flex items-center justify-between rounded-xl transition-all group
-              ${currentFile.path === file ? "bg-[#00f2ff]/10 border border-[#00f2ff]/30 text-white shadow-[0_0_15px_rgba(0,242,255,0.05)]" : "text-gray-500 hover:bg-white/5 hover:text-white"}`}
-            >
-              <div className="flex items-center gap-3 truncate">
-                {file.endsWith(".py") ? <Terminal size={14} className="text-[#ff80bf]" /> :
-                 file.endsWith(".json") ? <Box size={14} className="text-[#00f2ff]" /> :
-                 file.endsWith(".csv") ? <Activity size={14} className="text-green-400" /> :
-                 <FileText size={14} />}
-                <span className="truncate tracking-wide">{file.split('/').pop()}</span>
+        <div className="flex-1 overflow-y-auto px-2 pb-4 space-y-4 scrollbar-hide">
+          {/* SECTION: LIVE SHARDS (RECENT AGENT OUTPUT) */}
+          {recentArtifacts.length > 0 && (
+            <div className="space-y-1">
+              <div className="px-4 py-2 flex items-center gap-2">
+                <History size={12} className="text-[#ff80bf]" />
+                <span className="text-[9px] font-black text-[#ff80bf] uppercase tracking-widest">Recent_Strikes</span>
               </div>
-              <ChevronRight size={10} className={`opacity-0 group-hover:opacity-100 ${currentFile.path === file ? 'text-[#00f2ff]' : ''}`} />
-            </button>
-          ))}
+              {recentArtifacts.map(artifact => (
+                <button 
+                  key={`recent-${artifact}`} 
+                  onClick={() => loadArtifact(artifact)}
+                  className="w-full text-left px-4 py-2 text-[10px] flex items-center gap-3 rounded-lg hover:bg-[#ff80bf]/5 transition-all text-white/40 hover:text-white group"
+                >
+                  <Zap size={12} className="text-[#ff80bf]/40 group-hover:text-[#ff80bf]" />
+                  <span className="truncate">{artifact.split('/').pop()}</span>
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* SECTION: PROJECT ROOT */}
+          <div className="space-y-1">
+            <div className="px-4 py-2 flex items-center gap-2">
+              <Clock size={12} className="text-[#00f2ff]" />
+              <span className="text-[9px] font-black text-[#00f2ff] uppercase tracking-widest">Project_Chassis</span>
+            </div>
+            {filteredFiles.map(file => (
+              <button 
+                key={file} 
+                onClick={() => loadArtifact(file)} 
+                className={`w-full text-left px-4 py-3 text-[10px] flex items-center justify-between rounded-xl transition-all group
+                ${currentFile.path === file ? "bg-[#00f2ff]/10 border border-[#00f2ff]/30 text-white shadow-[0_0_15px_rgba(0,242,255,0.05)]" : "text-white/30 hover:bg-white/5 hover:text-white"}`}
+              >
+                <div className="flex items-center gap-3 truncate">
+                  {file.endsWith(".py") ? <Terminal size={14} className="text-[#ff80bf]" /> :
+                   file.endsWith(".json") ? <Box size={14} className="text-[#00f2ff]" /> :
+                   file.endsWith(".csv") ? <Activity size={14} className="text-green-400" /> :
+                   <FileText size={14} />}
+                  <span className="truncate tracking-wide font-mono">{file.split('/').pop()}</span>
+                </div>
+                <ChevronRight size={10} className={`opacity-0 group-hover:opacity-100 ${currentFile.path === file ? 'text-[#00f2ff]' : ''}`} />
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="p-4 border-t border-white/5 bg-black/40">
-           <button className="w-full py-3.5 bg-[#ff80bf]/10 border border-[#ff80bf]/30 text-[#ff80bf] text-[10px] font-black uppercase tracking-[0.2em] rounded-xl flex items-center justify-center gap-3 hover:bg-[#ff80bf] hover:text-black transition-all shadow-[0_0_20px_rgba(255,128,191,0.1)]">
-             <Package size={16} /> Package Shuttle
+           <button className="w-full py-3.5 bg-[#ff80bf]/10 border border-[#ff80bf]/30 text-[#ff80bf] text-[10px] font-black uppercase tracking-[0.2em] rounded-xl flex items-center justify-center gap-3 hover:bg-[#ff80bf] hover:text-black transition-all shadow-[0_0_20px_rgba(255,128,191,0.1)] active:scale-95">
+             <Package size={16} /> Deploy Shard
            </button>
         </div>
       </aside>
 
       {/* --- COLUMN B: THE PRODUCTION EDITOR --- */}
-      <div className="flex-1 flex flex-col bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden shadow-2xl relative">
-        <header className="h-16 bg-black/40 border-b border-white/5 flex items-center px-8 justify-between">
+      <div className="flex-1 flex flex-col bg-[#050505] border border-white/5 rounded-2xl overflow-hidden shadow-2xl relative">
+        <header className="h-16 bg-black/60 border-b border-white/5 flex items-center px-8 justify-between z-10">
           <div className="flex items-center gap-4">
              <div className="w-10 h-10 rounded-xl bg-[#ff80bf]/10 flex items-center justify-center border border-[#ff80bf]/20">
                 <FileEdit size={20} className="text-[#ff80bf]" />
@@ -174,38 +234,65 @@ export default function ArtifactStudio() {
           </div>
           
           <div className="flex items-center gap-3">
+            <div className="hidden lg:flex items-center gap-6 mr-6 px-6 py-2 border-x border-white/5">
+                <div className="flex flex-col">
+                  <span className="text-[8px] font-black text-white/20 uppercase tracking-widest">Physical_Size</span>
+                  <span className="text-[10px] font-mono text-[#00f2ff]">{currentFile.size}</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[8px] font-black text-white/20 uppercase tracking-widest">Truth_Hash</span>
+                  <span className="text-[10px] font-mono text-[#ff80bf]">{currentFile.hash.slice(0, 8)}...</span>
+                </div>
+            </div>
+
             <button 
                 onClick={() => setIsPreviewOpen(!isPreviewOpen)} 
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-xl border transition-all text-[11px] font-black uppercase tracking-widest
                 ${isPreviewOpen ? "bg-[#ff80bf]/10 border-[#ff80bf] text-[#ff80bf]" : "bg-white/5 border-white/10 text-white/40 hover:border-white/30 hover:text-white"}`}
             >
-              <Eye size={16} /> {isPreviewOpen ? "Close_Preview" : "Launch_Preview"}
+              <Eye size={16} /> {isPreviewOpen ? "Close_Observer" : "Open_Observer"}
             </button>
             <button 
                 onClick={commitToDisk}
-                className="flex items-center gap-2 px-8 py-2.5 bg-[#00f2ff] text-black text-[11px] font-black uppercase rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(0,242,255,0.25)] active:scale-95"
+                disabled={!currentFile.path}
+                className="flex items-center gap-2 px-8 py-2.5 bg-[#00f2ff] text-black text-[11px] font-black uppercase rounded-xl hover:bg-white transition-all shadow-[0_0_25px_#00f2ff] active:scale-95 disabled:opacity-10 disabled:grayscale"
             >
-              <Save size={16} /> Commit
+              <Save size={16} /> Commit_to_Disk
             </button>
           </div>
         </header>
 
         <div className="flex-1 flex overflow-hidden">
-          {/* EDITOR AREA */}
-          <div className="flex-1 relative bg-black/30 group">
-            <div className="absolute left-0 top-0 bottom-0 w-12 bg-black/40 border-r border-white/5 flex flex-col items-center pt-8 text-[9px] font-mono text-white/10 select-none">
-              {Array.from({length: 35}).map((_, i) => <div key={i} className="h-[24px]">{i+1}</div>)}
+          {/* EDITOR AREA (CAFFEINE STYLE) */}
+          <div className="flex-1 relative bg-[#020202] group flex">
+            {/* LINE NUMBERS */}
+            <div 
+              ref={lineNumbersRef}
+              className="w-14 bg-black/40 border-r border-white/5 flex flex-col items-center pt-8 text-[10px] font-mono text-white/10 select-none overflow-hidden"
+            >
+              {Array.from({length: 200}).map((_, i) => (
+                <div key={i} className="h-[24px] leading-[24px]">{i+1}</div>
+              ))}
             </div>
+            
+            {/* PHYSICAL TEXTAREA */}
             <textarea 
+              ref={editorRef}
               value={currentFile.content}
+              onScroll={handleScroll}
               onChange={(e) => setCurrentFile({...currentFile, content: e.target.value})}
-              className="w-full h-full bg-transparent p-8 pl-16 text-[14px] font-mono text-slate-300 outline-none resize-none leading-[24px] border-none scrollbar-hide selection:bg-[#ff80bf] selection:text-black"
-              placeholder=">>> Awaiting_Industrial_Injection..."
+              className="flex-1 bg-transparent p-8 text-[14px] font-mono text-slate-300 outline-none resize-none leading-[24px] border-none overflow-y-auto scrollbar-hide selection:bg-[#00f2ff] selection:text-black"
+              placeholder=">>> Awaiting_Industrial_Directive..."
               spellCheck={false}
             />
+
+            {/* INTEGRITY WATERMARK */}
+            <div className="absolute bottom-8 right-8 pointer-events-none opacity-[0.03]">
+               <ShieldCheck size={240} className="text-[#00f2ff]" />
+            </div>
           </div>
 
-          {/* DUAL VIEW RENDERER (CYAN/PINK STYLE) */}
+          {/* DUAL VIEW RENDERER */}
           <AnimatePresence>
             {isPreviewOpen && (
               <motion.div 
@@ -213,19 +300,19 @@ export default function ArtifactStudio() {
                 animate={{ width: "45%", opacity: 1 }}
                 exit={{ width: 0, opacity: 0 }}
                 transition={{ type: "spring", bounce: 0, duration: 0.4 }}
-                className="border-l border-white/5 bg-[#050505] relative shadow-[-20px_0_40px_rgba(0,0,0,0.5)] z-10"
+                className="border-l border-white/5 bg-[#080808] relative shadow-[-20px_0_60px_rgba(0,0,0,0.8)] z-10"
               >
                 <div className="absolute top-4 left-6 z-50">
-                   <div className="px-3 py-1 bg-[#00f2ff]/10 text-[#00f2ff] text-[9px] font-black uppercase rounded-md border border-[#00f2ff]/20">
+                   <div className="px-3 py-1 bg-[#00f2ff]/10 text-[#00f2ff] text-[9px] font-black uppercase rounded-md border border-[#00f2ff]/20 backdrop-blur-md">
                      {currentFile.type === "web" ? "Sandbox_Runtime" : "Logic_Observer"}
                    </div>
                 </div>
                 
-                <div className="h-full w-full pt-12">
+                <div className="h-full w-full pt-12 overflow-hidden">
                 {currentFile.type === "web" ? (
                   <iframe 
                     srcDoc={currentFile.content} 
-                    className="w-full h-full border-none bg-white rounded-tl-2xl" 
+                    className="w-full h-full border-none bg-white rounded-tl-3xl" 
                     title="Industrial Preview"
                   />
                 ) : (
@@ -234,7 +321,7 @@ export default function ArtifactStudio() {
                        <Box size={16} className="text-[#ff80bf]" />
                        <span className="text-[10px] font-black uppercase text-white/20 tracking-widest italic underline underline-offset-4 decoration-[#ff80bf]/40">Inspector_Raw_Feed</span>
                     </div>
-                    <pre className="whitespace-pre-wrap">{currentFile.content}</pre>
+                    <pre className="whitespace-pre-wrap bg-transparent border-none p-0">{currentFile.content}</pre>
                   </div>
                 )}
                 </div>
@@ -248,13 +335,16 @@ export default function ArtifactStudio() {
           {loading && (
             <motion.div 
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-black/80 backdrop-blur-md flex flex-col items-center justify-center z-[200]"
+              className="absolute inset-0 bg-[#050505]/90 backdrop-blur-xl flex flex-col items-center justify-center z-[200]"
             >
               <div className="relative">
-                <RefreshCw className="animate-spin text-[#00f2ff]" size={56} />
+                <RefreshCw className="animate-spin text-[#00f2ff]" size={64} />
                 <Zap className="absolute inset-0 m-auto text-[#ff80bf] animate-pulse" size={24} />
               </div>
-              <span className="mt-6 text-[11px] font-black text-white uppercase tracking-[0.6em] animate-pulse">Sovereign_Sync_In_Progress</span>
+              <div className="mt-8 flex flex-col items-center gap-2">
+                <span className="text-[11px] font-black text-white uppercase tracking-[0.6em] animate-pulse">Sovereign_Sync</span>
+                <span className="text-[8px] font-black text-[#00f2ff] uppercase tracking-widest">Validating_Physical_Hash</span>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

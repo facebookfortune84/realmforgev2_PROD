@@ -1,7 +1,7 @@
 ﻿"""
-REALM FORGE: SOVEREIGN STATE BEDROCK v18.1
+REALM FORGE: SOVEREIGN STATE BEDROCK v18.2
 ARCHITECT: LEAD SWARM ENGINEER
-STATUS: PRODUCTION READY - UI REDESIGN ALIGNED - BOM SUTURED
+STATUS: PRODUCTION READY - NLP INTENT SUPPORT - REDUNDANCY REPAIR
 PATH: F:/RealmForge_PROD/src/system/state.py
 """
 
@@ -47,17 +47,18 @@ def track_handoffs(existing: List[Dict], new: List[Dict]) -> List[Dict]:
     """Spatial Handoff Reducer: Records the flow of data between industrial sectors."""
     if not existing: existing = []
     if not new: return existing
-    return (existing + new)[-10:] # Keep last 10 handoffs for UI visualization
+    # Ensure handoffs are formatted correctly for the UI
+    clean_new = [h for h in new if isinstance(h, dict) and "from" in h and "to" in h]
+    return (existing + clean_new)[-10:] # Keep last 10 handoffs for UI visualization
 
 def buffer_diagnostics(existing: List[str], new: List[str]) -> List[str]:
     """Diagnostic Stream Reducer: Manages the 'Glassmorphism' terminal buffer."""
     if not existing: existing = []
     if not new: return existing
-    # Maintain a rolling buffer of 50 diagnostic lines
     return (existing + new)[-50:]
 
 def merge_genesis_protocol(existing: Dict[str, bool], new: Dict[str, bool]) -> Dict[str, bool]:
-    """Genesis-100 Tracker: Monitors the 100 initialization tasks."""
+    """Genesis-100 Tracker: Monitors initialization tasks."""
     if not existing: existing = {}
     if not new: return existing
     return {**existing, **new}
@@ -69,24 +70,26 @@ def merge_genesis_protocol(existing: Dict[str, bool], new: Dict[str, bool]) -> D
 class RealmForgeState(TypedDict):
     """
     The Global Sovereign State for RealmForge.
-    Engineered for the Grand Finale UI and Multi-Agent Industrial Meetings.
+    v18.2: Added 'intent' and 'fallback_department' to support Semantic Redundancy.
     """
     # --- 1. CORE COMMUNICATION ---
     messages: Annotated[List[BaseMessage], operator.add]
     mission_id: str
+    intent: str            # NEW: "INDUSTRIAL_STRIKE" or "GENERAL_INQUIRY"
     
     # --- 2. IDENTITY & ROUTING ---
     next_node: str 
-    active_agent: str      # Current persona in control
-    active_department: str # Current active sector (presents as 'Glowing' in UI)
+    active_agent: str      
+    active_department: str 
+    fallback_department: str # NEW: Fixed the "None" redundancy path bug
     
     # --- 3. MEETING MODE (THE ROUND TABLE) ---
-    meeting_participants: List[str] # List of Agent IDs currently in the thread
-    handoff_history: Annotated[List[Dict[str, str]], track_handoffs] # {from: sector, to: sector}
+    meeting_participants: List[str] 
+    handoff_history: Annotated[List[Dict[str, str]], track_handoffs] 
     
     # --- 4. TASK MANAGEMENT ---
     task_queue: Annotated[List[Dict[str, Any]], merge_tasks] 
-    genesis_tasks: Annotated[Dict[str, bool], merge_genesis_protocol] # The 100 startup tasks
+    genesis_tasks: Annotated[Dict[str, bool], merge_genesis_protocol] 
     
     # --- 5. DATA LATTICE & ARTIFACTS ---
     memory_context: str
@@ -111,9 +114,11 @@ def get_initial_state() -> RealmForgeState:
     return {
         "messages": [],
         "mission_id": f"MSN-{uuid.uuid4().hex[:8].upper()}",
+        "intent": "INDUSTRIAL_STRIKE",
         "next_node": "supervisor",
         "active_agent": "ForgeMaster",
         "active_department": "Architect", 
+        "fallback_department": "SILICON_ARCHITECT", # Default fallback
         "meeting_participants": ["ForgeMaster"],
         "handoff_history": [],
         "task_queue": [],
@@ -129,14 +134,14 @@ def get_initial_state() -> RealmForgeState:
             "ram": 0.0, 
             "cpu": 0.0, 
             "latency": 0.0, 
-            "lattice_nodes": 1200, # ALIGNED: Post-clean node count
+            "lattice_nodes": 1200, # UPDATED: Current post-clean count
             "active_sector": "Architect"
         },
         "diagnostic_stream": [f"[{datetime.now().strftime('%H:%M:%S')}] System pressurized. Mastermind online."],
         "metadata": {
             "session_id": str(uuid.uuid4()),
             "start_time": datetime.now().isoformat(),
-            "version": "18.1.0",
+            "version": "18.2.0",
             "ui_theme": "Titan-Industrial"
         }
     }

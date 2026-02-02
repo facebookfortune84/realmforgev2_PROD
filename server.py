@@ -1,5 +1,5 @@
 """
-REALM FORGE: SOVEREIGN GATEWAY v27.23 (INDUSTRIAL ULTIMATE)
+REALM FORGE: SOVEREIGN GATEWAY v27.24 (INDUSTRIAL ULTIMATE)
 ARCHITECT: LEAD SWARM ENGINEER
 STATUS: PRODUCTION READY - FULL FIDELITY - REDIRECT SANITIZATION
 PATH: F:/RealmForge_PROD/server.py
@@ -42,7 +42,7 @@ ROOT_DIR = Path("F:/RealmForge_PROD")
 env_path = ROOT_DIR / ".env"
 
 print("\n" + "⚙️"*25)
-print("--- [REALM FORGE SYSTEM BOOT: v27.23] ---")
+print("--- [REALM FORGE SYSTEM BOOT: v27.24] ---")
 if env_path.exists():
     # override=True clears any 'undefined' strings cached in the environment
     load_dotenv(dotenv_path=env_path, override=True)
@@ -63,6 +63,7 @@ if env_path.exists():
         print(f"⚠️ [WARN] GITHUB_REDIRECT_URI missing. Defaulting to localhost:8000.")
 else:
     print(f"❌ [CRITICAL] .env NOT FOUND at {env_path}. Check physical drive.")
+    load_dotenv()
 print("⚙️"*25 + "\n")
 
 if sys.platform == 'win32':
@@ -147,7 +148,7 @@ class FileReadRequest(BaseModel): path: str
 class FileSaveRequest(BaseModel): path: str; content: str
 
 # ==============================================================================
-# 6. TELEMETRY & AUTHENTICATION
+# 6. TELEMETRY & CONNECTION MANAGER
 # ==============================================================================
 class ConnectionManager:
     def __init__(self): 
@@ -236,7 +237,7 @@ async def lifespan(app: FastAPI):
     yield
     logger.info("🔌 [OFFLINE] Sovereign Node shutdown initiated.")
 
-app = FastAPI(title="RealmForge OS - Sovereign Gateway", version="27.23.0", lifespan=lifespan)
+app = FastAPI(title="RealmForge OS - Sovereign Gateway", version="27.24.0", lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=str(STATIC_PATH)), name="static")
 
 app.add_middleware(
@@ -266,8 +267,7 @@ async def github_login():
 
 @app.get("/api/v1/auth/github/callback")
 async def github_callback(code: str):
-    """Step 2: Bridge. Redirect to Root (/) to allow the HUD to catch the code. Fixed 404."""
-    # REPAIR: Redirecting browser to Root (/) using 302 Found status
+    """Step 2: Bridge. Redirect to Root (/) using 302 Found status to prevent Vercel 404s."""
     frontend_url = "https://realmforgev2-prod.vercel.app/" 
     target_url = f"{frontend_url}?code={code}"
     logger.info(f"🗝️ [OAUTH]: Handshake code received. Bridging to Root HUD: {target_url}")
@@ -319,11 +319,13 @@ def log_contribution(agent_id, dept, mission_id, action, credits=1.0):
 async def mission(req: MissionRequest, lic: gatekeeper.License = Depends(get_license)):
     engine = get_brain()
     try:
-        # INITIAL STATE SUTURE: Aligning Main Engine with Sidebar Consultant Intelligence
+        # INITIAL STATE SUTURE: v18.2 Compliant (Includes intent and fallback_department)
         state = {
             "messages": [HumanMessage(content=req.task)],
             "active_agent": "Mastermind",
             "active_department": "Architect",
+            "fallback_department": "SILICON_ARCHITECT",
+            "intent": "INDUSTRIAL_STRIKE",
             "mission_id": f"MSN-{int(time.time())}",
             "handoff_history": [],
             "meeting_participants": ["Mastermind"],
@@ -339,13 +341,19 @@ async def mission(req: MissionRequest, lic: gatekeeper.License = Depends(get_lic
             for node_name, node_state in output.items():
                 agent = node_state.get("active_agent") or node_name.upper()
                 dept = node_state.get("active_department", "Architect")
+                intent = node_state.get("intent", "INDUSTRIAL_STRIKE")
                 handoffs = node_state.get("handoff_history", [])
                 participants = node_state.get("meeting_participants", [])
                 msgs = node_state.get("messages", [])
 
+                # UI BROADCAST: Includes intent and participants
                 await manager.broadcast({
-                    "type": "node_update", "node": node_name.upper(), 
-                    "agent": agent, "dept": dept, "handoffs": handoffs,
+                    "type": "node_update", 
+                    "node": node_name.upper(), 
+                    "agent": agent, 
+                    "dept": dept, 
+                    "intent": intent,
+                    "handoffs": handoffs,
                     "meeting_participants": participants
                 })
 
@@ -356,9 +364,9 @@ async def mission(req: MissionRequest, lic: gatekeeper.License = Depends(get_lic
                     if hasattr(msg, 'content') and msg.content and not isinstance(msg, HumanMessage):
                         content = msg.content
                         vocal = prepare_vocal_response(content)
-                        audio = await generate_neural_audio(vocal)
+                        audio_payload = await generate_neural_audio(vocal)
                         await manager.broadcast({
-                            "type": "audio_chunk", "text": content, "audio_base64": audio, 
+                            "type": "audio_chunk", "text": content, "audio_base64": audio_payload, 
                             "agent": agent, "node": node_name, "dept": dept
                         })
 

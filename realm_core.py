@@ -1,5 +1,5 @@
 """
-REALM FORGE: SOVEREIGN BRAIN v31.6
+REALM FORGE: SOVEREIGN BRAIN v31.7
 ARCHITECT: LEAD SWARM ENGINEER
 STATUS: PRODUCTION READY - SEMANTIC SUTURE - 1200 NODE AWARE
 PATH: F:/RealmForge_PROD/realm_core.py
@@ -139,11 +139,11 @@ def extract_json(text: str) -> dict:
     except: return {}
 
 # ==============================================================================
-# 4. NODES (TITAN MASTERMIND CORE v31.6)
+# 4. NODES (TITAN MASTERMIND CORE v31.7)
 # ==============================================================================
 
 async def supervisor_node(state: RealmForgeState):
-    """ORCHESTRATOR: Now supports Semantic Intent Detection (Conversational vs Kinetic)."""
+    """ORCHESTRATOR: Supports Semantic Intent Detection (Conversational vs Kinetic)."""
     mission = state["messages"][-1].content
     silo_list = ["DATA_LATTICE_CURATOR", "SILICON_ARCHITECT", "ZERO_TRUST_SENTINEL"]
     
@@ -154,7 +154,7 @@ async def supervisor_node(state: RealmForgeState):
         except: pass
 
     prompt = f"""
-    SYSTEM: Realm Forge Industrial Mastermind v31.6
+    SYSTEM: Realm Forge Industrial Mastermind v31.7
     CONTEXT: Currently managing 1,200 post-clean nodes and 1,113 agents.
     MISSION: "{mission}"
     INDUSTRIAL_SILOS: {silo_list}
@@ -163,14 +163,16 @@ async def supervisor_node(state: RealmForgeState):
     1. Determine if the mission is an "INDUSTRIAL_STRIKE" (requires file I/O or tools) or a "GENERAL_INQUIRY" (question/chat).
     2. If "GENERAL_INQUIRY": provide a high-intel conversational response in 'conversational_response'.
     3. If "INDUSTRIAL_STRIKE": Architect the Strike Team. technical=SILICON_ARCHITECT, security=ZERO_TRUST_SENTINEL.
+    4. REDUNDANCY: Always assign a primary_silo AND a fallback_silo. Fallback cannot be null.
+    5. DATA_INTEGRITY: If reading JSON files (like roster.json), always use 'read_file'. NEVER use 'csv_processor_read'.
 
     RESPOND IN JSON ONLY:
     {{
         "intent": "INDUSTRIAL_STRIKE" | "GENERAL_INQUIRY",
         "primary_silo": "SILO_NAME",
-        "fallback_silo": "SILO_NAME",
+        "fallback_silo": "SILICON_ARCHITECT",
         "meeting_invitees": ["SILO_NAME_1", "SILO_NAME_2"],
-        "conversational_response": "The detailed answer if intent is GENERAL_INQUIRY, otherwise null",
+        "conversational_response": "Detailed answer if intent is GENERAL_INQUIRY, else null",
         "reasoning": "Sovereign Strike Strategy."
     }}
     """
@@ -184,10 +186,12 @@ async def supervisor_node(state: RealmForgeState):
             "next_node": "synthesizer",
             "active_agent": "Mastermind",
             "active_department": "Architect",
+            "intent": "GENERAL_INQUIRY",
             "messages": [AIMessage(content=data.get("conversational_response", "Acknowledged. System Nominal."))]
         }
 
     primary_silo = data.get("primary_silo", silo_list[0])
+    fallback_silo = data.get("fallback_silo", "SILICON_ARCHITECT")
     primary = get_industrial_specialist(primary_silo)
     
     # Resolve actual Agent Names for the HUD
@@ -200,8 +204,9 @@ async def supervisor_node(state: RealmForgeState):
 
     return {
         "next_node": "planner",
+        "intent": "INDUSTRIAL_STRIKE",
         "active_department": primary_silo,
-        "fallback_department": data.get("fallback_silo", "SILICON_ARCHITECT"),
+        "fallback_department": fallback_silo, # SUTURE: Fixed None redundancy path
         "active_agent": primary['name'] if primary else "ForgeMaster",
         "agent_manifest_path": primary['path'] if primary else None,
         "meeting_participants": invitees,
@@ -213,7 +218,7 @@ async def planner_node(state: RealmForgeState):
     mission = state["messages"][-1].content
     agent_name = state.get("active_agent", "ForgeMaster")
     dept = state.get("active_department", "Architect")
-    fallback = state.get("fallback_department")
+    fallback = state.get("fallback_department", "SILICON_ARCHITECT")
     
     prompt = f"""
     IDENTITY: {agent_name} (Industrial Role: {dept})
@@ -221,8 +226,13 @@ async def planner_node(state: RealmForgeState):
     MISSION: {mission}
     Available Tools: {list(TOOLS.keys())[:50]}...
     
+    PROTOCOL: 
+    1. Output sub_tasks as a JSON list of real tools.
+    2. Every file path mentioned MUST be absolute (F:/RealmForge_PROD/...).
+    3. Use forward slashes (/) for all paths.
+    
     JSON SCHEMA:
-    {{ "sub_tasks": [ {{"tool": "TOOL_NAME", "args": {{}} }} ] }}
+    {{ "sub_tasks": [ {{"tool": "TOOL_NAME", "args": {{ "file_path": "F:/..." }} }} ] }}
     """
     model = get_llm()
     res = await model.ainvoke([SystemMessage(content=prompt)] + state["messages"])
@@ -254,6 +264,7 @@ async def execution_node(state: RealmForgeState):
             return {
                 "active_agent": specialist['name'] if specialist else "ForgeMaster",
                 "active_department": new_silo,
+                "agent_manifest_path": specialist['path'] if specialist else None,
                 "handoff_history": state.get("handoff_history", []) + [handoff],
                 "next_node": "planner",
                 "messages": [AIMessage(content=f"🔄 [REDUNDANCY]: Escalating mission to {new_silo}.")]
@@ -261,13 +272,18 @@ async def execution_node(state: RealmForgeState):
 
         if tool_name in TOOLS:
             try:
-                # SNIFF PATHS IN MISSION REQUEST
+                # SUTURE: Force path normalization in arguments to prevent mangling
+                args = task.get("args", {})
+                for k, v in args.items():
+                    if isinstance(v, str) and "F:/" in v: args[k] = v.replace("\\", "/")
+
+                # SNIFF PATHS IN MISSION REQUEST (PRE-EXECUTION)
                 path_mentions = re.findall(r'[Ff]:/[^ "^\n\t,)]+', state["messages"][0].content)
                 found_artifacts.extend(path_mentions)
 
-                result = await TOOLS[tool_name].ainvoke(task.get("args", {}))
+                result = await TOOLS[tool_name].ainvoke(args)
                 
-                # SNIFF PATHS IN TOOL OUTPUT
+                # SNIFF PATHS IN TOOL OUTPUT (POST-EXECUTION)
                 path_matches = re.findall(r'[Ff]:/[^ "^\n\t,)]+', str(result))
                 found_artifacts.extend(path_matches)
 
@@ -275,7 +291,8 @@ async def execution_node(state: RealmForgeState):
                     return {"next_node": "executor", "task_queue": [{"tool": "HANDOFF"}], "messages": messages}
                 
                 messages.append(ToolMessage(tool_call_id=str(uuid.uuid4()), content=str(result)))
-            except:
+            except Exception as e:
+                print(f"💥 [TOOL_CRASH]: {tool_name} failed: {e}")
                 return {"next_node": "executor", "task_queue": [{"tool": "HANDOFF"}], "messages": messages}
         
     return {
@@ -290,6 +307,8 @@ async def validator_node(state: RealmForgeState):
     artifacts = state.get("artifacts", [])
     agent = "IronClad"
     v_logs = []
+    
+    # Normalize paths for IronClad validation
     clean_artifacts = [str(a).replace('\\', '/') for a in artifacts if 'F:/' in str(a)]
     
     for path in list(set(clean_artifacts)):
@@ -299,6 +318,8 @@ async def validator_node(state: RealmForgeState):
                 current_hash = res.split(": ")[-1].strip()
                 await update_knowledge_graph.ainvoke({"subject": path, "relation": "CURRENT_HASH", "target": current_hash})
                 v_logs.append(f"✅ {path}: Verified. ({current_hash[:8]})")
+            else:
+                v_logs.append(f"❌ {path}: Physical file missing.")
         except: continue
 
     return {

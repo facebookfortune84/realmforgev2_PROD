@@ -1,5 +1,5 @@
 /**
- * REALM FORGE: TITAN COMMAND CHASSIS v31.5
+ * REALM FORGE: TITAN COMMAND CHASSIS v31.6
  * STYLE: CAFFEINE-NEON / HIGH-VISIBILITY / PRODUCTION-HARDENED
  * ARCHITECT: LEAD SWARM ENGINEER
  * PATH: F:\RealmForge_PROD\client\app\page.tsx
@@ -31,6 +31,13 @@ interface NavIconProps {
   label: string;
 }
 
+interface TelemetryVitals {
+  cpu: number;
+  ram: number;
+  lattice_nodes: number;
+  timestamp: number;
+}
+
 export default function TitanForgeHUD() {
   // --- 1. SYSTEM NAVIGATION & LAYOUT ---
   const [activeTab, setActiveTab] = useState("war_room");
@@ -47,9 +54,9 @@ export default function TitanForgeHUD() {
   });
 
   // --- 3. TELEMETRY & CHAT STATE ---
-  const [vitals, setVitals] = useState({ cpu: 0, ram: 0, nodes: 1200, sector: "Architect" });
+  const [vitals, setVitals] = useState<TelemetryVitals>({ cpu: 0, ram: 0, lattice_nodes: 1200, timestamp: 0 });
   const [activeAgent, setActiveAgent] = useState("ForgeMaster");
-  const [handoffs, setHandoffs] = useState([]);
+  const [handoffs, setHandoffs] = useState<any[]>([]);
   const [chatInput, setChatInput] = useState("");
   const [isGitHubLinked, setIsGitHubLinked] = useState(false);
 
@@ -57,14 +64,14 @@ export default function TitanForgeHUD() {
     { id: 1, role: 'assistant', text: "Ready for deployment, Architect. I am your Sovereign Consultant, synced with the 1200 node codebase." }
   ]);
   
-  const [diagnosticLines, setDiagnosticLines] = useState([
+  const [diagnosticLines, setDiagnosticLines] = useState<string[]>([
     `[${new Date().toLocaleTimeString()}] RE-INIT: Mastermind Online.`,
     `[${new Date().toLocaleTimeString()}] LATTICE: Sector Synchronization Nominal.`
   ]);
 
-  const [globalLogs, setGlobalLogs] = useState([{
+  const [globalLogs, setGlobalLogs] = useState<any[]>([{
     id: 'init', type: 'system', agent: 'CORE', 
-    content: "### [TITAN_OS_v31.5] UPLINK_STABLE.\nFunctional role-mapping active. Use Functional IDs for summoning.",
+    content: "### [TITAN_OS_v31.6] UPLINK_STABLE.\nFunctional role-mapping active. Use Functional IDs for summoning.",
     timestamp: 'INIT'
   }]);
 
@@ -75,7 +82,7 @@ export default function TitanForgeHUD() {
   const [audioUnlocked, setAudioUnlocked] = useState(false);
   const ws = useRef<WebSocket | null>(null);
 
-  // --- 5. SENSORY ACTIVATION (FIXED SYNTAX) ---
+  // --- 5. SENSORY ACTIVATION ---
   const unlockAudio = async () => {
     if (typeof window === 'undefined') return;
     try {
@@ -139,7 +146,12 @@ export default function TitanForgeHUD() {
     try {
       await axios.post(`${url.replace(/\/$/, "")}/api/v1/mission`, 
         { task: text }, 
-        { headers: { "X-API-Key": key, "ngrok-skip-browser-warning": "69420" } }
+        { headers: { 
+            "X-API-Key": key, 
+            "ngrok-skip-browser-warning": "69420",
+            "Content-Type": "application/json"
+          } 
+        }
       );
     } catch (err) {
       setDiagnosticLines(p => [...p.slice(-49), `[FAULT]: Strike MSN Uplink Failed.`]);
@@ -184,7 +196,7 @@ export default function TitanForgeHUD() {
       if (data.vitals) setVitals(data.vitals);
       if (data.type === "node_update") {
         setActiveAgent(data.agent);
-        if (data.handoffs && data.handoffs.length > 0) {
+        if (data.handoffs && Array.isArray(data.handoffs) && data.handoffs.length > 0) {
             setHandoffs(data.handoffs);
             const h = data.handoffs[data.handoffs.length - 1];
             setDiagnosticLines(p => [...p.slice(-49), `🔄 [HANDOFF]: ${h.from} ➔ ${h.to}`]);
@@ -209,9 +221,13 @@ export default function TitanForgeHUD() {
     if (typeof window !== 'undefined') {
       const savedUrl = localStorage.getItem("RF_URL") || config.url;
       const savedKey = localStorage.getItem("RF_KEY") || config.key;
+      const savedAuth = localStorage.getItem("RF_GITHUB_AUTH") === "true";
+      
       setConfig(c => ({ ...c, url: savedUrl, key: savedKey }));
+      setIsGitHubLinked(savedAuth);
       connectToSwarm(savedUrl);
 
+      // --- OAUTH HANDSHAKE COMPLETION ---
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get('code');
       if (code) {
@@ -220,8 +236,9 @@ export default function TitanForgeHUD() {
           { code: code }, 
           { headers: { "X-API-Key": savedKey, "ngrok-skip-browser-warning": "69420" } }
         ).then(() => {
-          setDiagnosticLines(p => [...p, `[${new Date().toLocaleTimeString()}] ✅ [OAUTH]: Identity sutured. Handshake successful.`]);
+          setDiagnosticLines(p => [...p, `[${new Date().toLocaleTimeString()}] ✅ [OAUTH]: Identity sutured to swarm.`]);
           setIsGitHubLinked(true);
+          localStorage.setItem("RF_GITHUB_AUTH", "true");
           window.history.replaceState({}, document.title, window.location.pathname);
         }).catch(() => {
           setDiagnosticLines(p => [...p, `[${new Date().toLocaleTimeString()}] ❌ [OAUTH]: Handshake failure.`]);
@@ -233,11 +250,11 @@ export default function TitanForgeHUD() {
   if (!mounted) return null;
 
   return (
-    <div className="flex h-screen w-screen bg-[#050505] text-slate-200 overflow-hidden font-sans">
+    <div className="flex h-screen w-screen bg-[#050505] text-slate-200 overflow-hidden font-sans text-[13px]">
       
       {/* COLUMN 1: NAVIGATION RAIL */}
       <aside className="w-[72px] bg-[#0a0a0a] border-r border-white/5 flex flex-col items-center py-8 gap-10 shrink-0 z-[100]">
-        <motion.div whileHover={{ scale: 1.1 }} className="w-10 h-10 bg-[#00f2ff] rounded-xl flex items-center justify-center text-black shadow-[0_0_20px_rgba(0,242,255,0.3)]">
+        <motion.div whileHover={{ scale: 1.1 }} className="w-10 h-10 bg-[#00f2ff] rounded-xl flex items-center justify-center text-black shadow-[0_0_20px_rgba(0,242,255,0.3)] cursor-pointer">
           <Binary size={24} />
         </motion.div>
         
@@ -250,7 +267,7 @@ export default function TitanForgeHUD() {
 
         <div className="mt-auto flex flex-col gap-6 pb-4">
            <NavIcon active={false} onClick={() => setConfig({...config, open: true})} icon={<Settings size={22}/>} label="CONFIG" />
-           <button onClick={() => window.location.reload()} className="w-10 h-10 flex items-center justify-center rounded-xl text-white/20 hover:text-red-500 hover:bg-red-500/10 transition-all">
+           <button onClick={() => { localStorage.clear(); window.location.reload(); }} className="w-10 h-10 flex items-center justify-center rounded-xl text-white/20 hover:text-red-500 hover:bg-red-500/10 transition-all">
              <Power size={20} />
            </button>
         </div>
@@ -270,7 +287,7 @@ export default function TitanForgeHUD() {
            
            <div className="flex items-center gap-6 text-[10px] font-bold text-white/30 uppercase tracking-widest">
              <div className="flex items-center gap-2"><Activity size={12}/> Load: <span className="text-white">{vitals.cpu}%</span></div>
-             <div className="flex items-center gap-2"><Binary size={12}/> Nodes: <span className="text-white">{vitals.nodes}</span></div>
+             <div className="flex items-center gap-2"><Binary size={12}/> Nodes: <span className="text-white">{vitals.lattice_nodes}</span></div>
              <button onClick={() => setIsAssistantOpen(!isAssistantOpen)} className={`p-2 rounded-lg transition-all ${isAssistantOpen ? "bg-[#00f2ff]/10 text-[#00f2ff]" : "hover:bg-white/5"}`}>
                <MessageSquare size={18} />
              </button>
@@ -297,11 +314,11 @@ export default function TitanForgeHUD() {
               <Terminal size={12} /> System_Diagnostics
             </div>
           </div>
-          <div className="p-4 h-32 overflow-y-auto font-mono text-[9px] space-y-1 text-white/40">
+          <div className="p-4 h-32 overflow-y-auto font-mono text-[9px] space-y-1 text-white/40 scrollbar-hide">
              {diagnosticLines.map((line, i) => (
                <div key={i} className="flex gap-2">
                  <span className="text-white/10 select-none">[{i}]</span>
-                 <span className={line.includes('HANDOFF') ? 'text-[#ff80bf]' : ''}>{line}</span>
+                 <span className={line.includes('HANDOFF') ? 'text-[#ff80bf]' : line.includes('✅') ? 'text-[#00f2ff]' : ''}>{line}</span>
                </div>
              ))}
              {isProcessing && <div className="animate-pulse text-[#00f2ff]">{" >>> Processing_Directive..."}</div>}
@@ -358,7 +375,7 @@ export default function TitanForgeHUD() {
                       </div>
                       <span className="text-[9px] font-black text-white/30 uppercase">{log.role === 'assistant' ? 'Mastermind' : 'Architect'}</span>
                    </div>
-                   <div className={`p-4 rounded-2xl text-[12px] leading-relaxed font-mono border ${log.role === 'assistant' ? 'bg-white/5 border-white/5 text-slate-300' : 'bg-[#00f2ff]/5 border-[#00f2ff]/20 text-white'}`}>
+                   <div className={`p-4 rounded-2xl leading-relaxed font-mono border ${log.role === 'assistant' ? 'bg-white/5 border-white/5 text-slate-300' : 'bg-[#00f2ff]/5 border-[#00f2ff]/20 text-white'}`}>
                      {log.text}
                    </div>
                 </div>

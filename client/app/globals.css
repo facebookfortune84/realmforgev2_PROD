@@ -3,77 +3,105 @@
 @tailwind utilities;
 
 /**
- * REALM FORGE: TITAN-NEON DESIGN SYSTEM v4.0
- * STYLE: Caffeine-Modern / High-Visibility
- * PALETTE: Obsidian, Kinetic Cyan, Bubblegum, Neon Pink
+ * REALM FORGE: TITAN-NEON DESIGN SYSTEM v4.1
+ * STYLE: Caffeine-Neon / Industrial High-Visibility
+ * PALETTE: Obsidian (#050505), Kinetic Cyan (#00f2ff), Bubblegum (#ff80bf)
+ * ARCHITECT: LEAD SWARM ENGINEER
  */
 
 :root {
   --kinetic-cyan: #00f2ff;
   --bubblegum: #ff80bf;
   --neon-pink: #ff007f;
-  --obsidian: #080808;
-  --slate-grey: #1a1a1a;
-  --glass-border: rgba(0, 242, 255, 0.15);
-  --pink-glow: rgba(255, 0, 127, 0.2);
+  --obsidian: #050505;
+  --slate-grey: #121212;
+  --glass-border: rgba(0, 242, 255, 0.1);
+  --pink-glow: rgba(255, 0, 127, 0.15);
 }
 
 @layer base {
   body {
-    @apply bg-[#080808] text-[#f0f0f0] antialiased selection:bg-[#ff80bf] selection:text-black;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    @apply bg-[#050505] text-[#e2e8f0] antialiased selection:bg-[#00f2ff] selection:text-black;
+    font-family: var(--font-inter), system-ui, sans-serif;
     letter-spacing: -0.01em;
+  }
+
+  /* Force scrollbar to never shift layout */
+  html {
+    scrollbar-gutter: stable;
   }
 }
 
 @layer components {
 
-  /* THE MILLION DOLLAR BENTO BOX */
+  /* THE TITAN BENTO CARD */
   .cyber-card {
-    @apply bg-[#111111] border border-white/5 rounded-2xl transition-all duration-300 relative overflow-hidden;
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    @apply bg-[#0a0a0a]/60 backdrop-blur-md border border-white/5 rounded-2xl transition-all duration-300 relative overflow-hidden;
+    box-shadow: 0 4px 24px -12px rgba(0, 0, 0, 1);
   }
 
   .cyber-card:hover {
-    @apply border-[#00f2ff]/40 bg-[#161616];
-    transform: translateY(-2px);
-    box-shadow: 0 20px 40px -15px rgba(0, 242, 255, 0.1);
+    @apply border-[#00f2ff]/30 bg-[#0d0d0d]/80;
+    transform: translateY(-1px);
+    box-shadow: 0 0 30px -10px rgba(0, 242, 255, 0.15);
   }
 
-  /* KINETIC ACCENTS */
-  .border-cyan {
-    border-color: var(--kinetic-cyan);
-  }
-
-  .border-pink {
-    border-color: var(--neon-pink);
-  }
-
-  .text-cyan {
-    color: var(--kinetic-cyan);
-  }
-
-  .text-bubblegum {
-    color: var(--bubblegum);
-  }
-
-  /* BUBBLEGUM PULSE */
-  .status-pulse {
-    animation: pulse-pink 3s infinite cubic-bezier(0.4, 0, 0.6, 1);
-  }
-
-  /* HIGH-VISIBILITY GLASS */
+  /* INDUSTRIAL GLASS CHASSIS */
   .cyber-glass {
-    @apply bg-[#0f0f0f]/80 backdrop-blur-2xl border border-white/10 shadow-2xl;
+    @apply bg-[#0a0a0a]/80 backdrop-blur-2xl border border-white/10 shadow-2xl;
   }
 
-  /* CAFFEINE-STYLE BUTTONS */
+  /* KINETIC BUTTONS */
   .btn-primary {
-    @apply px-6 py-3 bg-[#00f2ff] text-black font-bold rounded-xl transition-all hover:scale-105 hover:shadow-[0_0_20px_#00f2ff] active:scale-95;
+    @apply px-6 py-3 bg-[#00f2ff] text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all hover:scale-[1.02] hover:shadow-[0_0_25px_#00f2ff] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
   .btn-secondary {
-    @apply px-6 py-3 bg-white/5 border border-white/10 text-white font-bold rounded-xl transition-all hover:bg-white/10;
+    @apply px-6 py-3 bg-white/5 border border-white/10 text-white font-bold rounded-xl transition-all hover:bg-white/10 hover:border-white/20;
+  }
+
+  /* NEON TEXT STATES */
+  .glow-text-cyan {
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+  }
+
+  .glow-text-pink {
+    text-shadow: 0 0 10px rgba(255, 128, 191, 0.5);
+  }
+}
+
+@layer utilities {
+
+  /* BACKGROUND: INDUSTRIAL DOT GRID */
+  .bg-dot-grid {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* BACKGROUND: CAFFEINE MESH */
+  .bg-mesh {
+    background-image:
+      radial-gradient(at 0% 0%, rgba(0, 242, 255, 0.12) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(255, 0, 127, 0.1) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(15, 15, 15, 1) 0px, transparent 100%);
+  }
+
+  /* BACKGROUND: CRT SCANLINES (The Industrial Texture) */
+  .bg-scanlines {
+    background: linear-gradient(to bottom,
+        transparent 50%,
+        rgba(0, 0, 0, 0.5) 51%,
+        transparent 51%);
+    background-size: 100% 4px;
+  }
+
+  /* ANIMATION: STATUS PULSE */
+  .animate-pulse-pink {
+    animation: pulse-pink 2s infinite ease-in-out;
+  }
+
+  .animate-glow-cyan {
+    animation: glow-cyan 4s infinite alternate;
   }
 }
 
@@ -83,54 +111,66 @@
   100% {
     opacity: 1;
     transform: scale(1);
+    filter: brightness(1);
   }
 
   50% {
-    opacity: 0.7;
-    transform: scale(1.05);
-    color: #ff007f;
+    opacity: 0.8;
+    transform: scale(1.02);
+    filter: brightness(1.3) drop-shadow(0 0 8px #ff007f);
   }
 }
 
-/* SCROLLBAR: CLEAN MINIMALISM */
+@keyframes glow-cyan {
+  from {
+    box-shadow: 0 0 5px rgba(0, 242, 255, 0.1);
+  }
+
+  to {
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+  }
+}
+
+/* SCROLLBAR: TITAN MINIMALISM */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #050505;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: #1a1a1a;
   border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--kinetic-cyan);
+  box-shadow: 0 0 10px var(--kinetic-cyan);
 }
 
-/* GRID SYSTEM */
-.bg-mesh {
-  background-image:
-    radial-gradient(at 0% 0%, rgba(0, 242, 255, 0.05) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(255, 0, 127, 0.05) 0px, transparent 50%);
-}
-
-.bg-dot-grid {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-/* CLEAN TERMINAL PREVIEW */
+/* TERMINAL & CODE BLOCKS */
 pre {
-  @apply bg-[#050505] rounded-xl border border-white/5 p-6 font-mono text-[13px] leading-relaxed;
+  @apply bg-[#020202] rounded-xl border border-white/5 p-6 font-mono text-[13px] leading-relaxed overflow-x-auto;
 }
 
 .token-cyan {
-  color: #00f2ff;
+  color: var(--kinetic-cyan);
 }
 
 .token-pink {
-  color: #ff80bf;
+  color: var(--bubblegum);
+}
+
+/* Custom utility for hidden scrollbars while maintaining functionality */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

@@ -1,20 +1,20 @@
 /**
- * REALM FORGE: TITAN NEURAL LATTICE v31.0
+ * REALM FORGE: TITAN NEURAL LATTICE v31.1
  * STYLE: CAFFEINE-NEON / HIGH-VISIBILITY
  * ARCHITECT: LEAD SWARM ENGINEER
- * STATUS: PRODUCTION READY - SPATIAL CLUSTER ENGINE
+ * STATUS: PRODUCTION READY - 1,200 NODE LATTICE STABILITY
  * PATH: F:\RealmForge_PROD\client\components\chambers\NeuralLattice.tsx
  */
 
 // @ts-nocheck
 "use client";
 
-import React, { useEffect, useRef, useState, useMemo } from "react";
+import React, { useEffect, useRef, useState, useMemo, useCallback } from "react";
 import axios from "axios";
 import { 
   Network, Database, Info, RefreshCw, 
   ShieldCheck, Filter, Search, Fingerprint, 
-  Activity, Layers, Zap, Trash2, Binary
+  Activity, Layers, Zap, Trash2, Binary, FileCode
 } from "lucide-react";
 import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
@@ -53,7 +53,8 @@ export default function NeuralLattice() {
     BUBBLEGUM: "#ff80bf",
     PINK: "#ff007f",
     SLATE: "#1a1a1a",
-    GREY: "#333333"
+    GREY: "#333333",
+    WHITE: "#ffffff"
   };
 
   useEffect(() => {
@@ -87,21 +88,43 @@ export default function NeuralLattice() {
       const rawNodes = res.data.nodes || [];
       const rawLinks = res.data.links || [];
 
-      // --- KINETIC CLUSTERING LOGIC ---
+      // --- KINETIC CLUSTERING & HASH AWARENESS ---
       const cleanNodes = rawNodes
         .filter(n => n?.id)
         .map(n => ({
             ...n,
             sector: n.sector || n.department?.toLowerCase() || "general_engineering",
-            category: n.type || (n.id.startsWith("ARC-") ? "AGENT" : n.id.startsWith("RF-") ? "TASK" : "KNOWLEDGE")
+            // HARDENED CATEGORY DETECTION: Recognizes Agents, Tasks, and Physical Files
+            category: n.type || (
+              n.id.startsWith("ARC-") || n.functional_role ? "AGENT" : 
+              n.id.startsWith("RF-") ? "TASK" : 
+              (n.file_hash || n.path) ? "FILE" : "KNOWLEDGE"
+            )
         }));
 
       const nodeIds = new Set(cleanNodes.map(n => n.id));
-      const cleanLinks = rawLinks.filter(l => nodeIds.has(l.source) && nodeIds.has(l.target));
+      
+      // Robust link parsing to handle string vs object IDs
+      const cleanLinks = rawLinks.filter(l => {
+        const sId = typeof l.source === 'object' ? l.source.id : l.source;
+        const tId = typeof l.target === 'object' ? l.target.id : l.target;
+        return nodeIds.has(sId) && nodeIds.has(tId);
+      });
+
+      // If data is empty but we expected 1200 nodes, inject a visual warning node
+      if (cleanNodes.length === 0) {
+        cleanNodes.push({ id: "CORE_OFFLINE", category: "KNOWLEDGE", sector: "Architect", label: "Lattice_Depressurized" });
+      }
 
       setData({ nodes: cleanNodes, links: cleanLinks });
+      
+      // Auto-fit after loading to ensure the 1,200 nodes are visible
+      setTimeout(() => {
+        if (graphRef.current) graphRef.current.zoomToFit(400, 50);
+      }, 500);
+
     } catch (e) {
-      console.error("LATTICE_FAULT");
+      console.error("LATTICE_FAULT", e);
     } finally {
       setLoading(false);
     }
@@ -122,38 +145,39 @@ export default function NeuralLattice() {
     return { nodes, links };
   }, [data, filter, searchQuery]);
 
-  const getNodeColor = (node) => {
-    if (node.id === selectedNode?.id) return "#ffffff";
+  const getNodeColor = useCallback((node) => {
+    if (node.id === selectedNode?.id) return COLORS.WHITE;
     switch (node.category) {
         case "AGENT": return COLORS.BUBBLEGUM;
         case "TASK": return COLORS.PINK;
+        case "FILE": return COLORS.CYAN;
         case "KNOWLEDGE": return COLORS.CYAN;
         default: return COLORS.GREY;
     }
-  };
+  }, [selectedNode]);
 
   const handleRebuild = async () => {
     const url = localStorage.getItem("RF_URL");
     const key = localStorage.getItem("RF_KEY");
-    alert("🚀 Initiating System Core Re-Ingestion. This will prune orphan nodes...");
+    if (!confirm("🚀 Initiating Physical Codebase Re-Ingestion? This will re-hash 1,200+ nodes.")) return;
     try {
-        await axios.post(`${url}/api/v1/mission`, { task: "Trigger a physical codebase ingestion scan." }, { headers: { "X-API-Key": key } });
-    } catch (e) {}
+        await axios.post(`${url.replace(/\/$/, "")}/api/v1/mission`, { task: "Mastermind, execute a full physical codebase ingestion and lattice hash update." }, { headers: { "X-API-Key": key } });
+    } catch (e) { console.error("REBUILD_FAULT"); }
   };
 
   return (
     <div className="h-full flex gap-6 bg-transparent relative overflow-hidden" ref={containerRef}>
       
       {/* --- GRAPH CANVAS --- */}
-      <div className="flex-1 bg-[#0a0a0a] border border-white/5 rounded-3xl overflow-hidden relative shadow-2xl">
+      <div className="flex-1 bg-[#050505] border border-white/5 rounded-3xl overflow-hidden relative shadow-2xl">
         
         {/* HUD OVERLAY */}
         <div className="absolute top-6 left-6 z-50 flex flex-col gap-3 pointer-events-none">
           <div className="flex gap-2 pointer-events-auto">
-            <button onClick={fetchGraph} className="p-3 bg-[#00f2ff] text-black hover:bg-white transition-all rounded-xl shadow-lg">
+            <button onClick={fetchGraph} className="p-3 bg-[#00f2ff] text-black hover:bg-white transition-all rounded-xl shadow-[0_0_15px_rgba(0,242,255,0.4)]">
                 <RefreshCw className={loading ? "animate-spin" : ""} size={18} />
             </button>
-            <div className="bg-[#111111]/80 backdrop-blur-xl border border-white/10 px-4 py-2 flex items-center gap-3 rounded-xl">
+            <div className="bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/10 px-4 py-2 flex items-center gap-3 rounded-xl">
                 <ShieldCheck size={16} className="text-[#ff80bf]" />
                 <span className="text-[11px] font-black text-white uppercase tracking-widest">
                   Lattice_Sync: {filteredData.nodes.length} <span className="text-white/20">/</span> {data.nodes.length}
@@ -162,12 +186,12 @@ export default function NeuralLattice() {
           </div>
 
           {/* QUICK CATEGORY FILTER */}
-          <div className="flex gap-1 pointer-events-auto bg-black/40 p-1 rounded-xl border border-white/5">
-            {["ALL", "AGENT", "TASK", "KNOWLEDGE"].map(cat => (
+          <div className="flex gap-1 pointer-events-auto bg-black/60 backdrop-blur-md p-1 rounded-xl border border-white/5">
+            {["ALL", "AGENT", "TASK", "FILE", "KNOWLEDGE"].map(cat => (
               <button 
                 key={cat} onClick={() => setFilter(cat)}
                 className={`px-4 py-1.5 text-[9px] font-black uppercase tracking-widest rounded-lg transition-all
-                ${filter === cat ? "bg-[#00f2ff] text-black" : "text-white/40 hover:text-white hover:bg-white/5"}`}
+                ${filter === cat ? "bg-[#00f2ff] text-black shadow-[0_0_10px_#00f2ff]" : "text-white/40 hover:text-white hover:bg-white/5"}`}
               >
                 {cat}
               </button>
@@ -178,13 +202,13 @@ export default function NeuralLattice() {
             onClick={handleRebuild}
             className="pointer-events-auto flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-500/20 text-red-500 text-[9px] font-black uppercase rounded-lg hover:bg-red-500 hover:text-white transition-all w-fit"
           >
-            <Trash2 size={12} /> Rebuild Neural Roster
+            <Trash2 size={12} /> Re-Ingest Physical Roster
           </button>
         </div>
 
         {/* SEARCH BAR */}
         <div className="absolute top-6 right-6 z-50 pointer-events-auto">
-            <div className="bg-[#111111]/80 backdrop-blur-xl border border-white/10 p-1 flex items-center gap-2 rounded-2xl w-64 focus-within:border-[#00f2ff]/40 transition-all">
+            <div className="bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/10 p-1 flex items-center gap-2 rounded-2xl w-64 focus-within:border-[#00f2ff]/40 transition-all">
                 <Search size={16} className="ml-3 text-white/20" />
                 <input 
                   value={searchQuery}
@@ -200,51 +224,54 @@ export default function NeuralLattice() {
             graphData={filteredData}
             width={dimensions.width}
             height={dimensions.height}
-            backgroundColor="#0a0a0a"
-            nodeColor={getNodeColor}
-            nodeRelSize={7}
-            linkColor={() => "rgba(0, 242, 255, 0.05)"}
-            linkDirectionalParticles={1}
-            linkDirectionalParticleSpeed={0.005}
-            linkDirectionalParticleWidth={1.5}
+            backgroundColor="#050505"
+            nodeRelSize={6}
+            linkColor={() => "rgba(0, 242, 255, 0.08)"}
+            linkDirectionalParticles={2}
+            linkDirectionalParticleSpeed={0.006}
+            linkDirectionalParticleWidth={2}
             linkDirectionalParticleColor={() => COLORS.CYAN}
             onNodeClick={(node) => {
               setSelectedNode(node);
-              graphRef.current.centerAt(node.x, node.y, 800);
-              graphRef.current.zoom(4, 800);
+              if (graphRef.current) {
+                graphRef.current.centerAt(node.x, node.y, 800);
+                graphRef.current.zoom(4, 800);
+              }
             }}
             nodeCanvasObject={(node, ctx, globalScale) => {
               const label = node.id;
               const fontSize = 14 / globalScale;
-              const size = 6 / globalScale + 3;
+              const size = 5 / globalScale + 3;
+              const nodeColor = getNodeColor(node);
               
-              // Draw Outer Glow
+              // Draw Ambient Outer Glow
               ctx.beginPath();
-              ctx.arc(node.x, node.y, size + 1, 0, 2 * Math.PI, false);
-              ctx.fillStyle = `${getNodeColor(node)}33`;
+              ctx.arc(node.x, node.y, size + 2, 0, 2 * Math.PI, false);
+              ctx.fillStyle = `${nodeColor}22`;
               ctx.fill();
 
               // Draw Node Core
               ctx.beginPath();
               ctx.arc(node.x, node.y, size, 0, 2 * Math.PI, false);
-              ctx.fillStyle = getNodeColor(node);
+              ctx.fillStyle = nodeColor;
               ctx.fill();
 
+              // Selected Node Highlight
               if (selectedNode?.id === node.id) {
                 ctx.beginPath();
-                ctx.arc(node.x, node.y, size + 3, 0, 2 * Math.PI, false);
-                ctx.strokeStyle = "#ffffff";
-                ctx.lineWidth = 1;
+                ctx.arc(node.x, node.y, size + 4, 0, 2 * Math.PI, false);
+                ctx.strokeStyle = COLORS.WHITE;
+                ctx.lineWidth = 2 / globalScale;
                 ctx.stroke();
               }
 
-              // Labels at High Zoom
-              if (globalScale > 3) {
-                ctx.font = `bold ${fontSize}px "Inter", sans-serif`;
+              // ID Labels at High Zoom
+              if (globalScale > 2.5) {
+                ctx.font = `bold ${fontSize}px "JetBrains Mono", monospace`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                ctx.fillStyle = '#ffffff';
-                ctx.fillText(label, node.x, node.y + size + 10);
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                ctx.fillText(label, node.x, node.y + size + 12);
               }
             }}
           />
@@ -290,6 +317,27 @@ export default function NeuralLattice() {
                 </div>
               </div>
 
+              {/* TRUTH PROTOCOL: PHYSICAL HASH DATA */}
+              {selectedNode.file_hash && (
+                <section className="bg-[#00f2ff]/5 border border-[#00f2ff]/20 p-6 rounded-2xl">
+                  <h4 className="text-[10px] text-[#00f2ff] font-black uppercase mb-4 flex items-center gap-2">
+                    <ShieldCheck size={14} /> IronClad_Forensics
+                  </h4>
+                  <div className="font-mono space-y-3">
+                    <div>
+                      <span className="text-[8px] text-white/30 uppercase block">Physical_Hash</span>
+                      <span className="text-[10px] text-white break-all">{selectedNode.file_hash}</span>
+                    </div>
+                    {selectedNode.last_verified && (
+                      <div>
+                        <span className="text-[8px] text-white/30 uppercase block">Last_Verified</span>
+                        <span className="text-[10px] text-white">{selectedNode.last_verified}</span>
+                      </div>
+                    )}
+                  </div>
+                </section>
+              )}
+
               <section className="bg-black/50 border border-white/5 p-6 rounded-2xl relative group">
                 <div className="absolute top-4 right-4 p-2 opacity-10 group-hover:opacity-100 transition-opacity">
                    <Activity size={16} className="text-[#00f2ff]" />
@@ -299,11 +347,11 @@ export default function NeuralLattice() {
                 </h4>
                 <div className="space-y-4 font-mono">
                    {Object.entries(selectedNode).map(([key, val]) => {
-                     if (["x", "y", "vx", "vy", "index", "id", "category", "sector", "mastery"].includes(key)) return null;
+                     if (["x", "y", "vx", "vy", "index", "id", "category", "sector", "file_hash", "last_verified"].includes(key)) return null;
                      return (
                        <div key={key} className="flex flex-col border-b border-white/5 pb-3">
                          <span className="text-[8px] text-[#00f2ff] uppercase font-black tracking-widest mb-1">{key}</span>
-                         <span className="text-[11px] text-slate-400 break-all leading-relaxed">{JSON.stringify(val)}</span>
+                         <span className="text-[11px] text-slate-400 break-all leading-relaxed">{typeof val === 'object' ? JSON.stringify(val) : String(val)}</span>
                        </div>
                      );
                    })}
