@@ -1,5 +1,5 @@
 """
-REALM FORGE: NEURAL LATTICE SYNCHRONIZER v2.0
+REALM FORGE: NEURAL LATTICE SYNCHRONIZER v2.1
 ARCHITECT: LEAD SWARM ENGINEER (MASTERMIND v31.4)
 STATUS: PRODUCTION READY - HASH-AWARE - 13,472 NODE SYNC
 PATH: F:/RealmForge_PROD/sync_lattice.py
@@ -25,6 +25,7 @@ SILOS = [
 ]
 
 def calculate_hash(file_path):
+    """IronClad SHA-256 Physical File Validation."""
     sha256 = hashlib.sha256()
     try:
         with open(file_path, "rb") as f:
@@ -34,7 +35,7 @@ def calculate_hash(file_path):
     except: return "HASH_ERROR"
 
 def generate_lattice():
-    print("--- [REALM FORGE: LATTICE RECONSTRUCTION] ---")
+    print("--- [REALM FORGE: SOVEREIGN LATTICE SYNC v2.1] ---")
     nodes = []
     links = []
     
@@ -45,13 +46,15 @@ def generate_lattice():
             "label": f"{silo} Nexus",
             "type": silo,
             "category": "HUB",
-            "sector": silo.upper()
+            "sector": silo.upper(),
+            "is_hub": True
         })
 
     # 2. CRAWL 1,113 RENORMALIZED AGENTS
-    print("[*] Syncing 1,113 Agents...")
+    print(f"[*] Syncing workforce from: {AGENTS_DIR}")
     for root, _, files in os.walk(AGENTS_DIR):
         silo_folder = os.path.basename(root)
+        # Match folder to Silo
         current_silo = next((s for s in SILOS if s.lower() == silo_folder.lower()), "Architect")
         
         for file in files:
@@ -61,37 +64,50 @@ def generate_lattice():
                 nodes.append({
                     "id": node_id,
                     "label": file,
-                    "path": str(path.relative_to(ROOT_DIR)).replace("\\", "/"),
+                    "path": str(path).replace("\\", "/"), # ABSOLUTE PATH FOR SERVER I/O
+                    "rel_path": str(path.relative_to(ROOT_DIR)).replace("\\", "/"),
                     "category": "AGENT",
                     "sector": current_silo.upper(),
                     "type": current_silo,
                     "file_hash": calculate_hash(path),
                     "last_verified": datetime.now().isoformat()
                 })
-                # Link Agent to Silo Nexus
-                links.append({"source": f"NEXUS-{current_silo.upper()}", "target": node_id, "value": 1})
+                links.append({"source": f"NEXUS-{current_silo.upper()}", "target": node_id, "value": 2})
 
-    # 3. CRAWL CODEBASE (Logic & Frontend - approx 12,000+ nodes)
-    print("[*] Ingesting Codebase Nodes...")
-    ignore_dirs = [".git", "node_modules", ".next", "chroma_db", "__pycache__"]
+    # 3. CRAWL CODEBASE (Logic & Frontend - 12,000+ nodes)
+    print("[*] Ingesting Codebase and Logic layers...")
+    ignore_dirs = [".git", "node_modules", ".next", "chroma_db", "__pycache__", "data"]
     
     for root, dirs, files in os.walk(ROOT_DIR):
-        dirs[:] = [d for d in dirs if d not in ignore_dirs and "data" not in d]
+        # Prune ignored directories
+        dirs[:] = [d for d in dirs if d not in ignore_dirs]
+        
         for file in files:
-            if file.endswith((".py", ".tsx", ".ts", ".css", ".json", ".md")):
+            if file.endswith((".py", ".tsx", ".ts", ".css", ".json", ".md", ".txt")):
                 path = Path(root) / file
                 node_id = f"RF-{uuid.uuid4().hex[:8]}"
                 
-                # Intelligent Sector Routing for Logic
+                # --- SMARTER ROUTING HEURISTICS (Plugging Hole #1) ---
                 target_silo = "Architect"
-                if "client" in str(path): target_silo = "Marketing_PR"
-                if "auth" in str(path): target_silo = "Cybersecurity"
-                if "arsenal" in str(path): target_silo = "Software_Engineering"
+                path_str = str(path).lower()
+                
+                if "client" in path_str:
+                    if any(k in path_str for k in ["component", "hook", "lib", "util"]): 
+                        target_silo = "Software_Engineering"
+                    else: 
+                        target_silo = "Marketing_PR"
+                elif "auth" in path_str or "gatekeeper" in path_str: 
+                    target_silo = "Cybersecurity"
+                elif "arsenal" in path_str or "engine" in path_str: 
+                    target_silo = "Software_Engineering"
+                elif "state" in path_str or "core" in path_str: 
+                    target_silo = "Architect"
                 
                 nodes.append({
                     "id": node_id,
                     "label": file,
-                    "path": str(path.relative_to(ROOT_DIR)).replace("\\", "/"),
+                    "path": str(path).replace("\\", "/"),
+                    "rel_path": str(path.relative_to(ROOT_DIR)).replace("\\", "/"),
                     "category": "LOGIC",
                     "sector": target_silo.upper(),
                     "type": target_silo,
@@ -107,9 +123,10 @@ def generate_lattice():
         json.dump(graph_data, f, indent=2)
 
     print("\n" + "="*50)
-    print(f"LATTICE SYNC COMPLETE")
+    print(f"LATTICE SYNCHRONIZATION COMPLETE")
     print(f"Total Nodes: {len(nodes)}")
     print(f"Total Links: {len(links)}")
+    print(f"Integrity Check: {len([n for n in nodes if n.get('file_hash') != 'HASH_ERROR'])} / {len(nodes)} valid hashes.")
     print(f"Lattice Map: {OUTPUT_PATH}")
     print("="*50)
 
