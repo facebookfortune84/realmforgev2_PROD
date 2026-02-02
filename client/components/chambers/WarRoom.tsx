@@ -1,12 +1,12 @@
 /**
- * REALM FORGE: TITAN WAR ROOM v31.1
+ * REALM FORGE: TITAN WAR ROOM v31.2
  * STYLE: CAFFEINE-NEON (CYAN / PINK / SLATE)
  * PATH: F:\RealmForge_PROD\client\components\chambers\WarRoom.tsx
  */
 
 "use client";
 
-import { useState, useRef, useEffect, useMemo } from "react";
+import { useState, useRef, useEffect, useMemo, useCallback } from "react"; // SUTURE: Added useCallback
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Send, Radio, Activity, Users, Search, Terminal,
@@ -75,7 +75,7 @@ export default function WarRoom({
     if (typeof window !== 'undefined') fetchRoster();
   }, []);
 
-  // --- REPAIRED KINETIC SCROLLING (FIXES FREEZE) ---
+  // --- KINETIC SCROLLING (FIXED) ---
   const scrollToBottom = useCallback((behavior: ScrollBehavior = "smooth") => {
     if (chatEndRef.current) {
       chatEndRef.current.scrollIntoView({ behavior, block: "end" });
@@ -84,13 +84,8 @@ export default function WarRoom({
 
   useEffect(() => { 
     if (hasMounted && logs.length > 0) {
-      // First turn: Instant jump to prevent "stutter"
-      if (logs.length === 1) scrollToBottom("auto");
-      // Subsequent turns: Smooth kinetic trace
-      else {
-        const timer = setTimeout(() => scrollToBottom("smooth"), 100);
-        return () => clearTimeout(timer);
-      }
+      const timer = setTimeout(() => scrollToBottom("smooth"), 100);
+      return () => clearTimeout(timer);
     }
   }, [logs, hasMounted, scrollToBottom]);
 
@@ -126,8 +121,6 @@ export default function WarRoom({
       
       {/* --- LEFT: NEON SECTOR BENTO --- */}
       <div className="w-[340px] flex flex-col gap-4 shrink-0 h-full">
-        
-        {/* SENSORY LINK GATEWAY */}
         <button 
           onClick={unlockAudio} 
           className={`w-full py-4 border-2 rounded-xl transition-all font-black text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-3 active:scale-95
@@ -139,7 +132,6 @@ export default function WarRoom({
           {audioUnlocked ? "VOCAL_CORE: STABLE" : "INIT_SENSORY_LINK"}
         </button>
 
-        {/* BENTO GRID */}
         <div className="flex-1 bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/5 rounded-2xl p-4 overflow-hidden relative flex flex-col">
           <div className="flex items-center justify-between mb-4 border-b border-white/5 pb-2">
             <h3 className="text-[10px] font-black text-[#00f2ff] uppercase tracking-[0.2em] flex items-center gap-2">
@@ -150,7 +142,6 @@ export default function WarRoom({
 
           <div className="grid grid-cols-2 gap-2 overflow-y-auto pr-1 scrollbar-hide">
             {SECTOR_METADATA.map((sector) => {
-              // SUTURE: Normalized comparison logic
               const normalizedActive = activeDept?.toLowerCase().replace(/ /g, "_");
               const isActive = normalizedActive === sector.id || normalizedActive?.includes(sector.id.split('_')[0]);
               
@@ -165,9 +156,7 @@ export default function WarRoom({
                   style={isActive ? { borderColor: sector.color } : {}}
                 >
                   <div className="flex items-center justify-between">
-                    <div style={{ color: isActive ? sector.color : "#444" }}>
-                      {sector.icon}
-                    </div>
+                    <div style={{ color: isActive ? sector.color : "#444" }}>{sector.icon}</div>
                     {isActive && <Zap size={10} className="text-[#ff80bf] animate-pulse" />}
                   </div>
                   <div className={`text-[9px] font-black uppercase tracking-widest ${isActive ? "text-white" : "text-white/20"}`}>
@@ -182,16 +171,12 @@ export default function WarRoom({
 
       {/* --- RIGHT: KINETIC STREAM --- */}
       <div className="flex-1 flex flex-col bg-[#0a0a0a]/40 border border-white/5 rounded-2xl relative overflow-hidden">
-        
-        {/* TOP BAR */}
         <div className="h-14 bg-black/60 border-b border-white/5 flex items-center px-6 justify-between z-10">
             <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.3em]">
                 <Terminal size={14} className="text-[#00f2ff]" />
                 <span className="text-white/20">Mission_Trace</span>
                 <ChevronRight size={14} className="text-white/5" />
                 <span className="text-[#ff80bf] italic">{activeDept}</span>
-                <ChevronRight size={14} className="text-white/5" />
-                <span className="text-white/40">{activeAgent}</span>
             </div>
             {isProcessing && (
                <div className="flex items-center gap-2">
@@ -201,11 +186,7 @@ export default function WarRoom({
             )}
         </div>
 
-        {/* LOG SCROLL CONTAINER (FIXED HEIGHT) */}
-        <div 
-          ref={scrollContainerRef}
-          className="flex-1 overflow-y-auto p-8 space-y-10 scrollbar-hide scroll-smooth"
-        >
+        <div ref={scrollContainerRef} className="flex-1 overflow-y-auto p-8 space-y-10 scrollbar-hide scroll-smooth">
           <AnimatePresence initial={false} mode="popLayout">
             {logs.map((log, i) => (
               <motion.div 
@@ -246,19 +227,13 @@ export default function WarRoom({
           <div ref={chatEndRef} className="h-4 w-full" />
         </div>
 
-        {/* INPUT PORT */}
         <div className="p-6 bg-black/40 border-t border-white/5 backdrop-blur-md">
           <div className="max-w-4xl mx-auto flex gap-4 items-end">
             <div className="flex-1 bg-white/5 border border-white/10 rounded-2xl p-4 focus-within:border-[#00f2ff]/40 focus-within:bg-white/10 transition-all shadow-inner">
               <textarea 
                 value={task} 
                 onChange={(e) => setTask(e.target.value)} 
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
-                    handleDirective();
-                  }
-                }} 
+                onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleDirective(); } }} 
                 placeholder="Initialize Industrial Directive..." 
                 className="w-full bg-transparent text-[#00f2ff] font-mono text-sm outline-none resize-none h-14 scrollbar-hide placeholder:text-white/10"
                 disabled={isProcessing}
@@ -271,11 +246,10 @@ export default function WarRoom({
                 <span>{task.length} / 2000</span>
               </div>
             </div>
-            
             <button 
               onClick={handleDirective} 
               disabled={isProcessing || !task.trim()} 
-              className="w-14 h-14 bg-[#00f2ff] text-black flex items-center justify-center rounded-2xl hover:bg-white transition-all shadow-[0_0_25px_#00f2ff] disabled:opacity-10 disabled:grayscale disabled:shadow-none active:scale-90"
+              className="w-14 h-14 bg-[#00f2ff] text-black flex items-center justify-center rounded-2xl hover:bg-white transition-all shadow-[0_0_25px_#00f2ff] disabled:opacity-10 active:scale-90"
             >
               {isProcessing ? <Activity className="animate-spin" /> : <Zap size={24} fill="currentColor" />}
             </button>
