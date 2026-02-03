@@ -1,7 +1,7 @@
 """
-REALM FORGE: SOVEREIGN GATEWAY v29.0 (INDUSTRIAL ULTIMATE)
+REALM FORGE: SOVEREIGN GATEWAY v29.1 (INDUSTRIAL ULTIMATE)
 ARCHITECT: LEAD SWARM ENGINEER (MASTERMIND v31.4)
-STATUS: PRODUCTION READY - FULL FIDELITY - REDIRECT SANITIZATION - 13,472 NODE SYNC
+STATUS: PRODUCTION READY - AUDIO DEDUPLICATION - 13,472 NODE SYNC
 PATH: F:/RealmForge_PROD/server.py
 """
 
@@ -42,7 +42,7 @@ ROOT_DIR = Path("F:/RealmForge_PROD")
 env_path = ROOT_DIR / ".env"
 
 print("\n" + "⚙️"*25)
-print("--- [REALM FORGE SYSTEM BOOT: v29.0] ---")
+print("--- [REALM FORGE SYSTEM BOOT: v29.1] ---")
 if env_path.exists():
     load_dotenv(dotenv_path=env_path, override=True)
     print(f"✅ [ENV] Physical .env loaded from: {env_path}")
@@ -174,7 +174,7 @@ class ConnectionManager:
 
 manager = ConnectionManager()
 
-# --- SECURITY HANDSHAKE (NameError Fix: Definining header before dependency) ---
+# --- SECURITY HANDSHAKE (Fix: APIKeyHeader defined before usage) ---
 api_key_header = APIKeyHeader(name="X-API-Key", auto_error=False)
 
 async def get_license(key: str = Security(api_key_header)):
@@ -224,7 +224,7 @@ async def lifespan(app: FastAPI):
     yield
     logger.info("🔌 [OFFLINE] Sovereign Node shutdown initiated.")
 
-app = FastAPI(title="RealmForge OS - Sovereign Gateway", version="29.0.0", lifespan=lifespan)
+app = FastAPI(title="RealmForge OS - Sovereign Gateway", version="29.1.0", lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=str(STATIC_PATH)), name="static")
 
 app.add_middleware(
@@ -309,6 +309,9 @@ async def mission(req: MissionRequest, lic: gatekeeper.License = Depends(get_lic
         state["metadata"]["user_id"] = lic.user_id
         state["vitals"]["active_sector"] = "Architect"
         
+        # --- AUDIO LOOP PROTECTOR: Deduplication Registry ---
+        processed_msg_hashes = set()
+        
         await manager.broadcast({
             "type": "diagnostic", "text": f"🚀 Strike {mid} Initiated.", "agent": "ORCHESTRATOR"
         })
@@ -334,11 +337,21 @@ async def mission(req: MissionRequest, lic: gatekeeper.License = Depends(get_lic
 
                 log_contribution(agent, dept, mid, f"Phase: {node_name}")
 
-                # Audio Stream Logic
+                # Audio Stream Logic with Deduplication v29.1
                 new_msgs = msgs if isinstance(msgs, list) else [msgs]
                 for msg in new_msgs:
                     if hasattr(msg, 'content') and msg.content and not isinstance(msg, HumanMessage):
+                        msg_hash = hash(msg.content)
+                        if msg_hash in processed_msg_hashes:
+                            continue # Skip redundant audio gen
+                        
+                        processed_msg_hashes.add(msg_hash)
                         content = msg.content
+                        
+                        # Optimization: Skip audio for internal planning heartbeats
+                        if "[PLANNING]" in content:
+                            continue
+
                         vocal = prepare_vocal_response(content)
                         audio_payload = await generate_neural_audio(vocal)
                         await manager.broadcast({

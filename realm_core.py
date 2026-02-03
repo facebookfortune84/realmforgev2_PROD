@@ -1,5 +1,5 @@
 """
-REALM FORGE: SOVEREIGN BRAIN v31.9
+REALM FORGE: SOVEREIGN BRAIN v31.10
 ARCHITECT: LEAD SWARM ENGINEER (MASTERMIND v31.4)
 STATUS: PRODUCTION READY - SEMANTIC SYNAPSE - IDEMPOTENCY LOCKS - 13,472 NODE AWARE
 PATH: F:/RealmForge_PROD/realm_core.py
@@ -16,6 +16,7 @@ import uuid
 import io
 import time
 import torch
+import random
 from datetime import datetime
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Annotated, Union, Set
@@ -68,6 +69,7 @@ load_dotenv()
 
 llm_instance = None
 memory_kernel = MemoryManager() # Production RAG Instance
+_LATTICE_CACHE = None # Internal memory cache to prevent I/O stalls
 
 def get_llm():
     """Initializes LLM based on .env configuration with Mastermind precision."""
@@ -102,27 +104,28 @@ def get_llm():
 # --- PATHS ---
 DECISION_LOG = Path("F:/RealmForge_PROD/data/memory/decisions.log")
 AGENT_DIR = Path("F:/RealmForge_PROD/data/agents")
-# v31.9 Pivot: Using the Master Departmental Lattice as supreme source
+# Standardizing on the RENORMALIZED lattice artifact
 LATTICE_MAP = Path("F:/RealmForge_PROD/master_departmental_lattice.json")
 TOOLS = {t.name: t for t in ALL_TOOLS_LIST if hasattr(t, 'name')}
 
 # --- HELPERS ---
 def get_industrial_specialist(silo: str):
-    """Picks a physical agent manifest from the 13 canonical industrial silos."""
+    """Picks a physical agent manifest from the 13 canonical industrial silos (Cached for Performance)."""
+    global _LATTICE_CACHE
     try:
-        if not LATTICE_MAP.exists(): return None
-        with open(LATTICE_MAP, 'r', encoding='utf-8-sig') as f:
-            data = json.load(f)
+        # Load Cache if empty (Prevents 100% CPU Disk-Wait)
+        if _LATTICE_CACHE is None:
+            if not LATTICE_MAP.exists(): return None
+            with open(LATTICE_MAP, 'r', encoding='utf-8-sig') as f:
+                _LATTICE_CACHE = json.load(f)
         
-        # Check if the silo exists in the 13-sector map
-        silo_key = next((k for k in data.keys() if silo.lower() in k.lower()), None)
+        # Exact match or fuzzy match for the 13 silos
+        silo_key = next((k for k in _LATTICE_CACHE.keys() if silo.lower() in k.lower()), None)
         if not silo_key: return None
         
-        pool = data[silo_key].get('agents', [])
+        pool = _LATTICE_CACHE[silo_key].get('agents', [])
         if not pool: return None
         
-        # Consistent selection or random from pool
-        import random
         return random.choice(pool)
     except Exception as e:
         print(f"⚠️ [SPECIALIST_FETCH_ERR]: {e}")
@@ -138,13 +141,13 @@ def extract_json(text: str) -> dict:
     except: return {}
 
 # ==============================================================================
-# 4. NODES (TITAN MASTERMIND CORE v31.9)
+# 4. NODES (TITAN MASTERMIND CORE v31.10)
 # ==============================================================================
 
 async def supervisor_node(state: RealmForgeState):
     """
     ORCHESTRATOR: Supports Natural Language Command (NLC) parsing & Idempotency.
-    v31.9: Integrated with 13-Silo Renormalized Lattice.
+    v31.10: Integrated with 13-Silo Renormalized Lattice and absolute path enforcement.
     """
     mid = state.get("mission_id")
     locks = state.get("mission_locks", set())
@@ -155,7 +158,7 @@ async def supervisor_node(state: RealmForgeState):
 
     mission = state["messages"][-1].content
     
-    # Ingest the 13 canonical silos for the prompt
+    # Official 13 canonical silos
     silo_list = [
         "Architect", "Data_Intelligence", "Software_Engineering", "DevOps_Infrastructure",
         "Cybersecurity", "Financial_Ops", "Legal_Compliance", "Research_Development",
@@ -163,7 +166,7 @@ async def supervisor_node(state: RealmForgeState):
     ]
 
     prompt = f"""
-    SYSTEM: Realm Forge Industrial Mastermind v31.9
+    SYSTEM: Realm Forge Industrial Mastermind v31.10
     CONTEXT: Managing 13,472 nodes and 1,113 Renormalized agents.
     MISSION: "{mission}"
     INDUSTRIAL_SILOS: {silo_list}
@@ -228,10 +231,13 @@ async def supervisor_node(state: RealmForgeState):
     }
 
 async def planner_node(state: RealmForgeState):
-    """THE SPECIALIST: Utilizes semantic_params for high-accuracy tool mapping."""
+    """THE SPECIALIST: Yields heartbeat to HUD and maps 180 Tools to mission tasks."""
     # TURN LIMIT GUARD (15 Turns = 30 Messages)
     if len(state["messages"]) > 30:
         return {"next_node": "synthesizer", "messages": [AIMessage(content="🚨 [LIMIT_REACHED]: Strike aborted to preserve node integrity.")]}
+
+    # HUD HEARTBEAT: Prevent websocket timeout during analysis
+    heartbeat = AIMessage(content="⚙️ [PLANNING]: Analyzing neural lattice and drafting maneuvers...")
 
     mission = state["messages"][-1].content
     agent_name = state.get("active_agent", "ForgeMaster")
@@ -241,7 +247,7 @@ async def planner_node(state: RealmForgeState):
     # Fetch tools specific to the 13 silos
     available_tools = get_tools_for_dept(dept)
     if not available_tools:
-        available_tools = list(TOOLS.keys())[:50] # Fallback to core arsenal
+        available_tools = list(TOOLS.keys())[:50] # Core fallback
     
     prompt = f"""
     IDENTITY: {agent_name} (Industrial Silo: {dept})
@@ -263,7 +269,7 @@ async def planner_node(state: RealmForgeState):
     return {
         "task_queue": data.get("sub_tasks", []),
         "next_node": "executor",
-        "messages": [AIMessage(content=f"📋 [PLAN_LOCKED]: Orchestrating kinetic strike with {len(data.get('sub_tasks', []))} maneuvers.")]
+        "messages": [heartbeat, AIMessage(content=f"📋 [PLAN_LOCKED]: Orchestrating kinetic strike with {len(data.get('sub_tasks', []))} tasks.")]
     }
 
 async def execution_node(state: RealmForgeState):
@@ -305,7 +311,7 @@ async def execution_node(state: RealmForgeState):
                 # Tool Execution
                 result = await TOOLS[tool_name].ainvoke(args)
                 
-                # POST-EXECUTION SNIFFING
+                # POST-EXECUTION SNIFFING (Case-insensitive path matching)
                 path_matches = re.findall(r'[Ff]:/[^ "^\n\t,)]+', str(result))
                 found_artifacts.extend(path_matches)
 
