@@ -6,7 +6,7 @@
  * PATH: F:/RealmForge_PROD/client/components/chambers/NeuralLattice.tsx
  */
 
-// @ts-nocheck
+
 "use client";
 
 import React, { useEffect, useRef, useState, useMemo, useCallback } from "react";
@@ -138,6 +138,7 @@ export default function NeuralLattice() {
     );
     
     const nodeIds = new Set(nodes.map(n => n.id));
+    // SUTURE: Aggressive link filtering to prevent orphaned link crashes
     const links = data.links.filter(l => {
       const s = typeof l.source === 'object' ? l.source.id : l.source;
       const t = typeof l.target === 'object' ? l.target.id : l.target;
@@ -231,7 +232,7 @@ export default function NeuralLattice() {
             width={dimensions.width}
             height={dimensions.height}
             backgroundColor="#050505"
-            nodeRelSize={node => (node.category === "HUB" ? 10 : 6)}
+            nodeRelSize={6}
             linkColor={() => "rgba(0, 242, 255, 0.05)"}
             linkDirectionalParticles={1}
             linkDirectionalParticleSpeed={0.004}
@@ -245,39 +246,23 @@ export default function NeuralLattice() {
               }
             }}
             nodeCanvasObject={(node, ctx, globalScale) => {
+              if (!node.x || !node.y) return; // SUTURE: Stability guard
+              
               const label = node.label || node.id;
-              const fontSize = 12 / globalScale;
-              const size = node.category === "HUB" ? 12 / globalScale + 4 : 5 / globalScale + 2;
+              const size = node.category === "HUB" ? 8 : 4; // Simplified for stability
               const nodeColor = getNodeColor(node);
               
-              // Draw Ambient Outer Glow
-              ctx.beginPath();
-              ctx.arc(node.x, node.y, size + 3, 0, 2 * Math.PI, false);
-              ctx.fillStyle = `${nodeColor}11`;
-              ctx.fill();
-
-              // Draw Node Core
               ctx.beginPath();
               ctx.arc(node.x, node.y, size, 0, 2 * Math.PI, false);
               ctx.fillStyle = nodeColor;
               ctx.fill();
 
-              // Selected Node Highlight
+              // Selection Glow
               if (selectedNode?.id === node.id) {
                 ctx.beginPath();
-                ctx.arc(node.x, node.y, size + 5, 0, 2 * Math.PI, false);
-                ctx.strokeStyle = COLORS.WHITE;
-                ctx.lineWidth = 2 / globalScale;
+                ctx.arc(node.x, node.y, size + 2, 0, 2 * Math.PI, false);
+                ctx.strokeStyle = "#fff";
                 ctx.stroke();
-              }
-
-              // ID Labels at High Zoom or for HUBs
-              if (globalScale > 3.5 || node.category === "HUB") {
-                ctx.font = `bold ${fontSize}px "JetBrains Mono", monospace`;
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-                ctx.fillText(label, node.x, node.y + size + (12 / globalScale));
               }
             }}
           />

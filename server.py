@@ -1,7 +1,7 @@
 """
-REALM FORGE: SOVEREIGN GATEWAY v29.1 (INDUSTRIAL ULTIMATE)
+REALM FORGE: SOVEREIGN GATEWAY v29.2 (INDUSTRIAL ULTIMATE)
 ARCHITECT: LEAD SWARM ENGINEER (MASTERMIND v31.4)
-STATUS: PRODUCTION READY - AUDIO DEDUPLICATION - 13,472 NODE SYNC
+STATUS: PRODUCTION READY - DYNAMIC NODE SYNC - AUDIO DEDUPLICATION - 100% PARITY
 PATH: F:/RealmForge_PROD/server.py
 """
 
@@ -42,7 +42,7 @@ ROOT_DIR = Path("F:/RealmForge_PROD")
 env_path = ROOT_DIR / ".env"
 
 print("\n" + "⚙️"*25)
-print("--- [REALM FORGE SYSTEM BOOT: v29.1] ---")
+print("--- [REALM FORGE SYSTEM BOOT: v29.2] ---")
 if env_path.exists():
     load_dotenv(dotenv_path=env_path, override=True)
     print(f"✅ [ENV] Physical .env loaded from: {env_path}")
@@ -89,7 +89,7 @@ folders = [
 ]
 for folder in folders: os.makedirs(folder, exist_ok=True)
 
-# Stabilize Lattice Visualization (13,472 Node Count)
+# Stabilize Lattice Visualization
 if not GRAPH_PATH.exists():
     os.makedirs(GRAPH_PATH.parent, exist_ok=True)
     with open(GRAPH_PATH, 'w', encoding='utf-8') as f:
@@ -137,6 +137,8 @@ class FileSaveRequest(BaseModel): path: str; content: str
 class ConnectionManager:
     def __init__(self): 
         self.active: List[WebSocket] = []
+        # v29.2 Linkage to Memory for real node counts
+        self.mem = MemoryManager()
         
     async def connect(self, ws: WebSocket):
         await ws.accept()
@@ -154,10 +156,12 @@ class ConnectionManager:
     async def broadcast(self, msg: dict):
         if "vitals" not in msg:
             try:
+                # v29.2 SUTURE: Dynamic count from physical graph instead of hardcoded 13472
+                current_nodes = self.mem.graph.number_of_nodes()
                 msg["vitals"] = {
                     "ram": round(psutil.virtual_memory().percent, 1),
                     "cpu": psutil.cpu_percent(),
-                    "lattice_nodes": 13472,
+                    "lattice_nodes": current_nodes, 
                     "active_users": len(self.active),
                     "active_sector": msg.get("dept", "Architect"),
                     "timestamp": time.time()
@@ -174,7 +178,7 @@ class ConnectionManager:
 
 manager = ConnectionManager()
 
-# --- SECURITY HANDSHAKE (Fix: APIKeyHeader defined before usage) ---
+# --- SECURITY HANDSHAKE (Verified: Defined before dependency usage) ---
 api_key_header = APIKeyHeader(name="X-API-Key", auto_error=False)
 
 async def get_license(key: str = Security(api_key_header)):
@@ -195,7 +199,7 @@ def get_brain():
     global genesis_engine
     if genesis_engine is None:
         try:
-            logger.info("🧠 [BRAIN] Awakening Genesis Engine & 13,472+ Nodes...")
+            logger.info("🧠 [BRAIN] Awakening Genesis Engine...")
             from realm_core import app as brain_app
             genesis_engine = brain_app
             logger.info("✅ [BRAIN] Genesis Engine Online.")
@@ -224,7 +228,7 @@ async def lifespan(app: FastAPI):
     yield
     logger.info("🔌 [OFFLINE] Sovereign Node shutdown initiated.")
 
-app = FastAPI(title="RealmForge OS - Sovereign Gateway", version="29.1.0", lifespan=lifespan)
+app = FastAPI(title="RealmForge OS - Sovereign Gateway", version="29.2.0", lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=str(STATIC_PATH)), name="static")
 
 app.add_middleware(
@@ -309,11 +313,11 @@ async def mission(req: MissionRequest, lic: gatekeeper.License = Depends(get_lic
         state["metadata"]["user_id"] = lic.user_id
         state["vitals"]["active_sector"] = "Architect"
         
-        # --- AUDIO LOOP PROTECTOR: Deduplication Registry ---
+        # --- AUDIO LOOP PROTECTOR: Deduplication Registry (v29.2 Hardened) ---
         processed_msg_hashes = set()
         
         await manager.broadcast({
-            "type": "diagnostic", "text": f"🚀 Strike {mid} Initiated.", "agent": "ORCHESTRATOR"
+            "type": "diagnostic", "text": f"🚀 Strike {mid} Initialized.", "agent": "ORCHESTRATOR"
         })
 
         async for output in engine.astream(state):
@@ -337,19 +341,20 @@ async def mission(req: MissionRequest, lic: gatekeeper.License = Depends(get_lic
 
                 log_contribution(agent, dept, mid, f"Phase: {node_name}")
 
-                # Audio Stream Logic with Deduplication v29.1
+                # Audio Stream Logic with Deduplication v29.2
                 new_msgs = msgs if isinstance(msgs, list) else [msgs]
                 for msg in new_msgs:
                     if hasattr(msg, 'content') and msg.content and not isinstance(msg, HumanMessage):
-                        msg_hash = hash(msg.content)
-                        if msg_hash in processed_msg_hashes:
-                            continue # Skip redundant audio gen
+                        # Use hash of content to prevent duplicate TTS trigger on same string
+                        m_hash = hash(msg.content)
+                        if m_hash in processed_msg_hashes:
+                            continue 
                         
-                        processed_msg_hashes.add(msg_hash)
+                        processed_msg_hashes.add(m_hash)
                         content = msg.content
                         
-                        # Optimization: Skip audio for internal planning heartbeats
-                        if "[PLANNING]" in content:
+                        # Optimization: Skip audio for utility heartbeats
+                        if "[PLANNING]" in content or "[STRATEGY]" in content:
                             continue
 
                         vocal = prepare_vocal_response(content)

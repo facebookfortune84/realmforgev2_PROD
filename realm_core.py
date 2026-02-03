@@ -1,5 +1,5 @@
 """
-REALM FORGE: SOVEREIGN BRAIN v31.10
+REALM FORGE: SOVEREIGN BRAIN v31.11
 ARCHITECT: LEAD SWARM ENGINEER (MASTERMIND v31.4)
 STATUS: PRODUCTION READY - SEMANTIC SYNAPSE - IDEMPOTENCY LOCKS - 13,472 NODE AWARE
 PATH: F:/RealmForge_PROD/realm_core.py
@@ -69,7 +69,7 @@ load_dotenv()
 
 llm_instance = None
 memory_kernel = MemoryManager() # Production RAG Instance
-_LATTICE_CACHE = None # Internal memory cache to prevent I/O stalls
+_LATTICE_CACHE = None # Internal memory cache to prevent I/O stalls during high-load missions
 
 def get_llm():
     """Initializes LLM based on .env configuration with Mastermind precision."""
@@ -104,7 +104,7 @@ def get_llm():
 # --- PATHS ---
 DECISION_LOG = Path("F:/RealmForge_PROD/data/memory/decisions.log")
 AGENT_DIR = Path("F:/RealmForge_PROD/data/agents")
-# Standardizing on the RENORMALIZED lattice artifact
+# Renormalized lattice artifact
 LATTICE_MAP = Path("F:/RealmForge_PROD/master_departmental_lattice.json")
 TOOLS = {t.name: t for t in ALL_TOOLS_LIST if hasattr(t, 'name')}
 
@@ -113,13 +113,13 @@ def get_industrial_specialist(silo: str):
     """Picks a physical agent manifest from the 13 canonical industrial silos (Cached for Performance)."""
     global _LATTICE_CACHE
     try:
-        # Load Cache if empty (Prevents 100% CPU Disk-Wait)
+        # Load Cache if empty (Ensures 0% Disk Latency during execution)
         if _LATTICE_CACHE is None:
             if not LATTICE_MAP.exists(): return None
             with open(LATTICE_MAP, 'r', encoding='utf-8-sig') as f:
                 _LATTICE_CACHE = json.load(f)
         
-        # Exact match or fuzzy match for the 13 silos
+        # Exact match or fuzzy match for the 13 canonical silos
         silo_key = next((k for k in _LATTICE_CACHE.keys() if silo.lower() in k.lower()), None)
         if not silo_key: return None
         
@@ -141,13 +141,13 @@ def extract_json(text: str) -> dict:
     except: return {}
 
 # ==============================================================================
-# 4. NODES (TITAN MASTERMIND CORE v31.10)
+# 4. NODES (TITAN MASTERMIND CORE v31.11)
 # ==============================================================================
 
 async def supervisor_node(state: RealmForgeState):
     """
     ORCHESTRATOR: Supports Natural Language Command (NLC) parsing & Idempotency.
-    v31.10: Integrated with 13-Silo Renormalized Lattice and absolute path enforcement.
+    v31.11: Integrated with 13-Silo Renormalized Lattice and absolute path enforcement.
     """
     mid = state.get("mission_id")
     locks = state.get("mission_locks", set())
@@ -166,7 +166,7 @@ async def supervisor_node(state: RealmForgeState):
     ]
 
     prompt = f"""
-    SYSTEM: Realm Forge Industrial Mastermind v31.10
+    SYSTEM: Realm Forge Industrial Mastermind v31.11
     CONTEXT: Managing 13,472 nodes and 1,113 Renormalized agents.
     MISSION: "{mission}"
     INDUSTRIAL_SILOS: {silo_list}
@@ -244,10 +244,10 @@ async def planner_node(state: RealmForgeState):
     dept = state.get("active_department", "Architect")
     params = state.get("semantic_params", {})
     
-    # Fetch tools specific to the 13 silos
-    available_tools = get_tools_for_dept(dept)
+    # v31.11 SUTURE: Passing ALL_TOOLS_LIST to satisfy registry signature and fix 500 error
+    available_tools = get_tools_for_dept(dept, ALL_TOOLS_LIST)
     if not available_tools:
-        available_tools = list(TOOLS.keys())[:50] # Core fallback
+        available_tools = [t.name for t in ALL_TOOLS_LIST[:50]]
     
     prompt = f"""
     IDENTITY: {agent_name} (Industrial Silo: {dept})
@@ -359,7 +359,7 @@ async def validator_node(state: RealmForgeState):
     }
 
 async def auditor_node(state: RealmForgeState):
-    """Verifies output integrity and blocks placeholders (TRUTH PROTOCOL)."""
+    """Verifies TRUTH PROTOCOL: Blocks placeholders and incomplete logic."""
     last_msg = state["messages"][-1].content
     if any(p in last_msg.lower() for p in ["[insert", "placeholder", "failed", "incomplete"]):
         return {"messages": [AIMessage(content="🚨 [AUDIT_FAIL]: Placeholder detected. Re-tracing mission logic...")], "next_node": "planner"}

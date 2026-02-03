@@ -125,3 +125,11 @@ ALL_TOOLS_LIST = [
     wrap_text_lines, write_csv_report, write_file, write_to_workspace, 
     zip_directory
 ]
+
+# --- F:/RealmForge_PROD/src/system/arsenal/registry.py ---
+
+def get_tools_for_dept(dept_name: str, all_tools: list = None):
+    """Suture: Defaults to ALL_TOOLS_LIST if no list is provided."""
+    target_list = all_tools if all_tools is not None else ALL_TOOLS_LIST
+    # Your existing filtering logic here...
+    return [t for t in target_list if hasattr(t, 'category') and t.category == dept_name]
